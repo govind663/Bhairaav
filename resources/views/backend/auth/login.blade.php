@@ -8,9 +8,9 @@
     <title>Bhairaav | Login</title>
 
     <!-- Site favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assete/vendors/images/apple-touch-icon.png') }}" />
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/vendors/images/favicon-32x32.png') }}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/vendors/images/favicon-16x16.png') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/src/images/favicon.png') }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/src/images/favicon.png') }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/src/images/favicon.png') }}" />
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -72,7 +72,7 @@
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="brand-logo">
                 <a href="{{ route('admin.login') }}">
-                    <img src="{{ asset('assets/vendors/images/deskapp-logo.svg') }}" alt="" />
+                    <img src="{{ asset('assets/src/images/bhairaav_dark_logo.png') }}" alt="" />
                 </a>
             </div>
             {{-- <div class="login-menu">
@@ -90,9 +90,10 @@
                 </div>
                 <div class="col-md-6 col-lg-5">
                     <div class="login-box bg-white box-shadow border-radius-10">
-                        <div class="login-title">
-                            <h2 class="text-center text-primary">Login</h2>
+                        <div class="text-center p-2">
+                            <img src="{{ asset('assets/src/images/favicon.png') }}" alt="" />
                         </div>
+                        <h4 class="text-center text-primary">Login</h4>
                         <form method="POST" action="{{ route('admin.login.store') }}" content="{{ csrf_token() }}" enctype="multipart/form-data">
                             @csrf
 
@@ -120,7 +121,7 @@
                             </div>
 
                             <input class="form-check-input" type="hidden" name="remember_token" id="remember_token" value="true">
-
+                            <br>
                             <button class="btn btn-lg btn-block btn-primary w-100" type="submit">Login</button>
 
                         </form>

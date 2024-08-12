@@ -1,0 +1,3 @@
+====== Admin Credentials Details
+Email Id :- admin@gmail.com
+Password :- 1234567890
