@@ -1,4 +1,3 @@
-
 @extends('frontend.layouts.master')
 
 @section('title')
@@ -766,10 +765,12 @@
 @endsection
 
 @push('scripts')
+<!-- Modal Js -->
+<script>
+    window.onload = () => {
+        setTimeout(function() {
+            $('#exampleModal').modal('show');
+        }, 10000);
+    }
+</script>
 @endpush
-
-
-
-
-
-

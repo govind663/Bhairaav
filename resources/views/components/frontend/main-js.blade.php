@@ -9,12 +9,3 @@
 <script src="{{ asset('frontend/assets/js/lightgallery.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/YTPlayer.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
-
-<!-- Modal Js -->
-<script>
-    window.onload = () => {
-        setTimeout(function() {
-            $('#exampleModal').modal('show');
-        }, 10000);
-    }
-</script>

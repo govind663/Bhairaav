@@ -32,7 +32,6 @@ Route::get('/', function () {
 })->name('/');
 
 Route::group(['prefix' => 'bhairaav'],function(){
-
     // ======================= Admin Login/Logout
     Route::get('/admin/login', [LoginController::class, 'login'])->name('admin.login');
     Route::post('/admin/login/store', [LoginController::class, 'authenticate'])->name('admin.login.store');
