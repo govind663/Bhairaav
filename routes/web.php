@@ -5,14 +5,33 @@ use App\Http\Middleware\PreventBackHistoryMiddleware;
 
 // ===== Admin
 use App\Http\Controllers\backend\Auth\LoginController;
-use App\Http\Controllers\backend\HomeController;
+use App\Http\Controllers\backend\HomeController as BackendHomeController;
 
+// ===== Frontend
+use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
+use App\Http\Controllers\frontend\AboutController;
+use App\Http\Controllers\frontend\WhoWeAreController;
+use App\Http\Controllers\frontend\LeadershipController;
+use App\Http\Controllers\frontend\OurTeamController;
+use App\Http\Controllers\frontend\AssociatesController;
+use App\Http\Controllers\frontend\ProjectController;
+use App\Http\Controllers\frontend\OngoingProjectController;
+use App\Http\Controllers\frontend\ResidentialProjectController;
+use App\Http\Controllers\frontend\CommercialProjectController;
+use App\Http\Controllers\frontend\CompletedProjectController;
+use App\Http\Controllers\frontend\UpcomingProjectController;
+use App\Http\Controllers\frontend\BeconeAnAssociateController;
+use App\Http\Controllers\frontend\ChannelPartnerController;
+use App\Http\Controllers\frontend\ChannelReferController;
+use App\Http\Controllers\frontend\MediaController;
+use App\Http\Controllers\frontend\BlogController;
+use App\Http\Controllers\frontend\ContactUsController;
 
 Route::get('/', function () {
-    return view('backend.auth.login');
+    return view('frontend.home');
 })->name('/');
 
-Route::group(['prefix' => 'Bhairaav'],function(){
+Route::group(['prefix' => 'bhairaav'],function(){
 
     // ======================= Admin Login/Logout
     Route::get('/admin/login', [LoginController::class, 'login'])->name('admin.login');
@@ -22,13 +41,95 @@ Route::group(['prefix' => 'Bhairaav'],function(){
 });
 
 // ======================= Admin Dashboard
-Route::group(['prefix' => 'Bhairaav', 'middleware'=>['auth', PreventBackHistoryMiddleware::class]],function(){
+Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryMiddleware::class]],function(){
 
     // ==== Dashboard
-    Route::get('/admin/dashboard', [HomeController::class, 'Admin_Home'])->name('admin.dashboard');
+    Route::get('/admin/dashboard', [BackendHomeController::class, 'Admin_Home'])->name('admin.dashboard');
 
     // ==== Update Password
-    Route::get('/change-password', [HomeController::class, 'changePassword'])->name('change-password');
-    Route::post('/change-password', [HomeController::class, 'updatePassword'])->name('update-password');
+    Route::get('/change-password', [BackendHomeController::class, 'changePassword'])->name('change-password');
+    Route::post('/change-password', [BackendHomeController::class, 'updatePassword'])->name('update-password');
 
+});
+
+
+// ======================= Frontend
+Route::group(['prefix'=> 'bhairaav'],function(){
+
+    // ==== Home
+    Route::get('/home', [FrontendHomeController::class, 'index'])->name('frontend.home');
+
+    // ==== About
+    Route::get('/about', [AboutController::class, 'index'])->name('frontend.about');
+
+    // ==== About Sub Section
+    Route::group(['prefix'=>'about-bhairaav'], function(){
+
+        // ==== Who We Are
+        Route::get('who-we-are', [WhoWeAreController::class, 'whoWeAre'])->name('frontend.about.who-we-are');
+
+        // ==== Leadership
+        Route::get('leadership', [LeadershipController::class, 'leadership'])->name('frontend.about.leadership');
+
+        // ==== Our Team
+        Route::get('our-team', [OurTeamController::class, 'ourTeam'])->name('frontend.about.our-team');
+
+        // ==== Associates
+        Route::get('associates', [AssociatesController::class, 'associates'])->name('frontend.about.associates');
+    });
+
+    // ==== Projects
+    Route::get('/project', [ProjectController::class, 'project'])->name('frontend.project');
+
+    // ==== Projects Sub Section
+    Route::group(['prefix'=> 'projects'],function(){
+
+        // ==== Ongoing Projects
+        Route::get('/ongoing-project', [OngoingProjectController::class, 'ongoingProject'])->name('frontend.project.ongoing-project');
+
+        Route::group(['prefix'=> 'ongoing-project'],function(){
+
+            // ==== Residential Projects
+            Route::get('/residential-project', [ResidentialProjectController::class, 'residentalProject'])->name('frontend.project.ongoing-project.residential-project');
+
+            // ==== Commercial Projects
+            Route::get('/commercial-project', [CommercialProjectController::class, 'commercialProject'])->name('frontend.project.ongoing-project.commercial-project');
+
+        });
+
+        // ==== Completed Projects
+        Route::get('/completed-project', [CompletedProjectController::class, 'completedProject'])->name('frontend.project.completed-project');
+
+        // ==== Upcoming Projects
+        Route::get('/upcoming-project', [UpcomingProjectController::class, 'upcomingProject'])->name('frontend.project.upcoming-project');
+
+    });
+
+    // ==== Become an associate
+    Route::get('/becone-an-associate', [BeconeAnAssociateController::class, 'beconeAnAssociate'])->name('frontend.becone-an-associate');
+
+    Route::group(['prefix'=> 'becone-an-associate'],function(){
+
+        // ==== Channel Partner
+        Route::get('/channel-partner', [ChannelPartnerController::class, 'channelPartner'])->name('frontend.becone-an-associate.channel-partner');
+
+        // ==== Channel Refer
+        Route::get('/chanel-refer', [ChannelReferController::class, 'chanelRefer'])->name('frontend.becone-an-associate.chanel-refer');
+
+    });
+
+    // ==== Media
+    Route::get('/media', [MediaController::class, 'media'])->name('frontend.media');
+
+    // ==== Blog
+    Route::get('/blog', [BlogController::class, 'blogList'])->name('frontend.blog');
+
+    Route::group(['prefix'=> 'blog'],function(){
+
+        // ==== Blog Details
+        Route::get('/blog-details', [BlogController::class, 'blogDetails'])->name('frontend.blog.blog-details');
+    });
+
+    // ==== Contact Us
+    Route::get('/contact-us', [ContactUsController::class, 'contactUs'])->name('frontend.contact-us');
 });
