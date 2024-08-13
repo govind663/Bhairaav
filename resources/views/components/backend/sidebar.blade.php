@@ -113,7 +113,7 @@
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="{{ route('slider.index') }}">Manage Slider</a>
+                            <a href="{{ route('sliders.index') }}">Manage Slider</a>
                         </li>
                     </ul>
                 </li>

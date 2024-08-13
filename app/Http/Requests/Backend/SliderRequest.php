@@ -25,7 +25,7 @@ class SliderRequest extends FormRequest
             $rule = [
                 'title' => 'required|string|max:255',
                 'subtitle' => 'required|string|max:255',
-                'banner_imag' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
+                'banner_imag' => 'mimes:jpeg,png,jpg,pdf|max:2048',
             ];
         }else{
             $rule = [

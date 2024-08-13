@@ -30,7 +30,7 @@ Bhairaav | Manaage Slider
 
                 <div class="col-md-6 col-sm-12 text-right">
                     <div class="dropdown">
-                        <a class="btn btn-primary" href="{{ route('slider.create') }}">
+                        <a class="btn btn-primary" href="{{ route('sliders.create') }}">
                             <i class="fa fa-plus" aria-hidden="true"> </i> Slider
                         </a>
 
@@ -57,7 +57,7 @@ Bhairaav | Manaage Slider
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($sliders as $slider)
+                        @foreach ($sliders as $key => $slider)
                         <tr>
                             <td>{{ ++$key }}</td>
                             <td>{{ $slider->title }}</td>
@@ -71,20 +71,20 @@ Bhairaav | Manaage Slider
                             </td>
 
                             <td class="no-export">
-                                <a href="{{ route('package.edit', $slider->id) }}">
-                                    <button class="btn btn-warning btn-sm text-dark">
-                                        <i class="far fa-edit"></i>
+                                <a href="{{ route('sliders.edit', $slider->id) }}">
+                                    <button class="btn btn-warning btn-sm">
+                                        <i class="micon dw dw-pencil-1"></i>
                                     </button>
                                 </a>
                             </td>
 
                             <td class="no-export">
-                                <form action="{{ route('package.destroy', $slider->id) }}" method="post">
+                                <form action="{{ route('sliders.destroy', $slider->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input name="_method" type="hidden" value="DELETE">
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')">
-                                        <i class="far fa-trash-alt"></i>
+                                        <i class="micon dw dw-trash"></i>
                                     </button>
                                 </form>
                             </td>

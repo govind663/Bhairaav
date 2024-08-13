@@ -33,10 +33,13 @@ Route::get('/', function () {
 })->name('/');
 
 Route::group(['prefix' => 'bhairaav'],function(){
+
     // ======================= Admin Login/Logout
     Route::get('/admin/login', [LoginController::class, 'login'])->name('admin.login');
     Route::post('/admin/login/store', [LoginController::class, 'authenticate'])->name('admin.login.store');
 
+    // ==== Logout
+    Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
 });
 
 // ======================= Admin Dashboard
@@ -49,11 +52,8 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
     Route::get('/change-password', [BackendHomeController::class, 'changePassword'])->name('change-password');
     Route::post('/change-password', [BackendHomeController::class, 'updatePassword'])->name('update-password');
 
-    // ==== Logout
-    Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
-
     // ==== Manage Slider resource
-    Route::resource('slider', SliderController::class);
+    Route::resource('sliders', SliderController::class);
 });
 
 

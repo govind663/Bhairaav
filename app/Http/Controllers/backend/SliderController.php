@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\SliderRequest;
@@ -56,7 +56,7 @@ class SliderController extends Controller
             $slider->inserted_by = Auth::user()->id;
             $slider->save();
 
-            return redirect()->route('slider.index')->with('message','Your record has been successfully created.');
+            return redirect()->route('sliders.index')->with('message','Your record has been successfully created.');
 
         } catch(\Exception $ex){
 
@@ -93,7 +93,6 @@ class SliderController extends Controller
 
             $slider = Slider::findOrFail($id);
 
-
             // ==== Upload (banner_imag)
             if (!empty($request->hasFile('banner_imag'))) {
                 $image = $request->file('banner_imag');
@@ -112,7 +111,7 @@ class SliderController extends Controller
             $slider->modified_by = Auth::user()->id;
             $slider->save();
 
-            return redirect()->route('slider.index')->with('message','Your record has been successfully updated.');
+            return redirect()->route('sliders.index')->with('message','Your record has been successfully updated.');
 
         } catch(\Exception $ex){
 
@@ -132,7 +131,7 @@ class SliderController extends Controller
             $slider = Slider::findOrFail($id);
             $slider->update($data);
 
-            return redirect()->route('slider.index')->with('message','Your record has been successfully deleted.');
+            return redirect()->route('sliders.index')->with('message','Your record has been successfully deleted.');
         } catch(\Exception $ex){
 
             return redirect()->back()->with('error','Something Went Wrong - '.$ex->getMessage());

@@ -22,7 +22,7 @@ Bhairaav | Add Slider
                                 <a href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('slider.index') }}">Manage Slider</a>
+                                <a href="{{ route('sliders.index') }}">Manage Slider</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Add Slider
@@ -35,7 +35,7 @@ Bhairaav | Add Slider
         </div>
 
 
-        <form method="POST" action="{{ route('slider.store') }}" class="form-horizontal" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('sliders.store') }}" class="form-horizontal" enctype="multipart/form-data">
             @csrf
 
             <div class="pd-20 card-box mb-30">
@@ -83,7 +83,7 @@ Bhairaav | Add Slider
                 <div class="form-group row mt-4">
                     <label class="col-md-3"></label>
                     <div class="col-md-9" style="display: flex; justify-content: flex-end;">
-                        <a href="{{ route('slider.index') }}" class="btn btn-danger">Cancel</a>&nbsp;&nbsp;
+                        <a href="{{ route('sliders.index') }}" class="btn btn-danger">Cancel</a>&nbsp;&nbsp;
                         <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </div>
