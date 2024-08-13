@@ -27,7 +27,8 @@
                                     <img class="cs_hero_subtitle_icon_2 position-absolute end-0"
                                         src="{{ asset('frontend/assets/img/icons/star.svg') }}" alt="Star">
                                 </p>
-                                <h1 class="cs_hero_title cs_fs_67 cs_white_color mb-0">Thane's Newest Tech Landmark
+                                <h1 class="cs_hero_title cs_fs_67 cs_white_color mb-0">
+                                    Thane's Newest Tech Landmark
                                 </h1>
                             </div>
                         </div>

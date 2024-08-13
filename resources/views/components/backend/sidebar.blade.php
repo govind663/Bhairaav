@@ -106,11 +106,18 @@
     <div class="menu-block customscroll">
         <div class="sidebar-menu">
             <ul id="accordion-menu">
-                <li>
-                    <a href="{{ route('admin.dashboard') }}" class="dropdown-toggle no-arrow">
-                        <span class="micon bi bi-house"></span><span class="mtext">Home</span>
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon bi bi-house"></span>
+                        <span class="mtext">Home</span>
                     </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="{{ route('slider.index') }}">Manage Slider</a>
+                        </li>
+                    </ul>
                 </li>
+
 
             </ul>
         </div>

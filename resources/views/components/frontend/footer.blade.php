@@ -1,17 +1,27 @@
 <footer class="cs_footer cs_primary_bg cs_ternary_color">
     <div class="cs_footer_main">
         <div class="container">
+            <div class="cs_footer_grid_4 pb-4">
+                <div class="cs_footer_grid_item">
+                    <div class="cs_footer_item">
+                        <div class="cs_text_widget">
+                            <a class='cs_site_branding' href='{{ route('/') }}'>
+                                <img src="{{ asset('frontend/assets/img/Bhairaav-Logo.png') }}" alt="Logo">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="cs_footer_grid_4">
                 <div class="cs_footer_grid_item">
                     <div class="cs_footer_item">
                         <h2 class="cs_widget_title cs_bold cs_fs_21 cs_white_color"><span>Contact Us</span></h2>
                         <ul class="cs_menu_widget cs_mp0">
                             <li class="cs_white_color">
-                                <a href="#">
-                                    1003, 10th Floor, Raheja Center,
-                                    Free Press Journal Marg,
-                                    Nariman Point - 400021
-                                </a>
+                                1003, 10th Floor,<br>
+                                Raheja Center,<br>
+                                Free Press Journal Marg,<br>
+                                Nariman Point - 400021
                             </li>
                             <li class="cs_white_color">
                                 <a href="tel:+919071123428">
@@ -47,12 +57,12 @@
                     <div class="cs_footer_item">
                         <h2 class="cs_widget_title cs_bold cs_fs_21 cs_white_color"><span>Links</span></h2>
                         <ul class="cs_menu_widget cs_mp0">
-                            <li><a href='index.html'>Home</a></li>
-                            <li><a href='about.html'>About Bhairaav</a></li>
+                            <li><a href='{{ route('/') }}'>Home</a></li>
+                            <li><a href='{{ route('frontend.about') }}'>About Bhairaav</a></li>
                             <li><a href='#'>Career</a></li>
-                            <li><a href='awards.html'>Recognition</a></li>
-                            <li><a href='blog.html'>Blog</a></li>
-                            <li><a href='contact.html'>Contact us</a></li>
+                            <li><a href='{{ route('frontend.media') }}'>Recognition</a></li>
+                            <li><a href='{{ route('frontend.blog') }}'>Blog</a></li>
+                            <li><a href='{{ route('frontend.contact-us') }}'>Contact us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -60,11 +70,11 @@
                     <div class="cs_footer_item">
                         <h2 class="cs_widget_title cs_bold cs_fs_21 cs_white_color"><span>Projects</span></h2>
                         <ul class="cs_menu_widget cs_mp0">
-                            <li><a href='#'>Ongoing Projects</a></li>
-                            <li><a href='residential-projects.html'>Residential Projects</a></li>
-                            <li><a href='#'>Commercial Projects</a></li>
-                            <li><a href='#'>Completed Projects</a></li>
-                            <li><a href='#'>Upcoming Projects</a></li>
+                            <li><a href='{{ route('frontend.project.ongoing-project') }}'>Ongoing Projects</a></li>
+                            <li><a href='{{ route('frontend.project.ongoing-project.residential-project') }}'>Residential Projects</a></li>
+                            <li><a href='{{ route('frontend.project.ongoing-project.commercial-project') }}'>Commercial Projects</a></li>
+                            <li><a href='{{ route('frontend.project.completed-project') }}'>Completed Projects</a></li>
+                            <li><a href='{{ route('frontend.project.upcoming-project') }}'>Upcoming Projects</a></li>
                         </ul>
                     </div>
                 </div>
@@ -113,9 +123,8 @@
     <div class="cs_bottom_footer_wrap">
         <div class="container">
             <div class="cs_bottom_footer position-relative">
-                <div class="cs_copyright">© Copyright 2024 Bhairaav | Designed By <a
-                        href="https://www.matrixbricks.com/" target="_blank">Matrix Bricks.</a> All Rights
-                    Reserved
+                <div class="cs_copyright">© Copyright {{ date('Y') }} Bhairaav | Designed By
+                    <a href="https://www.matrixbricks.com/" target="_blank">Matrix Bricks.</a> All Rights Reserved
                 </div>
                 <span class="cs_scrollup cs_center">
                     <svg width="15" height="7" viewBox="0 0 15 7" fill="none"

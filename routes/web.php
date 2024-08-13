@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\PreventBackHistoryMiddleware;
 
-// ===== Admin
+// ===== Backend
 use App\Http\Controllers\backend\Auth\LoginController;
 use App\Http\Controllers\backend\HomeController as BackendHomeController;
+use App\Http\Controllers\backend\SliderController;
 
 // ===== Frontend
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
@@ -35,7 +36,6 @@ Route::group(['prefix' => 'bhairaav'],function(){
     // ======================= Admin Login/Logout
     Route::get('/admin/login', [LoginController::class, 'login'])->name('admin.login');
     Route::post('/admin/login/store', [LoginController::class, 'authenticate'])->name('admin.login.store');
-    Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
 
 });
 
@@ -43,17 +43,22 @@ Route::group(['prefix' => 'bhairaav'],function(){
 Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryMiddleware::class]],function(){
 
     // ==== Dashboard
-    Route::get('/admin/dashboard', [BackendHomeController::class, 'Admin_Home'])->name('admin.dashboard');
+    Route::get('/dashboard', [BackendHomeController::class, 'Admin_Home'])->name('admin.dashboard');
 
     // ==== Update Password
     Route::get('/change-password', [BackendHomeController::class, 'changePassword'])->name('change-password');
     Route::post('/change-password', [BackendHomeController::class, 'updatePassword'])->name('update-password');
 
+    // ==== Logout
+    Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
+
+    // ==== Manage Slider resource
+    Route::resource('slider', SliderController::class);
 });
 
 
 // ======================= Frontend
-Route::group(['prefix'=> 'bhairaav'],function(){
+Route::group(['prefix'=> 'bhairaav', 'middleware'=>['auth', PreventBackHistoryMiddleware::class]],function(){
 
     // ==== Home
     Route::get('/home', [FrontendHomeController::class, 'index'])->name('frontend.home');
