@@ -42,18 +42,25 @@ Bhairaav | Add Blog
                 <div class="form-group row mt-3">
                     <label class="col-sm-2"><b>Title : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{old('title')}}" placeholder="Enter Title.">
-                        @error('title')
+                        <input type="text" name="blog_title" id="blog_title" class="form-control @error('blog_title') is-invalid @enderror" value="{{old('blog_title')}}" placeholder="Enter Title.">
+                        @error('blog_title')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
 
-                    <label class="col-sm-2"><b>Categories : <span class="text-danger">*</span></b></label>
+                    <label class="col-sm-2"><b>Category Name : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="text" name="subtitle" id="subtitle" class="form-control @error('subtitle') is-invalid @enderror" value="{{old('subtitle')}}" placeholder="Enter Sub Title.">
-                        @error('subtitle')
+                        <select class="custom-select2 form-control @error('category_id') is-invalid @enderror" name="category_id" id="category_id" style="width: 100%; height: 38px;">
+                            <option value=" " >Select Category Name</option>
+                            <optgroup label="Category">
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->category_name }}</option>
+                                @endforeach
+                            </optgroup>
+                        </select>
+                        @error('category_id')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -62,21 +69,45 @@ Bhairaav | Add Blog
                 </div>
 
                 <div class="form-group row mt-3">
-                    <label class="col-sm-2"><b>Upload Banner Image : <span class="text-danger">*</span></b></label>
+                    <label class="col-sm-2"><b>Upload Blog Post : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="banner_imag" id="banner_imag" class="form-control @error('banner_imag') is-invalid @enderror" value="{{old('banner_imag')}}" placeholder="Enter Title.">
+                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="blog_image" id="blog_image" class="form-control @error('blog_image') is-invalid @enderror" value="{{old('blog_image')}}">
                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                         <br>
                         <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
                         <br>
-                        @error('banner_imag')
+                        @error('blog_image')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        <br>
+                        <div id="preview-container">
+                            <div id="file-preview"></div>
+                        </div>
+                    </div>
+
+
+                    <label class="col-sm-2"><b>Popular Tags : <span class="text-danger">*</span></b></label>
+                    <div class="col-sm-4 col-md-4 bootstrap-tagsinput">
+                        <input type="text" data-role="tagsinput" name="tags" id="tags" class=" @error('tags') is-invalid @enderror" value="{{old('tags')}}" placeholder="Popular Tags.">
+                        @error('tags')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
-                    <div id="preview-container">
-                        <div id="file-preview"></div>
+                </div>
+
+                <div class="form-group row mt-3">
+                    <label class="col-sm-12"><strong>Description :  <span class="text-danger">*</span></strong></label>
+                    <div class="col-sm-12 col-md-12">
+                        <textarea id="description" name="description" class="textarea_editor form-control border-radius-0 @error('description') is-invalid @enderror" placeholder="Enter Description ..." value="{{old('description')}}">{{old('description')}}</textarea>
+                        @error('description')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
 
@@ -104,7 +135,7 @@ Bhairaav | Add Blog
 {{-- preview both image and PDF --}}
 <script>
     function agentPreviewFile() {
-        const fileInput = document.getElementById('banner_imag');
+        const fileInput = document.getElementById('blog_image');
         const previewContainer = document.getElementById('preview-container');
         const filePreview = document.getElementById('file-preview');
         const file = fileInput.files[0];

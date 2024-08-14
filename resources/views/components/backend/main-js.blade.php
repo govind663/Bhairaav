@@ -23,6 +23,9 @@
 
 {{-- <script src="{{ asset('assets/vendors/scripts/dashboard3.js') }}"></script> --}}
 
+<!-- bootstrap-tagsinput js -->
+<script src="{{ asset('assets/src/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js') }}"></script>
+
 <!-- Google Tag Manager (noscript) -->
 <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0" style="display: none; visibility: hidden"></iframe>

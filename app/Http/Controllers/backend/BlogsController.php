@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\BlogRequest;
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -25,7 +26,13 @@ class BlogsController extends Controller
      */
     public function create()
     {
-        return view('backend.blog.create');
+        // === Pluck Category
+        $categories = Category::orderBy("id","desc")->whereNull('deleted_at')->get();
+        // dd($categories);
+
+        return view('backend.blog.create', [
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -34,7 +41,7 @@ class BlogsController extends Controller
     public function store(BlogRequest $request)
     {
         $data = $request->validated();
-        try {
+        // try {
             $blog = Blog::create($data);
 
             // ==== Upload (blog_image)
@@ -51,7 +58,7 @@ class BlogsController extends Controller
 
             $blog->blog_title = $data['blog_title'];
             $blog->description = $data['description'];
-            $blog->categories = $data['categories'];
+            $blog->category_id = $data['category_id'];
             $blog->tags = $data['tags'];
             $blog->posted_dt = Carbon::now();
             $blog->inserted_at = Carbon::now();
@@ -60,10 +67,10 @@ class BlogsController extends Controller
 
             return redirect()->route('blogs.index')->with('message','Your record has been successfully created.');
 
-        } catch(\Exception $ex){
+        // } catch(\Exception $ex){
 
-            return redirect()->back()->with('error','Something Went Wrong  - '.$ex->getMessage());
-        }
+        //     return redirect()->back()->with('error','Something Went Wrong  - '.$ex->getMessage());
+        // }
     }
 
     /**
@@ -109,7 +116,7 @@ class BlogsController extends Controller
 
             $blog->blog_title = $data['blog_title'];
             $blog->description = $data['description'];
-            $blog->categories = $data['categories'];
+            $blog->category_id = $data['category_id'];
             $blog->tags = $data['tags'];
             $blog->posted_dt = Carbon::now();
             $blog->modified_at = Carbon::now();
