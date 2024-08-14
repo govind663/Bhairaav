@@ -12,7 +12,7 @@ class LoginController extends Controller
     public function login()
     {
         if (Auth::guard('web')->check()) {
-            return redirect('/admin/dashboard');
+            return redirect()->route('admin.dashboard');
         } else {
             return view('backend.auth.login');
         }

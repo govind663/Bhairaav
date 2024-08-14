@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-Bhairaav | Manaage Slider
+Bhairaav | Manaage Blog
 @endsection
 
 @push('styles')
@@ -14,7 +14,7 @@ Bhairaav | Manaage Slider
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="title">
-                        <h4>Manage Slider</h4>
+                        <h4>Manage Blog</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
@@ -22,7 +22,7 @@ Bhairaav | Manaage Slider
                                 <a href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Manage Slider
+                                Manage Blog
                             </li>
                         </ol>
                     </nav>
@@ -30,8 +30,8 @@ Bhairaav | Manaage Slider
 
                 <div class="col-md-6 col-sm-12 text-right">
                     <div class="dropdown">
-                        <a class="btn btn-primary" href="{{ route('sliders.create') }}">
-                            <i class="fa fa-plus" aria-hidden="true"> </i> Slider
+                        <a class="btn btn-primary" href="{{ route('blogs.create') }}">
+                            <i class="fa fa-plus" aria-hidden="true"> </i> Blog
                         </a>
 
                     </div>
@@ -50,33 +50,36 @@ Bhairaav | Manaage Slider
                         <tr>
                             <th>Sr. No.</th>
                             <th>Title</th>
-                            <th>Sub Title</th>
+                            <th>Description</th>
                             <th>Slider Image</th>
+                            <th>Posted Date / Time</th>
                             <th class="no-export">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($sliders as $key => $slider)
+                        @foreach ($blogs as $key => $blog)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td>{{ $slider->title }}</td>
-                            <td>{{ $slider->subtitle }}</td>
+                            <td>{{ $slider->blog_title }}</td>
+                            <td>{{ $slider->description }}</td>
                             <td>
-                                @if(!empty($slider->banner_imag))
-                                    <a href="{{url('/')}}/bhairaav/slider/banner_imag/{{ $slider->banner_imag }}" target="_blank" class="btn btn-primary btn-sm">
+                                @if(!empty($slider->blog_image))
+                                    <a href="{{url('/')}}/bhairaav/blog/blog_image/{{ $slider->blog_image }}" target="_blank" class="btn btn-primary btn-sm">
                                         <b> View Document</b>
                                     </a>
                                 @endif
                             </td>
 
+                            <td>{{ date( 'd-m-Y H:i:s', strtotime($slider->posted_dt) ) }}</td>
+
                             <td class="no-export d-flex">
-                                <a href="{{ route('sliders.edit', $slider->id) }}">
+                                <a href="{{ route('blogs.edit', $blog->id) }}">
                                     <button class="btn btn-warning btn-sm">
                                         <i class="micon dw dw-pencil-1"></i> Edit
                                     </button>
                                 </a>
                                 &nbsp;
-                                <form action="{{ route('sliders.destroy', $slider->id) }}" method="post">
+                                <form action="{{ route('blogs.destroy', $blog->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input name="_method" type="hidden" value="DELETE">
@@ -145,7 +148,7 @@ Bhairaav | Manaage Slider
                     columns: ':not(.no-export)',
                 },
                header: true,
-               title: 'All Employee List',
+               title: 'All Blog List',
                orientation: 'landscape',
                pageSize: 'A4',
                customize: function(doc) {

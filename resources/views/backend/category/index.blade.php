@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-Bhairaav | Manaage Slider
+Bhairaav | Manaage Category
 @endsection
 
 @push('styles')
@@ -14,7 +14,7 @@ Bhairaav | Manaage Slider
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="title">
-                        <h4>Manage Slider</h4>
+                        <h4>Manage Category</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
@@ -22,7 +22,7 @@ Bhairaav | Manaage Slider
                                 <a href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Manage Slider
+                                Manage Category
                             </li>
                         </ol>
                     </nav>
@@ -30,8 +30,8 @@ Bhairaav | Manaage Slider
 
                 <div class="col-md-6 col-sm-12 text-right">
                     <div class="dropdown">
-                        <a class="btn btn-primary" href="{{ route('sliders.create') }}">
-                            <i class="fa fa-plus" aria-hidden="true"> </i> Slider
+                        <a class="btn btn-primary" href="{{ route('categories.create') }}">
+                            <i class="fa fa-plus" aria-hidden="true"> </i> Category
                         </a>
 
                     </div>
@@ -42,41 +42,30 @@ Bhairaav | Manaage Slider
         <!-- Export Datatable start -->
         <div class="card-box mb-30">
             <div class="pd-20">
-                <h4 class="text-blue h4">All Slider List</h4>
+                <h4 class="text-blue h4">All Category List</h4>
             </div>
             <div class="pb-20">
                 <table class="table hover multiple-select-row data-table-export1 nowrap p-3">
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
-                            <th>Title</th>
-                            <th>Sub Title</th>
-                            <th>Slider Image</th>
+                            <th>Category Name</th>
                             <th class="no-export">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($sliders as $key => $slider)
+                        @foreach ($categories as $key => $category)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td>{{ $slider->title }}</td>
-                            <td>{{ $slider->subtitle }}</td>
-                            <td>
-                                @if(!empty($slider->banner_imag))
-                                    <a href="{{url('/')}}/bhairaav/slider/banner_imag/{{ $slider->banner_imag }}" target="_blank" class="btn btn-primary btn-sm">
-                                        <b> View Document</b>
-                                    </a>
-                                @endif
-                            </td>
-
+                            <td>{{ $category->category_name }}</td>
                             <td class="no-export d-flex">
-                                <a href="{{ route('sliders.edit', $slider->id) }}">
+                                <a href="{{ route('categories.edit', $category->id) }}">
                                     <button class="btn btn-warning btn-sm">
                                         <i class="micon dw dw-pencil-1"></i> Edit
                                     </button>
                                 </a>
                                 &nbsp;
-                                <form action="{{ route('sliders.destroy', $slider->id) }}" method="post">
+                                <form action="{{ route('categories.destroy', $category->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input name="_method" type="hidden" value="DELETE">
@@ -145,7 +134,7 @@ Bhairaav | Manaage Slider
                     columns: ':not(.no-export)',
                 },
                header: true,
-               title: 'All Employee List',
+               title: 'All Categories List',
                orientation: 'landscape',
                pageSize: 'A4',
                customize: function(doc) {

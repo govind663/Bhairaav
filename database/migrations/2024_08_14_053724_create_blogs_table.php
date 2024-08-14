@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sliders', function (Blueprint $table) {
+        Schema::create('blogs', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->string('subtitle')->nullable();
-            $table->string('banner_imag')->nullable();
+            $table->string('blog_title')->nullable();
+            $table->string('blog_image')->nullable();
+            $table->string('description')->nullable();
+            $table->string('categories')->nullable();
+            $table->string('tags')->nullable();
+            $table->timestamp('posted_dt')->nullable();
             $table->integer('inserted_by')->nullable();
             $table->timestamp('inserted_at')->nullable();
             $table->integer('modified_by')->nullable();
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sliders');
+        Schema::dropIfExists('blogs');
     }
 };

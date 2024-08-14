@@ -1,12 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\PreventBackHistoryMiddleware;
 
 // ===== Backend
 use App\Http\Controllers\backend\Auth\LoginController;
 use App\Http\Controllers\backend\HomeController as BackendHomeController;
 use App\Http\Controllers\backend\SliderController;
+use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\backend\BlogsController;
 
 // ===== Frontend
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
@@ -27,6 +30,9 @@ use App\Http\Controllers\frontend\ChannelReferController;
 use App\Http\Controllers\frontend\MediaController;
 use App\Http\Controllers\frontend\BlogController;
 use App\Http\Controllers\frontend\ContactUsController;
+
+// === Auth Route
+Auth::routes();
 
 Route::get('/', function () {
     return view('frontend.home');
@@ -54,11 +60,17 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
 
     // ==== Manage Slider resource
     Route::resource('sliders', SliderController::class);
+
+    // ==== Manage Category resource
+    Route::resource('categories', CategoryController::class);
+
+    // ==== Manage Blog resource
+    Route::resource('blogs', BlogsController::class);
 });
 
 
 // ======================= Frontend
-Route::group(['prefix'=> 'bhairaav', 'middleware'=>['auth', PreventBackHistoryMiddleware::class]],function(){
+Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware::class]],function(){
 
     // ==== Home
     Route::get('/home', [FrontendHomeController::class, 'index'])->name('frontend.home');

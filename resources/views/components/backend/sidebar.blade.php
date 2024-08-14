@@ -118,7 +118,19 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="{{ route('categories.index') }}" class="dropdown-toggle no-arrow">
+                        <span class="micon bi bi-textarea-resize"></span>
+                        <span class="mtext">Manage Category</span>
+                    </a>
+                </li>
 
+                <li>
+                    <a href="{{ route('blogs.index') }}" class="dropdown-toggle no-arrow">
+                        <span class="micon bi bi-file-earmark-text"></span>
+                        <span class="mtext">Manage Blog</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
