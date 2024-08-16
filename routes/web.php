@@ -7,8 +7,10 @@ use App\Http\Middleware\PreventBackHistoryMiddleware;
 use App\Http\Controllers\backend\Auth\LoginController;
 use App\Http\Controllers\backend\HomeController as BackendHomeController;
 use App\Http\Controllers\backend\SliderController;
+use App\Http\Controllers\backend\LegacyOfExcellence;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\BlogsController;
+use App\Http\Controllers\backend\GalleryController;
 
 // ===== Frontend
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
@@ -59,11 +61,18 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
     // ==== Manage Slider resource
     Route::resource('sliders', SliderController::class);
 
+    // ==== Manage Legacy of Excellence
+    Route::resource('legacy_of_excellence', LegacyOfExcellence::class);
+
     // ==== Manage Category resource
     Route::resource('categories', CategoryController::class);
 
+    // ==== Manage Gallary
+    Route::resource('gallery', GalleryController::class);
+
     // ==== Manage Blog resource
     Route::resource('blogs', BlogsController::class);
+
 });
 
 

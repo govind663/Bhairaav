@@ -21,6 +21,11 @@ class Sidebar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.backend.sidebar');
+        // === which tab is currentlt Active or not in CRUD operation
+        $currentRoute = request()->route()->getName();
+        // dd($currentRoute);
+        return view('components.backend.sidebar',[
+            'currentRoute' => $currentRoute
+        ]);
     }
 }

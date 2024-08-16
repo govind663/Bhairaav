@@ -40,7 +40,7 @@ class BlogsController extends Controller
      */
     public function store(BlogRequest $request)
     {
-        // $data = $request->validated();
+        $data = $request->validated();
         try {
             $blog = new Blog();
 

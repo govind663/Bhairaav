@@ -112,10 +112,29 @@
                         <span class="mtext">Home</span>
                     </a>
                     <ul class="submenu">
-                        <li>
+                        <li class="{{ $currentRoute === 'sliders.index' ? 'active' : '' }}">
                             <a href="{{ route('sliders.index') }}">Manage Slider</a>
                         </li>
+                        <li>
+                            <a href="{{ route('legacy_of_excellence.index') }}">Manage Legacy of Excellence</a>
+                        </li>
+                        <li>
+                            <a href="">Manage Why Choose Bhairaav</a>
+                        </li>
+                        <li>
+                            <a href="">Manage Testimonials</a>
+                        </li>
+                        <li>
+                            <a href="">Manage News / Media</a>
+                        </li>
                     </ul>
+                </li>
+
+                <li>
+                    <a href="{{ route('gallery.index') }}" class="dropdown-toggle no-arrow">
+                        <span class="micon bi bi-command"></span>
+                        <span class="mtext">Manage Gallery</span>
+                    </a>
                 </li>
 
                 <li>

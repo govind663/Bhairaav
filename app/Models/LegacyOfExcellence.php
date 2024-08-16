@@ -6,14 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Tag extends Model
+class LegacyOfExcellence extends Model
 {
     use HasFactory, SoftDeletes;
     public $timestamps = false;
     protected $fillable = [
         'id',
-        'blog_id',
-        'tag_name',
+        'title',
+        'description',
+        'image',
         'inserted_by',
         'inserted_at',
         'modified_by',
@@ -23,9 +24,4 @@ class Tag extends Model
     ];
 
     protected $dates = ['deleted_at'];
-
-    // === relationship with Blog
-    public function blog(){
-        return $this->belongsTo(Blog::class,'blog_id', 'id');
-    }
 }

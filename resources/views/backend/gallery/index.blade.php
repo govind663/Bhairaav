@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-Bhairaav | Manaage Blog
+Bhairaav | Manaage Gallery
 @endsection
 
 @push('styles')
@@ -14,7 +14,7 @@ Bhairaav | Manaage Blog
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="title">
-                        <h4>Manage Blog</h4>
+                        <h4>Manage Gallery</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
@@ -22,7 +22,7 @@ Bhairaav | Manaage Blog
                                 <a href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Manage Blog
+                                Manage Gallery
                             </li>
                         </ol>
                     </nav>
@@ -30,8 +30,8 @@ Bhairaav | Manaage Blog
 
                 <div class="col-md-6 col-sm-12 text-right">
                     <div class="dropdown">
-                        <a class="btn btn-primary" href="{{ route('blogs.create') }}">
-                            <i class="fa fa-plus" aria-hidden="true"> </i> Blog
+                        <a class="btn btn-primary" href="{{ route('gallery.create') }}">
+                            <i class="fa fa-plus" aria-hidden="true"> </i> Gallery
                         </a>
 
                     </div>
@@ -42,7 +42,7 @@ Bhairaav | Manaage Blog
         <!-- Export Datatable start -->
         <div class="card-box mb-30">
             <div class="pd-20">
-                <h4 class="text-blue h4">All Blog List</h4>
+                <h4 class="text-blue h4">All Gallery List</h4>
             </div>
             <div class="pb-20">
                 <table class="table hover multiple-select-row data-table-export1 nowrap p-3">
@@ -50,38 +50,35 @@ Bhairaav | Manaage Blog
                         <tr>
                             <th>Sr. No.</th>
                             <th>Title</th>
-                            {{-- <th>Description</th> --}}
-                            <th>Slider Image</th>
-                            <th>Posted Date / Time</th>
+                            <th>Description</th>
+                            <th>Image</th>
                             <th class="no-export">Edit</th>
                             <th class="no-export">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($blogs as $key => $blog)
+                        @foreach ($medias as $key => $media)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td>{{ $blog->blog_title }}</td>
-                            {{-- <td>{{ $blog->description }}</td> --}}
+                            <td>{{ $media->media_name }}</td>
+                            <td>{{ $media->media_dec }}</td>
                             <td>
-                                @if(!empty($blog->blog_image))
-                                    <a href="{{url('/')}}/bhairaav/blog/blog_image/{{ $blog->blog_image }}" target="_blank" class="btn btn-primary btn-sm">
+                                @if(!empty($media->media_image))
+                                    <a href="{{url('/')}}/bhairaav/media/media_image/{{ $media->media_image }}" target="_blank" class="btn btn-primary btn-sm">
                                         <i class="micon dw dw-eye"></i> Document
                                     </a>
                                 @endif
                             </td>
 
-                            <td>{{ date( 'd-m-Y H:i:s', strtotime($blog->posted_dt) ) }}</td>
-
                             <td class="no-export">
-                                <a href="{{ route('blogs.edit', $blog->id) }}">
+                                <a href="{{ route('gallery.edit', $media->id) }}">
                                     <button class="btn btn-warning btn-sm">
                                         <i class="micon dw dw-pencil-1"></i>
                                     </button>
                                 </a>
                             </td>
                             <td class="no-export">
-                                <form action="{{ route('blogs.destroy', $blog->id) }}" method="post">
+                                <form action="{{ route('gallery.destroy', $media->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input name="_method" type="hidden" value="DELETE">
@@ -150,7 +147,7 @@ Bhairaav | Manaage Blog
                     columns: ':not(.no-export)',
                 },
                header: true,
-               title: 'All Blog List',
+               title: 'All Gallery List',
                orientation: 'landscape',
                pageSize: 'A4',
                customize: function(doc) {
