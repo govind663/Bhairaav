@@ -46,7 +46,7 @@ class SliderController extends Controller
                 $new_name = time() . rand(10, 999) . '.' . $extension;
                 $image->move(public_path('/bhairaav/slider/banner_imag'), $new_name);
 
-                $image_path = "/bhairaav/slider/banner_imag" . $image_name;
+                $image_path = "/bhairaav/slider/banner_imag" . $new_name;
                 $slider->banner_imag = $new_name;
             }
 
@@ -101,7 +101,7 @@ class SliderController extends Controller
                 $new_name = time() . rand(10, 999) . '.' . $extension;
                 $image->move(public_path('/bhairaav/slider/banner_imag'), $new_name);
 
-                $image_path = "/bhairaav/slider/banner_imag" . $image_name;
+                $image_path = "/bhairaav/slider/banner_imag" . $new_name;
                 $slider->banner_imag = $new_name;
             }
 

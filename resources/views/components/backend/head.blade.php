@@ -40,8 +40,7 @@
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2973766580778258"
-    crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2973766580778258"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -52,6 +51,7 @@
 
     gtag("config", "G-GBZ3SGGX85");
 </script>
+
 <!-- Google Tag Manager -->
 <script>
     (function(w, d, s, l, i) {

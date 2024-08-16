@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\PreventBackHistoryMiddleware;
 
 // ===== Backend
@@ -31,8 +30,6 @@ use App\Http\Controllers\frontend\MediaController;
 use App\Http\Controllers\frontend\BlogController;
 use App\Http\Controllers\frontend\ContactUsController;
 
-// === Auth Route
-Auth::routes();
 
 Route::get('/', function () {
     return view('frontend.home');
@@ -41,6 +38,7 @@ Route::get('/', function () {
 Route::group(['prefix' => 'bhairaav'],function(){
 
     // ======================= Admin Login/Logout
+    Route::get('/login', [LoginController::class, 'login'])->name('login');
     Route::get('/admin/login', [LoginController::class, 'login'])->name('admin.login');
     Route::post('/admin/login/store', [LoginController::class, 'authenticate'])->name('admin.login.store');
 

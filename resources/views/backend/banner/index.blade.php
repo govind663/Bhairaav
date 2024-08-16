@@ -52,7 +52,8 @@ Bhairaav | Manaage Slider
                             <th>Title</th>
                             <th>Sub Title</th>
                             <th>Slider Image</th>
-                            <th class="no-export">Action</th>
+                            <th class="no-export">Edit</th>
+                            <th class="no-export">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,13 +70,14 @@ Bhairaav | Manaage Slider
                                 @endif
                             </td>
 
-                            <td class="no-export d-flex">
+                            <td class="no-export">
                                 <a href="{{ route('sliders.edit', $slider->id) }}">
                                     <button class="btn btn-warning btn-sm">
                                         <i class="micon dw dw-pencil-1"></i> Edit
                                     </button>
                                 </a>
-                                &nbsp;
+                            </td>
+                            <td class="no-export">
                                 <form action="{{ route('sliders.destroy', $slider->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')

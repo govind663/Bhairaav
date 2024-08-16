@@ -40,9 +40,9 @@ class BlogsController extends Controller
      */
     public function store(BlogRequest $request)
     {
-        $data = $request->validated();
-        // try {
-            $blog = Blog::create($data);
+        // $data = $request->validated();
+        try {
+            $blog = new Blog();
 
             // ==== Upload (blog_image)
             if (!empty($request->hasFile('blog_image'))) {
@@ -52,14 +52,14 @@ class BlogsController extends Controller
                 $new_name = time() . rand(10, 999) . '.' . $extension;
                 $image->move(public_path('/bhairaav/blog/blog_image'), $new_name);
 
-                $image_path = "/bhairaav/blog/blog_image" . $image_name;
+                $image_path = "/bhairaav/blog/blog_image" . $new_name;
                 $blog->blog_image = $new_name;
             }
 
-            $blog->blog_title = $data['blog_title'];
-            $blog->description = $data['description'];
-            $blog->category_id = $data['category_id'];
-            $blog->tags = $data['tags'];
+            $blog->blog_title = $request->blog_title;
+            $blog->description = $request->description;
+            $blog->category_id = $request->category_id;
+            $blog->tags = $request->tags;
             $blog->posted_dt = Carbon::now();
             $blog->inserted_at = Carbon::now();
             $blog->inserted_by = Auth::user()->id;
@@ -67,10 +67,10 @@ class BlogsController extends Controller
 
             return redirect()->route('blogs.index')->with('message','Your record has been successfully created.');
 
-        // } catch(\Exception $ex){
+        } catch(\Exception $ex){
 
-        //     return redirect()->back()->with('error','Something Went Wrong  - '.$ex->getMessage());
-        // }
+            return redirect()->back()->with('error','Something Went Wrong  - '.$ex->getMessage());
+        }
     }
 
     /**
@@ -87,8 +87,14 @@ class BlogsController extends Controller
     public function edit(string $id)
     {
         $blog = Blog::findOrFail($id);
+        $tags = explode(',', $blog->tags);
+        // dd($tags);
+        $categories = Category::orderBy("id","desc")->whereNull('deleted_at')->get();
+        // dd($categories);
         return view('backend.blog.edit', [
-            'blog'=> $blog
+            'blog'=> $blog,
+            'categories'=> $categories,
+            'tags' => $tags,
         ]);
     }
 
@@ -110,14 +116,14 @@ class BlogsController extends Controller
                 $new_name = time() . rand(10, 999) . '.' . $extension;
                 $image->move(public_path('/bhairaav/blog/blog_image'), $new_name);
 
-                $image_path = "/bhairaav/blog/blog_image" . $image_name;
+                $image_path = "/bhairaav/blog/blog_image" . $new_name;
                 $blog->blog_image = $new_name;
             }
 
-            $blog->blog_title = $data['blog_title'];
-            $blog->description = $data['description'];
-            $blog->category_id = $data['category_id'];
-            $blog->tags = $data['tags'];
+            $blog->blog_title = $request->blog_title;
+            $blog->description = $request->description;
+            $blog->category_id = $request->category_id;
+            $blog->tags = $request->tags;
             $blog->posted_dt = Carbon::now();
             $blog->modified_at = Carbon::now();
             $blog->modified_by = Auth::user()->id;

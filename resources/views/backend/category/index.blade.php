@@ -50,7 +50,8 @@ Bhairaav | Manaage Category
                         <tr>
                             <th>Sr. No.</th>
                             <th>Category Name</th>
-                            <th class="no-export">Action</th>
+                            <th class="no-export">Edit</th>
+                            <th class="no-export">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,19 +59,20 @@ Bhairaav | Manaage Category
                         <tr>
                             <td>{{ ++$key }}</td>
                             <td>{{ $category->category_name }}</td>
-                            <td class="no-export d-flex">
+                            <td class="no-export">
                                 <a href="{{ route('categories.edit', $category->id) }}">
                                     <button class="btn btn-warning btn-sm">
-                                        <i class="micon dw dw-pencil-1"></i> Edit
+                                        <i class="micon dw dw-pencil-1"></i>
                                     </button>
                                 </a>
-                                &nbsp;
+                            </td>
+                            <td class="no-export">
                                 <form action="{{ route('categories.destroy', $category->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input name="_method" type="hidden" value="DELETE">
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')">
-                                        <i class="micon dw dw-trash"></i> Delete
+                                        <i class="micon dw dw-trash"></i>
                                     </button>
                                 </form>
                             </td>

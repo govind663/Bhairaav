@@ -50,41 +50,43 @@ Bhairaav | Manaage Blog
                         <tr>
                             <th>Sr. No.</th>
                             <th>Title</th>
-                            <th>Description</th>
+                            {{-- <th>Description</th> --}}
                             <th>Slider Image</th>
                             <th>Posted Date / Time</th>
-                            <th class="no-export">Action</th>
+                            <th class="no-export">Edit</th>
+                            <th class="no-export">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($blogs as $key => $blog)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td>{{ $slider->blog_title }}</td>
-                            <td>{{ $slider->description }}</td>
+                            <td>{{ $blog->blog_title }}</td>
+                            {{-- <td>{{ $blog->description }}</td> --}}
                             <td>
-                                @if(!empty($slider->blog_image))
-                                    <a href="{{url('/')}}/bhairaav/blog/blog_image/{{ $slider->blog_image }}" target="_blank" class="btn btn-primary btn-sm">
-                                        <b> View Document</b>
+                                @if(!empty($blog->blog_image))
+                                    <a href="{{url('/')}}/bhairaav/blog/blog_image/{{ $blog->blog_image }}" target="_blank" class="btn btn-primary btn-sm">
+                                        <i class="micon dw dw-eye"></i> Document
                                     </a>
                                 @endif
                             </td>
 
-                            <td>{{ date( 'd-m-Y H:i:s', strtotime($slider->posted_dt) ) }}</td>
+                            <td>{{ date( 'd-m-Y H:i:s', strtotime($blog->posted_dt) ) }}</td>
 
-                            <td class="no-export d-flex">
+                            <td class="no-export">
                                 <a href="{{ route('blogs.edit', $blog->id) }}">
                                     <button class="btn btn-warning btn-sm">
-                                        <i class="micon dw dw-pencil-1"></i> Edit
+                                        <i class="micon dw dw-pencil-1"></i>
                                     </button>
                                 </a>
-                                &nbsp;
+                            </td>
+                            <td class="no-export">
                                 <form action="{{ route('blogs.destroy', $blog->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input name="_method" type="hidden" value="DELETE">
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')">
-                                        <i class="micon dw dw-trash"></i> Delete
+                                        <i class="micon dw dw-trash"></i>
                                     </button>
                                 </form>
                             </td>

@@ -34,7 +34,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $remember_me)) {
             // $roles = auth()->user()->role;
-
+            $request->session()->regenerate();
             return redirect()->route('admin.dashboard')->with('message', 'You are login Successfully.');
         }
         else{
@@ -43,9 +43,11 @@ class LoginController extends Controller
 
     }
 
-    public function logout() {
+    public function logout(Request $request) {
         Session::flush();
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return redirect()->route('admin.login')->with('message', 'You are logout Successfully.');
     }

@@ -5,6 +5,11 @@ Bhairaav | Add Blog
 @endsection
 
 @push('styles')
+<style>
+    .bootstrap-tagsinput input {
+        max-width: 110px;
+    }
+</style>
 @endpush
 
 @section('content')
