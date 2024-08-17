@@ -119,10 +119,10 @@
                             <a href="{{ route('legacy_of_excellence.index') }}">Manage Legacy of Excellence</a>
                         </li>
                         <li>
-                            <a href="">Manage Why Choose Bhairaav</a>
+                            <a href="{{ route('why_choose_bhiraavs.index') }}">Manage Why Choose Bhairaav</a>
                         </li>
                         <li>
-                            <a href="">Manage Testimonials</a>
+                            <a href="{{ route('testimonials.index') }}">Manage Testimonials</a>
                         </li>
                         <li>
                             <a href="">Manage News / Media</a>
@@ -137,18 +137,24 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="{{ route('categories.index') }}" class="dropdown-toggle no-arrow">
-                        <span class="micon bi bi-textarea-resize"></span>
-                        <span class="mtext">Manage Category</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{ route('blogs.index') }}" class="dropdown-toggle no-arrow">
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon bi bi-file-earmark-text"></span>
-                        <span class="mtext">Manage Blog</span>
+                        <span class="mtext">Blog</span>
                     </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="{{ route('categories.index') }}">
+                                <span class="mtext">Manage Category</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('blogs.index') }}">
+                                <span class="mtext">Manage Blog</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>

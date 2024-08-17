@@ -8,6 +8,8 @@ use App\Http\Controllers\backend\Auth\LoginController;
 use App\Http\Controllers\backend\HomeController as BackendHomeController;
 use App\Http\Controllers\backend\SliderController;
 use App\Http\Controllers\backend\LegacyOfExcellence;
+use App\Http\Controllers\backend\WhyChooseBhairaavController;
+use App\Http\Controllers\backend\TestimonialController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\BlogsController;
 use App\Http\Controllers\backend\GalleryController;
@@ -63,6 +65,12 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
 
     // ==== Manage Legacy of Excellence
     Route::resource('legacy_of_excellence', LegacyOfExcellence::class);
+
+    // ==== Manage Why Choose Bhairaav
+    Route::resource('why_choose_bhiraavs', WhyChooseBhairaavController::class);
+
+    // ==== Manage Testimonial
+    Route::resource('testimonials', TestimonialController::class);
 
     // ==== Manage Category resource
     Route::resource('categories', CategoryController::class);

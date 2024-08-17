@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-Bhairaav | Edit Legacy of Excellence
+Bhairaav | Add Testimonial
 @endsection
 
 @push('styles')
@@ -14,7 +14,7 @@ Bhairaav | Edit Legacy of Excellence
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="title">
-                        <h4>Edit Legacy of Excellence</h4>
+                        <h4>Add Testimonial</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
@@ -22,10 +22,10 @@ Bhairaav | Edit Legacy of Excellence
                                 <a href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('legacy_of_excellence.index') }}">Manage Legacy of Excellence</a>
+                                <a href="{{ route('testimonials.index') }}">Manage Testimonial</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Edit Legacy of Excellence
+                                Add Testimonial
                             </li>
                         </ol>
                     </nav>
@@ -35,18 +35,15 @@ Bhairaav | Edit Legacy of Excellence
         </div>
 
 
-        <form method="POST" action="{{ route('legacy_of_excellence.update', $legacyOfExcellence->id) }}" class="form-horizontal" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('testimonials.store') }}" class="form-horizontal" enctype="multipart/form-data">
             @csrf
-            @method('PATCH')
-
-            <input type="text" id="id" name="id" hidden  value="{{ $legacyOfExcellence->id }}">
 
             <div class="pd-20 card-box mb-30">
                 <div class="form-group row mt-3">
-                    <label class="col-sm-2"><b>Title : <span class="text-danger">*</span></b></label>
+                    <label class="col-sm-2"><b>Name : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ $legacyOfExcellence->title }}" placeholder="Enter Title.">
-                        @error('title')
+                        <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" placeholder="Enter name.">
+                        @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -55,7 +52,7 @@ Bhairaav | Edit Legacy of Excellence
 
                     <label class="col-sm-2"><b>Description : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <textarea type="text" name="description" id="description" class="form-control @error('description') is-invalid @enderror" value="{{ $legacyOfExcellence->description }}" placeholder="Enter Description.">{{ $legacyOfExcellence->description }}</textarea>
+                        <textarea type="text" name="description" id="description" class="form-control @error('description') is-invalid @enderror" value="{{old('description')}}" placeholder="Enter Description.">{{ old('description') }}</textarea>
                         @error('description')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -67,33 +64,37 @@ Bhairaav | Edit Legacy of Excellence
                 <div class="form-group row mt-3">
                     <label class="col-sm-2"><b>Upload Image : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="image" id="image" class="form-control @error('image') is-invalid @enderror" value="{{ $legacyOfExcellence->image }}">
+                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="profile_image" id="profile_image" class="form-control @error('profile_image') is-invalid @enderror" value="{{old('profile_image')}}">
                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                         <br>
                         <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
                         <br>
-                        @error('media_image')
+                        @error('profile_image')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                         <br>
-                        @if(!empty($legacyOfExcellence->image))
-                            <a href="{{ url('/') }}/bhairaav/legacy-of-excellence/image/{{ $legacyOfExcellence->image }}" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="micon dw dw-eye"></i> Document
-                            </a>
-                        @endif
-                        <br>
                         <div id="preview-container">
                             <div id="file-preview"></div>
                         </div>
+                    </div>
+
+                    <label class="col-sm-2"><b>Star Count : <span class="text-danger">*</span></b></label>
+                    <div class="col-sm-4 col-md-4">
+                        <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="star_count" id="star_count" maxlength="2" class="form-control @error('star_count') is-invalid @enderror" value="{{old('star_count')}}" placeholder="Enter Star Count.">
+                        @error('star_count')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
 
                 <div class="form-group row mt-4">
                     <label class="col-md-3"></label>
                     <div class="col-md-9" style="display: flex; justify-content: flex-end;">
-                        <a href="{{ route('legacy_of_excellence.index') }}" class="btn btn-danger">Cancel</a>&nbsp;&nbsp;
+                        <a href="{{ route('testimonials.index') }}" class="btn btn-danger">Cancel</a>&nbsp;&nbsp;
                         <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </div>
@@ -114,7 +115,7 @@ Bhairaav | Edit Legacy of Excellence
 {{-- preview both image and PDF --}}
 <script>
     function agentPreviewFile() {
-        const fileInput = document.getElementById('image');
+        const fileInput = document.getElementById('profile_image');
         const previewContainer = document.getElementById('preview-container');
         const filePreview = document.getElementById('file-preview');
         const file = fileInput.files[0];
