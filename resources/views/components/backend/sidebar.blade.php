@@ -106,51 +106,51 @@
     <div class="menu-block customscroll">
         <div class="sidebar-menu">
             <ul id="accordion-menu">
-                <li class="dropdown">
+                <li class="dropdown {{ ($currentRoute === 'sliders.index') || ($currentRoute === 'sliders.create') || ($currentRoute === 'sliders.edit') || ($currentRoute === 'legacy_of_excellence.index') || ($currentRoute === 'legacy_of_excellence.create') || ($currentRoute === 'legacy_of_excellence.edit') || ($currentRoute === 'testimonials.index') || ($currentRoute === 'testimonials.create') || ($currentRoute === 'testimonials.edit') ? 'show' : '' }}">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon bi bi-house"></span>
                         <span class="mtext">Home</span>
                     </a>
                     <ul class="submenu">
-                        <li class="{{ $currentRoute === 'sliders.index' ? 'active' : '' }}">
-                            <a href="{{ route('sliders.index') }}">Manage Slider</a>
+                        <li>
+                            <a href="{{ route('sliders.index') }}" class="{{ ($currentRoute === 'sliders.index') || ($currentRoute === 'sliders.create') || ($currentRoute === 'sliders.edit') ? 'active' : '' }}">Manage Slider</a>
                         </li>
                         <li>
-                            <a href="{{ route('legacy_of_excellence.index') }}">Manage Legacy of Excellence</a>
+                            <a href="{{ route('legacy_of_excellence.index') }}" class="{{ ($currentRoute === 'legacy_of_excellence.index') || ($currentRoute === 'legacy_of_excellence.create') || ($currentRoute === 'legacy_of_excellence.edit') ? 'active' : '' }}">Manage Legacy of Excellence</a>
                         </li>
                         <li>
-                            <a href="{{ route('why_choose_bhiraavs.index') }}">Manage Why Choose Bhairaav</a>
+                            <a href="{{ route('why_choose_bhiraavs.index') }}" class="{{ ($currentRoute === 'why_choose_bhiraavs.index') || ($currentRoute === 'why_choose_bhiraavs.create') || ($currentRoute === 'why_choose_bhiraavs.edit') ? 'active' : '' }}">Manage Why Choose Bhairaav</a>
                         </li>
                         <li>
-                            <a href="{{ route('testimonials.index') }}">Manage Testimonials</a>
+                            <a href="{{ route('testimonials.index') }}" class="{{ ($currentRoute === 'testimonials.index') || ($currentRoute === 'testimonials.create') || ($currentRoute === 'testimonials.edit') ? 'active' : '' }}">Manage Testimonials</a>
                         </li>
                         <li>
-                            <a href="">Manage News / Media</a>
+                            <a href="{{ route('latest_update.index') }}" class="{{ ($currentRoute === 'latest_update.index') || ($currentRoute === 'latest_update.create') || ($currentRoute === 'latest_update.edit') ? 'active' : '' }}">Manage Latest Updates</a>
                         </li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="{{ route('gallery.index') }}" class="dropdown-toggle no-arrow">
+                    <a href="{{ route('gallery.index') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'gallery.index') || ($currentRoute === 'gallery.create') || ($currentRoute === 'gallery.edit') ? 'active' : '' }}">
                         <span class="micon bi bi-command"></span>
                         <span class="mtext">Manage Gallery</span>
                     </a>
                 </li>
 
-                <li class="dropdown">
+                <li class="dropdown {{ ($currentRoute === 'categories.index') || ($currentRoute === 'categories.create') || ($currentRoute === 'categories.edit') || ($currentRoute === 'blogs.index') || ($currentRoute === 'blogs.create') || ($currentRoute === 'blogs.edit') ? 'show' : '' }}"">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon bi bi-file-earmark-text"></span>
                         <span class="mtext">Blog</span>
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="{{ route('categories.index') }}">
+                            <a href="{{ route('categories.index') }}" class="{{ ($currentRoute === 'categories.index') || ($currentRoute === 'categories.create') || ($currentRoute === 'categories.edit') ? 'active' : '' }}">
                                 <span class="mtext">Manage Category</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="{{ route('blogs.index') }}">
+                            <a href="{{ route('blogs.index') }}" class="{{ ($currentRoute === 'blogs.index') || ($currentRoute === 'blogs.create') || ($currentRoute === 'blogs.edit') ? 'active' : '' }}">
                                 <span class="mtext">Manage Blog</span>
                             </a>
                         </li>

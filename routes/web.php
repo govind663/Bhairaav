@@ -10,6 +10,7 @@ use App\Http\Controllers\backend\SliderController;
 use App\Http\Controllers\backend\LegacyOfExcellence;
 use App\Http\Controllers\backend\WhyChooseBhairaavController;
 use App\Http\Controllers\backend\TestimonialController;
+use App\Http\Controllers\backend\LatestUpdatesController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\BlogsController;
 use App\Http\Controllers\backend\GalleryController;
@@ -71,6 +72,9 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
 
     // ==== Manage Testimonial
     Route::resource('testimonials', TestimonialController::class);
+
+    // ==== Manage Latest Updates
+    Route::resource('latest_update', LatestUpdatesController::class);
 
     // ==== Manage Category resource
     Route::resource('categories', CategoryController::class);

@@ -99,7 +99,7 @@
 
                             <div class="form-group mb-2">
                                 <label class="form-control-label"><b>Email Id : <span class="text-danger">*</span></b></label>
-                               <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="Enter Employee Id / Mobile No.">
+                               <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="Enter Email Id">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
