@@ -130,6 +130,37 @@
                     </ul>
                 </li>
 
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon bi bi-layout-text-window-reverse"></span>
+                        <span class="mtext">About Bhairaav</span>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="">
+                                <span class="mtext">Manage Who We Are</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                <span class="mtext">Manage Leadership</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                <span class="mtext">Manage Team</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="mtext">Manage Associates</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li>
                     <a href="{{ route('gallery.index') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'gallery.index') || ($currentRoute === 'gallery.create') || ($currentRoute === 'gallery.edit') ? 'active' : '' }}">
                         <span class="micon bi bi-command"></span>
@@ -137,7 +168,7 @@
                     </a>
                 </li>
 
-                <li class="dropdown {{ ($currentRoute === 'categories.index') || ($currentRoute === 'categories.create') || ($currentRoute === 'categories.edit') || ($currentRoute === 'blogs.index') || ($currentRoute === 'blogs.create') || ($currentRoute === 'blogs.edit') ? 'show' : '' }}"">
+                <li class="dropdown {{ ($currentRoute === 'categories.index') || ($currentRoute === 'categories.create') || ($currentRoute === 'categories.edit') || ($currentRoute === 'blogs.index') || ($currentRoute === 'blogs.create') || ($currentRoute === 'blogs.edit') ? 'show' : '' }}">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon bi bi-file-earmark-text"></span>
                         <span class="mtext">Blog</span>
