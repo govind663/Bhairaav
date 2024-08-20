@@ -9,7 +9,7 @@
                             <li><a href='{{ route('/') }}'>Home</a></li>
 
                             <li class="menu-item-has-children">
-                                <a href='{{ route('frontend.about') }}'>About Bhairaav</a>
+                                <a href='javascript:;'>About Bhairaav</a>
                                 <ul>
                                     <li>
                                         <a href='{{ route('frontend.about.who-we-are') }}'>Who We Are</a>
@@ -27,7 +27,7 @@
                             </li>
 
                             <li class="menu-item-has-children">
-                                <a href='{{ route('frontend.project') }}'>Projects</a>
+                                <a href='javascript:;'>Projects</a>
                                 <ul>
                                     <li class="menu-item-has-children">
                                         <a href='{{ route('frontend.project.ongoing-project') }}'>Ongoing Projects</a>
@@ -50,7 +50,7 @@
                             </li>
 
                             <li class="menu-item-has-children">
-                                <a href="{{ route('frontend.becone-an-associate') }}">Become an associate</a>
+                                <a href="javascript:;">Become an associate</a>
                                 <ul>
                                     <li>
                                         <a href='{{ route('frontend.becone-an-associate.channel-partner') }}'>Channel Partner</a>
@@ -66,8 +66,11 @@
                             </li>
 
                             <li class="menu-item-has-children">
-                                <a href='{{ route('frontend.blog') }}'>Blog</a>
+                                <a href='javascript:;'>Blog</a>
                                 <ul>
+                                    <li>
+                                        <a href='{{ route('frontend.blog') }}'>Blog</a>
+                                    </li>
                                     <li>
                                         <a href='{{ route('frontend.blog.blog-details') }}'>Blog Detail</a>
                                     </li>

@@ -52,7 +52,7 @@
             <div class="dropdown">
                 <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                     <span class="user-icon">
-                        <img src="{{ asset('assets/src/images/favicon.png') }}" alt="" style="vertical-align: middle;"/>
+                        <img src="{{ asset('assets/vendors/images/admin.png') }}" alt="" style="vertical-align: middle;"/>
                     </span>
                     <span class="user-name">{{ Auth::user()->name }}</span>
                 </a>

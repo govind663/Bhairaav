@@ -22,13 +22,11 @@ use App\Http\Controllers\frontend\WhoWeAreController;
 use App\Http\Controllers\frontend\LeadershipController;
 use App\Http\Controllers\frontend\OurTeamController;
 use App\Http\Controllers\frontend\AssociatesController;
-use App\Http\Controllers\frontend\ProjectController;
 use App\Http\Controllers\frontend\OngoingProjectController;
 use App\Http\Controllers\frontend\ResidentialProjectController;
 use App\Http\Controllers\frontend\CommercialProjectController;
 use App\Http\Controllers\frontend\CompletedProjectController;
 use App\Http\Controllers\frontend\UpcomingProjectController;
-use App\Http\Controllers\frontend\BeconeAnAssociateController;
 use App\Http\Controllers\frontend\ChannelPartnerController;
 use App\Http\Controllers\frontend\ChannelReferController;
 use App\Http\Controllers\frontend\MediaController;
@@ -113,9 +111,6 @@ Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware
         Route::get('associates', [AssociatesController::class, 'associates'])->name('frontend.about.associates');
     });
 
-    // ==== Projects
-    Route::get('/project', [ProjectController::class, 'project'])->name('frontend.project');
-
     // ==== Projects Sub Section
     Route::group(['prefix'=> 'projects'],function(){
 
@@ -141,8 +136,6 @@ Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware
     });
 
     // ==== Become an associate
-    Route::get('/becone-an-associate', [BeconeAnAssociateController::class, 'beconeAnAssociate'])->name('frontend.becone-an-associate');
-
     Route::group(['prefix'=> 'becone-an-associate'],function(){
 
         // ==== Channel Partner
@@ -156,10 +149,10 @@ Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware
     // ==== Media
     Route::get('/media', [MediaController::class, 'media'])->name('frontend.media');
 
-    // ==== Blog
-    Route::get('/blog', [BlogController::class, 'blogList'])->name('frontend.blog');
-
     Route::group(['prefix'=> 'blog'],function(){
+
+        // ==== Blog
+        Route::get('/blog_list', [BlogController::class, 'blogList'])->name('frontend.blog');
 
         // ==== Blog Details
         Route::get('/blog-details', [BlogController::class, 'blogDetails'])->name('frontend.blog.blog-details');
