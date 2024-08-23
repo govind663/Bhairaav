@@ -113,58 +113,53 @@
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="{{ route('sliders.index') }}" class="{{ ($currentRoute === 'sliders.index') || ($currentRoute === 'sliders.create') || ($currentRoute === 'sliders.edit') ? 'active' : '' }}">Manage Slider</a>
+                            <a href="{{ route('sliders.index') }}" class="{{ ($currentRoute === 'sliders.index') || ($currentRoute === 'sliders.create') || ($currentRoute === 'sliders.edit') ? 'active' : '' }}">Slider</a>
                         </li>
                         <li>
-                            <a href="{{ route('legacy_of_excellence.index') }}" class="{{ ($currentRoute === 'legacy_of_excellence.index') || ($currentRoute === 'legacy_of_excellence.create') || ($currentRoute === 'legacy_of_excellence.edit') ? 'active' : '' }}">Manage Legacy of Excellence</a>
+                            <a href="{{ route('legacy_of_excellence.index') }}" class="{{ ($currentRoute === 'legacy_of_excellence.index') || ($currentRoute === 'legacy_of_excellence.create') || ($currentRoute === 'legacy_of_excellence.edit') ? 'active' : '' }}">Legacy of Excellence</a>
                         </li>
                         <li>
-                            <a href="{{ route('why_choose_bhiraavs.index') }}" class="{{ ($currentRoute === 'why_choose_bhiraavs.index') || ($currentRoute === 'why_choose_bhiraavs.create') || ($currentRoute === 'why_choose_bhiraavs.edit') ? 'active' : '' }}">Manage Why Choose Bhairaav</a>
+                            <a href="{{ route('why_choose_bhiraavs.index') }}" class="{{ ($currentRoute === 'why_choose_bhiraavs.index') || ($currentRoute === 'why_choose_bhiraavs.create') || ($currentRoute === 'why_choose_bhiraavs.edit') ? 'active' : '' }}">Why Choose Bhairaav</a>
                         </li>
                         <li>
-                            <a href="{{ route('testimonials.index') }}" class="{{ ($currentRoute === 'testimonials.index') || ($currentRoute === 'testimonials.create') || ($currentRoute === 'testimonials.edit') ? 'active' : '' }}">Manage Testimonials</a>
+                            <a href="{{ route('testimonials.index') }}" class="{{ ($currentRoute === 'testimonials.index') || ($currentRoute === 'testimonials.create') || ($currentRoute === 'testimonials.edit') ? 'active' : '' }}">Testimonials</a>
                         </li>
                         <li>
-                            <a href="{{ route('latest_update.index') }}" class="{{ ($currentRoute === 'latest_update.index') || ($currentRoute === 'latest_update.create') || ($currentRoute === 'latest_update.edit') ? 'active' : '' }}">Manage Latest Updates</a>
+                            <a href="{{ route('latest_update.index') }}" class="{{ ($currentRoute === 'latest_update.index') || ($currentRoute === 'latest_update.create') || ($currentRoute === 'latest_update.edit') ? 'active' : '' }}">Latest Updates</a>
                         </li>
                     </ul>
                 </li>
 
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon bi bi-layout-text-window-reverse"></span>
+                        <span class="micon bi bi-hdd-stack"></span>
                         <span class="mtext">About Bhairaav</span>
                     </a>
                     <ul class="submenu">
-                        <li>
-                            <a href="">
-                                <span class="mtext">Manage Who We Are</span>
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle">
+                                <span class="micon fa fa-plug"></span>
+                                <span class="mtext">Who We Are</span>
                             </a>
+                            <ul class="submenu child">
+                                <li><a href="#">The Journey</a></li>
+                                <li><a href="#">Member</a></li>
+                                <li><a href="#">The Progress</a></li>
+                                <li><a href="#">The Legacy</a></li>
+                                <li><a href="#">Strengths</a></li>
+                                <li><a href="#">Our Logo</a></li>
+                            </ul>
                         </li>
-
-                        <li>
-                            <a href="">
-                                <span class="mtext">Manage Leadership</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="">
-                                <span class="mtext">Manage Team</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <span class="mtext">Manage Associates</span>
-                            </a>
-                        </li>
+                        <li><a href="#">Leadership</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Associates</a></li>
                     </ul>
                 </li>
 
                 <li>
                     <a href="{{ route('gallery.index') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'gallery.index') || ($currentRoute === 'gallery.create') || ($currentRoute === 'gallery.edit') ? 'active' : '' }}">
                         <span class="micon bi bi-command"></span>
-                        <span class="mtext">Manage Gallery</span>
+                        <span class="mtext">Gallery</span>
                     </a>
                 </li>
 
@@ -176,13 +171,13 @@
                     <ul class="submenu">
                         <li>
                             <a href="{{ route('categories.index') }}" class="{{ ($currentRoute === 'categories.index') || ($currentRoute === 'categories.create') || ($currentRoute === 'categories.edit') ? 'active' : '' }}">
-                                <span class="mtext">Manage Category</span>
+                                <span class="mtext">Category</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="{{ route('blogs.index') }}" class="{{ ($currentRoute === 'blogs.index') || ($currentRoute === 'blogs.create') || ($currentRoute === 'blogs.edit') ? 'active' : '' }}">
-                                <span class="mtext">Manage Blog</span>
+                                <span class="mtext">Blog</span>
                             </a>
                         </li>
                     </ul>
