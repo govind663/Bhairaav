@@ -14,6 +14,9 @@ use App\Http\Controllers\backend\LatestUpdatesController;
 use App\Http\Controllers\backend\TheJourneyController;
 use App\Http\Controllers\backend\MemberController;
 use App\Http\Controllers\backend\TheProgressDetailController;
+use App\Http\Controllers\backend\LegacyController;
+use App\Http\Controllers\backend\StrengthController;
+use App\Http\Controllers\backend\OurLogoController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\BlogsController;
 use App\Http\Controllers\backend\GalleryController;
@@ -85,6 +88,15 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
 
     // ==== Manage The Progress
     Route::resource('the_progress', TheProgressDetailController::class);
+
+    // ==== Manage The Legacy
+    Route::resource('the_legacy', LegacyController::class);
+
+    // ==== Manage Strengths
+    Route::resource('strengths', StrengthController::class);
+
+    // ==== Manage Our Logo
+    Route::resource('our_logos', OurLogoController::class);
 
     // ==== Manage Category resource
     Route::resource('categories', CategoryController::class);

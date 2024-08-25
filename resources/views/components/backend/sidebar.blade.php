@@ -145,9 +145,9 @@
                                 <li><a href="{{ route('the_journeys.index') }}">The Journey</a></li>
                                 <li><a href="{{ route('members.index') }}">Member</a></li>
                                 <li><a href="{{ route('the_progress.index') }}">The Progress</a></li>
-                                <li><a href="#">The Legacy</a></li>
-                                <li><a href="#">Strengths</a></li>
-                                <li><a href="#">Our Logo</a></li>
+                                <li><a href="{{ route('the_legacy.index') }}">The Legacy</a></li>
+                                <li><a href="{{ route('strengths.index') }}">Strengths</a></li>
+                                <li><a href="{{ route('our_logos.index') }}">Our Logo</a></li>
                             </ul>
                         </li>
                         <li><a href="#">Leadership</a></li>
