@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-Bhairaav | Add Member
+Bhairaav | Add The Progress
 @endsection
 
 @push('styles')
@@ -14,7 +14,7 @@ Bhairaav | Add Member
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div class="title">
-                        <h4>Add Member</h4>
+                        <h4>Add The Progress</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
@@ -22,10 +22,10 @@ Bhairaav | Add Member
                                 <a href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('members.index') }}">Manage Member</a>
+                                <a href="{{ route('the_progress.index') }}">Manage The Progress</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Add Member
+                                Add The Progress
                             </li>
                         </ol>
                     </nav>
@@ -35,20 +35,30 @@ Bhairaav | Add Member
         </div>
 
 
-        <form method="POST" action="{{ route('members.store') }}" class="form-horizontal" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('the_progress.store') }}" class="form-horizontal" enctype="multipart/form-data">
             @csrf
 
             <div class="pd-20 card-box mb-30">
 
                 <div class="form-group row mt-3">
+                    <label class="col-sm-2"><b>Description : <span class="text-danger">*</span></b></label>
+                    <div class="col-sm-4 col-md-4">
+                        <textarea type="text" name="description" id="description" class="form-control @error('description') is-invalid @enderror" value="{{old('description')}}" placeholder="Enter Description.">{{ old('description') }}</textarea>
+                        @error('description')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
                     <label class="col-sm-2"><b>Upload Image : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="members_image" id="members_image" class="form-control @error('members_image') is-invalid @enderror" value="{{old('members_image')}}">
+                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="progress_image" id="progress_image" class="form-control @error('progress_image') is-invalid @enderror" value="{{old('progress_image')}}">
                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                         <br>
                         <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
                         <br>
-                        @error('members_image')
+                        @error('progress_image')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -63,7 +73,7 @@ Bhairaav | Add Member
                 <div class="form-group row mt-4">
                     <label class="col-md-3"></label>
                     <div class="col-md-9" style="display: flex; justify-content: flex-end;">
-                        <a href="{{ route('members.index') }}" class="btn btn-danger">Cancel</a>&nbsp;&nbsp;
+                        <a href="{{ route('the_progress.index') }}" class="btn btn-danger">Cancel</a>&nbsp;&nbsp;
                         <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </div>
@@ -84,7 +94,7 @@ Bhairaav | Add Member
 {{-- preview both Image and PDF --}}
 <script>
     function agentPreviewFile() {
-        const fileInput = document.getElementById('members_image');
+        const fileInput = document.getElementById('progress_image');
         const previewContainer = document.getElementById('preview-container');
         const filePreview = document.getElementById('file-preview');
         const file = fileInput.files[0];

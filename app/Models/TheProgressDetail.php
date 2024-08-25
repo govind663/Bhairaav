@@ -6,13 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Member extends Model
+class TheProgressDetail extends Model
 {
     use HasFactory, SoftDeletes;
     public $timestamps = false;
     protected $fillable = [
         'id',
-        'members_image',
+        'description',
+        'progress_image',
         'inserted_by',
         'inserted_at',
         'modified_by',

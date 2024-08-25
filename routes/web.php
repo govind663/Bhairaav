@@ -13,6 +13,7 @@ use App\Http\Controllers\backend\TestimonialController;
 use App\Http\Controllers\backend\LatestUpdatesController;
 use App\Http\Controllers\backend\TheJourneyController;
 use App\Http\Controllers\backend\MemberController;
+use App\Http\Controllers\backend\TheProgressDetailController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\BlogsController;
 use App\Http\Controllers\backend\GalleryController;
@@ -81,6 +82,9 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
 
     // ==== Manage Member
     Route::resource('members', MemberController::class);
+
+    // ==== Manage The Progress
+    Route::resource('the_progress', TheProgressDetailController::class);
 
     // ==== Manage Category resource
     Route::resource('categories', CategoryController::class);

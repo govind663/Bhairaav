@@ -11,7 +11,7 @@ class MemberRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,24 @@ class MemberRequest extends FormRequest
      */
     public function rules(): array
     {
+        if ($this->id){
+            $rule = [
+                'members_image' => 'mimes:jpeg,png,jpg,pdf|max:2048',
+            ];
+        }else{
+            $rule = [
+                'members_image' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
+            ];
+        }
+        return $rule;
+    }
+
+    public function messages()
+    {
         return [
-            //
+            'members_image.required' => 'The Image field is required',
+            'members_image.max' => 'The Image size should be less than 2mb',
+            'members_image.mimes' => 'The Image should be a file of type: jpeg, png, jpg, pdf',
         ];
     }
 }

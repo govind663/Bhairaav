@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('members', function (Blueprint $table) {
+        Schema::create('the_progress_details', function (Blueprint $table) {
             $table->id();
-            $table->string('members_image')->nullable();
+            $table->text('description')->nullable();
+            $table->string('progress_image')->nullable();
             $table->integer('inserted_by')->nullable();
             $table->timestamp('inserted_at')->nullable();
             $table->integer('modified_by')->nullable();
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('members');
+        Schema::dropIfExists('the_progress_details');
     }
 };

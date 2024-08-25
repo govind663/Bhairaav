@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-Bhairaav | Manaage  Member
+Bhairaav | Manaage  The Progress
 @endsection
 
 @push('styles')
@@ -14,7 +14,7 @@ Bhairaav | Manaage  Member
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="title">
-                        <h4>Manage  Member</h4>
+                        <h4>Manage  The Progress</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
@@ -22,7 +22,7 @@ Bhairaav | Manaage  Member
                                 <a href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Manage  Member
+                                Manage  The Progress
                             </li>
                         </ol>
                     </nav>
@@ -30,8 +30,8 @@ Bhairaav | Manaage  Member
 
                 <div class="col-md-6 col-sm-12 text-right">
                     <div class="dropdown">
-                        <a class="btn btn-primary" href="{{ route('members.create') }}">
-                            <i class="fa fa-plus" aria-hidden="true"> </i>  Member
+                        <a class="btn btn-primary" href="{{ route('the_progress.create') }}">
+                            <i class="fa fa-plus" aria-hidden="true"> </i>  The Progress
                         </a>
 
                     </div>
@@ -42,32 +42,34 @@ Bhairaav | Manaage  Member
         <!-- Export Datatable start -->
         <div class="card-box mb-30">
             <div class="pd-20">
-                <h4 class="text-blue h4">All  Member List</h4>
+                <h4 class="text-blue h4">All  The Progress List</h4>
             </div>
             <div class="pb-20">
                 <table class="table hover multiple-select-row data-table-export1 nowrap p-3">
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
+                            <th>Description</th>
                             <th>Image</th>
                             <th class="no-export">Edit</th>
                             <th class="no-export">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($members as $key => $value)
+                        @foreach ($progressDetails as $key => $value)
                         <tr>
                             <td>{{ ++$key }}</td>
+                            <td class="text-wrap text-justify">{{ $value->description }}</td>
                             <td>
-                                @if(!empty($value->members_image))
-                                    <a href="{{url('/')}}/bhairaav/who_we_are/members_image/{{ $value->members_image }}" target="_blank" class="btn btn-primary btn-sm">
+                                @if(!empty($value->progress_image))
+                                    <a href="{{url('/')}}/bhairaav/who_we_are/progress_image/{{ $value->progress_image }}" target="_blank" class="btn btn-primary btn-sm">
                                         <i class="micon dw dw-eye"></i> Document
                                     </a>
                                 @endif
                             </td>
 
                             <td class="no-export">
-                                <a href="{{ route('members.edit', $value->id) }}">
+                                <a href="{{ route('the_progress.edit', $value->id) }}">
                                     <button class="btn btn-warning btn-sm">
                                         <i class="micon dw dw-pencil-1"></i>
                                     </button>
@@ -75,7 +77,7 @@ Bhairaav | Manaage  Member
                             </td>
 
                             <td class="no-export">
-                                <form action="{{ route('members.destroy', $value->id) }}" method="post">
+                                <form action="{{ route('the_progress.destroy', $value->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input name="_method" type="hidden" value="DELETE">
@@ -144,7 +146,7 @@ Bhairaav | Manaage  Member
                     columns: ':not(.no-export)',
                 },
                header: true,
-               title: 'All  Member List',
+               title: 'All Progress List',
                orientation: 'landscape',
                pageSize: 'A4',
                customize: function(doc) {

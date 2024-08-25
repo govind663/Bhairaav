@@ -144,7 +144,7 @@
                             <ul class="submenu child">
                                 <li><a href="{{ route('the_journeys.index') }}">The Journey</a></li>
                                 <li><a href="{{ route('members.index') }}">Member</a></li>
-                                <li><a href="#">The Progress</a></li>
+                                <li><a href="{{ route('the_progress.index') }}">The Progress</a></li>
                                 <li><a href="#">The Legacy</a></li>
                                 <li><a href="#">Strengths</a></li>
                                 <li><a href="#">Our Logo</a></li>
