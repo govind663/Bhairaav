@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-Bhairaav | Edit Why Choose Bhairaav
+Bhairaav | Add The Journey
 @endsection
 
 @push('styles')
@@ -14,7 +14,7 @@ Bhairaav | Edit Why Choose Bhairaav
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div class="title">
-                        <h4>Edit Why Choose Bhairaav</h4>
+                        <h4>Add The Journey</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
@@ -22,10 +22,10 @@ Bhairaav | Edit Why Choose Bhairaav
                                 <a href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('why_choose_bhiraavs.index') }}">Manage Why Choose Bhairaav</a>
+                                <a href="{{ route('the_journeys.index') }}">Manage The Journey</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Edit Why Choose Bhairaav
+                                Add The Journey
                             </li>
                         </ol>
                     </nav>
@@ -35,54 +35,34 @@ Bhairaav | Edit Why Choose Bhairaav
         </div>
 
 
-        <form method="POST" action="{{ route('why_choose_bhiraavs.update', $whyChooseBhairaav->id) }}" class="form-horizontal" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('the_journeys.store') }}" class="form-horizontal" enctype="multipart/form-data">
             @csrf
-            @method('PATCH')
-
-            <input type="text" id="id" name="id" hidden  value="{{ $whyChooseBhairaav->id }}">
 
             <div class="pd-20 card-box mb-30">
-                <div class="form-group row mt-3">
-                    <label class="col-sm-2"><b>Title : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-4 col-md-4">
-                        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ $whyChooseBhairaav->title }}" placeholder="Enter Title.">
-                        @error('title')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
 
+                <div class="form-group row mt-3">
                     <label class="col-sm-2"><b>Description : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <textarea type="text" name="description" id="description" class="form-control @error('description') is-invalid @enderror" value="{{ $whyChooseBhairaav->description }}" placeholder="Enter Description.">{{ $whyChooseBhairaav->description }}</textarea>
+                        <textarea type="text" name="description" id="description" class="form-control @error('description') is-invalid @enderror" value="{{old('description')}}" placeholder="Enter Description.">{{ old('description') }}</textarea>
                         @error('description')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
-                </div>
 
-                <div class="form-group row mt-3">
                     <label class="col-sm-2"><b>Upload Image : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="image" id="image" class="form-control @error('image') is-invalid @enderror" value="{{ $whyChooseBhairaav->image }}">
+                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="journey_image" id="journey_image" class="form-control @error('journey_image') is-invalid @enderror" value="{{old('journey_image')}}">
                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                         <br>
                         <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
                         <br>
-                        @error('image')
+                        @error('journey_image')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                        <br>
-                        @if(!empty($whyChooseBhairaav->image))
-                            <a href="{{ url('/') }}/bhairaav/why_choose_bhiraav/image/{{ $whyChooseBhairaav->image }}" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="micon dw dw-eye"></i> Document
-                            </a>
-                        @endif
                         <br>
                         <div id="preview-container">
                             <div id="file-preview"></div>
@@ -93,7 +73,7 @@ Bhairaav | Edit Why Choose Bhairaav
                 <div class="form-group row mt-4">
                     <label class="col-md-3"></label>
                     <div class="col-md-9" style="display: flex; justify-content: flex-end;">
-                        <a href="{{ route('why_choose_bhiraavs.index') }}" class="btn btn-danger">Cancel</a>&nbsp;&nbsp;
+                        <a href="{{ route('the_journeys.index') }}" class="btn btn-danger">Cancel</a>&nbsp;&nbsp;
                         <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </div>
@@ -111,10 +91,10 @@ Bhairaav | Edit Why Choose Bhairaav
 @endsection
 
 @push('scripts')
-{{-- preview both image and PDF --}}
+{{-- preview both Image and PDF --}}
 <script>
     function agentPreviewFile() {
-        const fileInput = document.getElementById('image');
+        const fileInput = document.getElementById('journey_image');
         const previewContainer = document.getElementById('preview-container');
         const filePreview = document.getElementById('file-preview');
         const file = fileInput.files[0];
