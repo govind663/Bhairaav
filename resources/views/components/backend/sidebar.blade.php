@@ -130,29 +130,29 @@
                     </ul>
                 </li>
 
-                <li class="dropdown">
+                <li class="dropdown {{
+                ($currentRoute === 'the_journeys.index') || ($currentRoute === 'the_journeys.create') || ($currentRoute === 'the_journeys.edit') ||
+                ($currentRoute === 'members.index') || ($currentRoute === 'members.create') || ($currentRoute === 'members.edit') ||
+                ($currentRoute === 'the_progress.index') || ($currentRoute === 'the_progress.create') || ($currentRoute === 'the_progress.edit') ||
+                ($currentRoute === 'the_legacy.index') || ($currentRoute === 'the_legacy.create') || ($currentRoute === 'the_legacy.edit') ||
+                ($currentRoute === 'strengths.index') || ($currentRoute === 'strengths.create') || ($currentRoute === 'strengths.edit') ||
+                ($currentRoute === 'our_logos.index') || ($currentRoute === 'our_logos.create') || ($currentRoute === 'our_logos.edit') ||
+                ($currentRoute === 'our-leader.index') || ($currentRoute === 'our-leader.create') || ($currentRoute === 'our-leader.edit') ||
+                ($currentRoute === 'our_teams.index') || ($currentRoute === 'our_teams.create') || ($currentRoute === 'our_teams.edit') ? 'show' : '' }}" >
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon bi bi-hdd-stack"></span>
                         <span class="mtext">About Bhairaav</span>
                     </a>
                     <ul class="submenu">
-                        <li class="dropdown">
-                            <a href="javascript:;" class="dropdown-toggle">
-                                <span class="micon fa fa-plug"></span>
-                                <span class="mtext">Who We Are</span>
-                            </a>
-                            <ul class="submenu child">
-                                <li><a href="{{ route('the_journeys.index') }}">The Journey</a></li>
-                                <li><a href="{{ route('members.index') }}">Member</a></li>
-                                <li><a href="{{ route('the_progress.index') }}">The Progress</a></li>
-                                <li><a href="{{ route('the_legacy.index') }}">The Legacy</a></li>
-                                <li><a href="{{ route('strengths.index') }}">Strengths</a></li>
-                                <li><a href="{{ route('our_logos.index') }}">Our Logo</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="{{ route('our-leader.index') }}">Leader</a></li>
-                        <li><a href="{{ route('our_teams.index') }}">Team</a></li>
-                        <li><a href="#">Associates</a></li>
+                        <li><a href="{{ route('the_journeys.index') }}" class="{{ ($currentRoute === 'the_journeys.index') || ($currentRoute === 'the_journeys.create') || ($currentRoute === 'the_journeys.edit') ? 'active' : '' }}">The Journey</a></li>
+                        <li><a href="{{ route('members.index') }}" class="{{ ($currentRoute === 'members.index') || ($currentRoute === 'members.create') || ($currentRoute === 'members.edit') ? 'active' : '' }}">Member</a></li>
+                        <li><a href="{{ route('the_progress.index') }}" class="{{ ($currentRoute === 'the_progress.index') || ($currentRoute === 'the_progress.create') || ($currentRoute === 'the_progress.edit') ? 'active' : '' }}">The Progress</a></li>
+                        <li><a href="{{ route('the_legacy.index') }}" class="{{ ($currentRoute === 'the_legacy.index') || ($currentRoute === 'the_legacy.create') || ($currentRoute === 'the_legacy.edit') ? 'active' : '' }}">The Legacy</a></li>
+                        <li><a href="{{ route('strengths.index') }}" class="{{ ($currentRoute === 'strengths.index') || ($currentRoute === 'strengths.create') || ($currentRoute === 'strengths.edit') ? 'active' : '' }}">Strengths</a></li>
+                        <li><a href="{{ route('our_logos.index') }}" class="{{ ($currentRoute === 'our_logos.index') || ($currentRoute === 'our_logos.create') || ($currentRoute === 'our_logos.edit') ? 'active' : '' }}">Our Logo</a></li>
+                        <li><a href="{{ route('our-leader.index') }}" class="{{ ($currentRoute === 'our-leader.index') || ($currentRoute === 'our-leader.create') || ($currentRoute === 'our-leader.edit') ? 'active' : '' }}">Leader</a></li>
+                        <li><a href="{{ route('our_teams.index') }}" class="{{ ($currentRoute === 'our_teams.index') || ($currentRoute === 'our_teams.create') || ($currentRoute === 'our_teams.edit') ? 'active' : '' }}">Team</a></li>
+                        <li><a href="#">Banking Partners</a></li>
                     </ul>
                 </li>
 
