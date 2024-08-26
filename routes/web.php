@@ -17,6 +17,8 @@ use App\Http\Controllers\backend\TheProgressDetailController;
 use App\Http\Controllers\backend\LegacyController;
 use App\Http\Controllers\backend\StrengthController;
 use App\Http\Controllers\backend\OurLogoController;
+use App\Http\Controllers\backend\OurLeaderController;
+use App\Http\Controllers\backend\OurTeamsController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\BlogsController;
 use App\Http\Controllers\backend\GalleryController;
@@ -97,6 +99,12 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
 
     // ==== Manage Our Logo
     Route::resource('our_logos', OurLogoController::class);
+
+    // ==== Manage Our Leaders
+    Route::resource('our-leader', OurLeaderController::class);
+
+    // ==== Manage Our Team
+    Route::resource('our_teams', OurTeamsController::class);
 
     // ==== Manage Category resource
     Route::resource('categories', CategoryController::class);

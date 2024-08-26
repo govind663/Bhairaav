@@ -150,8 +150,8 @@
                                 <li><a href="{{ route('our_logos.index') }}">Our Logo</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Leadership</a></li>
-                        <li><a href="#">Team</a></li>
+                        <li><a href="{{ route('our-leader.index') }}">Leader</a></li>
+                        <li><a href="{{ route('our_teams.index') }}">Team</a></li>
                         <li><a href="#">Associates</a></li>
                     </ul>
                 </li>
