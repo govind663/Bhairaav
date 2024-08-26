@@ -19,6 +19,7 @@ use App\Http\Controllers\backend\StrengthController;
 use App\Http\Controllers\backend\OurLogoController;
 use App\Http\Controllers\backend\OurLeaderController;
 use App\Http\Controllers\backend\OurTeamsController;
+use App\Http\Controllers\backend\BackingPartnerController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\BlogsController;
 use App\Http\Controllers\backend\GalleryController;
@@ -105,6 +106,9 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
 
     // ==== Manage Our Team
     Route::resource('our_teams', OurTeamsController::class);
+
+    // ==== Manage Banking Partners
+    Route::resource('banking_partners', BackingPartnerController::class);
 
     // ==== Manage Category resource
     Route::resource('categories', CategoryController::class);
