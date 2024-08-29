@@ -158,6 +158,31 @@
                     </ul>
                 </li>
 
+                <li class="dropdown {{ ($currentRoute === 'ongoing_projects.index') || ($currentRoute === 'ongoing_projects.create') || ($currentRoute === 'ongoing_projects.edit') || ($currentRoute === 'completed_projects.index') || ($currentRoute === 'completed_projects.create') || ($currentRoute === 'completed_projects.edit') || ($currentRoute === 'upcoming_projects.index') || ($currentRoute === 'upcoming_projects.create') || ($currentRoute === 'upcoming_projects.edit') ? 'show' : '' }}" >
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon bi bi-textarea-resize"></span>
+                        <span class="mtext">Projects</span>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="{{ route('ongoing_projects.index') }}"  class="{{ ($currentRoute === 'ongoing_projects.index') || ($currentRoute === 'ongoing_projects.create') || ($currentRoute === 'ongoing_projects.edit') ? 'active' : '' }}">
+                                <span class="mtext">Ongoing Projects</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('completed_projects.index') }}" class="{{ ($currentRoute === 'completed_projects.index') || ($currentRoute === 'completed_projects.create') || ($currentRoute === 'completed_projects.edit') ? 'active' : '' }}">
+                                <span class="mtext">Completed Projects</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('upcoming_projects.index') }}" class="{{ ($currentRoute === 'upcoming_projects.index') || ($currentRoute === 'upcoming_projects.create') || ($currentRoute === 'upcoming_projects.edit') ? 'active' : '' }}">
+                                <span class="mtext">Upcoming Projects</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li>
                     <a href="{{ route('gallery.index') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'gallery.index') || ($currentRoute === 'gallery.create') || ($currentRoute === 'gallery.edit') ? 'active' : '' }}">
                         <span class="micon bi bi-command"></span>
