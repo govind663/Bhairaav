@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('mobile_no')->nullable();
             $table->string('project_type')->nullable()->comment('1 - Residential Projects, 2 - Commercial Projects');
+            $table->string('status')->nullable()->comment('1 - Ongoing Projects, 2 - Completed Projects, 3 - Upcoming Projects');
             $table->integer('inserted_by')->nullable();
             $table->timestamp('inserted_at')->nullable();
             $table->integer('modified_by')->nullable();

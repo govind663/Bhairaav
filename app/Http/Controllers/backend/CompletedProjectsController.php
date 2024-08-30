@@ -55,6 +55,7 @@ class CompletedProjectsController extends Controller
             $completedProjects->configuration = $request->configuration;
             $completedProjects->mobile_no = $request->mobile_no;
             $completedProjects->project_type = $request->project_type;
+            $completedProjects->status = 2;
             $completedProjects->inserted_at = Carbon::now();
             $completedProjects->inserted_by = Auth::user()->id;
             $completedProjects->save();
@@ -111,6 +112,7 @@ class CompletedProjectsController extends Controller
             $completedProjects->configuration = $request->configuration;
             $completedProjects->mobile_no = $request->mobile_no;
             $completedProjects->project_type = $request->project_type;
+            $completedProjects->status = 2;
             $completedProjects->modified_at = Carbon::now();
             $completedProjects->modified_by = Auth::user()->id;
             $completedProjects->save();

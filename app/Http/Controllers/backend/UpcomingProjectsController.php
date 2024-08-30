@@ -56,6 +56,7 @@ class UpcomingProjectsController extends Controller
             $upcomingProjects->configuration = $request->configuration;
             $upcomingProjects->mobile_no = $request->mobile_no;
             $upcomingProjects->project_type = $request->project_type;
+            $upcomingProjects->status = 3;
             $upcomingProjects->inserted_at = Carbon::now();
             $upcomingProjects->inserted_by = Auth::user()->id;
             $upcomingProjects->save();
@@ -112,6 +113,7 @@ class UpcomingProjectsController extends Controller
             $upcomingProjects->configuration = $request->configuration;
             $upcomingProjects->mobile_no = $request->mobile_no;
             $upcomingProjects->project_type = $request->project_type;
+            $upcomingProjects->status = 3;
             $upcomingProjects->modified_at = Carbon::now();
             $upcomingProjects->modified_by = Auth::user()->id;
             $upcomingProjects->save();

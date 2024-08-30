@@ -57,6 +57,7 @@ class OngoingProjectsController extends Controller
             $ongoingProjects->configuration = $request->configuration;
             $ongoingProjects->mobile_no = $request->mobile_no;
             $ongoingProjects->project_type = $request->project_type;
+            $ongoingProjects->status = 1;
             $ongoingProjects->inserted_at = Carbon::now();
             $ongoingProjects->inserted_by = Auth::user()->id;
             $ongoingProjects->save();
@@ -114,6 +115,7 @@ class OngoingProjectsController extends Controller
             $ongoingProjects->configuration = $request->configuration;
             $ongoingProjects->mobile_no = $request->mobile_no;
             $ongoingProjects->project_type = $request->project_type;
+            $ongoingProjects->status = 1;
             $ongoingProjects->modified_at = Carbon::now();
             $ongoingProjects->modified_by = Auth::user()->id;
             $ongoingProjects->save();

@@ -158,7 +158,7 @@
                     </ul>
                 </li>
 
-                <li class="dropdown {{ ($currentRoute === 'ongoing_projects.index') || ($currentRoute === 'ongoing_projects.create') || ($currentRoute === 'ongoing_projects.edit') || ($currentRoute === 'completed_projects.index') || ($currentRoute === 'completed_projects.create') || ($currentRoute === 'completed_projects.edit') || ($currentRoute === 'upcoming_projects.index') || ($currentRoute === 'upcoming_projects.create') || ($currentRoute === 'upcoming_projects.edit') ? 'show' : '' }}" >
+                <li class="dropdown {{ ($currentRoute === 'ongoing_projects.index') || ($currentRoute === 'ongoing_projects.create') || ($currentRoute === 'ongoing_projects.edit') || ($currentRoute === 'completed_projects.index') || ($currentRoute === 'completed_projects.create') || ($currentRoute === 'completed_projects.edit') || ($currentRoute === 'upcoming_projects.index') || ($currentRoute === 'upcoming_projects.create') || ($currentRoute === 'upcoming_projects.edit') || ($currentRoute === 'project_details.index') || ($currentRoute === 'project_details.create') || ($currentRoute === 'project_details.edit') ? 'show' : '' }}" >
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon bi bi-textarea-resize"></span>
                         <span class="mtext">Projects</span>
@@ -178,6 +178,12 @@
                         <li>
                             <a href="{{ route('upcoming_projects.index') }}" class="{{ ($currentRoute === 'upcoming_projects.index') || ($currentRoute === 'upcoming_projects.create') || ($currentRoute === 'upcoming_projects.edit') ? 'active' : '' }}">
                                 <span class="mtext">Upcoming Projects</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('project_details.index') }}" class="{{ ($currentRoute === 'project_details.index') || ($currentRoute === 'project_details.create') || ($currentRoute === 'project_details.edit') ? 'active' : '' }}">
+                                <span class="mtext">Project Details</span>
                             </a>
                         </li>
                     </ul>
