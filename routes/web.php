@@ -126,6 +126,9 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
     // ==== manage Projects Details
     Route::resource('project_details', ProjectDetailsController::class);
 
+    // ==== fetch api/fetch-projects
+    Route::post('fetch-projects', [ProjectDetailsController::class, 'fetchProjects'])->name('fetch-projects');
+
     // ==== Manage Category resource
     Route::resource('categories', CategoryController::class);
 
