@@ -7,7 +7,7 @@ Bhairaav | Add Project Details
 @push('styles')
 <style>
     .table-bordered, .table-bordered td, .table-bordered th {
-        border: 1px solid #0821cc;
+        border: 1px solid #393b46;
     }
 </style>
 @endpush
@@ -44,155 +44,313 @@ Bhairaav | Add Project Details
             @csrf
 
             <div class="pd-20 card-box mb-30">
-                <h4 class="text-blue h4">Project Banner Details</h4>
-                <div class="form-group row mt-3">
-                    <label class="col-sm-2"><b>Project Type : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-4 col-md-4">
-                        <select name="project_type" id="project_type" class="form-control custom-select2 @error('project_type') is-invalid @enderror" value="{{ old('project_type') }}">
-                            <option value="">Select Project Type</option>
-                            <optgroup label="Project Type">
-                                <option value="1" {{ (old("project_type") == '1' ? "selected":"") }}>Ongoing Project</option>
-                                <option value="2" {{ (old("project_type") == '2' ? "selected":"") }}>Completed Project</option>
-                                <option value="3" {{ (old("project_type") == '3' ? "selected":"") }}>Upcoming Project</option>
-                            </optgroup>
-                        </select>
-                        @error('project_type')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                <div class="col-12">
+                    <h4 class="text-blue h4">Project Banner Details</h4>
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-2"><b>Project Type : <span class="text-danger">*</span></b></label>
+                        <div class="col-sm-4 col-md-4">
+                            <select name="project_type" id="project_type" class="form-control custom-select2 @error('project_type') is-invalid @enderror" value="{{ old('project_type') }}">
+                                <option value="">Select Project Type</option>
+                                <optgroup label="Project Type">
+                                    <option value="1" {{ (old("project_type") == '1' ? "selected":"") }}>Ongoing Project</option>
+                                    <option value="2" {{ (old("project_type") == '2' ? "selected":"") }}>Completed Project</option>
+                                    <option value="3" {{ (old("project_type") == '3' ? "selected":"") }}>Upcoming Project</option>
+                                </optgroup>
+                            </select>
+                            @error('project_type')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <label class="col-sm-2"><b>Project Name : <span class="text-danger">*</span></b></label>
+                        <div class="col-sm-4 col-md-4">
+                            <select name="project_id" id="project_id" class="form-control custom-select2 @error('project_id') is-invalid @enderror" value="{{ old('project_id') }}">
+                                <option value="">Select Project Name</option>
+                                <optgroup label="Project Name">
+
+                                </optgroup>
+                            </select>
+                            @error('project_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
 
-                    <label class="col-sm-2"><b>Project Name : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-4 col-md-4">
-                        <select name="project_id" id="project_id" class="form-control custom-select2 @error('project_id') is-invalid @enderror" value="{{ old('project_id') }}">
-                            <option value="">Select Project Name</option>
-                            <optgroup label="Project Name">
-
-                            </optgroup>
-                        </select>
-                        @error('project_id')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-3"><b>Upload Projet Banner Image : <span class="text-danger">*</span></b></label>
+                        <div class="col-sm-8 col-md-8">
+                            <input type="file" multiple onchange="agentPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="image[]" id="image" class="form-control @error('image') is-invalid @enderror" value="{{old('image')}}">
+                            <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
+                            <br>
+                            <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
+                            <br>
+                            @error('image.*')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <br>
+                            <div id="preview-container">
+                                <div id="file-preview"></div>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group row mt-3">
-                    <label class="col-sm-3"><b>Upload Projet Banner Image : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-8 col-md-8">
-                        <input type="file" multiple onchange="agentPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="image[]" id="image" class="form-control @error('image') is-invalid @enderror" value="{{old('image')}}">
-                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
-                        <br>
-                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
-                        <br>
-                        @error('image')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                        <br>
-                        <div id="preview-container">
-                            <div id="file-preview"></div>
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-2"><b>Maha RERA Registration Number : <span class="text-danger">*</span></b></label>
+                        <div class="col-sm-4 col-md-4">
+                            <input type="text" name="maha_rera_registration_number" id="maha_rera_registration_number" class="form-control @error('maha_rera_registration_number') is-invalid @enderror" value="{{ old('maha_rera_registration_number') }}" placeholder="Enter Maha RERA Registration Number.">
+                            @error('maha_rera_registration_number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <label class="col-sm-2"><b>Project Link : <span class="text-danger">*</span></b></label>
+                        <div class="col-sm-4 col-md-4">
+                            <input type="text" name="project_link" id="project_link" class="form-control @error('project_link') is-invalid @enderror" value="{{ old('project_link') }}" placeholder="Enter Project Link.">
+                            @error('project_link')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group row mt-3">
-                    <label class="col-sm-2"><b>Maha RERA Registration Number : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-4 col-md-4">
-                        <input type="text" name="maha_rera_registration_number" id="maha_rera_registration_number" class="form-control @error('maha_rera_registration_number') is-invalid @enderror" value="{{ old('maha_rera_registration_number') }}" placeholder="Enter Maha RERA Registration Number.">
-                        @error('maha_rera_registration_number')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                <div class="col-12">
+                    <h4 class="text-blue h4">Project Overview Details</h4>
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-4"><b>Project Overview Image : <span class="text-danger">*</span></b></label>
+                        <div class="col-sm-8 col-md-8">
+                            <input type="file" onchange="overviewPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="overview_image[]" id="overview_image" class="form-control @error('overview_image') is-invalid @enderror" value="{{ old('overview_image') }}">
+                            <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
+                            <br>
+                            <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
+                            <br>
+                            @error('overview_image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <br>
+                            <div id="overview-container">
+                                <div id="file-overview"></div>
+                            </div>
+
+                        </div>
                     </div>
 
-                    <label class="col-sm-2"><b>Project Link : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-4 col-md-4">
-                        <input type="text" name="project_link" id="project_link" class="form-control @error('project_link') is-invalid @enderror" value="{{ old('project_link') }}" placeholder="Enter Project Link.">
-                        @error('project_link')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-2"><b>Project Description : <span class="text-danger">*</span></b></label>
+                        <div class="col-sm-10 col-md-10">
+                            <textarea name="project_description" id="project_description" class="form-control textarea_editor border-radius-0 @error('project_description') is-invalid @enderror" rows="4" placeholder="Enter Project Description here.">{{ old('project_description') }}</textarea>
+                            @error('project_description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
 
-                <h4 class="text-blue h4">Project Overview Details</h4>
-                <div class="form-group row mt-3">
-                    <label class="col-sm-4"><b>Project Overview Image : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-8 col-md-8">
-                        <input type="file" onchange="overviewPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="overview_image[]" id="overview_image" class="form-control @error('overview_image') is-invalid @enderror" value="{{ old('overview_image') }}">
-                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
-                        <br>
-                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
-                        <br>
-                        @error('overview_image')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                        <br>
-                        <div id="overview-container">
-                            <div id="file-overview"></div>
+                <div class="col-12">
+                    <h4 class="text-blue h4">Project Hallmarks Details</h4>
+                    <table class="table table-bordered p-3"  id="dynamicTable">
+                        <thead>
+                            <tr>
+                                <th>Project Hallmarks : <span class="text-danger">*</span></th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="col-sm-12 col-md-12">
+                                        <input type="text" name="hallmarks[]" id="hallmarks" class="form-control @error('hallmarks.*') is-invalid @enderror" value="{{ old('hallmarks.0') }}" placeholder="Enter Project Hallmarks">
+                                        @error('hallmarks.*')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </td>
+                                <td>
+                                    {{-- <button type="button" class="btn btn-danger removeRow">Remove</button> --}}
+                                    <button type="button" class="btn btn-primary" id="addRow">Add More</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-12">
+                    <h4 class="text-blue h4">Location Advantages</h4>
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-1"><b>Title : <span class="text-danger">*</span></b></label>
+                        <div class="col-sm-5 col-md-5">
+                            <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" placeholder="Enter Title.">
+                            @error('title')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <table class="table table-bordered p-3"  id="dynamicFeatureTable">
+                        <thead>
+                            <tr>
+                                <th>Select Feature Name : <span class="text-danger">*</span></th>
+                                <th>Feature Value : <span class="text-danger">*</span></th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="col-sm-12 col-md-12">
+                                        <select name="feature_id" id="feature_id" class="form-control custom-select2 @error('feature_id') is-invalid @enderror" value="{{ old('feature_id') }}">
+                                            <option value="">Select Feature Name</option>
+                                            <optgroup label="Feature Name">
+                                                @foreach ($featureName as $value )
+                                                    <option value="{{ $value->id }}" {{ (old("feature_id") == $value->id ? "selected":"") }}>{{ $value->feature_name }}</option>
+                                                @endforeach
+                                            </optgroup>
+                                        </select>
+                                        @error('feature_id')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col-sm-12 col-md-12">
+                                        <input type="text" name="feature_value[]" id="feature_value" class="form-control @error('feature_value.*') is-invalid @enderror" value="{{ old('feature_value.0') }}" placeholder="Enter Feature Value">
+                                        @error('feature_value.*')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" id="addFeatureRow">Add More</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="col-12">
+                    <h4 class="text-blue h4">Amenities & Features</h4>
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-1"><b>Title : <span class="text-danger">*</span></b></label>
+                        <div class="col-sm-4 col-md-4">
+                            <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" placeholder="Enter Title.">
+                            @error('title')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <table class="table table-bordered p-3"  id="dynamicAmenitiesTable">
+                        <thead>
+                            <tr>
+                                <th>Uploaded Amenitie Image : <span class="text-danger">*</span></th>
+                                <th>Amenitie Image Name : <span class="text-danger">*</span></th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="col-sm-12 col-md-12">
+                                        <input type="file" onchange="amenitePreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="amenite_image" id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image')}}">
+                                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
+                                        <br>
+                                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
+                                        <br>
+                                        @error('amenite_image.*')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        <br>
+                                        <div id="amenite-preview-container">
+                                            <div id="file-amenite-preview"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col-sm-12 col-md-12">
+                                        <input type="text" name="amenite_image_name[]" id="amenite_image_name" class="form-control @error('amenite_image_name.*') is-invalid @enderror" value="{{ old('amenite_image_name.0') }}" placeholder="Enter Feature Value">
+                                        @error('amenite_image_name.*')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" id="addAmenitiesRow">Add More</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-12">
+                    <h4 class="text-blue h4">Gallery</h4>
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-1"><b>Title : <span class="text-danger">*</span></b></label>
+                        <div class="col-sm-4 col-md-4">
+                            <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" placeholder="Enter Title.">
+                            @error('title')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
+                        <label class="col-sm-2"><b>Image Name : <span class="text-danger">*</span></b></label>
+                        <div class="col-sm-4 col-md-4">
+                            <input type="text" name="image_name" id="image_name" class="form-control @error('image_name') is-invalid @enderror" value="{{ old('image_name') }}" placeholder="Enter Image Name.">
+                            @error('image_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group row mt-3">
-                    <label class="col-sm-2"><b>Project Description : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-10 col-md-10">
-                        <textarea name="project_description" id="project_description" class="form-control textarea_editor border-radius-0 @error('project_description') is-invalid @enderror" rows="4" placeholder="Enter Project Description here.">{{ old('project_description') }}</textarea>
-                        @error('project_description')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <h4 class="text-blue h4">Project Hallmarks Details</h4>
-                <table class="table table-bordered p-3"  id="dynamicTable">
-                    <thead>
-                        <tr>
-                            <th>Project Hallmarks : <span class="text-danger">*</span></th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="col-sm-8 col-md-8">
-                                    <input type="text" name="hallmarks[]" id="hallmarks" class="form-control @error('hallmarks.*') is-invalid @enderror" value="{{ old('hallmarks.0') }}" placeholder="Enter Project Hallmarks">
-                                    @error('hallmarks.*')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </td>
-                            <td>
-                                {{-- <button type="button" class="btn btn-danger removeRow">Remove</button> --}}
-                                <button type="button" class="btn btn-success" id="addRow">Add Row</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h4 class="text-blue h4">Location Advantages</h4>
-                <div class="form-group row mt-3">
-                    <label class="col-sm-2"><b>Title : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-4 col-md-4">
-                        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" placeholder="Enter Title.">
-                        @error('title')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-3"><b>Upload Image : <span class="text-danger">*</span></b></label>
+                        <div class="col-sm-8 col-md-8">
+                            <input type="file" multiple onchange="gallaryPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="gallary_image[]" id="gallary_image" class="form-control @error('gallary_image') is-invalid @enderror" value="{{old('gallary_image')}}">
+                            <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
+                            <br>
+                            <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
+                            <br>
+                            @error('gallary_image.*')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <br>
+                            <div id="previewGallaryImage-container">
+                                <div id="file-previewGallaryImage"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -217,6 +375,7 @@ Bhairaav | Add Project Details
 @endsection
 
 @push('scripts')
+{{-- Add More Hallmarks --}}
 <script>
     $(document).ready(function () {
         // Add a new row with validation
@@ -239,8 +398,99 @@ Bhairaav | Add Project Details
     });
 </script>
 
+{{-- Add More Location Advantages --}}
+<script>
+    $(document).ready(function () {
+        // Add a new row with validation
+        $('#addFeatureRow').click(function () {
+            var newRow = `<tr>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <select name="feature_id" id="feature_id" class="form-control custom-select2 @error('feature_id') is-invalid @enderror" value="{{ old('feature_id') }}">
+                            <option value="">Select Feature Name</option>
+                            <optgroup label="Feature Name">
+                                @foreach ($featureName as $value )
+                                    <option value="{{ $value->id }}" {{ (old("feature_id") == $value->id ? "selected":"") }}>{{ $value->feature_name }}</option>
+                                @endforeach
+                            </optgroup>
+                        </select>
+                        @error('feature_id.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
 
-{{-- preview both Image --}}
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="text" name="feature_value[]" id="feature_value" class="form-control @error('feature_value.*') is-invalid @enderror" value="{{ old('feature_value.0') }}" placeholder="Enter Feature Value">
+                        @error('feature_value.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td><button type="button" class="btn btn-danger removeFeatureRow">Remove</button></td>
+            </tr>`;
+            $('#dynamicFeatureTable tbody').append(newRow);
+        });
+
+        // Remove a row
+        $(document).on('click', '.removeFeatureRow', function () {
+            $(this).closest('tr').remove();
+        });
+    });
+</script>
+
+{{-- Add More Amenities & Features --}}
+<script>
+    $(document).ready(function () {
+        // Add a new row with validation
+        $('#dynamicAmenitiesTable').click(function () {
+            var newRow = `<tr>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="file" onchange="amenitePreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="amenite_image" id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image')}}">
+                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
+                        <br>
+                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
+                        <br>
+                        @error('amenite_image.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        <br>
+                        <div id="amenite-preview-container">
+                            <div id="file-amenite-preview"></div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="text" name="amenite_image_name[]" id="amenite_image_name" class="form-control @error('amenite_image_name.*') is-invalid @enderror" value="{{ old('amenite_image_name.0') }}" placeholder="Enter Feature Value">
+                        @error('amenite_image_name.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td><button type="button" class="btn btn-danger removeAmenitiesRow">Remove</button></td>
+            </tr>`;
+            $('#dynamicAmenitiesTable tbody').append(newRow);
+        });
+
+        // Remove a row
+        $(document).on('click', '.removeAmenitiesRow', function () {
+            $(this).closest('tr').remove();
+        });
+    });
+</script>
+
+{{-- preview Image both PDF --}}
 <script>
     function agentPreviewFiles() {
         const fileInput = document.getElementById('image');
@@ -310,12 +560,121 @@ Bhairaav | Add Project Details
     }
 </script>
 
-{{-- preview both Image and PDF --}}
+{{-- Overview preview both Image and PDF --}}
 <script>
     function overviewPreviewFiles() {
         const fileInput = document.getElementById('overview_image');
         const previewContainer = document.getElementById('overview-container');
         const filePreview = document.getElementById('file-overview');
+        const file = fileInput.files[0];
+
+        if (file) {
+            const fileType = file.type;
+            const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+            const validPdfTypes = ['application/pdf'];
+
+            if (validImageTypes.includes(fileType)) {
+                // Image preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    filePreview.innerHTML = `<img src="${e.target.result}" alt="File Preview" width="100%" height="25%">`;
+                };
+                reader.readAsDataURL(file);
+            } else if (validPdfTypes.includes(fileType)) {
+                // PDF preview using an embed element
+                filePreview.innerHTML =
+                    `<embed src="${URL.createObjectURL(file)}" type="application/pdf" width="100%" height="25%" />`;
+            } else {
+                // Unsupported file type
+                filePreview.innerHTML = '<p>Unsupported file type</p>';
+            }
+
+            previewContainer.style.display = 'block';
+        } else {
+            // No file selected
+            previewContainer.style.display = 'none';
+        }
+
+    }
+
+</script>
+
+{{-- Gallary Preview both Image and PDF --}}
+<script>
+    function gallaryPreviewFiles() {
+        const fileInput = document.getElementById('gallary_image');
+        const filePreview = document.getElementById('file-previewGallaryImage');
+
+        const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+        const validPdfTypes = ['application/pdf'];
+
+        Array.from(fileInput.files).forEach(file => {
+            const fileType = file.type;
+
+            // Create a container for each file preview with a delete button
+            const previewContainer = document.createElement('div');
+            previewContainer.style.position = 'relative';
+            previewContainer.style.display = 'inline-block';
+
+            // Create the delete icon
+            const deleteIcon = document.createElement('span');
+            deleteIcon.innerHTML = '&times;';
+            deleteIcon.style.position = 'absolute';
+            deleteIcon.style.top = '5px';
+            deleteIcon.style.right = '5px';
+            deleteIcon.style.cursor = 'pointer';
+            deleteIcon.style.color = 'red';
+            deleteIcon.style.fontSize = '18px';
+            deleteIcon.title = 'Remove this file';
+            deleteIcon.onclick = function() {
+                previewContainer.remove(); // Remove the preview container on delete icon click
+            };
+
+            if (validImageTypes.includes(fileType)) {
+                // Image preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.alt = 'File Preview';
+                    img.style.width = '100px';
+                    img.style.height = '100px';
+                    img.style.objectFit = 'cover';
+                    img.style.margin = '5px';
+                    previewContainer.appendChild(img);
+                    previewContainer.appendChild(deleteIcon); // Add delete icon to the preview
+                };
+                reader.readAsDataURL(file);
+            } else if (validPdfTypes.includes(fileType)) {
+                // PDF preview using an embed element
+                const embed = document.createElement('embed');
+                embed.src = URL.createObjectURL(file);
+                embed.type = 'application/pdf';
+                embed.style.width = '100px';
+                embed.style.height = '100px';
+                embed.style.margin = '5px';
+                previewContainer.appendChild(embed);
+                previewContainer.appendChild(deleteIcon); // Add delete icon to the preview
+            } else {
+                // Unsupported file type
+                const errorText = document.createElement('p');
+                errorText.textContent = 'Unsupported file type';
+                previewContainer.appendChild(errorText);
+                previewContainer.appendChild(deleteIcon); // Add delete icon to the preview
+            }
+
+            // Append the preview container with the file and delete icon to the filePreview element
+            filePreview.appendChild(previewContainer);
+        });
+    }
+</script>
+
+{{-- Amenite preview both Image and PDF --}}
+<script>
+    function amenitePreviewFile() {
+        const fileInput = document.getElementById('amenite_image');
+        const previewContainer = document.getElementById('amenite-overview-container');
+        const filePreview = document.getElementById('file-amenite-preview');
         const file = fileInput.files[0];
 
         if (file) {

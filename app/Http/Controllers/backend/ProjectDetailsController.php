@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\ProjectDetailsRequest;
+use App\Models\LocationAdvantage;
 use App\Models\OngoingProjects;
 use App\Models\ProjectDetails;
 use Illuminate\Http\Request;
@@ -26,7 +27,8 @@ class ProjectDetailsController extends Controller
      */
     public function create()
     {
-        return view ('backend.project.project_detail.create');
+        $featureName = LocationAdvantage::orderBy('id', 'desc')->whereNull('deleted_at')->get(['id', 'feature_name']);
+        return view ('backend.project.project_detail.create', ['featureName' => $featureName]);
     }
 
     /**
