@@ -23,6 +23,7 @@ use App\Http\Controllers\backend\BackingPartnerController;
 use App\Http\Controllers\backend\OngoingProjectsController;
 use App\Http\Controllers\backend\CompletedProjectsController;
 use App\Http\Controllers\backend\UpcomingProjectsController;
+use App\Http\Controllers\backend\LocationAdvantageController;
 use App\Http\Controllers\backend\ProjectDetailsController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\BlogsController;
@@ -122,6 +123,9 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
 
     // ==== Manage Upcoming Projects
     Route::resource('upcoming_projects', UpcomingProjectsController::class);
+
+    // ==== Manage Location Advantages
+    Route::resource('location-advantage', LocationAdvantageController::class);
 
     // ==== manage Projects Details
     Route::resource('project_details', ProjectDetailsController::class);

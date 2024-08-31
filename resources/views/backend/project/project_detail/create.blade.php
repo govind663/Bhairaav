@@ -5,6 +5,11 @@ Bhairaav | Add Project Details
 @endsection
 
 @push('styles')
+<style>
+    .table-bordered, .table-bordered td, .table-bordered th {
+        border: 1px solid #0821cc;
+    }
+</style>
 @endpush
 
 @section('content')
@@ -93,6 +98,7 @@ Bhairaav | Add Project Details
                         </div>
                     </div>
                 </div>
+
                 <div class="form-group row mt-3">
                     <label class="col-sm-2"><b>Maha RERA Registration Number : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
@@ -149,6 +155,46 @@ Bhairaav | Add Project Details
                     </div>
                 </div>
 
+                <h4 class="text-blue h4">Project Hallmarks Details</h4>
+                <table class="table table-bordered p-3"  id="dynamicTable">
+                    <thead>
+                        <tr>
+                            <th>Project Hallmarks : <span class="text-danger">*</span></th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="col-sm-8 col-md-8">
+                                    <input type="text" name="hallmarks[]" id="hallmarks" class="form-control @error('hallmarks.*') is-invalid @enderror" value="{{ old('hallmarks.0') }}" placeholder="Enter Project Hallmarks">
+                                    @error('hallmarks.*')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </td>
+                            <td>
+                                {{-- <button type="button" class="btn btn-danger removeRow">Remove</button> --}}
+                                <button type="button" class="btn btn-success" id="addRow">Add Row</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4 class="text-blue h4">Location Advantages</h4>
+                <div class="form-group row mt-3">
+                    <label class="col-sm-2"><b>Title : <span class="text-danger">*</span></b></label>
+                    <div class="col-sm-4 col-md-4">
+                        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" placeholder="Enter Title.">
+                        @error('title')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
 
                 <div class="form-group row mt-4">
                     <label class="col-md-3"></label>
@@ -171,6 +217,29 @@ Bhairaav | Add Project Details
 @endsection
 
 @push('scripts')
+<script>
+    $(document).ready(function () {
+        // Add a new row with validation
+        $('#addRow').click(function () {
+            var newRow = `<tr>
+                <td>
+                    <div class="col-sm-8 col-md-8">
+                        <input type="text" name="hallmarks[]" id="hallmarks" class="form-control @error('hallmarks.*') is-invalid @enderror" value="{{ old('hallmarks.0') }}" placeholder="Enter Project Hallmarks">
+                    </div>
+                </td>
+                <td><button type="button" class="btn btn-danger removeRow">Remove</button></td>
+            </tr>`;
+            $('#dynamicTable tbody').append(newRow);
+        });
+
+        // Remove a row
+        $(document).on('click', '.removeRow', function () {
+            $(this).closest('tr').remove();
+        });
+    });
+</script>
+
+
 {{-- preview both Image --}}
 <script>
     function agentPreviewFiles() {
