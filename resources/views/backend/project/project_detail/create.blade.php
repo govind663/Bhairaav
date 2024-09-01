@@ -275,7 +275,7 @@ Bhairaav | Add Project Details
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12">
-                                        <input type="file" onchange="amenitePreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="amenite_image" id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image')}}">
+                                        <input type="file" accept=".png, .jpg, .jpeg, .pdf" onchange="gallaryPreviewFiles()" name="amenite_image[]" id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image')}}">
                                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                                         <br>
                                         <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
@@ -444,53 +444,34 @@ Bhairaav | Add Project Details
     });
 </script>
 
-{{-- Add More Amenities & Features --}}
+{{-- Add More Amities --}}
 <script>
-    $(document).ready(function () {
-        // Add a new row with validation
-        $('#dynamicAmenitiesTable').click(function () {
-            var newRow = `<tr>
-                <td>
-                    <div class="col-sm-12 col-md-12">
-                        <input type="file" onchange="amenitePreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="amenite_image" id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image')}}">
-                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
-                        <br>
-                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
-                        <br>
-                        @error('amenite_image.*')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                        <br>
-                        <div id="amenite-preview-container">
-                            <div id="file-amenite-preview"></div>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="col-sm-12 col-md-12">
-                        <input type="text" name="amenite_image_name[]" id="amenite_image_name" class="form-control @error('amenite_image_name.*') is-invalid @enderror" value="{{ old('amenite_image_name.0') }}" placeholder="Enter Feature Value">
-                        @error('amenite_image_name.*')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </td>
-                <td><button type="button" class="btn btn-danger removeAmenitiesRow">Remove</button></td>
-            </tr>`;
+    $(document).ready(function() {
+        $('#addAmenitiesRow').click(function() {
+            // Clone the first row in the tbody and clear input values
+            var newRow = $('#dynamicAmenitiesTable tbody tr:first').clone();
+            // Clear the input values
+            newRow.find('input').val('');
+            newRow.find('input[type="file"]').val('');
+            // Remove error classes
+            newRow.find('.is-invalid').removeClass('is-invalid');
+            newRow.find('.invalid-feedback').remove();
+            
+            // Add a remove button to the new row
+            newRow.find('td:last').html('<button type="button" class="btn btn-danger removeAmenitiesRow">Remove</button>');
+            
+            // Append the new row
             $('#dynamicAmenitiesTable tbody').append(newRow);
         });
 
-        // Remove a row
-        $(document).on('click', '.removeAmenitiesRow', function () {
+        // Remove row
+        $(document).on('click', '.removeAmenitiesRow', function() {
             $(this).closest('tr').remove();
         });
     });
 </script>
 
-{{-- preview Image both PDF --}}
+{{-- preview Multiple Image both PDF --}}
 <script>
     function agentPreviewFiles() {
         const fileInput = document.getElementById('image');
@@ -577,7 +558,7 @@ Bhairaav | Add Project Details
                 // Image preview
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    filePreview.innerHTML = `<img src="${e.target.result}" alt="File Preview" width="100%" height="25%">`;
+                    filePreview.innerHTML = `<img src="${e.target.result}" alt="File Preview" style="width:500px; height:300px !important;">`;
                 };
                 reader.readAsDataURL(file);
             } else if (validPdfTypes.includes(fileType)) {
@@ -587,6 +568,12 @@ Bhairaav | Add Project Details
             } else {
                 // Unsupported file type
                 filePreview.innerHTML = '<p>Unsupported file type</p>';
+                filePreview.innerHTML += `<p>Please select a valid image or PDF file.</p>`;
+                filePreview.innerHTML += `<p>You can also drag and drop a file here to preview.</p>`;
+
+                previewContainer.style.display = 'none';
+
+                return;
             }
 
             previewContainer.style.display = 'block';
@@ -667,45 +654,6 @@ Bhairaav | Add Project Details
             filePreview.appendChild(previewContainer);
         });
     }
-</script>
-
-{{-- Amenite preview both Image and PDF --}}
-<script>
-    function amenitePreviewFile() {
-        const fileInput = document.getElementById('amenite_image');
-        const previewContainer = document.getElementById('amenite-overview-container');
-        const filePreview = document.getElementById('file-amenite-preview');
-        const file = fileInput.files[0];
-
-        if (file) {
-            const fileType = file.type;
-            const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-            const validPdfTypes = ['application/pdf'];
-
-            if (validImageTypes.includes(fileType)) {
-                // Image preview
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    filePreview.innerHTML = `<img src="${e.target.result}" alt="File Preview" width="100%" height="25%">`;
-                };
-                reader.readAsDataURL(file);
-            } else if (validPdfTypes.includes(fileType)) {
-                // PDF preview using an embed element
-                filePreview.innerHTML =
-                    `<embed src="${URL.createObjectURL(file)}" type="application/pdf" width="100%" height="25%" />`;
-            } else {
-                // Unsupported file type
-                filePreview.innerHTML = '<p>Unsupported file type</p>';
-            }
-
-            previewContainer.style.display = 'block';
-        } else {
-            // No file selected
-            previewContainer.style.display = 'none';
-        }
-
-    }
-
 </script>
 
 {{-- fetch all projects --}}
