@@ -334,7 +334,10 @@ select {
 [type=reset],
 [type=submit],
 button {
-    -webkit-appearance: button
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -webkit-appearance: button;
+    appearance: button
 }
 
 [type=button]:not(:disabled),
@@ -363,7 +366,8 @@ input[type=date],
 input[type=datetime-local],
 input[type=month],
 input[type=time] {
-    -webkit-appearance: listbox
+    -webkit-appearance: listbox;
+    appearance: listbox
 }
 
 textarea {
@@ -401,7 +405,8 @@ progress {
 
 [type=search] {
     outline-offset: -2px;
-    -webkit-appearance: none
+    -webkit-appearance: none;
+    appearance: none
 }
 
 [type=search]::-webkit-search-decoration {
@@ -11787,6 +11792,7 @@ a.text-dark:hover {
     }
 
     @page {
+        size: a4 portrait;
         size: a3
     }
 
@@ -13951,7 +13957,9 @@ ul.wysihtml5-toolbar .fa {
     height: 100%;
     padding: 0;
     margin: 0;
-    -webkit-appearance: none
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
 }
 
 .datepicker--time-row input[type=range]::-webkit-slider-thumb {
@@ -14421,7 +14429,8 @@ ul.wysihtml5-toolbar .fa {
 }
 
 .td-init .td-deg {
-    -webkit-animation: slide 1s cubic-bezier(.7, 0, .175, 1) 1.2s infinite
+    -webkit-animation: slide 1s cubic-bezier(.7, 0, .175, 1) 1.2s infinite;
+    animation: slide 1s cubic-bezier(.7, 0, .175, 1) 1.2s infinite
 }
 
 .td-svg,
@@ -15054,7 +15063,9 @@ ul.wysihtml5-toolbar .fa {
     outline: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
-    -webkit-appearance: textfield
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield
 }
 
 .select2-container--default .select2-results>.select2-results__options {
