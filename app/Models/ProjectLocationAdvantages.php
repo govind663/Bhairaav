@@ -13,7 +13,7 @@ class ProjectLocationAdvantages extends Model
     protected $fillable = [
         'id',
         'project_details_id',
-        'title',
+        'location_advantages_title',
         'location_advantage_id',
         'feature_value',
         'inserted_by',

@@ -37,7 +37,62 @@ class ProjectDetailsController extends Controller
      */
     public function store(ProjectDetailsRequest $request)
     {
-        //
+        $data = $request->validated();
+        try {
+            // Create a new instance of ProjectDetails
+            $projectDetails = new ProjectDetails();
+
+            // Store the overview image using a model method
+            if ($request->hasFile('overview_image')) {
+                $projectDetails->storeOverviewImage($request->file('overview_image'));
+            }
+
+            // Store multiple banner images using a model method
+            if ($request->hasFile('banner_image')) {
+                $projectDetails->storeBannerImages($request->file('banner_image'));
+            }
+
+            // Set the other project details
+            $projectDetails->fill([
+                'project_type_id' => $data['project_type_id'],
+                'project_name_id' => $data['project_name_id'],
+                'maha_rera_registration_number' => $data['maha_rera_registration_number'],
+                'project_link' => $data['project_link'],
+                'project_description' => $data['project_description'],
+                'location_advantages_title' => $data['location_advantages_title'],
+                'inserted_at' => Carbon::now(),
+                'inserted_by' => Auth::user()->id,
+            ]);
+
+            // Store related hallmarks using a model method
+            if ($request->has('hallmarks')) {
+                $projectDetails->storeHallmarks($request->hallmarks);
+            }
+
+            // Store related location advantages using a model method
+            if ($request->has('location_advantage_id') && $request->has('feature_value')) {
+                $projectDetails->storeLocationAdvantages($request->location_advantage_id, $request->feature_value);
+            }
+
+            // Store related amenities using a model method
+            if ($request->has('amenite_image_name')) {
+                $projectDetails->storeAmenities($request->amenite_image_name);
+            }
+
+            // Store gallery images using a model method
+            if ($request->hasFile('gallery_image')) {
+                $projectDetails->storeGalleryImages($request->file('gallery_image'), $request->gallery_image_name);
+            }
+
+            // Save the project details
+            $projectDetails->save();
+
+            return redirect()->route('project_details.index')->with('message','Your record has been successfully updated.');
+
+        } catch(\Exception $ex){
+
+            return redirect()->back()->with('error','Something Went Wrong  - '.$ex->getMessage());
+        }
     }
 
     /**
@@ -78,7 +133,7 @@ class ProjectDetailsController extends Controller
             $projectDetail = ProjectDetails::findOrFail($id);
             $projectDetail->update($data);
 
-            return redirect()->route('how_work_loyalty_programs.index')->with('message','Your record has been successfully deleted.');
+            return redirect()->route('project_details.index')->with('message','Your record has been successfully deleted.');
         } catch(\Exception $ex){
 
             return redirect()->back()->with('error','Something Went Wrong - '.$ex->getMessage());

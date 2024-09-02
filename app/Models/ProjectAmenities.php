@@ -13,7 +13,7 @@ class ProjectAmenities extends Model
     protected $fillable = [
         'id',
         'project_details_id',
-        'title',
+        'amenities_title',
         'amenite_image',
         'amenite_image_name',
         'inserted_by',

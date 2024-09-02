@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('project_amenities', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(ProjectDetails::class)->nullable()->index();
-            $table->string('title')->nullable();
+            $table->string('amenities_title')->nullable();
             $table->string('amenite_image')->nullable();
             $table->string('amenite_image_name')->nullable();
             $table->integer('inserted_by')->nullable();

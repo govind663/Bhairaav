@@ -50,25 +50,23 @@ Bhairaav | Manaage  Project Details
                         <tr>
                             <th>Sr. No.</th>
                             <th>Project Name</th>
-                            <th>Address</th>
-                            <th>Configuration</th>
-                            <th>Mobile Number</th>
-                            <th>Project Image</th>
+                            <th>Project Type</th>
+                            <th>Maha RERA Registration Number</th>
+                            <th>Project Link</th>
                             <th class="no-export">Edit</th>
                             <th class="no-export">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-
+                        @foreach ($projectDetails as $key => $value)
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ ++$key }}</td>
+                            <td>{{ $value->project_type_id }}</td>
+                            <td>{{ $value->project_name_id }}</td>
+                            <td>{{ $value->maha_rera_registration_number }}</td>
+                            <td>{{ $value->project_link }}</td>
                             <td class="no-export">
-                                <a href="">
+                                <a href="{{ route('project_details.edit', $value->id) }}">
                                     <button class="btn btn-warning btn-sm">
                                         <i class="micon dw dw-pencil-1"></i>
                                     </button>
@@ -76,7 +74,7 @@ Bhairaav | Manaage  Project Details
                             </td>
 
                             <td class="no-export">
-                                <form action="#" method="post">
+                                <form action="{{ route('project_details.destroy', $value->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input name="_method" type="hidden" value="DELETE">
@@ -86,7 +84,7 @@ Bhairaav | Manaage  Project Details
                                 </form>
                             </td>
                         </tr>
-
+                        @endforeach
                     </tbody>
                 </table>
             </div>

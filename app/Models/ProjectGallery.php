@@ -13,7 +13,7 @@ class ProjectGallery extends Model
     protected $fillable = [
         'id',
         'project_details_id',
-        'title',
+        'gallery_title',
         'gallery_image',
         'gallery_image_name',
         'inserted_by',

@@ -83,7 +83,7 @@ Bhairaav | Add Project Details
                     <div class="form-group row mt-3">
                         <label class="col-sm-4"><b>Upload Projet Banner Image : <span class="text-danger">*</span></b></label>
                         <div class="col-sm-8 col-md-8">
-                            <input type="file" multiple onchange="agentPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="banner_image[]" id="banner_image" class="form-control @error('banner_image') is-invalid @enderror" value="{{old('banner_image')}}">
+                            <input type="file" multiple onchange="agentPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="banner_image[]" multiple id="banner_image" class="form-control @error('banner_image') is-invalid @enderror" value="{{old('banner_image')}}">
                             <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                             <br>
                             <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
@@ -194,8 +194,8 @@ Bhairaav | Add Project Details
                     <div class="form-group row mt-3">
                         <label class="col-sm-1"><b>Title : <span class="text-danger">*</span></b></label>
                         <div class="col-sm-5 col-md-5">
-                            <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" placeholder="Enter Title.">
-                            @error('title')
+                            <input type="text" name="location_advantages_title" id="location_advantages_title" class="form-control @error('location_advantages_title') is-invalid @enderror" value="{{ old('location_advantages_title') }}" placeholder="Enter Title.">
+                            @error('location_advantages_title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -215,15 +215,15 @@ Bhairaav | Add Project Details
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12">
-                                        <select name="feature_id" id="feature_id" class="form-control custom-select2 @error('feature_id') is-invalid @enderror" value="{{ old('feature_id') }}">
+                                        <select name="location_advantage_id" id="location_advantage_id" class="form-control custom-select2 @error('location_advantage_id') is-invalid @enderror" value="{{ old('location_advantage_id') }}">
                                             <option value="">Select Feature Name</option>
                                             <optgroup label="Feature Name">
                                                 @foreach ($featureName as $value )
-                                                    <option value="{{ $value->id }}" {{ (old("feature_id") == $value->id ? "selected":"") }}>{{ $value->feature_name }}</option>
+                                                    <option value="{{ $value->id }}" {{ (old("location_advantage_id") == $value->id ? "selected":"") }}>{{ $value->feature_name }}</option>
                                                 @endforeach
                                             </optgroup>
                                         </select>
-                                        @error('feature_id')
+                                        @error('location_advantage_id')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -416,15 +416,15 @@ Bhairaav | Add Project Details
             var newRow = `<tr>
                 <td>
                     <div class="col-sm-12 col-md-12">
-                        <select name="feature_id[]" class="form-control custom-select2 @error('feature_id') is-invalid @enderror">
+                        <select name="location_advantage_id[]" class="form-control custom-select2 @error('location_advantage_id') is-invalid @enderror">
                             <option value="">Select Feature Name</option>
                             <optgroup label="Feature Name">
                                 @foreach ($featureName as $value )
-                                    <option value="{{ $value->id }}" {{ (old("feature_id") == $value->id ? "selected":"") }}>{{ $value->feature_name }}</option>
+                                    <option value="{{ $value->id }}" {{ (old("location_advantage_id") == $value->id ? "selected":"") }}>{{ $value->feature_name }}</option>
                                 @endforeach
                             </optgroup>
                         </select>
-                        @error('feature_id.*')
+                        @error('location_advantage_id.*')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

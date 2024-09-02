@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('project_location_advantages', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(ProjectDetails::class)->nullable()->index();
-            $table->string('title')->nullable();
+            $table->string('location_advantages_title')->nullable();
             $table->foreignIdFor(LocationAdvantage::class)->nullable()->index();
             $table->string('feature_value')->nullable();
             $table->integer('inserted_by')->nullable();
