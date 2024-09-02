@@ -81,7 +81,7 @@ Bhairaav | Add Project Details
                     </div>
 
                     <div class="form-group row mt-3">
-                        <label class="col-sm-3"><b>Upload Projet Banner Image : <span class="text-danger">*</span></b></label>
+                        <label class="col-sm-4"><b>Upload Projet Banner Image : <span class="text-danger">*</span></b></label>
                         <div class="col-sm-8 col-md-8">
                             <input type="file" multiple onchange="agentPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="image[]" id="image" class="form-control @error('image') is-invalid @enderror" value="{{old('image')}}">
                             <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
@@ -275,20 +275,16 @@ Bhairaav | Add Project Details
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12">
-                                        <input type="file" accept=".png, .jpg, .jpeg, .pdf" onchange="gallaryPreviewFiles()" name="amenite_image[]" id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image')}}">
+                                        <input type="file" accept=".png, .jpg, .jpeg"  id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image')}}">
                                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                                         <br>
-                                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
+                                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
                                         <br>
                                         @error('amenite_image.*')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                        <br>
-                                        <div id="amenite-preview-container">
-                                            <div id="file-amenite-preview"></div>
-                                        </div>
                                     </div>
                                 </td>
                                 <td>
@@ -321,37 +317,48 @@ Bhairaav | Add Project Details
                                 </span>
                             @enderror
                         </div>
-
-                        <label class="col-sm-2"><b>Image Name : <span class="text-danger">*</span></b></label>
-                        <div class="col-sm-4 col-md-4">
-                            <input type="text" name="image_name" id="image_name" class="form-control @error('image_name') is-invalid @enderror" value="{{ old('image_name') }}" placeholder="Enter Image Name.">
-                            @error('image_name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
                     </div>
 
-                    <div class="form-group row mt-3">
-                        <label class="col-sm-3"><b>Upload Image : <span class="text-danger">*</span></b></label>
-                        <div class="col-sm-8 col-md-8">
-                            <input type="file" multiple onchange="gallaryPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="gallary_image[]" id="gallary_image" class="form-control @error('gallary_image') is-invalid @enderror" value="{{old('gallary_image')}}">
-                            <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
-                            <br>
-                            <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
-                            <br>
-                            @error('gallary_image.*')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                            <br>
-                            <div id="previewGallaryImage-container">
-                                <div id="file-previewGallaryImage"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <table class="table table-bordered p-3"  id="dynamicGalleryTable">
+                        <thead>
+                            <tr>
+                                <th>Uploaded Gallery Image : <span class="text-danger">*</span></th>
+                                <th>Gallery Image Name : <span class="text-danger">*</span></th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="col-sm-12 col-md-12">
+                                        <input type="file" accept=".png, .jpg, .jpeg" name="gallery_image[]" id="gallery_image" class="form-control @error('gallery_image') is-invalid @enderror" value="{{old('gallery_image')}}">
+                                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
+                                        <br>
+                                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
+                                        <br>
+                                        @error('gallery_image.*')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col-sm-12 col-md-12">
+                                        <input type="text" name="gallery_image_name[]" id="gallery_image_name" class="form-control @error('gallery_image_name.*') is-invalid @enderror" value="{{ old('gallery_image_name.0') }}" placeholder="Enter Gallery Image Name">
+                                        @error('gallery_image_name.*')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" id="addGalleryRow">Add More</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="form-group row mt-4">
@@ -401,12 +408,15 @@ Bhairaav | Add Project Details
 {{-- Add More Location Advantages --}}
 <script>
     $(document).ready(function () {
+        // Initialize Select2 on document ready for existing elements
+        $('.custom-select2').select2();
+
         // Add a new row with validation
         $('#addFeatureRow').click(function () {
             var newRow = `<tr>
                 <td>
                     <div class="col-sm-12 col-md-12">
-                        <select name="feature_id" id="feature_id" class="form-control custom-select2 @error('feature_id') is-invalid @enderror" value="{{ old('feature_id') }}">
+                        <select name="feature_id[]" class="form-control custom-select2 @error('feature_id') is-invalid @enderror">
                             <option value="">Select Feature Name</option>
                             <optgroup label="Feature Name">
                                 @foreach ($featureName as $value )
@@ -424,7 +434,7 @@ Bhairaav | Add Project Details
 
                 <td>
                     <div class="col-sm-12 col-md-12">
-                        <input type="text" name="feature_value[]" id="feature_value" class="form-control @error('feature_value.*') is-invalid @enderror" value="{{ old('feature_value.0') }}" placeholder="Enter Feature Value">
+                        <input type="text" name="feature_value[]" class="form-control @error('feature_value.*') is-invalid @enderror" placeholder="Enter Feature Value">
                         @error('feature_value.*')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -434,7 +444,12 @@ Bhairaav | Add Project Details
                 </td>
                 <td><button type="button" class="btn btn-danger removeFeatureRow">Remove</button></td>
             </tr>`;
-            $('#dynamicFeatureTable tbody').append(newRow);
+
+            // Append new row
+            var $newRow = $(newRow).appendTo('#dynamicFeatureTable tbody');
+
+            // Initialize Select2 only for new elements within the new row
+            $newRow.find('.custom-select2').select2();
         });
 
         // Remove a row
@@ -442,30 +457,92 @@ Bhairaav | Add Project Details
             $(this).closest('tr').remove();
         });
     });
+
 </script>
 
 {{-- Add More Amities --}}
 <script>
-    $(document).ready(function() {
-        $('#addAmenitiesRow').click(function() {
-            // Clone the first row in the tbody and clear input values
-            var newRow = $('#dynamicAmenitiesTable tbody tr:first').clone();
-            // Clear the input values
-            newRow.find('input').val('');
-            newRow.find('input[type="file"]').val('');
-            // Remove error classes
-            newRow.find('.is-invalid').removeClass('is-invalid');
-            newRow.find('.invalid-feedback').remove();
-            
-            // Add a remove button to the new row
-            newRow.find('td:last').html('<button type="button" class="btn btn-danger removeAmenitiesRow">Remove</button>');
-            
-            // Append the new row
+    $(document).ready(function () {
+        // Add a new row with validation
+        $('#addAmenitiesRow').click(function () {
+            var newRow = `<tr>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="file" accept=".png, .jpg, .jpeg" name="amenite_image[]" id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image')}}">
+                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
+                        <br>
+                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
+                        <br>
+                        @error('amenite_image.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        <br>
+                        <div id="amenite-preview-container">
+                            <div id="file-amenite-preview"></div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="text" name="amenite_image_name[]" id="amenite_image_name" class="form-control @error('amenite_image_name.*') is-invalid @enderror" value="{{ old('amenite_image_name.0') }}" placeholder="Enter Feature Value">
+                        @error('amenite_image_name.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td><button type="button" class="btn btn-danger removeAmenitiesRow">Remove</button></td>
+            </tr>`;
             $('#dynamicAmenitiesTable tbody').append(newRow);
         });
 
-        // Remove row
-        $(document).on('click', '.removeAmenitiesRow', function() {
+        // Remove a row
+        $(document).on('click', '.removeAmenitiesRow', function () {
+            $(this).closest('tr').remove();
+        });
+    });
+</script>
+
+{{-- Add More Gallery --}}
+<script>
+    $(document).ready(function () {
+        // Add a new row with validation
+        $('#addGalleryRow').click(function () {
+            var newRow = `<tr>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="file" accept=".png, .jpg, .jpeg" name="gallery_image[]" id="gallery_image" class="form-control @error('gallery_image') is-invalid @enderror" value="{{old('gallery_image')}}">
+                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
+                        <br>
+                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
+                        <br>
+                        @error('gallery_image.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="text" name="gallery_image_name[]" id="gallery_image_name" class="form-control @error('gallery_image_name.*') is-invalid @enderror" value="{{ old('gallery_image_name.0') }}" placeholder="Enter Gallery Image Name">
+                        @error('gallery_image_name.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td><button type="button" class="btn btn-danger removeGalleryRow">Remove</button></td>
+            </tr>`;
+            $('#dynamicGalleryTable tbody').append(newRow);
+        });
+
+        // Remove a row
+        $(document).on('click', '.removeGalleryRow', function () {
             $(this).closest('tr').remove();
         });
     });
@@ -584,76 +661,6 @@ Bhairaav | Add Project Details
 
     }
 
-</script>
-
-{{-- Gallary Preview both Image and PDF --}}
-<script>
-    function gallaryPreviewFiles() {
-        const fileInput = document.getElementById('gallary_image');
-        const filePreview = document.getElementById('file-previewGallaryImage');
-
-        const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-        const validPdfTypes = ['application/pdf'];
-
-        Array.from(fileInput.files).forEach(file => {
-            const fileType = file.type;
-
-            // Create a container for each file preview with a delete button
-            const previewContainer = document.createElement('div');
-            previewContainer.style.position = 'relative';
-            previewContainer.style.display = 'inline-block';
-
-            // Create the delete icon
-            const deleteIcon = document.createElement('span');
-            deleteIcon.innerHTML = '&times;';
-            deleteIcon.style.position = 'absolute';
-            deleteIcon.style.top = '5px';
-            deleteIcon.style.right = '5px';
-            deleteIcon.style.cursor = 'pointer';
-            deleteIcon.style.color = 'red';
-            deleteIcon.style.fontSize = '18px';
-            deleteIcon.title = 'Remove this file';
-            deleteIcon.onclick = function() {
-                previewContainer.remove(); // Remove the preview container on delete icon click
-            };
-
-            if (validImageTypes.includes(fileType)) {
-                // Image preview
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.alt = 'File Preview';
-                    img.style.width = '100px';
-                    img.style.height = '100px';
-                    img.style.objectFit = 'cover';
-                    img.style.margin = '5px';
-                    previewContainer.appendChild(img);
-                    previewContainer.appendChild(deleteIcon); // Add delete icon to the preview
-                };
-                reader.readAsDataURL(file);
-            } else if (validPdfTypes.includes(fileType)) {
-                // PDF preview using an embed element
-                const embed = document.createElement('embed');
-                embed.src = URL.createObjectURL(file);
-                embed.type = 'application/pdf';
-                embed.style.width = '100px';
-                embed.style.height = '100px';
-                embed.style.margin = '5px';
-                previewContainer.appendChild(embed);
-                previewContainer.appendChild(deleteIcon); // Add delete icon to the preview
-            } else {
-                // Unsupported file type
-                const errorText = document.createElement('p');
-                errorText.textContent = 'Unsupported file type';
-                previewContainer.appendChild(errorText);
-                previewContainer.appendChild(deleteIcon); // Add delete icon to the preview
-            }
-
-            // Append the preview container with the file and delete icon to the filePreview element
-            filePreview.appendChild(previewContainer);
-        });
-    }
 </script>
 
 {{-- fetch all projects --}}
