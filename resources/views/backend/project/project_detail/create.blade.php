@@ -49,15 +49,15 @@ Bhairaav | Add Project Details
                     <div class="form-group row mt-3">
                         <label class="col-sm-2"><b>Project Type : <span class="text-danger">*</span></b></label>
                         <div class="col-sm-4 col-md-4">
-                            <select name="project_type" id="project_type" class="form-control custom-select2 @error('project_type') is-invalid @enderror" value="{{ old('project_type') }}">
+                            <select name="project_type_id" id="project_type_id" class="form-control custom-select2 @error('project_type_id') is-invalid @enderror" value="{{ old('project_type_id') }}">
                                 <option value="">Select Project Type</option>
                                 <optgroup label="Project Type">
-                                    <option value="1" {{ (old("project_type") == '1' ? "selected":"") }}>Ongoing Project</option>
-                                    <option value="2" {{ (old("project_type") == '2' ? "selected":"") }}>Completed Project</option>
-                                    <option value="3" {{ (old("project_type") == '3' ? "selected":"") }}>Upcoming Project</option>
+                                    <option value="1" {{ (old("project_type_id") == '1' ? "selected":"") }}>Ongoing Project</option>
+                                    <option value="2" {{ (old("project_type_id") == '2' ? "selected":"") }}>Completed Project</option>
+                                    <option value="3" {{ (old("project_type_id") == '3' ? "selected":"") }}>Upcoming Project</option>
                                 </optgroup>
                             </select>
-                            @error('project_type')
+                            @error('project_type_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -66,13 +66,13 @@ Bhairaav | Add Project Details
 
                         <label class="col-sm-2"><b>Project Name : <span class="text-danger">*</span></b></label>
                         <div class="col-sm-4 col-md-4">
-                            <select name="project_id" id="project_id" class="form-control custom-select2 @error('project_id') is-invalid @enderror" value="{{ old('project_id') }}">
+                            <select name="project_name_id" id="project_name_id" class="form-control custom-select2 @error('project_name_id') is-invalid @enderror" value="{{ old('project_name_id') }}">
                                 <option value="">Select Project Name</option>
                                 <optgroup label="Project Name">
 
                                 </optgroup>
                             </select>
-                            @error('project_id')
+                            @error('project_name_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -83,12 +83,12 @@ Bhairaav | Add Project Details
                     <div class="form-group row mt-3">
                         <label class="col-sm-4"><b>Upload Projet Banner Image : <span class="text-danger">*</span></b></label>
                         <div class="col-sm-8 col-md-8">
-                            <input type="file" multiple onchange="agentPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="image[]" id="image" class="form-control @error('image') is-invalid @enderror" value="{{old('image')}}">
+                            <input type="file" multiple onchange="agentPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="banner_image[]" id="banner_image" class="form-control @error('banner_image') is-invalid @enderror" value="{{old('banner_image')}}">
                             <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                             <br>
                             <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
                             <br>
-                            @error('image.*')
+                            @error('banner_image.*')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -147,8 +147,8 @@ Bhairaav | Add Project Details
                     </div>
 
                     <div class="form-group row mt-3">
-                        <label class="col-sm-2"><b>Project Description : <span class="text-danger">*</span></b></label>
-                        <div class="col-sm-10 col-md-10">
+                        <label class="col-sm-4"><b>Project Description : <span class="text-danger">*</span></b></label>
+                        <div class="col-sm-12 col-md-12">
                             <textarea name="project_description" id="project_description" class="form-control textarea_editor border-radius-0 @error('project_description') is-invalid @enderror" rows="4" placeholder="Enter Project Description here.">{{ old('project_description') }}</textarea>
                             @error('project_description')
                                 <span class="invalid-feedback" role="alert">
@@ -252,10 +252,10 @@ Bhairaav | Add Project Details
                 <div class="col-12">
                     <h4 class="text-blue h4">Amenities & Features</h4>
                     <div class="form-group row mt-3">
-                        <label class="col-sm-1"><b>Title : <span class="text-danger">*</span></b></label>
+                        <label class="col-sm-1"><b>Amenities Title : <span class="text-danger">*</span></b></label>
                         <div class="col-sm-4 col-md-4">
-                            <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" placeholder="Enter Title.">
-                            @error('title')
+                            <input type="text" name="amenities_title" id="amenities_title" class="form-control @error('amenities_title') is-invalid @enderror" value="{{ old('amenities_title') }}" placeholder="Enter Amenities Title.">
+                            @error('amenities_title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -310,8 +310,8 @@ Bhairaav | Add Project Details
                     <div class="form-group row mt-3">
                         <label class="col-sm-1"><b>Title : <span class="text-danger">*</span></b></label>
                         <div class="col-sm-4 col-md-4">
-                            <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" placeholder="Enter Title.">
-                            @error('title')
+                            <input type="text" name="gallery_title" id="gallery_title" class="form-control @error('gallery_title') is-invalid @enderror" value="{{ old('gallery_title') }}" placeholder="Enter Title.">
+                            @error('gallery_title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -551,7 +551,7 @@ Bhairaav | Add Project Details
 {{-- preview Multiple Image both PDF --}}
 <script>
     function agentPreviewFiles() {
-        const fileInput = document.getElementById('image');
+        const fileInput = document.getElementById('banner_image');
         const filePreview = document.getElementById('file-preview');
 
         const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
@@ -668,7 +668,7 @@ Bhairaav | Add Project Details
     $(document).ready(function () {
         $('#project_type').on('change', function () {
             var id = this.value;
-            $("#project_id").html('');
+            $("#project_name_id").html('');
             $.ajax({
                 url: "{{ route('fetch-projects') }}",
                 type: "POST",
@@ -678,9 +678,9 @@ Bhairaav | Add Project Details
                 },
                 dataType: 'json',
                 success: function (result) {
-                    $('#project_id').html('<option value="">-- Select Project Name --</option>');
+                    $('#project_name_id').html('<option value="">-- Select Project Name --</option>');
                     $.each(result.projects, function (key, value) {
-                        $("#project_id").append('<option value="' + value.id + '">' + value.project_name + '</option>');
+                        $("#project_name_id").append('<option value="' + value.id + '">' + value.project_name + '</option>');
                     });
                 }
             });

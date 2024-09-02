@@ -18,8 +18,9 @@ class ProjectDetailsController extends Controller
      */
     public function index()
     {
-        // $projectDetails = ProjectDetails::orderBy("id","desc")->whereNull('deleted_at')->get();
-        return view ('backend.project.project_detail.index');
+        $projectDetails = ProjectDetails::with('projectHallmarks', 'projectLocationAdvantages', 'projectAmenities', 'projectGallery')->orderBy("id","desc")->whereNull('deleted_at')->get();
+
+        return view ('backend.project.project_detail.index', ['projectDetails' => $projectDetails]);
     }
 
     /**
@@ -52,7 +53,10 @@ class ProjectDetailsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $projectDetail = ProjectDetails::findOrFail($id);
+        $featureName = LocationAdvantage::with('projectHallmarks', 'projectLocationAdvantages', 'projectAmenities', 'projectGallery')->orderBy('id', 'desc')->whereNull('deleted_at')->get(['id', 'feature_name']);
+
+        return view('backend.project.project_detail.edit', ['projectDetail' => $projectDetail, 'featureName' => $featureName]);
     }
 
     /**
@@ -68,7 +72,17 @@ class ProjectDetailsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data['deleted_by'] =  Auth::user()->id;
+        $data['deleted_at'] =  Carbon::now();
+        try {
+            $projectDetail = ProjectDetails::findOrFail($id);
+            $projectDetail->update($data);
+
+            return redirect()->route('how_work_loyalty_programs.index')->with('message','Your record has been successfully deleted.');
+        } catch(\Exception $ex){
+
+            return redirect()->back()->with('error','Something Went Wrong - '.$ex->getMessage());
+        }
     }
 
     public function fetchProjects(Request $request) {
