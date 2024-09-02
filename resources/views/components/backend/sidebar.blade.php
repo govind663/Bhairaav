@@ -195,6 +195,38 @@
                     </ul>
                 </li>
 
+                <li class="dropdown {{ ($currentRoute === 'loyalty_programs.index') || ($currentRoute === 'loyalty_programs.create') || ($currentRoute === 'loyalty_programs.edit') || ($currentRoute === 'how_work_loyalty_programs.index') || ($currentRoute === 'how_work_loyalty_programs.create') || ($currentRoute === 'how_work_loyalty_programs.edit') || ($currentRoute === 're_investment_loyalty_programs.index') || ($currentRoute === 're_investment_loyalty_programs.create') || ($currentRoute === 're_investment_loyalty_programs.edit') || ($currentRoute === 'refer_loyalty_programs.index') || ($currentRoute === 'refer_loyalty_programs.create') || ($currentRoute === 'refer_loyalty_programs.edit') ? 'show' : '' }}">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon bi bi-diagram-2"></span>
+                        <span class="mtext">Refer a friend</span>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="{{ route('loyalty_programs.index') }}" class="{{ ($currentRoute === 'loyalty_programs.index') || ($currentRoute === 'loyalty_programs.create') || ($currentRoute === 'loyalty_programs.edit') ? 'active' : '' }}">
+                                <span class="mtext">Loyalty Program</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('how_work_loyalty_programs.index') }}" class="{{ ($currentRoute === 'how_work_loyalty_programs.index') || ($currentRoute === 'how_work_loyalty_programs.create') || ($currentRoute === 'how_work_loyalty_programs.edit') ? 'active' : '' }}">
+                                <span class="mtext">How Work</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('re_investment_loyalty_programs.index') }}" class="{{ ($currentRoute === 're_investment_loyalty_programs.index') || ($currentRoute === 're_investment_loyalty_programs.create') || ($currentRoute === 're_investment_loyalty_programs.edit') ? 'active' : '' }}">
+                                <span class="mtext">Re-Invest</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('refer_loyalty_programs.index') }}" class="{{ ($currentRoute === 'refer_loyalty_programs.index') || ($currentRoute === 'refer_loyalty_programs.create') || ($currentRoute === 'refer_loyalty_programs.edit') ? 'active' : '' }}">
+                                <span class="mtext">Refer</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li>
                     <a href="{{ route('gallery.index') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'gallery.index') || ($currentRoute === 'gallery.create') || ($currentRoute === 'gallery.edit') ? 'active' : '' }}">
                         <span class="micon bi bi-command"></span>

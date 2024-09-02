@@ -26,6 +26,10 @@ use App\Http\Controllers\backend\UpcomingProjectsController;
 use App\Http\Controllers\backend\LocationAdvantageController;
 use App\Http\Controllers\backend\ProjectDetailsController;
 use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\backend\LoyaltyProgramController;
+use App\Http\Controllers\backend\HowWorkLoyaltyProgramController;
+use App\Http\Controllers\backend\ReInvestmentLoyaltyProgramController;
+use App\Http\Controllers\backend\ReferLoyaltyProgramController;
 use App\Http\Controllers\backend\BlogsController;
 use App\Http\Controllers\backend\GalleryController;
 
@@ -135,6 +139,18 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
 
     // ==== Manage Category resource
     Route::resource('categories', CategoryController::class);
+
+    // ==== Manage Loyalty Program
+    Route::resource('loyalty_programs', LoyaltyProgramController::class);
+
+    // ==== Manage How Work Loyalty Program
+    Route::resource('how_work_loyalty_programs', HowWorkLoyaltyProgramController::class);
+
+    // ==== Manage Re-Invest Loyalty Program
+    Route::resource('re_investment_loyalty_programs', ReInvestmentLoyaltyProgramController::class);
+
+    // ==== Manage Refer Loyalty Program
+    Route::resource('refer_loyalty_programs', ReferLoyaltyProgramController::class);
 
     // ==== Manage Gallary
     Route::resource('gallery', GalleryController::class);
