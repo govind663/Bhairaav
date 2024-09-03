@@ -20,6 +20,7 @@ use App\Http\Controllers\backend\OurLogoController;
 use App\Http\Controllers\backend\OurLeaderController;
 use App\Http\Controllers\backend\OurTeamsController;
 use App\Http\Controllers\backend\BackingPartnerController;
+use App\Http\Controllers\backend\ProjectsController;
 use App\Http\Controllers\backend\OngoingProjectsController;
 use App\Http\Controllers\backend\CompletedProjectsController;
 use App\Http\Controllers\backend\UpcomingProjectsController;
@@ -118,6 +119,9 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
 
     // ==== Manage Banking Partners
     Route::resource('banking_partners', BackingPartnerController::class);
+
+    // ==== Manage Projects
+    Route::resource('bhairaav_projects', ProjectsController::class);
 
     // ==== Manage Ongoing Projects
     Route::resource('ongoing_projects', OngoingProjectsController::class);
