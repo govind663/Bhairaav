@@ -23,15 +23,15 @@ return new class extends Migration
             3 - Upcoming Projects
             ');
             $table->integer('project_name_id')->nullable();
-            $table->string('banner_image')->nullable();
+            $table->text('banner_image')->nullable();
             $table->string('maha_rera_registration_number')->nullable();
             $table->string('project_link')->nullable();
             $table->string('overview_image')->nullable();
             $table->text('project_description')->nullable();
-            $table->foreignIdFor(ProjectHallmarks::class)->nullable()->index();
-            $table->foreignIdFor(ProjectLocationAdvantages::class)->nullable()->index();
-            $table->foreignIdFor(ProjectAmenities::class)->nullable()->index();
-            $table->foreignIdFor(ProjectGallery::class)->nullable()->index();
+            $table->text('project_hallmarks_id')->nullable();
+            $table->text('project_location_advantages_id')->nullable();
+            $table->text('project_amenities_id')->nullable();
+            $table->text('project_gallery_id')->nullable();
             $table->integer('inserted_by')->nullable();
             $table->timestamp('inserted_at')->nullable();
             $table->integer('modified_by')->nullable();

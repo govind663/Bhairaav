@@ -15,7 +15,6 @@ return new class extends Migration
         Schema::create('project_galleries', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(ProjectDetails::class)->nullable()->index();
-            $table->string('gallery_title')->nullable();
             $table->string('gallery_image')->nullable();
             $table->string('gallery_image_name')->nullable();
             $table->integer('inserted_by')->nullable();
