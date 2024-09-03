@@ -5,7 +5,6 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\ProjectDetailsRequest;
 use App\Models\LocationAdvantage;
-use App\Models\OngoingProjects;
 use App\Models\ProjectAmenities;
 use App\Models\ProjectDetails;
 use App\Models\ProjectGallery;
@@ -15,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Models\Projects;
 
 class ProjectDetailsController extends Controller
 {
@@ -378,35 +378,13 @@ class ProjectDetailsController extends Controller
     public function fetchProjects(Request $request) {
         $projectStatus = $request->projectTypeId;
 
-        $ongoingProjects = OngoingProjects::where('status', $projectStatus)
-            ->orderBy("id", "desc")
-            ->whereNull('deleted_at')
-            ->get(['id', 'project_name'])
-            ->map(function($project) {
-                $project->type = 'ongoing';
-                return $project;
-            });
-
-        $completedProjects = OngoingProjects::where('status', $projectStatus)
-            ->orderBy("id", "desc")
-            ->whereNull('deleted_at')
-            ->get(['id', 'project_name'])
-            ->map(function($project) {
-                $project->type = 'completed';
-                return $project;
-            });
-
-        $upcomingProjects = OngoingProjects::where('status', $projectStatus)
-            ->orderBy("id", "desc")
-            ->whereNull('deleted_at')
-            ->get(['id', 'project_name'])
-            ->map(function($project) {
-                $project->type = 'upcoming';
-                return $project;
-            });
+        $ongoingProjects = Projects::where('status', $projectStatus)
+                                    ->orderBy("id", "desc")
+                                    ->whereNull('deleted_at')
+                                    ->get(['id', 'project_name']);
 
         // Merge all projects into a single collection
-        $allProjects = $ongoingProjects->merge($completedProjects)->merge($upcomingProjects);
+        $allProjects = $ongoingProjects;
 
         return response()->json([
             'projects' => $allProjects

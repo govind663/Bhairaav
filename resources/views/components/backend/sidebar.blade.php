@@ -158,26 +158,51 @@
                     </ul>
                 </li>
 
-                <li class="dropdown {{ ($currentRoute === 'bhairaav_projects.index') || ($currentRoute === 'bhairaav_projects.create') || ($currentRoute === 'bhairaav_projects.edit') || ($currentRoute === 'location-advantage.index') || ($currentRoute === 'location-advantage.create') || ($currentRoute === 'location-advantage.edit') || ($currentRoute === 'project_details.index') || ($currentRoute === 'project_details.create') || ($currentRoute === 'project_details.edit') ? 'show' : '' }}" >
+                <li class="dropdown {{
+                    (request()->routeIs('projects.index') && in_array(request('status'), [1, 2, 3])) ||
+                        in_array($currentRoute, [
+                            'bhairaav_projects.index', 'bhairaav_projects.create', 'bhairaav_projects.edit',
+                            'location-advantage.index', 'location-advantage.create', 'location-advantage.edit',
+                            'project_details.index', 'project_details.create', 'project_details.edit'
+                        ]) ? 'show' : ''
+                    }}" >
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon bi bi-textarea-resize"></span>
-                        <span class="mtext">Projects</span>
+                        <span class="mtext">Project Manage</span>
                     </a>
                     <ul class="submenu">
-                        <li>
-                            <a href="{{ route('bhairaav_projects.index') }}"  class="{{ ($currentRoute === 'bhairaav_projects.index') || ($currentRoute === 'bhairaav_projects.create') || ($currentRoute === 'bhairaav_projects.edit') ? 'active' : '' }}">
+                        {{-- <li>
+                            <a href="{{ route('projects.index') }}"  class="{{ in_array($currentRoute, ['bhairaav_projects.index', 'bhairaav_projects.create', 'bhairaav_projects.edit']) ? 'active' : '' }}">
                                 <span class="mtext">Projects</span>
+                            </a>
+                        </li> --}}
+
+                        <li>
+                            <a href="{{ route('projects.index', ['status' => 1]) }}" class="{{ (request()->routeIs('projects.index') && request('status') == 1) ? 'active' : '' }}">
+                                <span class="mtext">Ongoing Projects</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="{{ route('location-advantage.index') }}" class="{{ ($currentRoute === 'location-advantage.index') || ($currentRoute === 'location-advantage.create') || ($currentRoute === 'location-advantage.edit') ? 'active' : '' }}">
+                            <a href="{{ route('projects.index', ['status' => 2]) }}" class="{{ (request()->routeIs('projects.index') && request('status') == 2) ? 'active' : '' }}">
+                                <span class="mtext">Completed Projects</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('projects.index', ['status' => 3]) }}" class="{{ (request()->routeIs('projects.index') && request('status') == 3) ? 'active' : '' }}">
+                                <span class="mtext">Completed Projects</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('location-advantage.index') }}" class="{{ in_array($currentRoute, ['location-advantage.index', 'location-advantage.create', 'location-advantage.edit']) ? 'active' : '' }}">
                                 <span class="mtext">Location Advantages</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="{{ route('project_details.index') }}" class="{{ ($currentRoute === 'project_details.index') || ($currentRoute === 'project_details.create') || ($currentRoute === 'project_details.edit') ? 'active' : '' }}">
+                            <a href="{{ route('project_details.index') }}" class="{{ in_array($currentRoute, ['project_details.index', 'project_details.create', 'project_details.edit']) ? 'active' : '' }}">
                                 <span class="mtext">Project Details</span>
                             </a>
                         </li>

@@ -123,14 +123,8 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
     // ==== Manage Projects
     Route::resource('bhairaav_projects', ProjectsController::class);
 
-    // ==== Manage Ongoing Projects
-    Route::resource('ongoing_projects', OngoingProjectsController::class);
-
-    // ==== Manage Completed Projects
-    Route::resource('completed_projects', CompletedProjectsController::class);
-
-    // ==== Manage Upcoming Projects
-    Route::resource('upcoming_projects', UpcomingProjectsController::class);
+    // === list all project with status
+    Route::get('projects-list/{status}', [ProjectsController::class, 'projectList'])->name('projects.index');
 
     // ==== Manage Location Advantages
     Route::resource('location-advantage', LocationAdvantageController::class);
