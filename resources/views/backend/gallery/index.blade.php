@@ -61,12 +61,10 @@ Bhairaav | Manaage Gallery
                         <tr>
                             <td>{{ ++$key }}</td>
                             <td class="text-wrap text-justify">{{ $media->media_name }}</td>
-                            <td class="text-wrap text-justify">{{ $media->media_dec }}</td>
+                            <td class="text-wrap text-justify">{!! $media->media_dec !!}</td>
                             <td class="text-wrap text-justify">
                                 @if(!empty($media->media_image))
-                                    <a href="{{url('/')}}/bhairaav/media/media_image/{{ $media->media_image }}" target="_blank" class="btn btn-primary btn-sm">
-                                        <i class="micon dw dw-eye"></i> Document
-                                    </a>
+                                    <img src="{{url('/')}}/bhairaav/media/media_image/{{ $media->media_image }}" width="100px" height="100px" alt="{{ $media->media_image }}">
                                 @endif
                             </td>
 

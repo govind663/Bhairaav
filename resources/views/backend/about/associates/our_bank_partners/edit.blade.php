@@ -44,10 +44,10 @@ Bhairaav | Edit Banking Partner
             <div class="pd-20 card-box mb-30">
                     <label class="col-sm-2"><b>Upload Image : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="bank_logo" id="bank_logo" class="form-control @error('bank_logo') is-invalid @enderror" value="{{ $backingPartner->bank_logo }}">
+                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg" name="bank_logo" id="bank_logo" class="form-control @error('bank_logo') is-invalid @enderror" value="{{ $backingPartner->bank_logo }}">
                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                         <br>
-                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
+                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
                         <br>
                         @error('bank_logo')
                             <span class="invalid-feedback" role="alert">
@@ -56,9 +56,7 @@ Bhairaav | Edit Banking Partner
                         @enderror
                         <br>
                         @if(!empty($backingPartner->bank_logo))
-                            <a href="{{ url('/') }}/bhairaav/bank_partner/bank_logo/{{ $backingPartner->bank_logo }}" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="micon dw dw-eye"></i> Document
-                            </a>
+                            <img src="{{url('/')}}/bhairaav/bank_partner/bank_logo/{{ $backingPartner->bank_logo }}" width="150" height="100" alt="{{ $backingPartner->bank_logo }}">
                         @endif
                         <br>
                         <div id="preview-container">

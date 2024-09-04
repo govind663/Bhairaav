@@ -50,24 +50,12 @@ Bhairaav | Add Gallery
                         @enderror
                     </div>
 
-                    <label class="col-sm-2"><b>Description : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-4 col-md-4">
-                        <textarea type="text" name="media_dec" id="media_dec" class="form-control @error('media_dec') is-invalid @enderror" value="{{old('media_dec')}}" placeholder="Enter Description.">{{ old('media_dec') }}</textarea>
-                        @error('media_dec')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row mt-3">
                     <label class="col-sm-2"><b>Upload Image : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="media_image" id="media_image" class="form-control @error('media_image') is-invalid @enderror" value="{{old('media_image')}}">
+                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg" name="media_image" id="media_image" class="form-control @error('media_image') is-invalid @enderror" value="{{old('media_image')}}">
                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                         <br>
-                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
+                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
                         <br>
                         @error('media_image')
                             <span class="invalid-feedback" role="alert">
@@ -78,6 +66,18 @@ Bhairaav | Add Gallery
                         <div id="preview-container">
                             <div id="file-preview"></div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="form-group row mt-3">
+                    <label class="col-sm-4"><b>Description : </b></label>
+                    <div class="col-sm-12 col-md-12">
+                        <textarea type="text" name="media_dec" id="media_dec" class="textarea_editor form-control @error('media_dec') is-invalid @enderror" value="{!! old('media_dec') !!}" placeholder="Enter Description.">{!! old('media_dec') !!}</textarea>
+                        @error('media_dec')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
 

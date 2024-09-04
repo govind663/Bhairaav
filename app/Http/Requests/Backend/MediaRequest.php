@@ -24,13 +24,13 @@ class MediaRequest extends FormRequest
         if ($this->id){
             $rule = [
                 'media_name' => 'required|string|max:255',
-                'media_dec' => 'required|string',
+                'media_dec' => 'nullable|string',
                 'media_image' => 'mimes:jpeg,png,jpg,pdf|max:2048',
             ];
         }else{
             $rule = [
                 'media_name' => 'required|string|max:255',
-                'media_dec' => 'required|string',
+                'media_dec' => 'nullable|string',
                 'media_image' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
             ];
         }

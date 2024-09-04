@@ -60,9 +60,7 @@ Bhairaav | Manaage Banking Partner
                             <td>{{ ++$key }}</td>
                             <td class="text-wrap text-justify">
                                 @if(!empty($value->bank_logo))
-                                    <a href="{{url('/')}}/bhairaav/bank_partner/bank_logo/{{ $value->bank_logo }}" target="_blank" class="btn btn-primary btn-sm">
-                                        <i class="micon dw dw-eye"></i> Document
-                                    </a>
+                                    <img src="{{url('/')}}/bhairaav/bank_partner/bank_logo/{{ $value->bank_logo }}" width="150" height="100" alt="{{ $value->bank_logo }}">
                                 @endif
                             </td>
 

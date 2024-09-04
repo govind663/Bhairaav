@@ -43,10 +43,10 @@ Bhairaav | Add Banking Partner
                 <div class="form-group row mt-3">
                     <label class="col-sm-2"><b>Upload Image : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="bank_logo" id="bank_logo" class="form-control @error('bank_logo') is-invalid @enderror" value="{{old('bank_logo')}}">
+                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg" name="bank_logo" id="bank_logo" class="form-control @error('bank_logo') is-invalid @enderror" value="{{old('bank_logo')}}">
                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                         <br>
-                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
+                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
                         <br>
                         @error('bank_logo')
                             <span class="invalid-feedback" role="alert">
