@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-Bhairaav | Manaage Slider
+Bhairaav | Manaage Banner
 @endsection
 
 @push('styles')
@@ -14,7 +14,7 @@ Bhairaav | Manaage Slider
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="title">
-                        <h4>Manage Slider</h4>
+                        <h4>Manage Banner</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
@@ -22,7 +22,7 @@ Bhairaav | Manaage Slider
                                 <a href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Manage Slider
+                                Manage Banner
                             </li>
                         </ol>
                     </nav>
@@ -31,7 +31,7 @@ Bhairaav | Manaage Slider
                 <div class="col-md-6 col-sm-12 text-right">
                     <div class="dropdown">
                         <a class="btn btn-primary" href="{{ route('sliders.create') }}">
-                            <i class="fa fa-plus" aria-hidden="true"> </i> Slider
+                            <i class="fa fa-plus" aria-hidden="true"> </i> Banner
                         </a>
 
                     </div>
@@ -42,7 +42,7 @@ Bhairaav | Manaage Slider
         <!-- Export Datatable start -->
         <div class="card-box mb-30">
             <div class="pd-20">
-                <h4 class="text-blue h4">All Slider List</h4>
+                <h4 class="text-blue h4">All Banner List</h4>
             </div>
             <div class="pb-20">
                 <table class="table hover multiple-select-row data-table-export1 nowrap p-3">
@@ -51,7 +51,7 @@ Bhairaav | Manaage Slider
                             <th>Sr. No.</th>
                             <th>Title</th>
                             <th>Sub Title</th>
-                            <th>Slider Image</th>
+                            <th>Banner Image</th>
                             <th class="no-export">Edit</th>
                             <th class="no-export">Delete</th>
                         </tr>
@@ -60,9 +60,9 @@ Bhairaav | Manaage Slider
                         @foreach ($sliders as $key => $slider)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td>{{ $slider->title }}</td>
-                            <td>{{ $slider->subtitle }}</td>
-                            <td>
+                            <td class="text-wrap text-justify">{{ $slider->title }}</td>
+                            <td class="text-wrap text-justify">{{ $slider->subtitle }}</td>
+                            <td class="text-wrap text-justify">
                                 @if(!empty($slider->banner_imag))
                                     <a href="{{url('/')}}/bhairaav/slider/banner_imag/{{ $slider->banner_imag }}" target="_blank" class="btn btn-primary btn-sm">
                                         <b> View Document</b>
@@ -147,7 +147,7 @@ Bhairaav | Manaage Slider
                     columns: ':not(.no-export)',
                 },
                header: true,
-               title: 'All Employee List',
+               title: 'All Banner List',
                orientation: 'landscape',
                pageSize: 'A4',
                customize: function(doc) {

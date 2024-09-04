@@ -60,9 +60,9 @@ Bhairaav | Manaage Legacy of Excellence
                         @foreach ($legacyOfExcellences as $key => $value)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td>{{ $value->title }}</td>
-                            <td>{{ $value->description }}</td>
-                            <td>
+                            <td class="text-wrap text-justify">{{ $value->title }}</td>
+                            <td class="text-wrap text-justify">{!! $value->description !!}</td>
+                            <td class="text-wrap text-justify">
                                 @if(!empty($value->image))
                                     <a href="{{url('/')}}/bhairaav/legacy-of-excellence/image/{{ $value->image }}" target="_blank" class="btn btn-primary btn-sm">
                                         <i class="micon dw dw-eye"></i> Document

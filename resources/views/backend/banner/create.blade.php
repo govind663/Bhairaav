@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-Bhairaav | Add Slider
+Bhairaav | Add Banner
 @endsection
 
 @push('styles')
@@ -14,7 +14,7 @@ Bhairaav | Add Slider
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="title">
-                        <h4>Add Slider</h4>
+                        <h4>Add Banner</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
@@ -22,10 +22,10 @@ Bhairaav | Add Slider
                                 <a href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('sliders.index') }}">Manage Slider</a>
+                                <a href="{{ route('sliders.index') }}">Manage Banner</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Add Slider
+                                Add Banner
                             </li>
                         </ol>
                     </nav>

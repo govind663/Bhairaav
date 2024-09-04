@@ -59,7 +59,7 @@ Bhairaav | Manaage  The Journey
                         @foreach ($journeys as $key => $value)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td class="text-wrap text-justify">{{ $value->description }}</td>
+                            <td class="text-wrap text-justify">{!! $value->description !!}</td>
                             <td>
                                 @if(!empty($value->journey_image))
                                     <a href="{{url('/')}}/bhairaav/who_we_are/journey_image/{{ $value->journey_image }}" target="_blank" class="btn btn-primary btn-sm">

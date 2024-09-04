@@ -113,7 +113,7 @@
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="{{ route('sliders.index') }}" class="{{ ($currentRoute === 'sliders.index') || ($currentRoute === 'sliders.create') || ($currentRoute === 'sliders.edit') ? 'active' : '' }}">Slider</a>
+                            <a href="{{ route('sliders.index') }}" class="{{ ($currentRoute === 'sliders.index') || ($currentRoute === 'sliders.create') || ($currentRoute === 'sliders.edit') ? 'active' : '' }}">Banner</a>
                         </li>
                         <li>
                             <a href="{{ route('legacy_of_excellence.index') }}" class="{{ ($currentRoute === 'legacy_of_excellence.index') || ($currentRoute === 'legacy_of_excellence.create') || ($currentRoute === 'legacy_of_excellence.edit') ? 'active' : '' }}">Legacy of Excellence</a>

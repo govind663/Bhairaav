@@ -58,7 +58,7 @@ Bhairaav | Manaage Category
                         @foreach ($categories as $key => $category)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td>{{ $category->category_name }}</td>
+                            <td class="text-wrap text-justify">{{ $category->category_name }}</td>
                             <td class="no-export">
                                 <a href="{{ route('categories.edit', $category->id) }}">
                                     <button class="btn btn-warning btn-sm">

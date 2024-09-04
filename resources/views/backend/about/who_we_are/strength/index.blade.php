@@ -61,7 +61,7 @@ Bhairaav | Manaage  Strength
                         <tr>
                             <td>{{ ++$key }}</td>
                             <td class="text-wrap text-justify">{{ $value->title }}</td>
-                            <td class="text-wrap text-justify">{{ $value->description }}</td>
+                            <td class="text-wrap text-justify">{!! $value->description !!}</td>
 
                             <td>
                                 @if(!empty($value->icon_image))

@@ -59,8 +59,8 @@ Bhairaav | Manaage  Latest Updates
                         @foreach ($latestUpdates as $key => $value)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td>{{ $value->name }}</td>
-                            <td>
+                            <td class="text-wrap text-justify">{{ $value->name }}</td>
+                            <td class="text-wrap text-justify">
                                 @if(!empty($value->media_image))
                                     <a href="{{ url('/') }}/bhairaav/latest_updates/media_image/{{ $value->media_image }}" target="_blank" class="btn btn-primary btn-sm">
                                         <i class="micon dw dw-eye"></i> Document

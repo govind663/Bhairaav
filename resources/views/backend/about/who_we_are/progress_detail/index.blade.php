@@ -59,7 +59,7 @@ Bhairaav | Manaage  The Progress
                         @foreach ($progressDetails as $key => $value)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td class="text-wrap text-justify">{{ $value->description }}</td>
+                            <td class="text-wrap text-justify">{!! $value->description !!}</td>
                             <td>
                                 @if(!empty($value->progress_image))
                                     <a href="{{url('/')}}/bhairaav/who_we_are/progress_image/{{ $value->progress_image }}" target="_blank" class="btn btn-primary btn-sm">

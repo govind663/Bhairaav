@@ -53,18 +53,6 @@ Bhairaav | Edit Strength
                         @enderror
                     </div>
 
-                    <label class="col-sm-2"><b>Description : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-4 col-md-4">
-                        <textarea type="text" name="description" id="description" class="form-control @error('description') is-invalid @enderror" value="{{ $strength->description }}" placeholder="Enter Description.">{{ $strength->description }}</textarea>
-                        @error('description')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row mt-3">
                     <label class="col-sm-2"><b>Upload Image : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
                         <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="icon_image" id="icon_image" class="form-control @error('icon_image') is-invalid @enderror" value="{{ $strength->icon_image }}">
@@ -87,6 +75,18 @@ Bhairaav | Edit Strength
                         <div id="preview-container">
                             <div id="file-preview"></div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="form-group row mt-3">
+                    <label class="col-sm-4"><b>Description : <span class="text-danger">*</span></b></label>
+                    <div class="col-sm-12 col-md-12">
+                        <textarea type="text" name="description" id="description" class="textarea_editor form-control @error('description') is-invalid @enderror" value="{{ $strength->description }}" placeholder="Enter Description.">{!! $strength->description !!}</textarea>
+                        @error('description')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
 

@@ -59,7 +59,7 @@ Bhairaav | Manaage  The Legacy
                         @foreach ($legacies as $key => $value)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td class="text-wrap text-justify">{{ $value->description }}</td>
+                            <td class="text-wrap text-justify">{!! $value->description !!}</td>
                             <td>
                                 @if(!empty($value->legacies_image))
                                     <a href="{{url('/')}}/bhairaav/who_we_are/legacies_image/{{ $value->legacies_image }}" target="_blank" class="btn btn-primary btn-sm">

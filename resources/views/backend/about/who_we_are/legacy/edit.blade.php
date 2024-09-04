@@ -43,16 +43,6 @@ Bhairaav | Edit The Legacy
 
             <div class="pd-20 card-box mb-30">
                 <div class="form-group row mt-3">
-                    <label class="col-sm-2"><b>Description : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-4 col-md-4">
-                        <textarea type="text" name="description" id="description" class="form-control @error('description') is-invalid @enderror" value="{{ $legacy->description }}" placeholder="Enter Description.">{{ $legacy->description }}</textarea>
-                        @error('description')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
                     <label class="col-sm-2"><b>Upload Image : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
                         <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="the_legacy" id="the_legacy" class="form-control @error('the_legacy') is-invalid @enderror" value="{{ $legacy->the_legacy }}">
@@ -75,6 +65,18 @@ Bhairaav | Edit The Legacy
                         <div id="preview-container">
                             <div id="file-preview"></div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="form-group row mt-3">
+                    <label class="col-sm-4"><b>Description : <span class="text-danger">*</span></b></label>
+                    <div class="col-sm-12 col-md-12">
+                        <textarea type="text" name="description" id="description" class="textarea_editor form-control @error('description') is-invalid @enderror" value="{!! $legacy->description !!}" placeholder="Enter Description.">{!! $legacy->description !!}</textarea>
+                        @error('description')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
 

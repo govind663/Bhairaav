@@ -58,7 +58,7 @@ Bhairaav | Manaage  Our Logo
                         @foreach ($ourLogos as $key => $value)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td class="text-wrap text-justify">{{ $value->description }}</td>
+                            <td class="text-wrap text-justify">{!! $value->description !!}</td>
 
                             <td class="no-export">
                                 <a href="{{ route('our_logos.edit', $value->id) }}">

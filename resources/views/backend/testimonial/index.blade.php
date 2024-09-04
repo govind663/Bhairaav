@@ -60,7 +60,7 @@ Bhairaav | Manaage Testimonial
                         @foreach ($testimonials as $key => $value)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td>
+                            <td class="text-wrap text-justify">
                                 @if(!empty($value->profile_image))
                                 <div class="name-avatar d-flex align-items-center">
                                     <div class="avatar mr-2 flex-shrink-0">
@@ -72,7 +72,7 @@ Bhairaav | Manaage Testimonial
                                 </div>
                                 @endif
                             </td>
-                            <td>
+                            <td class="text-wrap text-justify">
                                 @php
                                     $star_count = $value->star_count;
                                 @endphp
@@ -86,7 +86,7 @@ Bhairaav | Manaage Testimonial
                                     @endfor
                                 </div>
                             </td>
-                            <td>{{ $value->description }}</td>
+                            <td class="text-wrap text-justify">{!! $value->description !!}</td>
 
                             <td class="no-export">
                                 <a href="{{ route('testimonials.edit', $value->id) }}">

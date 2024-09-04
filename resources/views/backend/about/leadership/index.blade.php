@@ -62,7 +62,7 @@ Bhairaav | Manaage  Leader
                             <td>{{ ++$key }}</td>
                             <td class="text-wrap text-justify">{{ $value->name }}</td>
                             <td class="text-wrap text-justify">{{ $value->designation }}</td>
-                            <td class="text-wrap text-justify">{{ $value->description }}</td>
+                            <td class="text-wrap text-justify">{!! $value->description !!}</td>
 
                             <td class="no-export">
                                 <a href="{{ route('our-leader.edit', $value->id) }}">

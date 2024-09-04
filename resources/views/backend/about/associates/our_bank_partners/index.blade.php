@@ -58,7 +58,7 @@ Bhairaav | Manaage Banking Partner
                         @foreach ($backingPartners as $key => $value)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td>
+                            <td class="text-wrap text-justify">
                                 @if(!empty($value->bank_logo))
                                     <a href="{{url('/')}}/bhairaav/bank_partner/bank_logo/{{ $value->bank_logo }}" target="_blank" class="btn btn-primary btn-sm">
                                         <i class="micon dw dw-eye"></i> Document
