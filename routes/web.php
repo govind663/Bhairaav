@@ -52,9 +52,36 @@ use App\Http\Controllers\frontend\MediaController;
 use App\Http\Controllers\frontend\BlogController;
 use App\Http\Controllers\frontend\ContactUsController;
 
+// ===== Import Model
+use App\Models\LatestUpdate;
+use App\Models\Slider;
+use App\Models\LegacyOfExcellence as ModelsLegacyOfExcellence;
+use App\Models\Testimonial;
+use App\Models\WhyChooseBhairaav;
 
 Route::get('/', function () {
-    return view('frontend.home');
+    // ==== Fetch Banner
+    $sliders = Slider::orderBy("id","desc")->whereNull('deleted_at')->get();
+
+    // ==== Fetch Legacy of Excellence
+    $legacy = ModelsLegacyOfExcellence::orderBy("id","desc")->whereNull('deleted_at')->first();
+
+    // ==== Fetch Why Choose Bhairaav
+    $whyChooseBhairaavs = WhyChooseBhairaav::orderBy("id","desc")->whereNull('deleted_at')->first();
+
+    // ==== Fetch Testimonials
+    $testimonials = Testimonial::orderBy("id","desc")->whereNull('deleted_at')->get();
+
+    // ==== Fetch NEWS & MEDIA
+    $latestUpdates = LatestUpdate::orderBy("id","desc")->whereNull('deleted_at')->get();
+
+    return view('frontend.home', [
+        'sliders' => $sliders,
+        'legacy' => $legacy,
+        'whyChooseBhairaavs' => $whyChooseBhairaavs,
+        'testimonials' => $testimonials,
+        'latestUpdates' => $latestUpdates
+    ]);
 })->name('/');
 
 Route::group(['prefix' => 'bhairaav'],function(){
@@ -220,7 +247,7 @@ Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware
     });
 
     // ==== Media
-    Route::get('/media', [MediaController::class, 'media'])->name('frontend.media');
+    Route::get('/our-media', [MediaController::class, 'media'])->name('frontend.media');
 
     Route::group(['prefix'=> 'blog'],function(){
 
