@@ -36,92 +36,17 @@
                     <div class="cs_section_heading cs_style_1">
                         <div class="cs_section_heading">
                             <!-- <p class="cs_section_subtitle cs_medium cs_letter_spacing_1 cs_mb_10 cs_mb_lg_15 text-uppercase">
-                        Overview
-                    </p> -->
+                                Overview
+                            </p> -->
                             <h2 class="cs_fs_31 cs_bold cs_mb_20">
-                                Welcome To Bhairaav's Loyalty Program!</h2>
+                                {{ $loyalityProgram->title }}
+                            </h2>
                         </div>
                     </div>
-                    <!-- <div class="cs_height_35 cs_height_lg_35"></div> -->
+
                     <p>
-                        BHAIRAAV values you and your support. We believe there is no advertising that is superior to the brand
-                        advocacy of our customers. As someone who has trusted us with building your home, your satisfaction,
-                        happiness and delight is supremely important to us. And as a token of appreciation, we would like to
-                        introduce you to the BHAIRAAV's Loyalty and Referral program.
+                        {!! $loyalityProgram->description !!}
                     </p>
-                    <p>
-                        Should you feel the need to consider a second (or maybe even a third) real estate investment, you need to
-                        look no further. With multiple world-class developments panning the length and breadth of Mumbai & Navi
-                        Mumbai, Bhairaav has something for everyone. From inspiring sea-view residences to the best integrated
-                        office spaces, everything you will ever need in real estate is just a call away.
-                    </p>
-                    <p>
-                        Do you have A friend or a family member looking to buy a home or office? What better advice can you give, than
-                        referring them to a Bhairaav property! They too will benefit from the expertise, trust, appreciation
-                        and of course, the thoughtfulness of Bhairaav.
-                    </p>
-                    <p>
-                        We have fabulous referral rewards for both, you and your friends and family! But the best reward you will
-                        get is the gratitude and happiness that your friends and family will shower on you for helping them choose a
-                        Bhairaav property.
-                    </p>
-                    <p>
-                        Welcome to a world of happiness, welcome to your very own loyalty program.
-                    </p>
-                    <p>
-                        As a member, you can enjoy a host of promotion offers and privileges, all of them crafted
-                        specifically for your requirement.
-                    </p>
-                    <ul class="cs_list cs_style_1 cs_type_1 cs_mp_0 ref_list_sec">
-                        <li>
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(.clip0_95_13)">
-                                    <path
-                                        d="M24.9996 12.5001C24.9996 10.7334 24.1038 9.17611 22.7413 8.25736C23.0549 6.64486 22.5871 4.91048 21.3382 3.66048C20.0892 2.41152 18.3549 1.94382 16.7413 2.25736C15.8226 0.894857 14.2653 -0.000976562 12.4986 -0.000976562C10.7319 -0.000976562 9.17464 0.894857 8.25589 2.25736C6.64339 1.94382 4.90798 2.41152 3.65902 3.66048C2.41006 4.90944 1.94235 6.64382 2.25589 8.25736C0.893392 9.17611 -0.00244141 10.7334 -0.00244141 12.5001C-0.00244141 14.2667 0.893392 15.824 2.25589 16.7428C1.94235 18.3553 2.41006 20.0907 3.65902 21.3396C4.90798 22.5886 6.64235 23.0563 8.25589 22.7428C9.17464 24.1053 10.7319 25.0011 12.4986 25.0011C14.2653 25.0011 15.8226 24.1053 16.7413 22.7428C18.3538 23.0563 20.0892 22.5886 21.3382 21.3396C22.5871 20.0907 23.0549 18.3563 22.7413 16.7428C24.1038 15.824 24.9996 14.2667 24.9996 12.5001ZM12.4049 16.0615C12.0017 16.4646 11.4715 16.6657 10.9392 16.6657C10.4069 16.6657 9.87152 16.4626 9.46423 16.0563L6.56631 13.248L8.01735 11.7511L10.9267 14.5709L16.9778 8.63236L18.4403 10.1167L12.4049 16.0615Z"
-                                        fill="currentColor">
-                                    </path>
-                                </g>
-                                <defs>
-                                    <clipPath class="clip0_95_13">
-                                        <rect width="25" height="25" fill="white"></rect>
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            Invitation for special preview of our new projects
-                        </li>
-                        <li>
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(.clip0_95_13)">
-                                    <path
-                                        d="M24.9996 12.5001C24.9996 10.7334 24.1038 9.17611 22.7413 8.25736C23.0549 6.64486 22.5871 4.91048 21.3382 3.66048C20.0892 2.41152 18.3549 1.94382 16.7413 2.25736C15.8226 0.894857 14.2653 -0.000976562 12.4986 -0.000976562C10.7319 -0.000976562 9.17464 0.894857 8.25589 2.25736C6.64339 1.94382 4.90798 2.41152 3.65902 3.66048C2.41006 4.90944 1.94235 6.64382 2.25589 8.25736C0.893392 9.17611 -0.00244141 10.7334 -0.00244141 12.5001C-0.00244141 14.2667 0.893392 15.824 2.25589 16.7428C1.94235 18.3553 2.41006 20.0907 3.65902 21.3396C4.90798 22.5886 6.64235 23.0563 8.25589 22.7428C9.17464 24.1053 10.7319 25.0011 12.4986 25.0011C14.2653 25.0011 15.8226 24.1053 16.7413 22.7428C18.3538 23.0563 20.0892 22.5886 21.3382 21.3396C22.5871 20.0907 23.0549 18.3563 22.7413 16.7428C24.1038 15.824 24.9996 14.2667 24.9996 12.5001ZM12.4049 16.0615C12.0017 16.4646 11.4715 16.6657 10.9392 16.6657C10.4069 16.6657 9.87152 16.4626 9.46423 16.0563L6.56631 13.248L8.01735 11.7511L10.9267 14.5709L16.9778 8.63236L18.4403 10.1167L12.4049 16.0615Z"
-                                        fill="currentColor">
-                                    </path>
-                                </g>
-                                <defs>
-                                    <clipPath class="clip0_95_13">
-                                        <rect width="25" height="25" fill="white"></rect>
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            Enjoy top priority in case of any special offers, events and promotions
-                        </li>
-                        <li>
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(.clip0_95_13)">
-                                    <path
-                                        d="M24.9996 12.5001C24.9996 10.7334 24.1038 9.17611 22.7413 8.25736C23.0549 6.64486 22.5871 4.91048 21.3382 3.66048C20.0892 2.41152 18.3549 1.94382 16.7413 2.25736C15.8226 0.894857 14.2653 -0.000976562 12.4986 -0.000976562C10.7319 -0.000976562 9.17464 0.894857 8.25589 2.25736C6.64339 1.94382 4.90798 2.41152 3.65902 3.66048C2.41006 4.90944 1.94235 6.64382 2.25589 8.25736C0.893392 9.17611 -0.00244141 10.7334 -0.00244141 12.5001C-0.00244141 14.2667 0.893392 15.824 2.25589 16.7428C1.94235 18.3553 2.41006 20.0907 3.65902 21.3396C4.90798 22.5886 6.64235 23.0563 8.25589 22.7428C9.17464 24.1053 10.7319 25.0011 12.4986 25.0011C14.2653 25.0011 15.8226 24.1053 16.7413 22.7428C18.3538 23.0563 20.0892 22.5886 21.3382 21.3396C22.5871 20.0907 23.0549 18.3563 22.7413 16.7428C24.1038 15.824 24.9996 14.2667 24.9996 12.5001ZM12.4049 16.0615C12.0017 16.4646 11.4715 16.6657 10.9392 16.6657C10.4069 16.6657 9.87152 16.4626 9.46423 16.0563L6.56631 13.248L8.01735 11.7511L10.9267 14.5709L16.9778 8.63236L18.4403 10.1167L12.4049 16.0615Z"
-                                        fill="currentColor">
-                                    </path>
-                                </g>
-                                <defs>
-                                    <clipPath class="clip0_95_13">
-                                        <rect width="25" height="25" fill="white"></rect>
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            An opportunity to be a part of a unique reward program
-                        </li>
-                    </ul>
 
                 </div>
             </div>
