@@ -9,6 +9,7 @@ use App\Models\TheProgressDetail;
 use App\Models\Legacy;
 use App\Models\Strength;
 use App\Models\OurLogo;
+use App\Models\Statistics;
 use Illuminate\Http\Request;
 
 class WhoWeAreController extends Controller
@@ -20,6 +21,9 @@ class WhoWeAreController extends Controller
 
         // === Fetch The Members
         $members = Member::orderBy("id","desc")->whereNull('deleted_at')->get();
+
+        // === Fetch The Statistics
+        $statistics = Statistics::orderBy("id","asc")->whereNull('deleted_at')->get();
 
         // === Fetch The Progress
         $progressDetails = TheProgressDetail::orderBy("id","desc")->whereNull('deleted_at')->first();
@@ -37,6 +41,7 @@ class WhoWeAreController extends Controller
         return view("frontend.about.who-we-are", [
             'journeys' => $journeys,
             'members' => $members,
+            'statistics' => $statistics,
             'progressDetails' => $progressDetails,
             'legacies' => $legacies,
             'strengths' => $strengths,

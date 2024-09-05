@@ -13,6 +13,7 @@ use App\Http\Controllers\backend\TestimonialController;
 use App\Http\Controllers\backend\LatestUpdatesController;
 use App\Http\Controllers\backend\TheJourneyController;
 use App\Http\Controllers\backend\MemberController;
+use App\Http\Controllers\backend\StatisticController;
 use App\Http\Controllers\backend\TheProgressDetailController;
 use App\Http\Controllers\backend\LegacyController;
 use App\Http\Controllers\backend\StrengthController;
@@ -34,12 +35,10 @@ use App\Http\Controllers\backend\GalleryController;
 
 // ===== Frontend
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
-use App\Http\Controllers\frontend\AboutController;
 use App\Http\Controllers\frontend\WhoWeAreController;
 use App\Http\Controllers\frontend\LeadershipController;
 use App\Http\Controllers\frontend\OurTeamController;
 use App\Http\Controllers\frontend\AssociatesController;
-use App\Http\Controllers\frontend\OngoingProjectController;
 use App\Http\Controllers\frontend\ResidentialProjectController;
 use App\Http\Controllers\frontend\CommercialProjectController;
 use App\Http\Controllers\frontend\CompletedProjectController;
@@ -53,6 +52,7 @@ use App\Http\Controllers\frontend\ContactUsController;
 // ===== Import Model
 use App\Models\LatestUpdate;
 use App\Models\Slider;
+use App\Models\Statistics;
 use App\Models\LegacyOfExcellence as ModelsLegacyOfExcellence;
 use App\Models\Testimonial;
 use App\Models\WhyChooseBhairaav;
@@ -60,6 +60,9 @@ use App\Models\WhyChooseBhairaav;
 Route::get('/', function () {
     // ==== Fetch Banner
     $sliders = Slider::orderBy("id","desc")->whereNull('deleted_at')->get();
+
+    // === Fetch The Statistics
+    $statistics = Statistics::orderBy("id","asc")->whereNull('deleted_at')->get();
 
     // ==== Fetch Legacy of Excellence
     $legacy = ModelsLegacyOfExcellence::orderBy("id","desc")->whereNull('deleted_at')->first();
@@ -75,6 +78,7 @@ Route::get('/', function () {
 
     return view('frontend.home', [
         'sliders' => $sliders,
+        'statistics' => $statistics,
         'legacy' => $legacy,
         'whyChooseBhairaavs' => $whyChooseBhairaavs,
         'testimonials' => $testimonials,
@@ -123,6 +127,9 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
 
     // ==== Manage Member
     Route::resource('members', MemberController::class);
+
+    // ==== Manage Statistics
+    Route::resource('statistics', StatisticController::class);
 
     // ==== Manage The Progress
     Route::resource('the_progress', TheProgressDetailController::class);

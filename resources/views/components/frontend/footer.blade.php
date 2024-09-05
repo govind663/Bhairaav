@@ -58,7 +58,7 @@
                         <h2 class="cs_widget_title cs_bold cs_fs_21 cs_white_color"><span>Links</span></h2>
                         <ul class="cs_menu_widget cs_mp0">
                             <li><a href='{{ route('/') }}'>Home</a></li>
-                            <li><a href='{{ route('frontend.about') }}'>About Bhairaav</a></li>
+                            <li><a href='#'>About Bhairaav</a></li>
                             <li><a href='#'>Career</a></li>
                             <li><a href='{{ route('frontend.media') }}'>Recognition</a></li>
                             <li><a href='{{ route('frontend.blog') }}'>Blog</a></li>
@@ -70,7 +70,7 @@
                     <div class="cs_footer_item">
                         <h2 class="cs_widget_title cs_bold cs_fs_21 cs_white_color"><span>Projects</span></h2>
                         <ul class="cs_menu_widget cs_mp0">
-                            <li><a href='{{ route('frontend.project.ongoing-project') }}'>Ongoing Projects</a></li>
+                            <li><a href='#'>Ongoing Projects</a></li>
                             <li><a href='{{ route('frontend.project.ongoing-project.residential-project') }}'>Residential Projects</a></li>
                             <li><a href='{{ route('frontend.project.ongoing-project.commercial-project') }}'>Commercial Projects</a></li>
                             <li><a href='{{ route('frontend.project.completed-project') }}'>Completed Projects</a></li>

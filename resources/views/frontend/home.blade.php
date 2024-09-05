@@ -116,19 +116,12 @@
                 <div class="cs_about cs_style_3">
                     <div class="overflow-hidden">
                         <ul class="cs_about_feature_list_1 cs_mp_0">
-                            <li class="text-center">
-                                <h3 class="cs_fs_38 cs_bold main-counter cs_mb_9">02</h3>
-                                <h3 class="cs_fs_21 mb-0">Decades of Experience</h3>
-                            </li>
-                            <li class="text-center">
-                                <h3 class="cs_fs_38 cs_bold main-counter cs_mb_9">1.5 Million sq.ft. </h3>
-                                <h3 class="cs_fs_21 mb-0">Established Creations</h3>
-                            </li>
-                            <li class="text-center">
-                                <h3 class="cs_fs_38 cs_bold main-counter cs_mb_9">5 Million + sq.ft.</h3>
-                                <h3 class="cs_fs_21 mb-0">Ongoing & Upcoming
-                                    Projects</h3>
-                            </li>
+                            @foreach ($statistics as $value)
+                                <li class="text-center">
+                                    <h3 class="cs_fs_38 cs_bold main-counter cs_mb_9">{!! $value->description !!}</h3>
+                                    <h3 class="cs_fs_21 mb-0">{{ $value->name }}</h3>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

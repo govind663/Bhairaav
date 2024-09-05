@@ -106,7 +106,7 @@
     <div class="menu-block customscroll">
         <div class="sidebar-menu">
             <ul id="accordion-menu">
-                <li class="dropdown {{ ($currentRoute === 'sliders.index') || ($currentRoute === 'sliders.create') || ($currentRoute === 'sliders.edit') || ($currentRoute === 'legacy_of_excellence.index') || ($currentRoute === 'legacy_of_excellence.create') || ($currentRoute === 'legacy_of_excellence.edit') || ($currentRoute === 'testimonials.index') || ($currentRoute === 'testimonials.create') || ($currentRoute === 'testimonials.edit') ? 'show' : '' }}">
+                <li class="dropdown {{ ($currentRoute === 'sliders.index') || ($currentRoute === 'sliders.create') || ($currentRoute === 'sliders.edit') || ($currentRoute === 'legacy_of_excellence.index') || ($currentRoute === 'legacy_of_excellence.create') || ($currentRoute === 'legacy_of_excellence.edit') || ($currentRoute === 'testimonials.index') || ($currentRoute === 'testimonials.create') || ($currentRoute === 'testimonials.edit') || ($currentRoute === 'statistics.index') || ($currentRoute === 'statistics.create') || ($currentRoute === 'statistics.edit') ? 'show' : '' }}">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon bi bi-house"></span>
                         <span class="mtext">Home</span>
@@ -126,6 +126,9 @@
                         </li>
                         <li>
                             <a href="{{ route('latest_update.index') }}" class="{{ ($currentRoute === 'latest_update.index') || ($currentRoute === 'latest_update.create') || ($currentRoute === 'latest_update.edit') ? 'active' : '' }}">Latest Updates</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('statistics.index') }}" class="{{ ($currentRoute === 'statistics.index') || ($currentRoute === 'statistics.create') || ($currentRoute === 'statistics.edit') ? 'active' : '' }}">Statistics</a>
                         </li>
                     </ul>
                 </li>
