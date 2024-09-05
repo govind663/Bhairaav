@@ -353,7 +353,7 @@
             <div class="row align-items-center cs_gap_y_40">
                 <div class="col-lg-6">
                     <div class="cs_image_layer cs_style_4 position-relative cs_bg_filed cs_width_left_50_vw"
-                        data-src="{{ asset('/bhairaav/why_choose_bhiraav/image/' . $whyChooseBhairaavs->image ) }}" style="background-image: url('frontend/assets/img/img-3.jpg');">
+                        data-src="{{ asset('/bhairaav/why_choose_bhiraav/image/' . $whyChooseBhairaavs->image ) }}" style="background-image: url({{ asset('/bhairaav/why_choose_bhiraav/image/' . $whyChooseBhairaavs->image ) }});">
                     </div>
                 </div>
                 <div class="col-lg-6">

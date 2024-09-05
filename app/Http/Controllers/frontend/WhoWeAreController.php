@@ -22,16 +22,17 @@ class WhoWeAreController extends Controller
         $members = Member::orderBy("id","desc")->whereNull('deleted_at')->get();
 
         // === Fetch The Progress
-        $progressDetails = TheProgressDetail::orderBy("id","desc")->whereNull('deleted_at')->get();
+        $progressDetails = TheProgressDetail::orderBy("id","desc")->whereNull('deleted_at')->first();
 
         // === Fetch The Legacy
-        $legacies = Legacy::orderBy("id","desc")->whereNull('deleted_at')->get();
+        $legacies = Legacy::orderBy("id","desc")->whereNull('deleted_at')->first();
 
         // === Fetch The Strength
         $strengths = Strength::orderBy("id","desc")->whereNull('deleted_at')->get();
 
         // ==== Fetch Our Logo
-        $ourLogos = OurLogo::orderBy("id","desc")->whereNull('deleted_at')->get();
+        $ourLogos = OurLogo::orderBy("id","desc")->whereNull('deleted_at')->first();
+        // dd($ourLogos);
 
         return view("frontend.about.who-we-are", [
             'journeys' => $journeys,

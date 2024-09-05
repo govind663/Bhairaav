@@ -30,7 +30,7 @@
                                 <a href='javascript:;'>Projects</a>
                                 <ul>
                                     <li class="menu-item-has-children">
-                                        <a href='{{ route('frontend.project.ongoing-project') }}'>Ongoing Projects</a>
+                                        <a href='javascript:;'>Ongoing Projects</a>
                                         <ul>
                                             <li>
                                                 <a href='{{ route('frontend.project.ongoing-project.residential-project') }}'>Residential Projects</a>
@@ -81,9 +81,9 @@
                                 <a href='{{ route('frontend.contact-us') }}'>Contact</a>
                             </li>
 
-                            <li>
+                            {{-- <li>
                                 <a href='{{ route('admin.login') }}'>Admin</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </nav>
                 </div>

@@ -193,9 +193,6 @@ Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware
     // ==== Home
     Route::get('/home', [FrontendHomeController::class, 'index'])->name('frontend.home');
 
-    // ==== About
-    Route::get('/about', [AboutController::class, 'index'])->name('frontend.about');
-
     // ==== About Sub Section
     Route::group(['prefix'=>'about-bhairaav'], function(){
 
@@ -214,9 +211,6 @@ Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware
 
     // ==== Projects Sub Section
     Route::group(['prefix'=> 'projects'],function(){
-
-        // ==== Ongoing Projects
-        Route::get('/ongoing-project', [OngoingProjectController::class, 'ongoingProject'])->name('frontend.project.ongoing-project');
 
         Route::group(['prefix'=> 'ongoing-project'],function(){
 
