@@ -139,6 +139,7 @@
                 ($currentRoute === 'our_logos.index') || ($currentRoute === 'our_logos.create') || ($currentRoute === 'our_logos.edit') ||
                 ($currentRoute === 'our-leader.index') || ($currentRoute === 'our-leader.create') || ($currentRoute === 'our-leader.edit') ||
                 ($currentRoute === 'our_teams.index') || ($currentRoute === 'our_teams.create') || ($currentRoute === 'our_teams.edit') ||
+                ($currentRoute === 'partners.index') || ($currentRoute === 'partners.create') || ($currentRoute === 'partners.edit') ||
                 ($currentRoute === 'banking_partners.index') || ($currentRoute === 'banking_partners.create') || ($currentRoute === 'banking_partners.edit')
                 ? 'show' : '' }}" >
                     <a href="javascript:;" class="dropdown-toggle">
@@ -154,6 +155,7 @@
                         <li><a href="{{ route('our_logos.index') }}" class="{{ ($currentRoute === 'our_logos.index') || ($currentRoute === 'our_logos.create') || ($currentRoute === 'our_logos.edit') ? 'active' : '' }}">Our Logo</a></li>
                         <li><a href="{{ route('our-leader.index') }}" class="{{ ($currentRoute === 'our-leader.index') || ($currentRoute === 'our-leader.create') || ($currentRoute === 'our-leader.edit') ? 'active' : '' }}">Leader</a></li>
                         <li><a href="{{ route('our_teams.index') }}" class="{{ ($currentRoute === 'our_teams.index') || ($currentRoute === 'our_teams.create') || ($currentRoute === 'our_teams.edit') ? 'active' : '' }}">Team</a></li>
+                        <li><a href="{{ route('partners.index') }}" class="{{ ($currentRoute === 'partners.index') || ($currentRoute === 'partners.create') || ($currentRoute === 'partners.edit') ? 'active' : '' }}">Partners</a></li>
                         <li><a href="{{ route('banking_partners.index') }}" class="{{ ($currentRoute === 'banking_partners.index') || ($currentRoute === 'banking_partners.create') || ($currentRoute === 'banking_partners.edit') ? 'active' : '' }}">Banking Partners</a></li>
                     </ul>
                 </li>

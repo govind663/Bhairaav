@@ -19,11 +19,9 @@ use App\Http\Controllers\backend\StrengthController;
 use App\Http\Controllers\backend\OurLogoController;
 use App\Http\Controllers\backend\OurLeaderController;
 use App\Http\Controllers\backend\OurTeamsController;
+use App\Http\Controllers\backend\PartnerController;
 use App\Http\Controllers\backend\BackingPartnerController;
 use App\Http\Controllers\backend\ProjectsController;
-use App\Http\Controllers\backend\OngoingProjectsController;
-use App\Http\Controllers\backend\CompletedProjectsController;
-use App\Http\Controllers\backend\UpcomingProjectsController;
 use App\Http\Controllers\backend\LocationAdvantageController;
 use App\Http\Controllers\backend\ProjectDetailsController;
 use App\Http\Controllers\backend\CategoryController;
@@ -143,6 +141,9 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
 
     // ==== Manage Our Team
     Route::resource('our_teams', OurTeamsController::class);
+
+    // ==== Manage Partners
+    Route::resource('partners', PartnerController::class);
 
     // ==== Manage Banking Partners
     Route::resource('banking_partners', BackingPartnerController::class);
