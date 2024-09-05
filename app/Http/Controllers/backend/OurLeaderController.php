@@ -37,6 +37,19 @@ class OurLeaderController extends Controller
         try {
 
             $leader = new Leader();
+
+            // ==== Upload (profile_image)
+            if (!empty($request->hasFile('profile_image'))) {
+                $image = $request->file('profile_image');
+                $image_name = $image->getClientOriginalName();
+                $extension = $image->getClientOriginalExtension();
+                $new_name = time() . rand(10, 999) . '.' . $extension;
+                $image->move(public_path('/bhairaav/leader/profile_image'), $new_name);
+
+                $image_path = "/bhairaav/leader/profile_image" . $new_name;
+                $leader->profile_image = $new_name;
+            }
+
             $leader->name = $request->name;
             $leader->designation = $request->designation;
             $leader->description = $request->description;
@@ -78,6 +91,19 @@ class OurLeaderController extends Controller
         try {
 
             $leader = Leader::findOrFail($id);
+
+            // ==== Upload (profile_image)
+            if (!empty($request->hasFile('profile_image'))) {
+                $image = $request->file('profile_image');
+                $image_name = $image->getClientOriginalName();
+                $extension = $image->getClientOriginalExtension();
+                $new_name = time() . rand(10, 999) . '.' . $extension;
+                $image->move(public_path('/bhairaav/leader/profile_image'), $new_name);
+
+                $image_path = "/bhairaav/leader/profile_image" . $new_name;
+                $leader->profile_image = $new_name;
+            }
+            
             $leader->name = $request->name;
             $leader->designation = $request->designation;
             $leader->description = $request->description;
