@@ -124,7 +124,7 @@
                     <div class="cs_section_heading cs_style_1">
                         <p class="cs_section_subtitle cs_medium cs_letter_spacing_1 cs_mb_10 cs_mb_lg_15 text-uppercase wow fadeInLeft"
                             data-wow-duration="0.8s" data-wow-delay="0.2s">Strengths</p>
-                        <h2 class="cs_fs_50 cs_bold mb-0">Our Strengths</h2>
+                        <h2 class="cs_fs_50 cs_bold mb-0">{{ $strengthTitle->title }}</h2>
                     </div>
                     <div class="cs_slider_arrows cs_style_4">
                         <div class="cs_left_arrow slick-arrow cs_center">
@@ -149,9 +149,7 @@
                 </div>
                 <div class="cs_height_80 cs_height_lg_50"></div>
                 <div class="cs_full_width_right">
-                    <div class="cs_slider_container" data-autoplay="0" data-loop="1" data-speed="600"
-                        data-center="0" data-variable-width="1" data-slides-per-view="responsive" data-xs-slides="1"
-                        data-sm-slides="2" data-md-slides="2" data-lg-slides="2" data-add-slides="3">
+                    <div class="cs_slider_container" data-autoplay="0" data-loop="1" data-speed="600" data-center="0" data-variable-width="1" data-slides-per-view="responsive" data-xs-slides="1" data-sm-slides="2" data-md-slides="2" data-lg-slides="2" data-add-slides="3">
                         <div class="cs_slider_wrapper">
                             @foreach ($strengths as $strength)
                             <div class="cs_slide">
@@ -159,12 +157,12 @@
                                     <div class="cs_iconbox_icon cs_mb_29 cs_center cs_radius_5 cs_white_bg">
                                         <img src="{{ asset('/bhairaav/who_we_are/icon_image/' . $strength->icon_image ) }}" alt="Icon">
                                     </div>
-                                    <h3 class="cs_iconbox_title cs_mb_19 cs_fs_36 cs_bold">{{ $strength->title }}</h3>
+                                    <h3 class="cs_iconbox_title cs_mb_19 cs_fs_36 cs_bold">{{ $strength->icon_name }}</h3>
                                     <div class="cs_iconbox_subtitle mb-0 more text-justify">
                                         <ul class="cs_list cs_style_1 cs_mp_0">
+                                            @foreach ($strength->other_description as $description)
                                             <li>
-                                                <svg width="25" height="25" viewBox="0 0 25 25"
-                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g clip-path="url(.clip0_95_13)">
                                                         <path
                                                             d="M24.9996 12.5001C24.9996 10.7334 24.1038 9.17611 22.7413 8.25736C23.0549 6.64486 22.5871 4.91048 21.3382 3.66048C20.0892 2.41152 18.3549 1.94382 16.7413 2.25736C15.8226 0.894857 14.2653 -0.000976562 12.4986 -0.000976562C10.7319 -0.000976562 9.17464 0.894857 8.25589 2.25736C6.64339 1.94382 4.90798 2.41152 3.65902 3.66048C2.41006 4.90944 1.94235 6.64382 2.25589 8.25736C0.893392 9.17611 -0.00244141 10.7334 -0.00244141 12.5001C-0.00244141 14.2667 0.893392 15.824 2.25589 16.7428C1.94235 18.3553 2.41006 20.0907 3.65902 21.3396C4.90798 22.5886 6.64235 23.0563 8.25589 22.7428C9.17464 24.1053 10.7319 25.0011 12.4986 25.0011C14.2653 25.0011 15.8226 24.1053 16.7413 22.7428C18.3538 23.0563 20.0892 22.5886 21.3382 21.3396C22.5871 20.0907 23.0549 18.3563 22.7413 16.7428C24.1038 15.824 24.9996 14.2667 24.9996 12.5001ZM12.4049 16.0615C12.0017 16.4646 11.4715 16.6657 10.9392 16.6657C10.4069 16.6657 9.87152 16.4626 9.46423 16.0563L6.56631 13.248L8.01735 11.7511L10.9267 14.5709L16.9778 8.63236L18.4403 10.1167L12.4049 16.0615Z"
@@ -178,8 +176,9 @@
                                                         </clipPath>
                                                     </defs>
                                                 </svg>
-                                                {!! $strength->description !!}
+                                                {{ $description }}
                                             </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                     <!-- We are dedicated to delivering exceptional Residential & Commercial spaces, complete with lifestyle amenities, top-notch quality, and timely possession, thereby enhancing our customers' values and lifestyles.<br>We take pride in being the go-to choice for discerning customers, exceeding their expectations and building long-lasting relationships.</p> -->
@@ -217,7 +216,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="wow fadeIn" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                        <img src="{{ asset('frontend/assets/img/about/logo-info.png') }}" alt="Service" class="cs_radius_5">
+                        <img src="{{ asset('/bhairaav/our_logo/logo_image/' . $ourLogos->logo_image ) }}" alt="Service" class="cs_radius_5">
                     </div>
                 </div>
             </div>

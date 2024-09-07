@@ -50,6 +50,7 @@ Bhairaav | Manaage  Our Logo
                         <tr>
                             <th>Sr. No.</th>
                             <th>Description</th>
+                            <th>Logo Image</th>
                             <th class="no-export">Edit</th>
                             <th class="no-export">Delete</th>
                         </tr>
@@ -59,7 +60,11 @@ Bhairaav | Manaage  Our Logo
                         <tr>
                             <td>{{ ++$key }}</td>
                             <td class="text-wrap text-justify">{!! $value->description !!}</td>
-
+                            <td>
+                                @if(!empty($value->logo_image))
+                                    <img src="{{url('/')}}/bhairaav/our_logo/logo_image/{{ $value->logo_image }}" width="150" height="100" alt="{{ $value->bank_logo }}">
+                                @endif
+                            </td>
                             <td class="no-export">
                                 <a href="{{ route('our_logos.edit', $value->id) }}">
                                     <button class="btn btn-warning btn-sm">
@@ -67,7 +72,6 @@ Bhairaav | Manaage  Our Logo
                                     </button>
                                 </a>
                             </td>
-
                             <td class="no-export">
                                 <form action="{{ route('our_logos.destroy', $value->id) }}" method="post">
                                     @csrf

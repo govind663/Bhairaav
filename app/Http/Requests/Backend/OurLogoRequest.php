@@ -24,10 +24,12 @@ class OurLogoRequest extends FormRequest
         if ($this->id){
             $rule = [
                 'description' => 'required|string',
+                'logo_image' => 'mimes:jpeg,png,jpg|max:2048',
             ];
         }else{
             $rule = [
                 'description' => 'required|string',
+                'logo_image' => 'required|mimes:jpeg,png,jpg|max:2048',
             ];
         }
         return $rule;
@@ -37,6 +39,10 @@ class OurLogoRequest extends FormRequest
         return [
             'description.required' => 'The description field is required.',
             'description.string' => 'The description field must be a string.',
+
+            'logo_image.required' => 'The logo image is required.',
+            'logo_image.mimes' => 'The logo image must be a file of type: jpeg, png, jpg.',
+            'logo_image.max' => 'The logo image may not be greater than 2048 kilobytes.',
         ];
     }
 }

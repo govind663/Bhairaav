@@ -116,7 +116,7 @@ Bhairaav | Edit Strength
                                         </td>
                                     </tr>
                                 @endforeach
-                            @endif
+                            @else
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12">
@@ -127,6 +127,7 @@ Bhairaav | Edit Strength
                                     <button type="button" class="btn btn-primary" id="addRow">Add More</button>
                                 </td>
                             </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>

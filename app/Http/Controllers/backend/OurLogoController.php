@@ -38,6 +38,18 @@ class OurLogoController extends Controller
         try {
             $ourLogo = new OurLogo();
 
+            // ==== Upload (logo_image)
+            if (!empty($request->hasFile('logo_image'))) {
+                $image = $request->file('logo_image');
+                $image_name = $image->getClientOriginalName();
+                $extension = $image->getClientOriginalExtension();
+                $new_name = time() . rand(10, 999) . '.' . $extension;
+                $image->move(public_path('/bhairaav/our_logo/logo_image'), $new_name);
+
+                $image_path = "/bhairaav/our_logo/logo_image" . $new_name;
+                $ourLogo->logo_image = $new_name;
+            }
+
             $ourLogo->description = $request->description;
             $ourLogo->inserted_at = Carbon::now();
             $ourLogo->inserted_by = Auth::user()->id;
@@ -76,6 +88,18 @@ class OurLogoController extends Controller
         $data = $request->validated();
         try {
             $ourLogo = OurLogo::findOrFail($id);
+
+            // ==== Upload (logo_image)
+            if (!empty($request->hasFile('logo_image'))) {
+                $image = $request->file('logo_image');
+                $image_name = $image->getClientOriginalName();
+                $extension = $image->getClientOriginalExtension();
+                $new_name = time() . rand(10, 999) . '.' . $extension;
+                $image->move(public_path('/bhairaav/our_logo/logo_image'), $new_name);
+
+                $image_path = "/bhairaav/our_logo/logo_image" . $new_name;
+                $ourLogo->logo_image = $new_name;
+            }
 
             $ourLogo->description = $request->description;
             $ourLogo->modified_at = Carbon::now();

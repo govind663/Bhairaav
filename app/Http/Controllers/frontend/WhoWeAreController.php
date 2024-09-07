@@ -33,6 +33,16 @@ class WhoWeAreController extends Controller
 
         // === Fetch The Strength
         $strengths = Strength::orderBy("id","desc")->whereNull('deleted_at')->get();
+        // dd($strengths);
+
+        // === Fetch The Strength Title
+        $strengthTitle = Strength::orderBy("inserted_at","desc")->whereNull('deleted_at')->first(['title']);
+        // dd($strengthTitle);
+
+        // === Decode The Other Description
+        foreach ($strengths as $strength) {
+            $strength->other_description = json_decode($strength->other_description, true); // Decode as associative array
+        }
 
         // ==== Fetch Our Logo
         $ourLogos = OurLogo::orderBy("id","desc")->whereNull('deleted_at')->first();
@@ -45,6 +55,7 @@ class WhoWeAreController extends Controller
             'progressDetails' => $progressDetails,
             'legacies' => $legacies,
             'strengths' => $strengths,
+            'strengthTitle' => $strengthTitle,
             'ourLogos' => $ourLogos
         ]);
     }

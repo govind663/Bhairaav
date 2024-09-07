@@ -42,6 +42,7 @@ Bhairaav | Edit Member
             <input type="text" id="id" name="id" hidden  value="{{ $member->id }}">
 
             <div class="pd-20 card-box mb-30">
+                <div class="form-group row mt-3">
                     <label class="col-sm-2"><b>Upload Image : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
                         <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg" name="members_image" id="members_image" class="form-control @error('members_image') is-invalid @enderror" value="{{ $member->members_image }}">

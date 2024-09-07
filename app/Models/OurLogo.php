@@ -13,6 +13,7 @@ class OurLogo extends Model
     protected $fillable = [
         'id',
         'description',
+        'logo_image',
         'inserted_by',
         'inserted_at',
         'modified_by',
