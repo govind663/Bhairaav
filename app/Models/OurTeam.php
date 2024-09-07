@@ -15,7 +15,6 @@ class OurTeam extends Model
         'name',
         'designation',
         'description',
-        'profile_image',
         'inserted_by',
         'inserted_at',
         'modified_by',

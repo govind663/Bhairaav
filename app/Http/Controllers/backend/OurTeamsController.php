@@ -38,18 +38,6 @@ class OurTeamsController extends Controller
 
             $team = new OurTeam();
 
-            // ==== Upload (profile_image)
-            if (!empty($request->hasFile('profile_image'))) {
-                $image = $request->file('profile_image');
-                $image_name = $image->getClientOriginalName();
-                $extension = $image->getClientOriginalExtension();
-                $new_name = time() . rand(10, 999) . '.' . $extension;
-                $image->move(public_path('/bhairaav/team_leader/profile_image'), $new_name);
-
-                $image_path = "/bhairaav/team_leader/profile_image" . $new_name;
-                $team->profile_image = $new_name;
-            }
-
             $team->name = $request->name;
             $team->designation = $request->designation;
             $team->description = $request->description;
@@ -91,18 +79,6 @@ class OurTeamsController extends Controller
         try {
 
             $team = OurTeam::findOrFail($id);
-
-            // ==== Upload (profile_image)
-            if (!empty($request->hasFile('profile_image'))) {
-                $image = $request->file('profile_image');
-                $image_name = $image->getClientOriginalName();
-                $extension = $image->getClientOriginalExtension();
-                $new_name = time() . rand(10, 999) . '.' . $extension;
-                $image->move(public_path('/bhairaav/team_leader/profile_image'), $new_name);
-
-                $image_path = "/bhairaav/team_leader/profile_image" . $new_name;
-                $team->profile_image = $new_name;
-            }
 
             $team->name = $request->name;
             $team->designation = $request->designation;

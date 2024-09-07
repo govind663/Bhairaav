@@ -17,6 +17,7 @@ class OurLeaderController extends Controller
     public function index()
     {
         $leader = Leader::orderBy("id","desc")->whereNull('deleted_at')->get();
+
         return view('backend.about.leadership.index', ['leader' => $leader]);
     }
 
@@ -38,21 +39,10 @@ class OurLeaderController extends Controller
 
             $leader = new Leader();
 
-            // ==== Upload (profile_image)
-            if (!empty($request->hasFile('profile_image'))) {
-                $image = $request->file('profile_image');
-                $image_name = $image->getClientOriginalName();
-                $extension = $image->getClientOriginalExtension();
-                $new_name = time() . rand(10, 999) . '.' . $extension;
-                $image->move(public_path('/bhairaav/leader/profile_image'), $new_name);
-
-                $image_path = "/bhairaav/leader/profile_image" . $new_name;
-                $leader->profile_image = $new_name;
-            }
-
             $leader->name = $request->name;
             $leader->designation = $request->designation;
             $leader->description = $request->description;
+            $leader->other_description = json_encode($request->other_description);
             $leader->inserted_at = Carbon::now();
             $leader->inserted_by = Auth::user()->id;
             $leader->save();
@@ -92,21 +82,10 @@ class OurLeaderController extends Controller
 
             $leader = Leader::findOrFail($id);
 
-            // ==== Upload (profile_image)
-            if (!empty($request->hasFile('profile_image'))) {
-                $image = $request->file('profile_image');
-                $image_name = $image->getClientOriginalName();
-                $extension = $image->getClientOriginalExtension();
-                $new_name = time() . rand(10, 999) . '.' . $extension;
-                $image->move(public_path('/bhairaav/leader/profile_image'), $new_name);
-
-                $image_path = "/bhairaav/leader/profile_image" . $new_name;
-                $leader->profile_image = $new_name;
-            }
-            
             $leader->name = $request->name;
             $leader->designation = $request->designation;
             $leader->description = $request->description;
+            $leader->other_description = json_encode($request->other_description);
             $leader->modified_at = Carbon::now();
             $leader->modified_by = Auth::user()->id;
             $leader->save();

@@ -76,28 +76,42 @@ Bhairaav | Edit Leader
                     </div>
                 </div>
 
-                <div class="form-group row mt-3">
-                    <label class="col-sm-2"><b>Upload Image : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-4 col-md-4">
-                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg" name="profile_image" id="profile_image" class="form-control @error('profile_image') is-invalid @enderror" value="{{ $leader->profile_image }}">
-                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
-                        <br>
-                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
-                        <br>
-                        @error('profile_image')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                        <br>
-                        @if(!empty($leader->profile_image))
-                        <img src="{{url('/')}}/bhairaav/leader_leader/profile_image/{{ $leader->profile_image }}" alt="{{ $leader->profile_image }}">
-                        @endif
-                        <br>
-                        <div id="preview-container">
-                            <div id="file-preview"></div>
-                        </div>
-                    </div>
+                <div class="form-group row mt-3 p-3">
+                    <table class="table table-bordered p-3"  id="dynamicTable">
+                        <thead>
+                            <tr>
+                                <th>Other Description : </th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if(!empty($leader->other_description))
+                                @foreach(json_decode($leader->other_description) as $key => $description)
+                                    <tr>
+                                        <td>
+                                            <div class="col-sm-12 col-md-12">
+                                                <textarea type="text" name="other_description[]" style="height: 75px;" id="other_description" class="form-control" value="{{ $description }}" placeholder="Enter Other Description.">{{ $description }}</textarea>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger removeRow">Remove</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
+                            <tr>
+                                <td>
+                                    <div class="col-sm-12 col-md-12">
+                                        <textarea type="text" name="other_description[]" style="height: 75px;" class="form-control" id="other_description" value="{{ old('other_description') }}" placeholder="Enter Other Description.">{{ old('other_description') }}</textarea>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" id="addRow">Add More</button>
+                                </td>
+                            </tr>
+                            @endif
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="form-group row mt-4">
@@ -121,42 +135,26 @@ Bhairaav | Edit Leader
 @endsection
 
 @push('scripts')
-{{-- preview both image and PDF --}}
+{{-- Add More Hallmarks --}}
 <script>
-    function agentPreviewFile() {
-        const fileInput = document.getElementById('profile_image');
-        const previewContainer = document.getElementById('preview-container');
-        const filePreview = document.getElementById('file-preview');
-        const file = fileInput.files[0];
+    $(document).ready(function () {
+        // Add a new row with validation
+        $('#addRow').click(function () {
+            var newRow = `<tr>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <textarea type="text" name="other_description[]" style="height: 75px;" class="form-control" id="other_description" value="{{ old('other_description') }}" placeholder="Enter Other Description.">{{ old('other_description') }}</textarea>
+                    </div>
+                </td>
+                <td><button type="button" class="btn btn-danger removeRow">Remove</button></td>
+            </tr>`;
+            $('#dynamicTable tbody').append(newRow);
+        });
 
-        if (file) {
-            const fileType = file.type;
-            const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-            const validPdfTypes = ['application/pdf'];
-
-            if (validImageTypes.includes(fileType)) {
-                // Image preview
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    filePreview.innerHTML = `<img src="${e.target.result}" alt="File Preview" width="50%" height="50">`;
-                };
-                reader.readAsDataURL(file);
-            } else if (validPdfTypes.includes(fileType)) {
-                // PDF preview using an embed element
-                filePreview.innerHTML =
-                    `<embed src="${URL.createObjectURL(file)}" type="application/pdf" width="100%" height="150px" />`;
-            } else {
-                // Unsupported file type
-                filePreview.innerHTML = '<p>Unsupported file type</p>';
-            }
-
-            previewContainer.style.display = 'block';
-        } else {
-            // No file selected
-            previewContainer.style.display = 'none';
-        }
-
-    }
-
+        // Remove a row
+        $(document).on('click', '.removeRow', function () {
+            $(this).closest('tr').remove();
+        });
+    });
 </script>
 @endpush

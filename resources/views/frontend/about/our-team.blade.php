@@ -21,7 +21,7 @@
         <div class="cs_height_70 cs_height_lg_70"></div>
         <div class="container">
             <div class="row cs_row_gap_100 align-items-center">
-                <div class="col-lg-4 col-md-6">
+                {{-- <div class="col-lg-4 col-md-6">
                     <div class="cs_team cs_style_1">
                         <div class="cs_team_member_img cs_mb_lg_20 cs_radius_5 position-relative overflow-hidden">
                             <div class="lead__detail_img_sec">
@@ -29,8 +29,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-8 col-md-6">
+                </div> --}}
+                <div class="col-lg-12 col-md-12">
                     <div class="cs_team cs_style_1">
                         <h2 class="cs_fs_38 cs_bold mb-0" style="{{ $loop->iteration % 2 == 0 ? 'color: white;' : '' }}">{{ $value->name }}</h2>
                         <p>{{ $value->designation }}</p>

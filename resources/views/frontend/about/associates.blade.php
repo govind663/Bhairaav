@@ -68,13 +68,11 @@
         </div>
         <div class="cs_slider cs_style_1 cs_slider_gap_60 cs_hover_show_arrows">
             <div class="container">
-                <div class="cs_slider_container" data-autoplay="0" data-loop="1" data-speed="600" data-center="0"
-                    data-variable-width="0" data-slides-per-view="responsive" data-xs-slides="2" data-sm-slides="2"
-                    data-md-slides="3" data-lg-slides="5" data-add-slides="3">
+                <div class="cs_slider_container" data-autoplay="0" data-loop="1" data-speed="600" data-center="0" data-variable-width="0" data-slides-per-view="responsive" data-xs-slides="2" data-sm-slides="2" data-md-slides="3" data-lg-slides="5" data-add-slides="3">
                     <div class="cs_slider_wrapper">
                         @foreach ($backingPartners as $value)
                         <div class="cs_slide">
-                            <img src="{{ asset('/bhairaav/bank_partner/bank_logo/' . $value->bank_logo ) }}" />
+                            <img src="{{ asset('/bhairaav/bank_partner/bank_logo/' . $value->bank_logo ) }}" >
                         </div>
                         @endforeach
                     </div>

@@ -63,14 +63,14 @@ Bhairaav | Manaage  Leader
                             <td class="text-wrap text-justify">{{ $value->designation }}</td>
                             <td class="text-wrap text-justify">
                                 @if(!empty($value->profile_image))
-                                <div class="name-avatar d-flex align-items-center">
-                                    <div class="avatar mr-2 flex-shrink-0">
-                                        <img src="{{url('/')}}/bhairaav/leader/profile_image/{{ $value->profile_image }}" class="border-radius-100 shadow" width="40" height="40" alt="{{ $value->profile_image }}" />
+                                    <div class="name-avatar d-flex align-items-center">
+                                        <div class="avatar mr-2 flex-shrink-0">
+                                            <img src="{{url('/')}}/bhairaav/leader/profile_image/{{ $value->profile_image }}" class="border-radius-100 shadow" width="40" height="40" alt="{{ $value->profile_image }}" />
+                                        </div>
+                                        <div class="txt">
+                                            <div class="weight-600 text-primary">{{ $value->name }}</div>
+                                        </div>
                                     </div>
-                                    <div class="txt">
-                                        <div class="weight-600 text-primary">{{ $value->name }}</div>
-                                    </div>
-                                </div>
                                 @endif
                             </td>
                             <td class="text-wrap text-justify">{!! $value->description !!}</td>

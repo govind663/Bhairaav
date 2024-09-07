@@ -11,6 +11,13 @@ class LeadershipController extends Controller
     public function leadership(Request $request){
 
         $leader = Leader::orderBy("id","asc")->whereNull('deleted_at')->get();
-        return view("frontend.about.leadership", ['leader' => $leader]);
+        // === Decode The Other Description
+        foreach ($leader as $leaders) {
+            $leaders->other_description = json_decode($leaders->other_description, true); // Decode as associative array
+            // dd($leaders->other_description);
+        }
+        return view("frontend.about.leadership", [
+            'leader' => $leader,
+        ]);
     }
 }
