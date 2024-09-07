@@ -119,6 +119,9 @@
                             <a href="{{ route('legacy_of_excellence.index') }}" class="{{ ($currentRoute === 'legacy_of_excellence.index') || ($currentRoute === 'legacy_of_excellence.create') || ($currentRoute === 'legacy_of_excellence.edit') ? 'active' : '' }}">Legacy of Excellence</a>
                         </li>
                         <li>
+                            <a href="{{ route('statistics.index') }}" class="{{ ($currentRoute === 'statistics.index') || ($currentRoute === 'statistics.create') || ($currentRoute === 'statistics.edit') ? 'active' : '' }}">Statistics</a>
+                        </li>
+                        <li>
                             <a href="{{ route('why_choose_bhiraavs.index') }}" class="{{ ($currentRoute === 'why_choose_bhiraavs.index') || ($currentRoute === 'why_choose_bhiraavs.create') || ($currentRoute === 'why_choose_bhiraavs.edit') ? 'active' : '' }}">Why Choose Bhairaav</a>
                         </li>
                         <li>
@@ -126,9 +129,6 @@
                         </li>
                         <li>
                             <a href="{{ route('latest_update.index') }}" class="{{ ($currentRoute === 'latest_update.index') || ($currentRoute === 'latest_update.create') || ($currentRoute === 'latest_update.edit') ? 'active' : '' }}">Latest Updates</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('statistics.index') }}" class="{{ ($currentRoute === 'statistics.index') || ($currentRoute === 'statistics.create') || ($currentRoute === 'statistics.edit') ? 'active' : '' }}">Statistics</a>
                         </li>
                     </ul>
                 </li>

@@ -13,8 +13,9 @@ class Strength extends Model
     protected $fillable = [
         'id',
         'title',
-        'description',
+        'icon_name',
         'icon_image',
+        'other_description',
         'inserted_by',
         'inserted_at',
         'modified_by',

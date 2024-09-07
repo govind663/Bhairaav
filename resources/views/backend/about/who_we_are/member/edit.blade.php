@@ -44,10 +44,10 @@ Bhairaav | Edit Member
             <div class="pd-20 card-box mb-30">
                     <label class="col-sm-2"><b>Upload Image : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="members_image" id="members_image" class="form-control @error('members_image') is-invalid @enderror" value="{{ $member->members_image }}">
+                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg" name="members_image" id="members_image" class="form-control @error('members_image') is-invalid @enderror" value="{{ $member->members_image }}">
                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                         <br>
-                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
+                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
                         <br>
                         @error('members_image')
                             <span class="invalid-feedback" role="alert">
@@ -56,9 +56,7 @@ Bhairaav | Edit Member
                         @enderror
                         <br>
                         @if(!empty($member->members_image))
-                            <a href="{{ url('/') }}/bhairaav/who_we_are/members_image/{{ $member->members_image }}" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="micon dw dw-eye"></i> Document
-                            </a>
+                            <img src="{{url('/')}}/bhairaav/who_we_are/members_image/{{ $member->members_image }}" width="150" height="100" alt="{{ $member->bank_logo }}">
                         @endif
                         <br>
                         <div id="preview-container">

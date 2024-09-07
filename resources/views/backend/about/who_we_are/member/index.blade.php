@@ -60,9 +60,7 @@ Bhairaav | Manaage  Member
                             <td>{{ ++$key }}</td>
                             <td>
                                 @if(!empty($value->members_image))
-                                    <a href="{{url('/')}}/bhairaav/who_we_are/members_image/{{ $value->members_image }}" target="_blank" class="btn btn-primary btn-sm">
-                                        <i class="micon dw dw-eye"></i> Document
-                                    </a>
+                                    <img src="{{url('/')}}/bhairaav/who_we_are/members_image/{{ $value->members_image }}" width="150" height="100" alt="{{ $value->bank_logo }}">
                                 @endif
                             </td>
 

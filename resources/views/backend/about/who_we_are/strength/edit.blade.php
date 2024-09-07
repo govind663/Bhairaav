@@ -43,10 +43,21 @@ Bhairaav | Edit Strength
 
             <div class="pd-20 card-box mb-30">
                 <div class="form-group row mt-3">
-                    <label class="col-sm-2"><b>Title : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-4 col-md-4">
+                    <label class="col-sm-1"><b>Title : <span class="text-danger">*</span></b></label>
+                    <div class="col-sm-8 col-md-8">
                         <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ $strength->title }}" placeholder="Enter Title.">
                         @error('title')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <label class="col-sm-2"><b>Icon Name : <span class="text-danger">*</span></b></label>
+                    <div class="col-sm-3 col-md-3">
+                        <input type="text" name="icon_name" id="icon_name" class="form-control @error('icon_name') is-invalid @enderror" value="{{ $strength->icon_name }}" placeholder="Enter Icon Name.">
+                        @error('icon_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -75,18 +86,6 @@ Bhairaav | Edit Strength
                         <div id="preview-container">
                             <div id="file-preview"></div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="form-group row mt-3">
-                    <label class="col-sm-4"><b>Description : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-12 col-md-12">
-                        <textarea type="text" name="description" id="description" class="textarea_editor form-control @error('description') is-invalid @enderror" value="{{ $strength->description }}" placeholder="Enter Description.">{!! $strength->description !!}</textarea>
-                        @error('description')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
                     </div>
                 </div>
 

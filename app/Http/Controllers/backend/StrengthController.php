@@ -51,7 +51,8 @@ class StrengthController extends Controller
             }
 
             $strength->title = $request->title;
-            $strength->description = $request->description;
+            $strength->icon_name = $request->icon_name;
+            $strength->other_description = json_encode($request->other_description);
             $strength->inserted_at = Carbon::now();
             $strength->inserted_by = Auth::user()->id;
             $strength->save();
@@ -103,7 +104,8 @@ class StrengthController extends Controller
             }
 
             $strength->title = $request->title;
-            $strength->description = $request->description;
+            $strength->icon_name = $request->icon_name;
+            $strength->other_description = json_encode($request->other_description);
             $strength->modified_at = Carbon::now();
             $strength->modified_by = Auth::user()->id;
             $strength->save();

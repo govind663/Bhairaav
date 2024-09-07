@@ -24,13 +24,13 @@ class StrengthRequest extends FormRequest
         if ($this->id){
             $rule = [
                 'title' => 'required|string|max:255',
-                'description' => 'required|string',
+                'icon_name' => 'required|string|max:255',
                 'icon_image' => 'mimes:jpeg,png,jpg,pdf|max:2048',
             ];
         }else{
             $rule = [
                 'title' => 'required|string|max:255',
-                'description' => 'required|string',
+                'icon_name' => 'required|string|max:255',
                 'icon_image' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
             ];
         }
@@ -40,14 +40,15 @@ class StrengthRequest extends FormRequest
     public function messages()
     {
         return [
-            'icon_image.required' => 'The Image field is required',
+            'icon_image.required' => 'The Icon Image is required',
             'icon_image.max' => 'The Image size should be less than 2mb',
             'icon_image.mimes' => 'The Image should be a file of type: jpeg, png, jpg, pdf',
 
-            'description.required' => 'The description field is required',
-            'description.string' => 'The description should be a string',
+            'icon_name.required' => 'The Icon Name is required',
+            'icon_name.string' => 'The Icon Name should be a string',
+            'icon_name.max' => 'The Icon Name should not exceed 255 characters',
 
-            'title.required' => 'The title field is required',
+            'title.required' => 'The Title is required',
             'title.string' => 'The title should be a string',
             'title.max' => 'The title should not exceed 255 characters',
         ];

@@ -50,8 +50,8 @@ Bhairaav | Manaage  Strength
                         <tr>
                             <th>Sr. No.</th>
                             <th>Title</th>
-                            <th>Description</th>
-                            <th>Image</th>
+                            <th>Icon Name</th>
+                            <th>Icon Image</th>
                             <th class="no-export">Edit</th>
                             <th class="no-export">Delete</th>
                         </tr>
@@ -61,7 +61,7 @@ Bhairaav | Manaage  Strength
                         <tr>
                             <td>{{ ++$key }}</td>
                             <td class="text-wrap text-justify">{{ $value->title }}</td>
-                            <td class="text-wrap text-justify">{!! $value->description !!}</td>
+                            <td class="text-wrap text-justify">{{ $value->icon_name }}</td>
 
                             <td>
                                 @if(!empty($value->icon_image))

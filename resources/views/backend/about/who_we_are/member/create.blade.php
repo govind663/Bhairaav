@@ -43,10 +43,10 @@ Bhairaav | Add Member
                 <div class="form-group row mt-3">
                     <label class="col-sm-2"><b>Upload Image : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="members_image" id="members_image" class="form-control @error('members_image') is-invalid @enderror" value="{{old('members_image')}}">
+                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg" name="members_image" id="members_image" class="form-control @error('members_image') is-invalid @enderror" value="{{old('members_image')}}">
                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                         <br>
-                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
+                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
                         <br>
                         @error('members_image')
                             <span class="invalid-feedback" role="alert">
