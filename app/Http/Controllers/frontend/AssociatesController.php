@@ -11,8 +11,9 @@ class AssociatesController extends Controller
 {
     public function associates(Request $request){
 
-        $partners = Partner::orderBy("id","desc")->whereNull('deleted_at')->get();
-        $backingPartners = BackingPartner::orderBy("id","desc")->whereNull('deleted_at')->get();
+        $partners = Partner::orderBy("id","asc")->whereNull('deleted_at')->get();
+        $backingPartners = BackingPartner::orderBy("id","asc")->whereNull('deleted_at')->get();
+
         return view("frontend.about.associates", ['backingPartners' => $backingPartners, 'partners' => $partners]);
     }
 }

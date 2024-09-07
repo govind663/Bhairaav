@@ -41,6 +41,8 @@ class LoyaltyProgramController extends Controller
 
             $loyalityProgram->title = $request->title;
             $loyalityProgram->description = $request->description;
+            // json_encode other_description
+            $loyalityProgram->other_description = json_encode($request->other_description);
             $loyalityProgram->inserted_at = Carbon::now();
             $loyalityProgram->inserted_by = Auth::user()->id;
             $loyalityProgram->save();
@@ -82,6 +84,7 @@ class LoyaltyProgramController extends Controller
 
             $loyalityProgram->title = $request->title;
             $loyalityProgram->description = $request->description;
+            $loyalityProgram->other_description = json_encode($request->other_description);
             $loyalityProgram->modified_at = Carbon::now();
             $loyalityProgram->modified_by = Auth::user()->id;
             $loyalityProgram->save();

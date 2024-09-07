@@ -13,7 +13,7 @@ class Partner extends Model
     protected $fillable = [
         'id',
         'name',
-        'description',
+        'partner_name',
         'inserted_by',
         'inserted_at',
         'modified_by',

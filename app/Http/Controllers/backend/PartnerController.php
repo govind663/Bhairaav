@@ -17,6 +17,7 @@ class PartnerController extends Controller
     public function index()
     {
         $partners = Partner::orderBy("id","desc")->whereNull('deleted_at')->get();
+
         return view('backend.about.associates.partner.index', ['partners'=> $partners]);
     }
 
@@ -39,7 +40,7 @@ class PartnerController extends Controller
             $partner = new Partner();
 
             $partner->name = $request->name;
-            $partner->description = $request->description;
+            $partner->partner_name = json_encode($request->partner_name);
             $partner->inserted_at = Carbon::now();
             $partner->inserted_by = Auth::user()->id;
             $partner->save();
@@ -80,7 +81,7 @@ class PartnerController extends Controller
             $partner = Partner::findOrFail($id);
 
             $partner->name = $request->name;
-            $partner->description = $request->description;
+            $partner->partner_name = json_encode($request->partner_name);
             $partner->modified_at = Carbon::now();
             $partner->modified_by = Auth::user()->id;
             $partner->save();

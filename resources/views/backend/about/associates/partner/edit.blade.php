@@ -53,16 +53,42 @@ Bhairaav | Edit Partner
                     </div>
                 </div>
 
-                <div class="form-group row mt-3">
-                    <label class="col-sm-4"><b>Description : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-12 col-md-12">
-                        <textarea type="text" name="description" id="description" class="textarea_editor form-control @error('description') is-invalid @enderror" value="{!! $partner->description !!}" placeholder="Enter Description.">{!! $partner->description !!}</textarea>
-                        @error('description')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                <div class="form-group row mt-3 p-3">
+                    <table class="table table-bordered p-3"  id="dynamicTable">
+                        <thead>
+                            <tr>
+                                <th>Other Description : </th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if(!empty($partner->partner_name))
+                                @foreach(json_decode($partner->partner_name) as $key => $partnerNames)
+                                    <tr>
+                                        <td>
+                                            <div class="col-sm-12 col-md-12">
+                                                <input type="text" name="partner_name[]" class="form-control" id="partner_name" value="{{ $partnerNames }}" placeholder="Enter Partner Name.">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger removeRow">Remove</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
+                            <tr>
+                                <td>
+                                    <div class="col-sm-12 col-md-12">
+                                        <input type="text" name="partner_name[]" class="form-control" id="partner_name" value="{{ old('partner_name') }}" placeholder="Enter Partner Name.">
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" id="addRow">Add More</button>
+                                </td>
+                            </tr>
+                            @endif
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="form-group row mt-4">
@@ -86,4 +112,26 @@ Bhairaav | Edit Partner
 @endsection
 
 @push('scripts')
+{{-- Add More Hallmarks --}}
+<script>
+    $(document).ready(function () {
+        // Add a new row with validation
+        $('#addRow').click(function () {
+            var newRow = `<tr>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="text" name="partner_name[]" class="form-control" id="partner_name" value="{{ old('partner_name') }}" placeholder="Enter Partner Name.">
+                    </div>
+                </td>
+                <td><button type="button" class="btn btn-danger removeRow">Remove</button></td>
+            </tr>`;
+            $('#dynamicTable tbody').append(newRow);
+        });
+
+        // Remove a row
+        $(document).on('click', '.removeRow', function () {
+            $(this).closest('tr').remove();
+        });
+    });
+</script>
 @endpush

@@ -50,20 +50,29 @@ Bhairaav | Manaage Partner
                         <tr>
                             <th>Sr. No.</th>
                             <th>Name</th>
-                            <th>Description</th>
+                            <th>Partner Name</th>
                             <th class="no-export">Edit</th>
                             <th class="no-export">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($partners as $key => $value)
+                        @foreach ($partners as $key => $partner)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td class="text-wrap text-justify">{{ $value->name }}</td>
-                            <td class="text-wrap text-justify">{!! $value->description !!}</td>
+                            <td class="text-wrap text-justify">{{ $partner->name }}</td>
+                            <td class="text-wrap text-justify">
+                                {{-- Add name in un oder list --}}
+                                <ul class="cs_list cs_style_1 cs_type_1 cs_mp_0">
+                                    @if(!empty($partner->partner_name))
+                                        @foreach(json_decode($partner->partner_name) as $key => $partnerNames)
+                                            <li class="p-1">{{ $partnerNames }}</li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            </td>
 
                             <td class="no-export">
-                                <a href="{{ route('partners.edit', $value->id) }}">
+                                <a href="{{ route('partners.edit', $partner->id) }}">
                                     <button class="btn btn-warning btn-sm">
                                         <i class="micon dw dw-pencil-1"></i>
                                     </button>
@@ -71,7 +80,7 @@ Bhairaav | Manaage Partner
                             </td>
 
                             <td class="no-export">
-                                <form action="{{ route('partners.destroy', $value->id) }}" method="post">
+                                <form action="{{ route('partners.destroy', $partner->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input name="_method" type="hidden" value="DELETE">

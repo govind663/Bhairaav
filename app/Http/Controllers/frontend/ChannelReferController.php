@@ -13,10 +13,11 @@ class ChannelReferController extends Controller
 {
     public function chanelRefer(Request $request){
 
-        $loyalityProgram = LoyaltyProgram::orderBy("id","desc")->whereNull('deleted_at')->first();
+        $loyalityProgram = LoyaltyProgram::orderBy("id","desc")->whereNull('deleted_at')->get();
         $howWorkLoyaltyPrograms = HowWorkLoyaltyProgram::orderBy("id","desc")->whereNull('deleted_at')->first();
         $re_investment_loyalty_programs = ReInvestmentLoyaltyProgram::orderBy("id","desc")->whereNull('deleted_at')->first();
-        $refer = ReferLoyaltyProgram::orderBy("id","desc")->whereNull('deleted_at')->first();
+        $refer = ReferLoyaltyProgram::orderBy("id","asc")->whereNull('deleted_at')->get();
+
         return view("frontend.beconeAnAassociate.chanel-refer",[
             'loyalityProgram' => $loyalityProgram,
             'howWorkLoyaltyPrograms' => $howWorkLoyaltyPrograms,

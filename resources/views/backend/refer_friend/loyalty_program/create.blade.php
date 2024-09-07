@@ -68,6 +68,30 @@ Bhairaav | Add Loyalty Program
                     </div>
                 </div>
 
+                <div class="form-group row mt-3 p-3">
+                    <table class="table table-bordered p-3"  id="dynamicTable">
+                        <thead>
+                            <tr>
+                                <th>Other Description : </th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="col-sm-12 col-md-12">
+                                        <textarea type="text" name="other_description[]" class="form-control" style="height: 75px;" id="other_description" value="{{ old('other_description') }}" placeholder="Enter Other Description.">{{ old('other_description') }}</textarea>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{-- <button type="button" class="btn btn-danger removeRow">Remove</button> --}}
+                                    <button type="button" class="btn btn-primary" id="addRow">Add More</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <div class="form-group row mt-4">
                     <label class="col-md-3"></label>
                     <div class="col-md-9" style="display: flex; justify-content: flex-end;">
@@ -89,4 +113,26 @@ Bhairaav | Add Loyalty Program
 @endsection
 
 @push('scripts')
+{{-- Add More Hallmarks --}}
+<script>
+    $(document).ready(function () {
+        // Add a new row with validation
+        $('#addRow').click(function () {
+            var newRow = `<tr>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <textarea type="text" name="other_description[]" class="form-control" style="height: 75px;" id="other_description" value="{{ old('other_description') }}" placeholder="Enter Other Description.">{{ old('other_description') }}</textarea>
+                    </div>
+                </td>
+                <td><button type="button" class="btn btn-danger removeRow">Remove</button></td>
+            </tr>`;
+            $('#dynamicTable tbody').append(newRow);
+        });
+
+        // Remove a row
+        $(document).on('click', '.removeRow', function () {
+            $(this).closest('tr').remove();
+        });
+    });
+</script>
 @endpush

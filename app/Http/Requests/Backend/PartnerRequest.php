@@ -24,12 +24,10 @@ class PartnerRequest extends FormRequest
         if ($this->id){
             $rule = [
                 'name' => 'required|string|max:255',
-                'description' => 'required|string'
             ];
         }else{
             $rule = [
                 'name' => 'required|string|max:255',
-                'description' => 'required|string'
             ];
         }
         return $rule;
@@ -38,12 +36,9 @@ class PartnerRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => __('Name is required'),
-            'name.max' => __('The length of name should not exceed 255 characters'),
-            'name.string' => __('The name name be a string.'),
-
-            'description.required' => __('Description is required.'),
-            'description.string' => __('The description must be a string.'),
+            'name.required' => __('Title is required'),
+            'name.max' => __('The length of title should not exceed 255 characters'),
+            'name.string' => __('The title be a string.'),
         ];
     }
 }

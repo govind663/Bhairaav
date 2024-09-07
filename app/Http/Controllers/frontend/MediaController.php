@@ -10,7 +10,7 @@ class MediaController extends Controller
 {
     public function media(Request $request){
 
-        $medias = Media::orderBy("id","desc")->whereNull('deleted_at')->get();
+        $medias = Media::orderBy("id","asc")->whereNull('deleted_at')->get();
 
         return view('frontend.media.gallary', ['medias' => $medias]);
     }

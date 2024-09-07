@@ -14,6 +14,7 @@ class LoyaltyProgram extends Model
         'id',
         'title',
         'description',
+        'other_description',
         'inserted_by',
         'inserted_at',
         'modified_by',

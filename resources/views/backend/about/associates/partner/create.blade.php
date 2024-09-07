@@ -41,9 +41,9 @@ Bhairaav | Add Partner
             <div class="pd-20 card-box mb-30">
 
                 <div class="form-group row mt-3">
-                    <label class="col-sm-2"><b>Name : <span class="text-danger">*</span></b></label>
+                    <label class="col-sm-2"><b>Title : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" placeholder="Enter Name.">
+                        <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" placeholder="Enter Title.">
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -52,16 +52,28 @@ Bhairaav | Add Partner
                     </div>
                 </div>
 
-                <div class="form-group row mt-3">
-                    <label class="col-sm-4"><b>Description : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-12 col-md-12">
-                        <textarea type="text" name="description" id="description" class="textarea_editor form-control @error('description') is-invalid @enderror" value="{{old('description')}}" placeholder="Enter Description.">{{ old('description') }}</textarea>
-                        @error('description')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                <div class="form-group row mt-3 p-3">
+                    <table class="table table-bordered p-3"  id="dynamicTable">
+                        <thead>
+                            <tr>
+                                <th>Partner Name : </th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="col-sm-12 col-md-12">
+                                        <input type="text" name="partner_name[]" class="form-control" id="partner_name" value="{{ old('partner_name') }}" placeholder="Enter Partner Name.">
+                                    </div>
+                                </td>
+                                <td>
+                                    {{-- <button type="button" class="btn btn-danger removeRow">Remove</button> --}}
+                                    <button type="button" class="btn btn-primary" id="addRow">Add More</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="form-group row mt-4">
@@ -85,4 +97,26 @@ Bhairaav | Add Partner
 @endsection
 
 @push('scripts')
+{{-- Add More Hallmarks --}}
+<script>
+    $(document).ready(function () {
+        // Add a new row with validation
+        $('#addRow').click(function () {
+            var newRow = `<tr>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="text" name="partner_name[]" class="form-control" id="partner_name" value="{{ old('partner_name') }}" placeholder="Enter Partner Name.">
+                    </div>
+                </td>
+                <td><button type="button" class="btn btn-danger removeRow">Remove</button></td>
+            </tr>`;
+            $('#dynamicTable tbody').append(newRow);
+        });
+
+        // Remove a row
+        $(document).on('click', '.removeRow', function () {
+            $(this).closest('tr').remove();
+        });
+    });
+</script>
 @endpush
