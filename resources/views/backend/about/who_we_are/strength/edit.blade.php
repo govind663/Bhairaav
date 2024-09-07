@@ -5,6 +5,11 @@ Bhairaav | Edit Strength
 @endsection
 
 @push('styles')
+<style>
+    textarea.form-control {
+        height: 75px;
+    }
+</style>
 @endpush
 
 @section('content')
@@ -89,6 +94,43 @@ Bhairaav | Edit Strength
                     </div>
                 </div>
 
+                <div class="form-group row mt-3 p-3">
+                    <table class="table table-bordered p-3"  id="dynamicTable">
+                        <thead>
+                            <tr>
+                                <th>Other Description : </th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if(!empty($strength->other_description))
+                                @foreach(json_decode($strength->other_description) as $key => $description)
+                                    <tr>
+                                        <td>
+                                            <div class="col-sm-12 col-md-12">
+                                                <textarea type="text" name="other_description[]" id="other_description" class="form-control" value="{{ $description }}" placeholder="Enter Other Description.">{{ $description }}</textarea>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger removeRow">Remove</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                            <tr>
+                                <td>
+                                    <div class="col-sm-12 col-md-12">
+                                        <textarea type="text" name="other_description[]" class="form-control" id="other_description" value="{{ old('other_description') }}" placeholder="Enter Other Description.">{{ old('other_description') }}</textarea>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" id="addRow">Add More</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <div class="form-group row mt-4">
                     <label class="col-md-3"></label>
                     <div class="col-md-9" style="display: flex; justify-content: flex-end;">
@@ -147,5 +189,28 @@ Bhairaav | Edit Strength
 
     }
 
+</script>
+
+{{-- Add More Other Description --}}
+<script>
+    $(document).ready(function () {
+        // Add a new row with validation
+        $('#addRow').click(function () {
+            var newRow = `<tr>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <textarea type="text" name="other_description[]" class="form-control" id="other_description" value="{{ old('other_description') }}" placeholder="Enter Other Description.">{{ old('other_description') }}</textarea>
+                    </div>
+                </td>
+                <td><button type="button" class="btn btn-danger removeRow">Remove</button></td>
+            </tr>`;
+            $('#dynamicTable tbody').append(newRow);
+        });
+
+        // Remove a row
+        $(document).on('click', '.removeRow', function () {
+            $(this).closest('tr').remove();
+        });
+    });
 </script>
 @endpush

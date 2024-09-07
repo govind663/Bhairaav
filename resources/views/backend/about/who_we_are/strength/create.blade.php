@@ -5,6 +5,11 @@ Bhairaav | Add Strength
 @endsection
 
 @push('styles')
+<style>
+    textarea.form-control {
+        height: 75px;
+    }
+</style>
 @endpush
 
 @section('content')
@@ -93,7 +98,7 @@ Bhairaav | Add Strength
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12">
-                                        <input type="text" name="other_description[]" id="other_description" class="form-control" value="{{ old('other_description') }}" placeholder="Enter Other Description.">
+                                        <textarea type="text" name="other_description[]" class="form-control" id="other_description" value="{{ old('other_description') }}" placeholder="Enter Other Description.">{{ old('other_description') }}</textarea>
                                     </div>
                                 </td>
                                 <td>
@@ -173,7 +178,7 @@ Bhairaav | Add Strength
             var newRow = `<tr>
                 <td>
                     <div class="col-sm-12 col-md-12">
-                        <input type="text" name="other_description[]" id="other_description" class="form-control" value="{{ old('other_description') }}" placeholder="Enter Other Description.">
+                        <textarea type="text" name="other_description[]" class="form-control" id="other_description" value="{{ old('other_description') }}" placeholder="Enter Other Description.">{{ old('other_description') }}</textarea>
                     </div>
                 </td>
                 <td><button type="button" class="btn btn-danger removeRow">Remove</button></td>
