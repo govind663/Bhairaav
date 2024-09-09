@@ -32,7 +32,7 @@ class WhoWeAreController extends Controller
         $legacies = Legacy::orderBy("id","desc")->whereNull('deleted_at')->first();
 
         // === Fetch The Strength
-        $strengths = Strength::orderBy("id","desc")->whereNull('deleted_at')->get();
+        $strengths = Strength::orderBy("id","asc")->whereNull('deleted_at')->get();
         // dd($strengths);
 
         // === Fetch The Strength Title

@@ -123,7 +123,7 @@
                 <div class="cs_section_heading_wrap_1">
                     <div class="cs_section_heading cs_style_1">
                         <p class="cs_section_subtitle cs_medium cs_letter_spacing_1 cs_mb_10 cs_mb_lg_15 text-uppercase wow fadeInLeft"
-                            data-wow-duration="0.8s" data-wow-delay="0.2s">Strengths</p>
+                            data-wow-duration="0.8s" data-wow-delay="0.2s">Why Choose Bhairaav</p>
                         <h2 class="cs_fs_50 cs_bold mb-0">{{ $strengthTitle->title }}</h2>
                     </div>
                     <div class="cs_slider_arrows cs_style_4">

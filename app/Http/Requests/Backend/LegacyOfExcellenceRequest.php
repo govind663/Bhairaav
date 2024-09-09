@@ -23,13 +23,13 @@ class LegacyOfExcellenceRequest extends FormRequest
     {
         if ($this->id){
             $rule = [
-                'title' => 'required|string|max:255',
+                'title' => 'required|string|max:555',
                 'description' => 'required|string',
                 'image' => 'mimes:jpeg,png,jpg,pdf|max:2048',
             ];
         }else{
             $rule = [
-                'title' => 'required|string|max:255',
+                'title' => 'required|string|max:555',
                 'description' => 'required|string',
                 'image' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
             ];

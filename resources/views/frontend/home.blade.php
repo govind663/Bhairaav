@@ -422,7 +422,7 @@
                                                     <!-- <p class="mb-0">Hotel Guest</p> -->
                                                 </div>
                                             </div>
-                                            <blockquote class="cs_testimonial_blockquote cs_fs_16 cs_primary_color fst-normal cs_mb_15">
+                                            <blockquote class="cs_testimonial_blockquote cs_fs_16 cs_primary_color fst-normal cs_mb_15 text-justify">
                                                 {!! $value->description !!}
                                             </blockquote>
                                             @php
