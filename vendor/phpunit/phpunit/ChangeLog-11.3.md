@@ -2,6 +2,29 @@
 
 All notable changes of the PHPUnit 11.3 release series are documented in this file using the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
+## [11.3.3] - 2024-09-04
+
+### Added
+
+* [#5937](https://github.com/sebastianbergmann/phpunit/issues/5937): `failOnPhpunitDeprecation` attribute on the `<phpunit>` element of the XML configuration file and `--fail-on-phpunit-deprecation` CLI option for controlling whether PHPUnit deprecations should be considered when determining the test runner's shell exit code (default: do not consider)
+* `displayDetailsOnPhpunitDeprecations` attribute on the `<phpunit>` element of the XML configuration file and `--display-phpunit-deprecations` CLI option for controlling whether details on PHPUnit deprecations should be displayed (default: do not display)
+
+### Changed
+
+* [#5937](https://github.com/sebastianbergmann/phpunit/issues/5937): PHPUnit deprecations will, by default, no longer affect the test runner's shell exit code. This can optionally be turned back on using the `--fail-on-phpunit-deprecation` CLI option or the `failOnPhpunitDeprecation="true"` attribute on the `<phpunit>` element of the XML configuration file.
+* Details for PHPUnit deprecations will, by default, no longer be displayed. This can optionally be turned back on using the `--display-phpunit-deprecations` CLI option or the `displayDetailsOnPhpunitDeprecations` attribute on the `<phpunit>` element of the XML configuration file.
+
+## [11.3.2] - 2024-09-03
+
+### Changed
+
+* [#5931](https://github.com/sebastianbergmann/phpunit/pull/5931): `name` property on `<testsuites>` element in JUnit XML logfile
+* Removed `.phpstorm.meta.php` file as methods such as `TestCase::createStub()` use generics / template types for their return types and PhpStorm, for example, uses that information
+
+### Fixed
+
+* [#5884](https://github.com/sebastianbergmann/phpunit/issues/5884): TestDox printer does not consider that issues can be suppressed by attribute, baseline, source location, or `@` operator
+
 ## [11.3.1] - 2024-08-13
 
 ### Changed
@@ -22,5 +45,7 @@ All notable changes of the PHPUnit 11.3 release series are documented in this fi
 * [#5856](https://github.com/sebastianbergmann/phpunit/issues/5856): When the test runner is configured to fail on deprecations, notices, warnings, incomplete tests, or skipped tests then details for tests that triggered deprecations, notices, or warnings as well as tests that were marked as incomplete or skipped are always shown, respectively
 * [#5869](https://github.com/sebastianbergmann/phpunit/pull/5869): The configuration file generated using `--generate-configuration` now limits the export of arrays to 10 elements in order to improve performance
 
+[11.3.3]: https://github.com/sebastianbergmann/phpunit/compare/11.3.2...11.3.3
+[11.3.2]: https://github.com/sebastianbergmann/phpunit/compare/11.3.1...11.3.2
 [11.3.1]: https://github.com/sebastianbergmann/phpunit/compare/11.3.0...11.3.1
 [11.3.0]: https://github.com/sebastianbergmann/phpunit/compare/11.2.9...11.3.0
