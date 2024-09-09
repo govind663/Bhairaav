@@ -242,6 +242,8 @@ Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware
 
         // ==== Channel Partner
         Route::get('/channel-partner', [ChannelPartnerController::class, 'channelPartner'])->name('frontend.becone-an-associate.channel-partner');
+        // ==== Store Channel Partner
+        Route::post('/store-channel-partner', [ChannelPartnerController::class,'storeChannelPartner'])->name('store-channel-partner');
 
         // ==== Channel Refer
         Route::get('/chanel-refer', [ChannelReferController::class, 'chanelRefer'])->name('frontend.becone-an-associate.chanel-refer');
