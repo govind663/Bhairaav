@@ -33,18 +33,60 @@
                             </h2>
                         </div>
                         <div class="cs_height_10 cs_height_lg_10"></div>
-                        <form action="#" class="cs_form cs_style_2">
-                            <input type="text" placeholder="Full Name*" class="cs_form_field_2 cs_radius_20">
-                            <div class="cs_height_16 cs_height_lg_16"></div>
-                            <input type="text" placeholder="Email Id*" class="cs_form_field_2 cs_radius_20">
-                            <div class="cs_height_16 cs_height_lg_16"></div>
-                            <input type="text" placeholder="Phone No*" class="cs_form_field_2 cs_radius_20">
-                            <div class="cs_height_16 cs_height_lg_16"></div>
-                            <input type="text" placeholder="Subject*" class="cs_form_field_2 cs_radius_20">
-                            <div class="cs_height_16 cs_height_lg_16"></div>
-                            <textarea cols="30" placeholder="Your Message" rows="5" class="cs_form_field_2 cs_radius_20"></textarea>
-                            <div class="cs_height_25 cs_height_lg_25"></div>
-                            <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15">
+                        <form method="POST" action="{{ route('store-contact-us') }}" class="cs_form cs_style_2" enctype="multipart/form-data" autocomplete="off">
+                            @csrf
+
+                            <div class="col-sm-12">
+                                <label class="cs_height_16 cs_height_lg_16"><b>Full Name : <span class="text-danger">*</span></b></label>
+                                <input type="text" class="cs_form_field_2 cs_radius_10 @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}" placeholder="Enter Full Name">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-sm-12">
+                                <label class="cs_height_16 cs_height_lg_16"><b>Email Id : <span class="text-danger">*</span></b></label>
+                                <input type="email" class="cs_form_field_2 cs_radius_10 @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="Enter Email Id">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-sm-12">
+                                <label class="cs_height_16 cs_height_lg_16"><b>Phone No. : <span class="text-danger">*</span></b></label>
+                                <input type="text" maxlength="10" class="cs_form_field_2 cs_radius_10 @error('phone_no') is-invalid @enderror" name="phone_no" id="phone_no" value="{{ old('phone_no') }}" placeholder="Enter Phone No.">
+                                @error('phone_no')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-sm-12">
+                                <label class="cs_height_16 cs_height_lg_16"><b>Subject : <span class="text-danger">*</span></b></label>
+                                <input type="text" class="cs_form_field_2 cs_radius_10 @error('subject') is-invalid @enderror" name="subject" id="subject" value="{{ old('subject') }}" placeholder="Enter Subject.">
+                                @error('subject')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-sm-12">
+                                <label class="cs_height_16 cs_height_lg_16"><b>Message : </b></label>
+                                <textarea cols="30"  rows="5" class="cs_form_field_2 cs_radius_10 @error('message') is-invalid @enderror" name="message" id="message" value="{{ old('message') }}" placeholder="Enter Message">{{ old('message') }}</textarea>
+                                @error('message')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_10 cs_fs_15" type="submit">
                                 <b>Send Message</b>
                                 <span>
                                     <i>

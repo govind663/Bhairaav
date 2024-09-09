@@ -264,4 +264,6 @@ Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware
 
     // ==== Contact Us
     Route::get('/contact-us', [ContactUsController::class, 'contactUs'])->name('frontend.contact-us');
+    // ==== Store Contact Us
+    Route::post('/store-contact-us', [ContactUsController::class, 'storeContactUs'])->name('store-contact-us');
 });
