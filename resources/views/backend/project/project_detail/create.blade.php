@@ -215,7 +215,7 @@ Bhairaav | Add Project Details
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12">
-                                        <select name="location_advantage_id" id="location_advantage_id" class="form-control custom-select2 @error('location_advantage_id') is-invalid @enderror" value="{{ old('location_advantage_id') }}">
+                                        <select name="location_advantage_id[]" id="location_advantage_id" class="form-control custom-select2 @error('location_advantage_id') is-invalid @enderror" value="{{ old('location_advantage_id.0') }}">
                                             <option value="">Select Feature Name</option>
                                             <optgroup label="Feature Name">
                                                 @foreach ($featureName as $value )
@@ -275,7 +275,7 @@ Bhairaav | Add Project Details
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12">
-                                        <input type="file" accept=".png, .jpg, .jpeg"  id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image')}}">
+                                        <input type="file" accept=".png, .jpg, .jpeg"  name="amenite_image[]" id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image.0')}}">
                                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                                         <br>
                                         <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
@@ -287,6 +287,7 @@ Bhairaav | Add Project Details
                                         @enderror
                                     </div>
                                 </td>
+
                                 <td>
                                     <div class="col-sm-12 col-md-12">
                                         <input type="text" name="amenite_image_name[]" id="amenite_image_name" class="form-control @error('amenite_image_name.*') is-invalid @enderror" value="{{ old('amenite_image_name.0') }}" placeholder="Enter Feature Value">
@@ -331,7 +332,7 @@ Bhairaav | Add Project Details
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12">
-                                        <input type="file" accept=".png, .jpg, .jpeg" name="gallery_image[]" id="gallery_image" class="form-control @error('gallery_image') is-invalid @enderror" value="{{old('gallery_image')}}">
+                                        <input type="file" accept=".png, .jpg, .jpeg" name="gallery_image[]" id="gallery_image" class="form-control @error('gallery_image') is-invalid @enderror" value="{{ old('gallery_image.0') }}">
                                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                                         <br>
                                         <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
@@ -389,8 +390,13 @@ Bhairaav | Add Project Details
         $('#addRow').click(function () {
             var newRow = `<tr>
                 <td>
-                    <div class="col-sm-8 col-md-8">
+                    <div class="col-sm-12 col-md-12">
                         <input type="text" name="hallmarks[]" id="hallmarks" class="form-control @error('hallmarks.*') is-invalid @enderror" value="{{ old('hallmarks.0') }}" placeholder="Enter Project Hallmarks">
+                        @error('hallmarks.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </td>
                 <td><button type="button" class="btn btn-danger removeRow">Remove</button></td>
@@ -408,55 +414,54 @@ Bhairaav | Add Project Details
 {{-- Add More Location Advantages --}}
 <script>
     $(document).ready(function () {
-        // Initialize Select2 on document ready for existing elements
-        $('.custom-select2').select2();
+    // Initialize Select2 on document ready for existing elements
+    $('.custom-select2').select2();
 
-        // Add a new row with validation
-        $('#addFeatureRow').click(function () {
-            var newRow = `<tr>
-                <td>
-                    <div class="col-sm-12 col-md-12">
-                        <select name="location_advantage_id[]" class="form-control custom-select2 @error('location_advantage_id') is-invalid @enderror">
-                            <option value="">Select Feature Name</option>
-                            <optgroup label="Feature Name">
-                                @foreach ($featureName as $value )
-                                    <option value="{{ $value->id }}" {{ (old("location_advantage_id") == $value->id ? "selected":"") }}>{{ $value->feature_name }}</option>
-                                @endforeach
-                            </optgroup>
-                        </select>
-                        @error('location_advantage_id.*')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </td>
+    // Add a new row with validation
+    $('#addFeatureRow').click(function () {
+        var newRow = `<tr>
+            <td>
+                <div class="col-sm-12 col-md-12">
+                    <select name="location_advantage_id[]" class="form-control custom-select2 @error('location_advantage_id') is-invalid @enderror" value="{{ old('location_advantage_id.0') }}">
+                        <option value="">Select Feature Name</option>
+                        <optgroup label="Feature Name">
+                            @foreach ($featureName as $value )
+                                <option value="{{ $value->id }}" {{ (old("location_advantage_id") == $value->id ? "selected":"") }}>{{ $value->feature_name }}</option>
+                            @endforeach
+                        </optgroup>
+                    </select>
+                    @error('location_advantage_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </td>
+            <td>
+                <div class="col-sm-12 col-md-12">
+                    <input type="text" name="feature_value[]" class="form-control @error('feature_value.*') is-invalid @enderror" value="{{ old('feature_value.0') }}" placeholder="Enter Feature Value">
+                    @error('feature_value.*')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </td>
+            <td><button type="button" class="btn btn-danger removeFeatureRow">Remove</button></td>
+        </tr>`;
 
-                <td>
-                    <div class="col-sm-12 col-md-12">
-                        <input type="text" name="feature_value[]" class="form-control @error('feature_value.*') is-invalid @enderror" placeholder="Enter Feature Value">
-                        @error('feature_value.*')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </td>
-                <td><button type="button" class="btn btn-danger removeFeatureRow">Remove</button></td>
-            </tr>`;
+        // Append new row
+        var $newRow = $(newRow).appendTo('#dynamicFeatureTable tbody');
 
-            // Append new row
-            var $newRow = $(newRow).appendTo('#dynamicFeatureTable tbody');
-
-            // Initialize Select2 only for new elements within the new row
-            $newRow.find('.custom-select2').select2();
-        });
-
-        // Remove a row
-        $(document).on('click', '.removeFeatureRow', function () {
-            $(this).closest('tr').remove();
-        });
+        // Initialize Select2 only for new elements within the new row
+        $newRow.find('.custom-select2').not('.select2-hidden-accessible').select2();
     });
+
+    // Remove a row
+    $(document).on('click', '.removeFeatureRow', function () {
+        $(this).closest('tr').remove();
+    });
+});
 
 </script>
 
@@ -468,7 +473,7 @@ Bhairaav | Add Project Details
             var newRow = `<tr>
                 <td>
                     <div class="col-sm-12 col-md-12">
-                        <input type="file" accept=".png, .jpg, .jpeg" name="amenite_image[]" id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image')}}">
+                        <input type="file" accept=".png, .jpg, .jpeg"  name="amenite_image[]" id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image.0')}}">
                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                         <br>
                         <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
@@ -478,10 +483,6 @@ Bhairaav | Add Project Details
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                        <br>
-                        <div id="amenite-preview-container">
-                            <div id="file-amenite-preview"></div>
-                        </div>
                     </div>
                 </td>
                 <td>
@@ -514,7 +515,7 @@ Bhairaav | Add Project Details
             var newRow = `<tr>
                 <td>
                     <div class="col-sm-12 col-md-12">
-                        <input type="file" accept=".png, .jpg, .jpeg" name="gallery_image[]" id="gallery_image" class="form-control @error('gallery_image') is-invalid @enderror" value="{{old('gallery_image')}}">
+                        <input type="file" accept=".png, .jpg, .jpeg" name="gallery_image[]" id="gallery_image" class="form-control @error('gallery_image') is-invalid @enderror" value="{{ old('gallery_image.0') }}">
                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                         <br>
                         <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
@@ -666,14 +667,14 @@ Bhairaav | Add Project Details
 {{-- fetch all projects --}}
 <script>
     $(document).ready(function () {
-        $('#project_type').on('change', function () {
-            var id = this.value;
+        $('#project_type_id').on('change', function () {
+            var project_type_id = this.value;
             $("#project_name_id").html('');
             $.ajax({
                 url: "{{ route('fetch-projects') }}",
                 type: "POST",
                 data: {
-                    projectTypeId: id,
+                    projectTypeId: project_type_id,
                     _token: '{{ csrf_token() }}',
                 },
                 dataType: 'json',

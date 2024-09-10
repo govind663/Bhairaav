@@ -380,4 +380,199 @@ Bhairaav | Edit Project Details
 @endsection
 
 @push('scripts')
+{{-- Add More Location Advantages --}}
+<script>
+    $(document).ready(function () {
+        // Initialize Select2 on document ready for existing elements
+        $('.custom-select2').select2();
+
+        // Add a new row with validation
+        $('#addFeatureRow').click(function () {
+            var newRow = <tr>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <select name="location_advantage_id[]" id="location_advantage_id" class="form-control custom-select2 @error('location_advantage_id') is-invalid @enderror" value="{{ old('location_advantage_id.0') }}">
+                            <option value="">Select Feature Name</option>
+                            <optgroup label="Feature Name">
+                                @foreach ($featureName as $value )
+                                    <option value="{{ $value->id }}" {{ (old("location_advantage_id") == $value->id ? "selected":"") }}>{{ $value->feature_name }}</option>
+                                @endforeach
+                            </optgroup>
+                        </select>
+                        @error('location_advantage_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="text" name="feature_value[]" id="feature_value" class="form-control @error('feature_value.*') is-invalid @enderror" value="{{ old('feature_value.0') }}" placeholder="Enter Feature Value">
+                        @error('feature_value.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td><button type="button" class="btn btn-danger removeFeatureRow">Remove</button></td>
+            </tr>;
+
+            // Append new row
+            var $newRow = $(newRow).appendTo('#dynamicFeatureTable tbody');
+
+            // Initialize Select2 only for new elements within the new row also apply old row
+            $newRow.find('.custom-select2').select2();
+
+            // Initialize Select2 on document ready for new elements
+            $('.custom-select2').select2();
+        });
+
+        // Remove a row
+        $(document).on('click', '.removeFeatureRow', function () {
+            $(this).closest('tr').remove();
+        });
+    });
+</script>
+
+{{-- preview Multiple Image both PDF --}}
+<script>
+    function agentPreviewFiles() {
+        const fileInput = document.getElementById('banner_image');
+        const filePreview = document.getElementById('file-preview');
+
+        const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+        const validPdfTypes = ['application/pdf'];
+
+        Array.from(fileInput.files).forEach(file => {
+            const fileType = file.type;
+
+            // Create a container for each file preview with a delete button
+            const previewContainer = document.createElement('div');
+            previewContainer.style.position = 'relative';
+            previewContainer.style.display = 'inline-block';
+
+            // Create the delete icon
+            const deleteIcon = document.createElement('span');
+            deleteIcon.innerHTML = '&times;';
+            deleteIcon.style.position = 'absolute';
+            deleteIcon.style.top = '5px';
+            deleteIcon.style.right = '5px';
+            deleteIcon.style.cursor = 'pointer';
+            deleteIcon.style.color = 'red';
+            deleteIcon.style.fontSize = '18px';
+            deleteIcon.title = 'Remove this file';
+            deleteIcon.onclick = function() {
+                previewContainer.remove(); // Remove the preview container on delete icon click
+            };
+
+            if (validImageTypes.includes(fileType)) {
+                // Image preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.alt = 'File Preview';
+                    img.style.width = '100px';
+                    img.style.height = '100px';
+                    img.style.objectFit = 'cover';
+                    img.style.margin = '5px';
+                    previewContainer.appendChild(img);
+                    previewContainer.appendChild(deleteIcon); // Add delete icon to the preview
+                };
+                reader.readAsDataURL(file);
+            } else if (validPdfTypes.includes(fileType)) {
+                // PDF preview using an embed element
+                const embed = document.createElement('embed');
+                embed.src = URL.createObjectURL(file);
+                embed.type = 'application/pdf';
+                embed.style.width = '100px';
+                embed.style.height = '100px';
+                embed.style.margin = '5px';
+                previewContainer.appendChild(embed);
+                previewContainer.appendChild(deleteIcon); // Add delete icon to the preview
+            } else {
+                // Unsupported file type
+                const errorText = document.createElement('p');
+                errorText.textContent = 'Unsupported file type';
+                previewContainer.appendChild(errorText);
+                previewContainer.appendChild(deleteIcon); // Add delete icon to the preview
+            }
+
+            // Append the preview container with the file and delete icon to the filePreview element
+            filePreview.appendChild(previewContainer);
+        });
+    }
+</script>
+
+{{-- Overview preview both Image and PDF --}}
+<script>
+    function overviewPreviewFiles() {
+        const fileInput = document.getElementById('overview_image');
+        const previewContainer = document.getElementById('overview-container');
+        const filePreview = document.getElementById('file-overview');
+        const file = fileInput.files[0];
+
+        if (file) {
+            const fileType = file.type;
+            const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+            const validPdfTypes = ['application/pdf'];
+
+            if (validImageTypes.includes(fileType)) {
+                // Image preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    filePreview.innerHTML = `<img src="${e.target.result}" alt="File Preview" style="width:500px; height:300px !important;">`;
+                };
+                reader.readAsDataURL(file);
+            } else if (validPdfTypes.includes(fileType)) {
+                // PDF preview using an embed element
+                filePreview.innerHTML =
+                    `<embed src="${URL.createObjectURL(file)}" type="application/pdf" width="100%" height="25%" />`;
+            } else {
+                // Unsupported file type
+                filePreview.innerHTML = '<p>Unsupported file type</p>';
+                filePreview.innerHTML += `<p>Please select a valid image or PDF file.</p>`;
+                filePreview.innerHTML += `<p>You can also drag and drop a file here to preview.</p>`;
+
+                previewContainer.style.display = 'none';
+
+                return;
+            }
+
+            previewContainer.style.display = 'block';
+        } else {
+            // No file selected
+            previewContainer.style.display = 'none';
+        }
+
+    }
+
+</script>
+
+{{-- fetch all projects --}}
+<script>
+    $(document).ready(function () {
+        $('#project_type_id').on('change', function () {
+            var project_type_id = this.value;
+            $("#project_name_id").html('');
+            $.ajax({
+                url: "{{ route('fetch-projects') }}",
+                type: "POST",
+                data: {
+                    projectTypeId: project_type_id,
+                    _token: '{{ csrf_token() }}',
+                },
+                dataType: 'json',
+                success: function (result) {
+                    $('#project_name_id').html('<option value="">-- Select Project Name --</option>');
+                    $.each(result.projects, function (key, value) {
+                        $("#project_name_id").append('<option value="' + value.id + '">' + value.project_name + '</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>
 @endpush

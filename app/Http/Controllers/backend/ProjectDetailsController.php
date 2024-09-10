@@ -378,7 +378,7 @@ class ProjectDetailsController extends Controller
     public function fetchProjects(Request $request) {
         $projectStatus = $request->projectTypeId;
 
-        $ongoingProjects = Projects::where('status', $projectStatus)
+        $ongoingProjects = Projects::where('project_type', $projectStatus)
                                     ->orderBy("id", "desc")
                                     ->whereNull('deleted_at')
                                     ->get(['id', 'project_name']);
