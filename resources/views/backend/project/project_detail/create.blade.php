@@ -83,7 +83,7 @@ Bhairaav | Add Project Details
                     <div class="form-group row mt-3">
                         <label class="col-sm-4"><b>Upload Projet Banner Image : <span class="text-danger">*</span></b></label>
                         <div class="col-sm-8 col-md-8">
-                            <input type="file" multiple onchange="agentPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="banner_image[]" multiple id="banner_image" class="form-control @error('banner_image') is-invalid @enderror" value="{{old('banner_image')}}">
+                            <input type="file" onchange="agentPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="banner_image[]" multiple id="banner_image" class="form-control @error('banner_image') is-invalid @enderror" value="{{old('banner_image')}}">
                             <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                             <br>
                             <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
@@ -128,7 +128,7 @@ Bhairaav | Add Project Details
                     <div class="form-group row mt-3">
                         <label class="col-sm-4"><b>Project Overview Image : <span class="text-danger">*</span></b></label>
                         <div class="col-sm-8 col-md-8">
-                            <input type="file" onchange="overviewPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="overview_image[]" id="overview_image" class="form-control @error('overview_image') is-invalid @enderror" value="{{ old('overview_image') }}">
+                            <input type="file" onchange="overviewPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="overview_image" id="overview_image" class="form-control @error('overview_image') is-invalid @enderror" value="{{ old('overview_image') }}">
                             <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                             <br>
                             <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>

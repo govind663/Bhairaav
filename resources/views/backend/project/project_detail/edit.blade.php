@@ -81,7 +81,7 @@ Bhairaav | Edit Project Details
                     <div class="form-group row mt-3">
                         <label class="col-sm-4"><b>Upload Projet Banner Image : <span class="text-danger">*</span></b></label>
                         <div class="col-sm-8 col-md-8">
-                            <input type="file" multiple onchange="agentPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="banner_image[]" multiple id="banner_image" class="form-control @error('banner_image') is-invalid @enderror" value="{{old('banner_image')}}">
+                            <input type="file" onchange="agentPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="banner_image[]" multiple id="banner_image" class="form-control @error('banner_image') is-invalid @enderror" value="{{old('banner_image')}}">
                             <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                             <br>
                             <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
@@ -126,7 +126,7 @@ Bhairaav | Edit Project Details
                     <div class="form-group row mt-3">
                         <label class="col-sm-4"><b>Project Overview Image : <span class="text-danger">*</span></b></label>
                         <div class="col-sm-8 col-md-8">
-                            <input type="file" onchange="overviewPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="overview_image[]" id="overview_image" class="form-control @error('overview_image') is-invalid @enderror" value="{{ old('overview_image') }}">
+                            <input type="file" onchange="overviewPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="overview_image" id="overview_image" class="form-control @error('overview_image') is-invalid @enderror" value="{{ old('overview_image') }}">
                             <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                             <br>
                             <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
@@ -213,7 +213,7 @@ Bhairaav | Edit Project Details
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12">
-                                        <select name="location_advantage_id" id="location_advantage_id" class="form-control custom-select2 @error('location_advantage_id') is-invalid @enderror" value="{{ old('location_advantage_id') }}">
+                                        <select name="location_advantage_id[]" id="location_advantage_id" class="form-control custom-select2 @error('location_advantage_id') is-invalid @enderror" value="{{ old('location_advantage_id.0') }}">
                                             <option value="">Select Feature Name</option>
                                             <optgroup label="Feature Name">
                                                 @foreach ($featureName as $value )
@@ -273,7 +273,7 @@ Bhairaav | Edit Project Details
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12">
-                                        <input type="file" accept=".png, .jpg, .jpeg"  id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image')}}">
+                                        <input type="file" accept=".png, .jpg, .jpeg"  name="amenite_image[]" id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image.0')}}">
                                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                                         <br>
                                         <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
@@ -285,6 +285,7 @@ Bhairaav | Edit Project Details
                                         @enderror
                                     </div>
                                 </td>
+
                                 <td>
                                     <div class="col-sm-12 col-md-12">
                                         <input type="text" name="amenite_image_name[]" id="amenite_image_name" class="form-control @error('amenite_image_name.*') is-invalid @enderror" value="{{ old('amenite_image_name.0') }}" placeholder="Enter Feature Value">
@@ -295,6 +296,7 @@ Bhairaav | Edit Project Details
                                         @enderror
                                     </div>
                                 </td>
+
                                 <td>
                                     <button type="button" class="btn btn-primary" id="addAmenitiesRow">Add More</button>
                                 </td>
@@ -329,7 +331,7 @@ Bhairaav | Edit Project Details
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12">
-                                        <input type="file" accept=".png, .jpg, .jpeg" name="gallery_image[]" id="gallery_image" class="form-control @error('gallery_image') is-invalid @enderror" value="{{old('gallery_image')}}">
+                                        <input type="file" accept=".png, .jpg, .jpeg" name="gallery_image[]" id="gallery_image" class="form-control @error('gallery_image') is-invalid @enderror" value="{{ old('gallery_image.0') }}">
                                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                                         <br>
                                         <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>

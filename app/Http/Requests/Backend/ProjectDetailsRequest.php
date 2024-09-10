@@ -26,7 +26,8 @@ class ProjectDetailsRequest extends FormRequest
                 // ==== Project Details
                 'project_type_id' => 'required|numeric',
                 'project_name_id' => 'required|numeric',
-                'banner_image' => 'mimes:jpeg,png,jpg,pdf|max:2048',
+                'banner_image' => 'array',
+                'banner_image.*' => 'mimes:jpeg,png,jpg,pdf|max:2048',
                 'maha_rera_registration_number' => 'required|string|max:255',
                 'project_link' => 'required|string|max:255',
 
@@ -64,7 +65,8 @@ class ProjectDetailsRequest extends FormRequest
                 // ==== Project Details
                 'project_type_id' => 'required|numeric',
                 'project_name_id' => 'required|numeric',
-                'banner_image' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
+                'banner_image' => 'required|array',
+                'banner_image.*' => 'mimes:jpeg,png,jpg,pdf|max:2048',
                 'maha_rera_registration_number' => 'required|string|max:255',
                 'project_link' => 'required|string|max:255',
 
@@ -114,6 +116,9 @@ class ProjectDetailsRequest extends FormRequest
             'banner_image.required' => 'The Projet Banner Image is required',
             'banner_image.max' => 'The Projet Banner Image size should be less than 2mb',
             'banner_image.mimes' => 'The Projet Banner Image should be a file of type: jpeg, png, jpg, pdf',
+            'banner_image.*' => 'The Projet Banner Image should be a file of type: jpeg, png, jpg, pdf',
+            'banner_image.*.max' => 'The Projet Banner Image size should be less than 2mb',
+            'banner_image.*.mimes' => 'The Projet Banner Image should be a file of type: jpeg, png, jpg, pdf',
 
             'maha_rera_registration_number.required' => 'The Maha RERA Registration Number is required',
             'maha_rera_registration_number.string' => 'The Maha RERA Registration Number should be a string',
