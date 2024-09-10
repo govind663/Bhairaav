@@ -298,6 +298,7 @@ Bhairaav | Add Project Details
                                         @enderror
                                     </div>
                                 </td>
+
                                 <td>
                                     <button type="button" class="btn btn-primary" id="addAmenitiesRow">Add More</button>
                                 </td>
