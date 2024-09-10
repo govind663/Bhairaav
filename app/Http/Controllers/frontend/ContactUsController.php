@@ -50,7 +50,7 @@ class ContactUsController extends Controller
                 $message->subject('Bhairava Lifestyles - Contact Us');
             });
 
-            return redirect()->back()->with('message','Thank you for your interest. We will get back to you within 24 hours.');
+            return redirect()->route('frontend.contact-us')->with('message','Thank you for your interest. We will get back to you within 24 hours.');
 
         } catch(\Exception $ex){
 

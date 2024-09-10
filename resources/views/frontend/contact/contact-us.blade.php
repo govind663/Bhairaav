@@ -85,7 +85,7 @@
                                     </span>
                                 @enderror
                             </div>
-
+                            <br>
                             <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_10 cs_fs_15" type="submit">
                                 <b>Send Message</b>
                                 <span>
@@ -177,6 +177,7 @@
 
     <section class="cs_page_heading cs_primary_bg cs_bg_filed cs_center" data-src="{{ asset('frontend/assets/img/projects/milestone-2.jpg') }}">
     </section>
+
     <!-- End Contact Info -->
     <div class="location-area sp2">
         <div class="cs_height_70 cs_height_lg_72"></div>

@@ -48,13 +48,13 @@ class ContactUsRequest extends FormRequest
             'name.max' => __('The length of name should not exceed 255 characters'),
             'name.string' => __('The name must be a string.'),
 
-            'email.required' => __('Email is required'),
-            'email.email' => __('Please enter a valid email address.'),
-            'email.max' => __('The length of email should not exceed 255 characters'),
-            'email.string' => __('The email must be a string.'),
+            'email.required' => __('Email Id is required'),
+            'email.email' => __('Please enter a valid email id.'),
+            'email.max' => __('The length of email id should not exceed 255 characters'),
+            'email.string' => __('The email id must be a string.'),
 
-            'phone_no.required' => __('Phone number is required'),
-            'phone_no.numeric' => __('Please enter a valid phone number.'),
+            'phone_no.required' => __('Phone no. is required'),
+            'phone_no.numeric' => __('Please enter a valid phone no..'),
 
             'subject.required' => __('Subject is required'),
             'subject.max' => __('The length of subject should not exceed 255 characters'),
