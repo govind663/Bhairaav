@@ -56,6 +56,7 @@ use App\Models\Statistics;
 use App\Models\LegacyOfExcellence as ModelsLegacyOfExcellence;
 use App\Models\Testimonial;
 use App\Models\WhyChooseBhairaav;
+use App\Models\Blog as ModelBlog;
 
 Route::get('/', function () {
     // ==== Fetch Banner
@@ -73,8 +74,8 @@ Route::get('/', function () {
     // ==== Fetch Testimonials
     $testimonials = Testimonial::orderBy("id","desc")->whereNull('deleted_at')->get();
 
-    // ==== Fetch NEWS & MEDIA
-    $latestUpdates = LatestUpdate::orderBy("id","desc")->whereNull('deleted_at')->get();
+    // Get latest 5 blog entries
+    $latestPosts = ModelBlog::orderBy('inserted_at', 'desc')->limit(3)->get();
 
     return view('frontend.home', [
         'sliders' => $sliders,
@@ -82,7 +83,7 @@ Route::get('/', function () {
         'legacy' => $legacy,
         'whyChooseBhairaavs' => $whyChooseBhairaavs,
         'testimonials' => $testimonials,
-        'latestUpdates' => $latestUpdates
+        'latestPosts' => $latestPosts
     ]);
 })->name('/');
 
@@ -259,7 +260,7 @@ Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware
         Route::get('/blog_list', [BlogController::class, 'blogList'])->name('frontend.blog');
 
         // ==== Blog Details
-        Route::get('/blog-details', [BlogController::class, 'blogDetails'])->name('frontend.blog.blog-details');
+        Route::get('/blog-details/{id}', [BlogController::class, 'blogDetails'])->name('frontend.blog.blog-details');
     });
 
     // ==== Contact Us

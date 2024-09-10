@@ -65,16 +65,8 @@
                                 <a href='{{ route('frontend.media') }}'>Media</a>
                             </li>
 
-                            <li class="menu-item-has-children">
-                                <a href='javascript:;'>Blog</a>
-                                <ul>
-                                    <li>
-                                        <a href='{{ route('frontend.blog') }}'>Blog</a>
-                                    </li>
-                                    <li>
-                                        <a href='{{ route('frontend.blog.blog-details') }}'>Blog Detail</a>
-                                    </li>
-                                </ul>
+                            <li>
+                                <a href='{{ route('frontend.blog') }}'>Blog</a>
                             </li>
 
                             <li>

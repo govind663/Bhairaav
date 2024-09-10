@@ -492,27 +492,30 @@
                     data-variable-width="0" data-slides-per-view="responsive" data-xs-slides="1" data-sm-slides="2"
                     data-md-slides="2" data-lg-slides="3" data-add-slides="3">
                     <div class="cs_slider_wrapper">
-                        @foreach ($latestUpdates as $value)
+                        @foreach($latestPosts as $post)
                         <div class="cs_slide">
                             <div class="cs_post cs_style_1 cs_size_1">
                                 <a class='cs_post_thumb cs_radius_5 overflow-hidden d-block cs_mb_29 cs_mb_lg_20 position-relative'
                                     href='#'>
-                                    <img src="{{ asset('/bhairaav/latest_updates/media_image/' . $value->media_image ) }}"
-                                        alt="{{ $value->media_image }}">
+                                    <img src="{{ asset('/bhairaav/blog/blog_image/' . $post->blog_image ) }}"
+                                        alt="{{ $post->blog_title }}">
                                     <span
                                         class="cs_hover_icon cs_center position-absolute cs_white_color cs_zindex_2 cs_radius_5">
                                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                     </span>
                                 </a>
+                                @php
+                                    $date = \Carbon\Carbon::parse($post->posted_dt);
+                                @endphp
                                 <div class="cs_post_info">
-                                    <!-- <div class="cs_post_meta cs_mb_24">
+                                    {{-- <div class="cs_post_meta cs_mb_24">
                                         <span>By Admin</span>
                                         <span class="cs_post_meta_seperator"></span>
-                                        <span>3 Aug 2024</span>
-                                    </div> -->
+                                        <span>{{ $date->format('M d, Y') }}</span>
+                                    </div> --}}
                                     <h2 class="cs_post_title cs_fs_21 cs_bold">
-                                        <a href='#'>
-                                            {{ $value->name }}
+                                        <a href="{{ route('frontend.blog.blog-details', $post->id) }}">
+                                            {{ $post->blog_title }}
                                         </a>
                                     </h2>
 
