@@ -176,11 +176,11 @@
                         <span class="mtext">Project Manage</span>
                     </a>
                     <ul class="submenu">
-                        {{-- <li>
-                            <a href="{{ route('projects.index') }}"  class="{{ in_array($currentRoute, ['bhairaav_projects.index', 'bhairaav_projects.create', 'bhairaav_projects.edit']) ? 'active' : '' }}">
-                                <span class="mtext">Projects</span>
+                        <li>
+                            <a href="{{ route('bhairaav_projects.create') }}"  class="{{ in_array($currentRoute, ['bhairaav_projects.index', 'bhairaav_projects.create', 'bhairaav_projects.edit']) ? 'active' : '' }}">
+                                <span class="mtext">Add Projects</span>
                             </a>
-                        </li> --}}
+                        </li>
 
                         <li>
                             <a href="{{ route('projects.index', ['status' => 1]) }}" class="{{ (request()->routeIs('projects.index') && request('status') == 1) ? 'active' : '' }}">

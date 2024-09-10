@@ -17,7 +17,18 @@ class ProjectsController extends Controller
     public function index()
     {
         $projects = Projects::orderBy("id","desc")->whereNull('deleted_at')->get();
-        return view('backend.project.all_projets.index', ['projects' => $projects]);
+
+        // Determine if any project has status 1, 2, or 3
+        $hasValidStatus = $projects->contains(function ($project) {
+            return in_array($project->project_type == 1, [1, 2, 3]);
+        });
+
+        // Default status based on the condition
+        $status = $hasValidStatus ? $projects->firstWhere(function ($project) {
+            return in_array($project->project_type, [1, 2, 3]);
+        })->status : 0;
+
+        return view('backend.project.all_projets.index', ['projects' => $projects, 'status' => $status]);
     }
 
     /**
@@ -55,12 +66,12 @@ class ProjectsController extends Controller
             $project->configuration = $request->configuration;
             $project->mobile_no = $request->mobile_no;
             $project->project_type = $request->project_type;
-            $project->status = $request->status;
+            $project->property_type = $request->property_type;
             $project->inserted_at = Carbon::now();
             $project->inserted_by = Auth::user()->id;
             $project->save();
 
-            return redirect()->route('projects.index', ['status' => $project->status])->with('message','Your record has been successfully created.');
+            return redirect()->route('projects.index', ['status' => $request->property_type])->with('message','Your record has been successfully created.');
 
         } catch(\Exception $ex){
 
@@ -112,12 +123,12 @@ class ProjectsController extends Controller
             $project->configuration = $request->configuration;
             $project->mobile_no = $request->mobile_no;
             $project->project_type = $request->project_type;
-            $project->status = $request->status;
+            $project->property_type = $request->property_type;
             $project->modified_at = Carbon::now();
             $project->modified_by = Auth::user()->id;
             $project->save();
 
-            return redirect()->route('projects.index', ['status' => $project->status])->with('message','Your record has been successfully updated.');
+            return redirect()->route('projects.index', ['status' => $request->property_type])->with('message','Your record has been successfully updated.');
 
         } catch(\Exception $ex){
 
@@ -137,7 +148,7 @@ class ProjectsController extends Controller
             $project->status = $request->status;
             $project->update($data);
 
-            return redirect()->route('projects.index', ['status' => $project->status])->with('message','Your record has been successfully deleted.');
+            return redirect()->route('projects.index', ['status' => $request->property_type])->with('message','Your record has been successfully deleted.');
         } catch(\Exception $ex){
 
             return redirect()->back()->with('error','Something Went Wrong - '.$ex->getMessage());
@@ -146,7 +157,7 @@ class ProjectsController extends Controller
 
     public function projectList(Request $request, $status){
 
-        $projects = Projects::where('status', $status)->orderBy("id","desc")->whereNull('deleted_at')->get();
+        $projects = Projects::where('project_type', $status)->orderBy("id","desc")->whereNull('deleted_at')->get();
 
         return view('backend.project.all_projets.index', ['projects' => $projects, 'status' => $status]);
     }

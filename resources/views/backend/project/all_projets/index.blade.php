@@ -1,13 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-    @if ($status == 1)
-        Bhairaav | Manaage Ongoing Projects
-    @elseif ($status == 2)
-        Bhairaav | Manaage Completed Projects
-    @elseif ($status == 3)
-        Bhairaav | Manaage Ongoing Projects
-    @endif
+Bhairaav | Manaage Projects List
 @endsection
 
 @push('styles')
@@ -21,11 +15,13 @@
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
                             @if ($status == 1)
-                                <h4>Manaage Ongoing Projects</h4>
+                                <h4>Manaage Ongoing Projects List</h4>
                             @elseif ($status == 2)
-                                <h4>Manaage Completed Projects</h4>
+                                <h4>Manaage Completed Projects List</h4>
                             @elseif ($status == 3)
-                                <h4>Manaage Ongoing Projects</h4>
+                                <h4>Manaage Ongoing Projects List</h4>
+                            @elseif ($status == 0)
+                                <h4>Manaage Project List</h4>
                             @endif
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
@@ -35,25 +31,28 @@
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
                                     @if ($status == 1)
-                                        Manaage Ongoing Projects
+                                        Manaage Ongoing Projects List
                                     @elseif ($status == 2)
-                                        Manaage Completed Projects
+                                        Manaage Completed Projects List
                                     @elseif ($status == 3)
-                                        Manaage Ongoing Projects
+                                        Manaage Ongoing Projects List
+                                    @elseif ($status == 0)
+                                        Manage Project List
                                     @endif
                                 </li>
                             </ol>
                         </nav>
                     </div>
 
+                    @if($status == 0)
                     <div class="col-md-6 col-sm-12 text-right">
                         <div class="dropdown">
                             <a class="btn btn-primary" href="{{ route('bhairaav_projects.create') }}">
                                 <i class="fa fa-plus" aria-hidden="true"> </i> Projects
                             </a>
-
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
 
@@ -67,10 +66,12 @@
                         <h4 class="text-blue h4">All Completed Projects List</h4>
                     @elseif ($status == 3)
                         <h4 class="text-blue h4">All Ongoing Projects List</h4>
+                    @elseif ($status == 0)
+                        <h4 class="text-blue h4">All Projects List</h4>
                     @endif
                 </div>
                 <div class="pb-20">
-                    <table class="table hover multiple-select-row data-table-export1 nowrap p-3">
+                    <table class="table hover multiple-select-row data-table-export1 nowrap">
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>
@@ -79,7 +80,7 @@
                                 <th>Configuration</th>
                                 <th>Mobile Number</th>
                                 <th>Project Image</th>
-                                <th>Project Type</th>
+                                <th>Property Type</th>
                                 <th class="no-export">Edit</th>
                                 <th class="no-export">Delete</th>
                             </tr>
@@ -89,7 +90,7 @@
                                 <tr>
                                     <td>{{ ++$key }}</td>
                                     <td class="text-wrap text-justify">{{ $value->project_name }}</td>
-                                    <td class="text-wrap text-justify">{{ $value->address }}</td>
+                                    <td class="text-wrap text-justify">{!! $value->address !!}</td>
                                     <td class="text-wrap text-justify">{{ $value->configuration }}</td>
                                     <td class="text-wrap text-justify">{{ $value->mobile_no }}</td>
 
@@ -102,12 +103,13 @@
                                         @endif
                                     </td>
 
-                                    @if ($value->project_type == 1)
+                                    @if ($value->property_type == 1)
                                         <td>Residential</td>
-                                    @elseif($value->project_type == 2)
+                                    @elseif($value->property_type == 2)
                                         <td>Commercial</td>
                                     @endif
 
+                                    @if ($value->project_type == 1 || $value->project_type == 2 || $value->project_type == 3)
                                     <td class="no-export">
                                         <a href="{{ route('bhairaav_projects.edit', $value->id) }}">
                                             <button class="btn btn-warning btn-sm">
@@ -128,6 +130,7 @@
                                             </button>
                                         </form>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

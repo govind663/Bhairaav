@@ -18,6 +18,7 @@ class Projects extends Model
         'image',
         'mobile_no',
         'project_type',
+        'property_type',
         'inserted_by',
         'inserted_at',
         'modified_by',

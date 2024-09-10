@@ -29,6 +29,7 @@ class ProjectsRequest extends FormRequest
                 'image' => 'mimes:jpeg,png,jpg,pdf|max:2048',
                 'mobile_no' => 'required|numeric|digits_between:10,13',
                 'project_type' =>'required|numeric',
+                'property_type' =>'required|numeric',
             ];
         }else{
             $rule = [
@@ -38,6 +39,7 @@ class ProjectsRequest extends FormRequest
                 'image' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
                 'mobile_no' => 'required|numeric|digits_between:10,13',
                 'project_type' =>'required|numeric',
+                'property_type' =>'required|numeric',
             ];
         }
         return $rule;
@@ -66,6 +68,9 @@ class ProjectsRequest extends FormRequest
 
             'project_type.required' => __('Project Type is required'),
             'project_type.numeric' => __('The project type must be a number.'),
+
+            'property_type.required' => __('Property Type is required'),
+            'property_type.numeric' => __('The Property Type must be a number.'),
         ];
     }
 }

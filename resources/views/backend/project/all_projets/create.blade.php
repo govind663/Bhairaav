@@ -68,8 +68,10 @@ Bhairaav | Add Project
                         <select name="project_type" id="project_type" class="form-control custom-select2 @error('project_type') is-invalid @enderror" value="{{ old('project_type') }}">
                             <option value="">Select Project Type</option>
                             <optgroup label="Project Type">
-                                <option value="1" {{ (old("project_type") == '1' ? "selected":"") }}>Residential</option>
-                                <option value="2" {{ (old("project_type") == '2' ? "selected":"") }}>Commercial</option>
+                                <option value="1" {{ (old("project_type") == '1' ? "selected":"") }}>Ongoing Projects</option>
+                                <option value="2" {{ (old("project_type") == '2' ? "selected":"") }}>Completed Projects</option>
+                                <option value="3" {{ (old("project_type") == '3' ? "selected":"") }}>Upcoming Projects</option>
+
                             </optgroup>
                         </select>
                         @error('project_type')
@@ -78,7 +80,24 @@ Bhairaav | Add Project
                             </span>
                         @enderror
                     </div>
+                    <label class="col-sm-2"><b>Property Type : <span class="text-danger">*</span></b></label>
+                    <div class="col-sm-4 col-md-4">
+                        <select name="property_type" id="property_type" class="form-control custom-select2 @error('property_type') is-invalid @enderror" value="{{ old('property_type') }}">
+                            <option value="">Select Property Type</option>
+                            <optgroup label="Property Type">
+                                <option value="1" {{ (old("property_type") == '1' ? "selected":"") }}>Residential</option>
+                                <option value="2" {{ (old("property_type") == '2' ? "selected":"") }}>Commercial</option>
+                            </optgroup>
+                        </select>
+                        @error('property_type')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
 
+                <div class="form-group row mt-3">
                     <label class="col-sm-2"><b>Mobile Number : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
                         <input type="text" maxlength="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="mobile_no" id="mobile_no" class="form-control @error('mobile_no') is-invalid @enderror" value="{{old('mobile_no')}}" placeholder="Enter Mobile Number.">
@@ -88,10 +107,8 @@ Bhairaav | Add Project
                             </span>
                         @enderror
                     </div>
-                </div>
 
-                <div class="form-group row mt-3">
-                    <label class="col-sm-3"><b>Upload Projet Image : <span class="text-danger">*</span></b></label>
+                    <label class="col-sm-2"><b>Upload Projet Image : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
                         <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="image" id="image" class="form-control @error('image') is-invalid @enderror" value="{{old('image')}}">
                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
@@ -108,10 +125,12 @@ Bhairaav | Add Project
                             <div id="file-preview"></div>
                         </div>
                     </div>
+                </div>
 
-                    <label class="col-sm-1"><b>Address : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-4 col-md-4">
-                        <textarea type="text" name="address" id="address" class="form-control @error('address') is-invalid @enderror" value="{{old('address')}}" placeholder="Enter Address.">{{ old('address') }}</textarea>
+                <div class="form-group row mt-3">
+                    <label class="col-sm-4"><b>Address : <span class="text-danger">*</span></b></label>
+                    <div class="col-sm-12 col-md-12">
+                        <textarea type="text" name="address" id="address" class="textarea_editor form-control @error('address') is-invalid @enderror" value="{!! old('address') !!}" placeholder="Enter Address.">{!! old('address') !!}</textarea>
                         @error('address')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
