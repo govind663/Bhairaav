@@ -252,7 +252,7 @@ class ProjectDetailsController extends Controller
             $bannerImagePaths = json_decode($projectDetails->banner_image, true) ?? [];
             if ($request->hasFile('banner_image')) {
                 // Remove existing images if required (logic depends on your needs)
-                foreach ($projectDetails->banner_image as $existingImage) {
+                foreach ($bannerImagePaths as $existingImage) {
                     // Delete old images from storage
                     File::delete(public_path('/bhairaav/project_details/banner_image/' . $existingImage));
                 }
@@ -269,7 +269,7 @@ class ProjectDetailsController extends Controller
             // Update overview image
             if ($request->hasFile('overview_image')) {
                 // Delete old overview image if exists
-                // File::delete(public_path('/bhairaav/project_details/overview_image/' . $projectDetails->overview_image));
+                File::delete(public_path('/bhairaav/project_details/overview_image/' . $projectDetails->overview_image));
 
                 $image = $request->file('overview_image');
                 $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
@@ -278,60 +278,62 @@ class ProjectDetailsController extends Controller
             }
 
             // Update project details
-            $projectDetails->project_type_id = $request->project_type_id;
-            $projectDetails->project_name_id = $request->project_name_id;
-            $projectDetails->maha_rera_registration_number = $request->maha_rera_registration_number;
-            $projectDetails->project_link = $request->project_link;
-            $projectDetails->project_description = $request->project_description;
+            $projectDetails->fill($request->only([
+                'project_type_id',
+                'project_name_id',
+                'maha_rera_registration_number',
+                'project_link',
+                'project_description'
+            ]));
             $projectDetails->modified_at = Carbon::now();
             $projectDetails->modified_by = Auth::user()->id;
             $projectDetails->save();
 
-            $lastInsertedId = $projectDetails->id;
-
             // Update hallmarks
-            ProjectHallmarks::where('project_details_id', $lastInsertedId)->delete(); // Remove old entries
+            ProjectHallmarks::where('project_details_id', $id)->delete();
             $hallmarkId = [];
             if ($request->has('hallmarks')) {
                 foreach ($request->hallmarks as $hallmark) {
                     if (!empty($hallmark)) {
-                        $projectHallmarks = new ProjectHallmarks();
-                        $projectHallmarks->project_details_id = $lastInsertedId;
-                        $projectHallmarks->hallmarks = $hallmark;
-                        $projectHallmarks->modified_at = Carbon::now();
-                        $projectHallmarks->modified_by = Auth::user()->id;
-                        $projectHallmarks->save();
+                        $projectHallmark = ProjectHallmarks::create([
+                            'project_details_id' => $id,
+                            'hallmarks' => $hallmark,
+                            'modified_at' => Carbon::now(),
+                            'modified_by' => Auth::user()->id,
+                        ]);
 
-                        $hallmarkId[] = $projectHallmarks->id;
+                        $hallmarkId[] = $projectHallmark->id;
                     }
                 }
             }
 
             // Update location advantages
-            ProjectLocationAdvantages::where('project_details_id', $lastInsertedId)->delete(); // Remove old entries
+            ProjectLocationAdvantages::where('project_details_id', $id)->delete();
             $projectLocationAdvantageId = [];
             if ($request->has('feature_value')) {
                 foreach ($request->feature_value as $index => $featureValue) {
                     if (!empty($featureValue)) {
-                        $projectLocationAdvantages = new ProjectLocationAdvantages();
-                        $projectLocationAdvantages->project_details_id = $lastInsertedId;
-                        $projectLocationAdvantages->location_advantage_id = $request->location_advantage_id[$index];
-                        $projectLocationAdvantages->feature_value = $featureValue;
-                        $projectLocationAdvantages->modified_at = Carbon::now();
-                        $projectLocationAdvantages->modified_by = Auth::user()->id;
-                        $projectLocationAdvantages->save();
+                        $projectLocationAdvantage = ProjectLocationAdvantages::create([
+                            'project_details_id' => $id,
+                            'location_advantage_id' => $request->location_advantage_id[$index],
+                            'feature_value' => $featureValue,
+                            'modified_at' => Carbon::now(),
+                            'modified_by' => Auth::user()->id,
+                        ]);
 
-                        $projectLocationAdvantageId[] = $projectLocationAdvantages->id;
+                        $projectLocationAdvantageId[] = $projectLocationAdvantage->id;
                     }
                 }
             }
 
             // Update amenities
-            ProjectAmenities::where('project_details_id', $lastInsertedId)->delete(); // Remove old entries
+            ProjectAmenities::where('project_details_id', $id)->delete();
             $projectAmenitiesId = [];
+
             if ($request->has('amenite_image_name')) {
                 foreach ($request->amenite_image_name as $index => $ameniteImageName) {
                     if (!empty($ameniteImageName)) {
+
                         $projectAmenities = new ProjectAmenities();
 
                         if ($request->hasFile('amenite_image.' . $index)) {
@@ -341,7 +343,7 @@ class ProjectDetailsController extends Controller
                             $projectAmenities->amenite_image = $new_name;
                         }
 
-                        $projectAmenities->project_details_id = $lastInsertedId;
+                        $projectAmenities->project_details_id = $id;
                         $projectAmenities->amenite_image_name = $ameniteImageName;
                         $projectAmenities->modified_at = Carbon::now();
                         $projectAmenities->modified_by = Auth::user()->id;
@@ -353,8 +355,9 @@ class ProjectDetailsController extends Controller
             }
 
             // Update gallery
-            ProjectGallery::where('project_details_id', $lastInsertedId)->delete(); // Remove old entries
+            ProjectGallery::where('project_details_id', $id)->delete();
             $projectGalleryId = [];
+
             if ($request->has('gallery_image_name')) {
                 foreach ($request->gallery_image_name as $index => $imageName) {
                     if (!empty($imageName)) {
@@ -367,8 +370,8 @@ class ProjectDetailsController extends Controller
                             $projectGallery->gallery_image = $new_name;
                         }
 
-                        $projectGallery->project_details_id = $lastInsertedId;
-                        $projectGallery->gallery_image_name = $imageName;
+                        $projectGallery->project_details_id = $id;
+                        $projectGallery->gallery_image_name	 = $imageName;
                         $projectGallery->modified_at = Carbon::now();
                         $projectGallery->modified_by = Auth::user()->id;
                         $projectGallery->save();
@@ -377,6 +380,7 @@ class ProjectDetailsController extends Controller
                     }
                 }
             }
+
 
             // Update Project Details with associated IDs
             $update = [
@@ -388,7 +392,7 @@ class ProjectDetailsController extends Controller
                 "project_gallery_id" => json_encode($projectGalleryId, true),
                 "gallery_title" => $request->gallery_title,
             ];
-            ProjectDetails::where('id', $lastInsertedId)->update($update);
+            ProjectDetails::where('id', $id)->update($update);
 
             // DB::commit();
 

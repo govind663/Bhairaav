@@ -120,7 +120,7 @@ Bhairaav | Edit Project Details
                                                 @if(!empty($bannerImage))
                                                     <img src="{{ asset('/bhairaav/project_details/banner_image/' . $bannerImage) }}" alt="{{ $bannerImage }}" class="img-thumbnail" style="max-width: 150px; max-height: 150px;">
                                                 @endif
-                                                <input type="file" accept=".png, .jpg, .jpeg" name="banner_image[]" class="form-control mt-2 @error('banner_image.*') is-invalid @enderror">
+                                                <input type="file" accept=".png, .jpg, .jpeg" name="banner_image[]" id="banner_image" class="form-control mt-2 @error('banner_image.*') is-invalid @enderror" value="{{ $bannerImage }}">
                                                 <small class="text-secondary"><b>Note : The file size should be less than 2MB.</b></small>
                                                 <br>
                                                 <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded.</b></small>
@@ -142,11 +142,16 @@ Bhairaav | Edit Project Details
                             {{-- <tr>
                                 <td>
                                     <div class="col-sm-8 col-md-8">
-                                        <input type="file" accept=".png, .jpg, .jpeg" name="banner_image[]" class="form-control banner-image-input">
-                                        <img src="" alt="Preview" class="img-thumbnail mt-2" style="max-width: 150px; max-height: 150px; display: none;">
-                                        <small class="text-secondary"><b>Note : The file size should be less than 2MB.</b></small>
+                                        <input type="file" accept=".png, .jpg, .jpeg" name="banner_image[]" id="banner_image" class="form-control @error('banner_image.*') is-invalid @enderror" value="{{ old('banner_image') }}">
+                                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                                         <br>
-                                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded.</b></small>
+                                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
+                                        <br>
+                                        @error('banner_image.*')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </td>
                                 <td>
@@ -226,6 +231,7 @@ Bhairaav | Edit Project Details
                                     </td>
                                 </tr>
                             @endforeach
+
                         </tbody>
                     </table>
                 </div>
