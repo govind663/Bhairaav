@@ -21,23 +21,24 @@
         <div class="cs_height_70 cs_height_lg_70"></div>
         <div class="container">
             <div class="row align-items-center cs_gap_y_45">
+                @foreach ($projects as $key => $value)
                 <div class="col-lg-4">
                     <div class="tj-project-item wow fadeInUp" data-wow-delay=".2s">
                         <div class="tj-project-images">
-                            <img src="{{ asset('frontend/assets/img/projects/gold-crest.png') }}" alt="Images" />
+                            <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $value->image ) }}" alt="Images" />
                         </div>
                         <div class="project-content">
                             <h4 class="project-title cs_fs_28 cs_bold">
-                                <a href="goldcrest-residency.html">
-                                    Goldcrest Residency
+                                <a href="{{ route('frontend.project.residential-project.view-project-details', ['id' => $value->id]) }}">
+                                    {{ $value->project_name }}
                                 </a>
                             </h4>
                             <div class="project-button">
-                                <p>Ghansoli</p>
-                                <p>Configuration: 1 & 2 BHK</p>
-                                <p> +91-9071056755</p>
+                                <p>{!! $value->address !!}</p>
+                                <p>Configuration: {{ $value->configuration }}</p>
+                                <p> +91-{{ $value->mobile_no }}</p>
                                 <div class="poject-icon">
-                                    <a href="goldcrest-residency.html">
+                                    <a href="{{ route('frontend.project.residential-project.view-project-details', ['id' => $value->id]) }}">
                                         <i class="fa fa-link"></i>
                                     </a>
                                 </div>
@@ -45,28 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="tj-project-item wow fadeInUp" data-wow-delay=".2s">
-                        <div class="tj-project-images">
-                            <img src="{{ asset('frontend/assets/img/projects/JoQ_Brochure-013-01.jpg') }}" alt="Images" />
-                        </div>
-                        <div class="project-content">
-                            <h4 class="project-title cs_fs_28 cs_bold">
-                                <a href="#">Jewel of Queen</a>
-                            </h4>
-                            <div class="project-button">
-                                <p>Girgaum</p>
-                                <p>Configuration: 2, 3, 3.5,<br>4, 4.5, 5 BHK</p>
-                                <p> +91-9071123428</p>
-                                <div class="poject-icon">
-                                    <a href="#">
-                                        <i class="fa fa-link"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
         </div>

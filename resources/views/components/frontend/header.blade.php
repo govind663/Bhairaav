@@ -73,9 +73,9 @@
                                 <a href='{{ route('frontend.contact-us') }}'>Contact</a>
                             </li>
 
-                            {{-- <li>
+                            <li>
                                 <a href='{{ route('admin.login') }}'>Admin</a>
-                            </li> --}}
+                            </li>
                         </ul>
                     </nav>
                 </div>

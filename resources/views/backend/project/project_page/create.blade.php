@@ -1,10 +1,15 @@
 @extends('backend.layouts.master')
 
 @section('title')
-Bhairaav | Edit Project Details
+Bhairaav | Add Project Details
 @endsection
 
 @push('styles')
+<style>
+    .table-bordered, .table-bordered td, .table-bordered th {
+        border: 1px solid #393b46;
+    }
+</style>
 @endpush
 
 @section('content')
@@ -14,7 +19,7 @@ Bhairaav | Edit Project Details
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div class="title">
-                        <h4>Edit Project Details</h4>
+                        <h4>Add Project Details</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
@@ -22,10 +27,10 @@ Bhairaav | Edit Project Details
                                 <a href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('project_details.index') }}">Manage Project Details</a>
+                                <a href="{{ route('project-details.index') }}">Manage Project Details</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Edit Project Details
+                                Add Project Details
                             </li>
                         </ol>
                     </nav>
@@ -35,11 +40,8 @@ Bhairaav | Edit Project Details
         </div>
 
 
-        <form method="POST" action="{{ route('project_details.update', $projectDetail->id) }}" class="form-horizontal" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('project-details.store') }}" class="form-horizontal" enctype="multipart/form-data">
             @csrf
-            @method('PATCH')
-
-            <input type="text" id="id" name="id" hidden  value="{{ $projectDetail->id }}">
 
             <div class="pd-20 card-box mb-30">
                 <div class="col-12">
@@ -79,26 +81,6 @@ Bhairaav | Edit Project Details
                     </div>
 
                     <div class="form-group row mt-3">
-                        <label class="col-sm-4"><b>Upload Projet Banner Image : <span class="text-danger">*</span></b></label>
-                        <div class="col-sm-8 col-md-8">
-                            <input type="file" onchange="agentPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="banner_image[]" multiple id="banner_image" class="form-control @error('banner_image') is-invalid @enderror" value="{{old('banner_image')}}">
-                            <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
-                            <br>
-                            <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
-                            <br>
-                            @error('banner_image.*')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                            <br>
-                            <div id="preview-container">
-                                <div id="file-preview"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row mt-3">
                         <label class="col-sm-2"><b>Maha RERA Registration Number : <span class="text-danger">*</span></b></label>
                         <div class="col-sm-4 col-md-4">
                             <input type="text" name="maha_rera_registration_number" id="maha_rera_registration_number" class="form-control @error('maha_rera_registration_number') is-invalid @enderror" value="{{ old('maha_rera_registration_number') }}" placeholder="Enter Maha RERA Registration Number.">
@@ -119,6 +101,36 @@ Bhairaav | Edit Project Details
                             @enderror
                         </div>
                     </div>
+
+                    <table class="table table-bordered p-3"  id="dynamicBannerImageTable">
+                        <thead>
+                            <tr>
+                                <th>Projet Banner Image : <span class="text-danger">*</span></th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="col-sm-8 col-md-8">
+                                        <input type="file" accept=".png, .jpg, .jpeg" name="banner_image[]" id="banner_image" class="form-control @error('banner_image.*') is-invalid @enderror" value="{{ old('banner_image') }}">
+                                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
+                                        <br>
+                                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
+                                        <br>
+                                        @error('banner_image.*')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" id="addBannerImageRow">Add More</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="col-12">
@@ -126,10 +138,10 @@ Bhairaav | Edit Project Details
                     <div class="form-group row mt-3">
                         <label class="col-sm-4"><b>Project Overview Image : <span class="text-danger">*</span></b></label>
                         <div class="col-sm-8 col-md-8">
-                            <input type="file" onchange="overviewPreviewFiles()" accept=".png, .jpg, .jpeg, .pdf" name="overview_image" id="overview_image" class="form-control @error('overview_image') is-invalid @enderror" value="{{ old('overview_image') }}">
+                            <input type="file" onchange="overviewPreviewFiles()" accept=".png, .jpg, .jpeg" name="overview_image" id="overview_image" class="form-control @error('overview_image') is-invalid @enderror" value="{{ old('overview_image') }}">
                             <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                             <br>
-                            <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
+                            <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
                             <br>
                             @error('overview_image')
                                 <span class="invalid-feedback" role="alert">
@@ -364,7 +376,7 @@ Bhairaav | Edit Project Details
                 <div class="form-group row mt-4">
                     <label class="col-md-3"></label>
                     <div class="col-md-9" style="display: flex; justify-content: flex-end;">
-                        <a href="{{ route('project_details.index') }}" class="btn btn-danger">Cancel</a>&nbsp;&nbsp;
+                        <a href="{{ route('project-details.index') }}" class="btn btn-danger">Cancel</a>&nbsp;&nbsp;
                         <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </div>
@@ -382,57 +394,259 @@ Bhairaav | Edit Project Details
 @endsection
 
 @push('scripts')
-{{-- Add More Location Advantages --}}
+<!-- JavaScript for Dynamic Fields and Image Preview -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const addBannerImageRowButton = document.getElementById('addBannerImageRow');
+        const dynamicBannerImageTable = document.getElementById('dynamicBannerImageTable').getElementsByTagName('tbody')[0];
+
+        addBannerImageRowButton.addEventListener('click', function () {
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>
+                    <div class="col-sm-8 col-md-8">
+                        <input type="file" accept=".png, .jpg, .jpeg" name="banner_image[]" id="banner_image" class="form-control @error('banner_image.*') is-invalid @enderror" value="{{ old('banner_image') }}">
+                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
+                        <br>
+                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
+                        <br>
+                        @error('banner_image.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger removeBannerImageRow">Remove</button>
+                </td>
+            `;
+            dynamicBannerImageTable.appendChild(newRow);
+        });
+
+        dynamicBannerImageTable.addEventListener('click', function (event) {
+            if (event.target.classList.contains('removeBannerImageRow')) {
+                event.target.closest('tr').remove();
+            }
+        });
+
+        dynamicBannerImageTable.addEventListener('change', function (event) {
+            if (event.target.classList.contains('banner-image-input')) {
+                const fileInput = event.target;
+                const imgPreview = fileInput.nextElementSibling;
+                const file = fileInput.files[0];
+
+                if (file) {
+                    const reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        imgPreview.src = e.target.result;
+                        imgPreview.style.display = 'block';
+                    };
+
+                    reader.readAsDataURL(file);
+                } else {
+                    imgPreview.src = '';
+                    imgPreview.style.display = 'none';
+                }
+            }
+        });
+    });
+</script>
+
+{{-- Add More Hallmarks --}}
 <script>
     $(document).ready(function () {
-        // Initialize Select2 on document ready for existing elements
-        $('.custom-select2').select2();
-
         // Add a new row with validation
-        $('#addFeatureRow').click(function () {
-            var newRow = <tr>
+        $('#addBannerImageRow').click(function () {
+            var newRow = `<tr>
                 <td>
-                    <div class="col-sm-12 col-md-12">
-                        <select name="location_advantage_id[]" id="location_advantage_id" class="form-control custom-select2 @error('location_advantage_id') is-invalid @enderror" value="{{ old('location_advantage_id.0') }}">
-                            <option value="">Select Feature Name</option>
-                            <optgroup label="Feature Name">
-                                @foreach ($featureName as $value )
-                                    <option value="{{ $value->id }}" {{ (old("location_advantage_id") == $value->id ? "selected":"") }}>{{ $value->feature_name }}</option>
-                                @endforeach
-                            </optgroup>
-                        </select>
-                        @error('location_advantage_id')
+                    <div class="col-sm-8 col-md-8">
+                        <input type="file" accept=".png, .jpg, .jpeg" name="banner_image[]" id="banner_image" class="form-control @error('banner_image.*') is-invalid @enderror" value="{{ old('banner_image') }}">
+                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
+                        <br>
+                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
+                        <br>
+                        @error('banner_image.*')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                 </td>
-                <td>
-                    <div class="col-sm-12 col-md-12">
-                        <input type="text" name="feature_value[]" id="feature_value" class="form-control @error('feature_value.*') is-invalid @enderror" value="{{ old('feature_value.0') }}" placeholder="Enter Feature Value">
-                        @error('feature_value.*')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </td>
-                <td><button type="button" class="btn btn-danger removeFeatureRow">Remove</button></td>
-            </tr>;
-
-            // Append new row
-            var $newRow = $(newRow).appendTo('#dynamicFeatureTable tbody');
-
-            // Initialize Select2 only for new elements within the new row also apply old row
-            $newRow.find('.custom-select2').select2();
-
-            // Initialize Select2 on document ready for new elements
-            $('.custom-select2').select2();
+                <td><button type="button" class="btn btn-danger removeBannerImageRow">Remove</button></td>
+            </tr>`;
+            $('#dynamicBannerImageTable tbody').append(newRow);
         });
 
         // Remove a row
-        $(document).on('click', '.removeFeatureRow', function () {
+        $(document).on('click', '.removeBannerImageRow', function () {
+            $(this).closest('tr').remove();
+        });
+    });
+</script>
+
+{{-- Add More Hallmarks --}}
+<script>
+    $(document).ready(function () {
+        // Add a new row with validation
+        $('#addRow').click(function () {
+            var newRow = `<tr>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="text" name="hallmarks[]" id="hallmarks" class="form-control @error('hallmarks.*') is-invalid @enderror" value="{{ old('hallmarks.0') }}" placeholder="Enter Project Hallmarks">
+                        @error('hallmarks.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td><button type="button" class="btn btn-danger removeRow">Remove</button></td>
+            </tr>`;
+            $('#dynamicTable tbody').append(newRow);
+        });
+
+        // Remove a row
+        $(document).on('click', '.removeRow', function () {
+            $(this).closest('tr').remove();
+        });
+    });
+</script>
+
+{{-- Add More Location Advantages --}}
+<script>
+    $(document).ready(function () {
+    // Initialize Select2 on document ready for existing elements
+    $('.custom-select2').select2();
+
+    // Add a new row with validation
+    $('#addFeatureRow').click(function () {
+        var newRow = `<tr>
+            <td>
+                <div class="col-sm-12 col-md-12">
+                    <select name="location_advantage_id[]" class="form-control custom-select2 @error('location_advantage_id') is-invalid @enderror" value="{{ old('location_advantage_id.0') }}">
+                        <option value="">Select Feature Name</option>
+                        <optgroup label="Feature Name">
+                            @foreach ($featureName as $value )
+                                <option value="{{ $value->id }}" {{ (old("location_advantage_id") == $value->id ? "selected":"") }}>{{ $value->feature_name }}</option>
+                            @endforeach
+                        </optgroup>
+                    </select>
+                    @error('location_advantage_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </td>
+            <td>
+                <div class="col-sm-12 col-md-12">
+                    <input type="text" name="feature_value[]" class="form-control @error('feature_value.*') is-invalid @enderror" value="{{ old('feature_value.0') }}" placeholder="Enter Feature Value">
+                    @error('feature_value.*')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </td>
+            <td><button type="button" class="btn btn-danger removeFeatureRow">Remove</button></td>
+        </tr>`;
+
+        // Append new row
+        var $newRow = $(newRow).appendTo('#dynamicFeatureTable tbody');
+
+        // Initialize Select2 only for new elements within the new row
+        $newRow.find('.custom-select2').not('.select2-hidden-accessible').select2();
+    });
+
+    // Remove a row
+    $(document).on('click', '.removeFeatureRow', function () {
+        $(this).closest('tr').remove();
+    });
+});
+
+</script>
+
+{{-- Add More Amities --}}
+<script>
+    $(document).ready(function () {
+        // Add a new row with validation
+        $('#addAmenitiesRow').click(function () {
+            var newRow = `<tr>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="file" accept=".png, .jpg, .jpeg"  name="amenite_image[]" id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image.0')}}">
+                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
+                        <br>
+                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
+                        <br>
+                        @error('amenite_image.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="text" name="amenite_image_name[]" id="amenite_image_name" class="form-control @error('amenite_image_name.*') is-invalid @enderror" value="{{ old('amenite_image_name.0') }}" placeholder="Enter Feature Value">
+                        @error('amenite_image_name.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td><button type="button" class="btn btn-danger removeAmenitiesRow">Remove</button></td>
+            </tr>`;
+            $('#dynamicAmenitiesTable tbody').append(newRow);
+        });
+
+        // Remove a row
+        $(document).on('click', '.removeAmenitiesRow', function () {
+            $(this).closest('tr').remove();
+        });
+    });
+</script>
+
+{{-- Add More Gallery --}}
+<script>
+    $(document).ready(function () {
+        // Add a new row with validation
+        $('#addGalleryRow').click(function () {
+            var newRow = `<tr>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="file" accept=".png, .jpg, .jpeg" name="gallery_image[]" id="gallery_image" class="form-control @error('gallery_image') is-invalid @enderror" value="{{ old('gallery_image.0') }}">
+                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
+                        <br>
+                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
+                        <br>
+                        @error('gallery_image.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="text" name="gallery_image_name[]" id="gallery_image_name" class="form-control @error('gallery_image_name.*') is-invalid @enderror" value="{{ old('gallery_image_name.0') }}" placeholder="Enter Gallery Image Name">
+                        @error('gallery_image_name.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td><button type="button" class="btn btn-danger removeGalleryRow">Remove</button></td>
+            </tr>`;
+            $('#dynamicGalleryTable tbody').append(newRow);
+        });
+
+        // Remove a row
+        $(document).on('click', '.removeGalleryRow', function () {
             $(this).closest('tr').remove();
         });
     });

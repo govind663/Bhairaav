@@ -168,7 +168,7 @@
                         in_array($currentRoute, [
                             'bhairaav_projects.index', 'bhairaav_projects.create', 'bhairaav_projects.edit',
                             'location-advantage.index', 'location-advantage.create', 'location-advantage.edit',
-                            'project_details.index', 'project_details.create', 'project_details.edit'
+                            'project-details.index', 'project-details.create', 'project-details.edit'
                         ]) ? 'show' : ''
                     }}" >
                     <a href="javascript:;" class="dropdown-toggle">
@@ -207,7 +207,7 @@
                         </li>
 
                         <li>
-                            <a href="{{ route('project_details.index') }}" class="{{ in_array($currentRoute, ['project_details.index', 'project_details.create', 'project_details.edit']) ? 'active' : '' }}">
+                            <a href="{{ route('project-details.index') }}" class="{{ in_array($currentRoute, ['project-details.index', 'project-details.create', 'project-details.edit']) ? 'active' : '' }}">
                                 <span class="mtext">Project Details</span>
                             </a>
                         </li>

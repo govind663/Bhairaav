@@ -100,6 +100,7 @@ class ProjectDetailsRequest extends FormRequest
                 'gallery_image_name.*' => 'required|string|min:2|max:255',
             ];
         }
+        dd($rule);
         return $rule;
     }
 

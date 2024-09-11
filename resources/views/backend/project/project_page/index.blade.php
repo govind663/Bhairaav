@@ -30,7 +30,7 @@ Bhairaav | Manaage  Project Details
 
                 <div class="col-md-6 col-sm-12 text-right">
                     <div class="dropdown">
-                        <a class="btn btn-primary" href="{{ route('project_details.create') }}">
+                        <a class="btn btn-primary" href="{{ route('project-details.create') }}">
                             <i class="fa fa-plus" aria-hidden="true"> </i>  Project Details
                         </a>
 
@@ -61,12 +61,17 @@ Bhairaav | Manaage  Project Details
                         @foreach ($projectDetails as $key => $value)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td>{{ $value->project_type_id }}</td>
-                            <td>{{ $value->project_name_id }}</td>
+                            <td>{{ $value->projectName?->project_name }}</td>
+                            @if ($value->project_type_id == 1)
+                                <td>Residential</td>
+                            @elseif($value->project_type_id == 2)
+                                <td>Commercial</td>
+                            @endif
+
                             <td>{{ $value->maha_rera_registration_number }}</td>
                             <td>{{ $value->project_link }}</td>
                             <td class="no-export">
-                                <a href="{{ route('project_details.edit', $value->id) }}">
+                                <a href="{{ route('project-details.edit', $value->id) }}">
                                     <button class="btn btn-warning btn-sm">
                                         <i class="micon dw dw-pencil-1"></i>
                                     </button>
@@ -74,7 +79,7 @@ Bhairaav | Manaage  Project Details
                             </td>
 
                             <td class="no-export">
-                                <form action="{{ route('project_details.destroy', $value->id) }}" method="post">
+                                <form action="{{ route('project-details.destroy', $value->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input name="_method" type="hidden" value="DELETE">

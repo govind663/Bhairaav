@@ -54,4 +54,9 @@ class ProjectDetails extends Model
     public function projectGallery(){
         return $this->belongsTo(ProjectGallery::class, 'project_gallery_id', 'id');
     }
+
+    // ==== Relationship between project_name_id
+    public function projectName(){
+        return $this->belongsTo(Projects::class, 'project_name_id', 'id');
+    }
 }

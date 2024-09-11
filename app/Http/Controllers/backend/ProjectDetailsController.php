@@ -12,9 +12,10 @@ use App\Models\ProjectHallmarks;
 use App\Models\ProjectLocationAdvantages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use App\Models\Projects;
+
 
 class ProjectDetailsController extends Controller
 {
@@ -23,9 +24,9 @@ class ProjectDetailsController extends Controller
      */
     public function index()
     {
-        $projectDetails = ProjectDetails::with('projectHallmarks', 'projectLocationAdvantages', 'projectAmenities', 'projectGallery')->orderBy("id","desc")->whereNull('deleted_at')->get();
+        $projectDetails = ProjectDetails::with('projectHallmarks', 'projectLocationAdvantages', 'projectAmenities', 'projectGallery', 'projectName')->orderBy("id","desc")->whereNull('deleted_at')->get();
 
-        return view ('backend.project.project_detail.index', ['projectDetails' => $projectDetails]);
+        return view ('backend.project.project_page.index', ['projectDetails' => $projectDetails]);
     }
 
     /**
@@ -34,156 +35,156 @@ class ProjectDetailsController extends Controller
     public function create()
     {
         $featureName = LocationAdvantage::orderBy('id', 'desc')->whereNull('deleted_at')->get(['id', 'feature_name']);
-        return view ('backend.project.project_detail.create', ['featureName' => $featureName]);
+
+        return view ('backend.project.project_page.create', ['featureName' => $featureName]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(ProjectDetailsRequest $request)
-{
-    $data = $request->validated();
+    {
 
-    // DB::beginTransaction();
+        $data = $request->validated();
 
-    try {
-        $projectDetails = new ProjectDetails();
+        // DB::beginTransaction();
 
-        // Upload multiple project banner images
-        $bannerImagePaths = [];
-        if ($request->hasFile('banner_image')) {
-            foreach ($request->file('banner_image') as $image) {
+        try {
+            $projectDetails = new ProjectDetails();
+
+            // Upload multiple project banner images
+            $bannerImagePaths = [];
+            if ($request->hasFile('banner_image')) {
+                foreach ($request->file('banner_image') as $image) {
+                    $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
+                    $image->move(public_path('/bhairaav/project_details/banner_image'), $new_name);
+                    $bannerImagePaths[] = $new_name;
+                }
+                $projectDetails->banner_image = json_encode($bannerImagePaths);
+            }
+
+            // Upload Overview Image (overview_image)
+            if ($request->hasFile('overview_image')) {
+                $image = $request->file('overview_image');
                 $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('/bhairaav/project_details/banner_image'), $new_name);
-                $bannerImagePaths[] = $new_name; // Add image name to the array
+                $image->move(public_path('/bhairaav/project_details/overview_image'), $new_name);
+                $projectDetails->overview_image = $new_name;
             }
-            $projectDetails->banner_images = json_encode($bannerImagePaths); // Save the image names as a JSON string
-        }
 
-        // Upload Overview Image (overview_image)
-        if ($request->hasFile('overview_image')) {
-            $image = $request->file('overview_image');
-            $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('/bhairaav/project_details/overview_image'), $new_name);
-            $projectDetails->overview_image = $new_name;
-        }
+            // Save Project Details
+            $projectDetails->project_type_id = $request->project_type_id;
+            $projectDetails->project_name_id = $request->project_name_id;
+            $projectDetails->maha_rera_registration_number = $request->maha_rera_registration_number;
+            $projectDetails->project_link = $request->project_link;
+            $projectDetails->project_description = $request->project_description;
+            $projectDetails->inserted_at = Carbon::now();
+            $projectDetails->inserted_by = Auth::user()->id;
+            $projectDetails->save();
 
-        // Save Project Details
-        $projectDetails->project_type_id = $request->project_type_id;
-        $projectDetails->project_name_id = $request->project_name_id;
-        $projectDetails->maha_rera_registration_number = $request->maha_rera_registration_number;
-        $projectDetails->project_link = $request->project_link;
-        $projectDetails->project_description = $request->project_description;
-        $projectDetails->inserted_at = Carbon::now();
-        $projectDetails->inserted_by = Auth::user()->id;
-        $projectDetails->save();
+            $lastInsertedId = $projectDetails->id;
 
-        $lastInsertedId = $projectDetails->id;
+            $hallmarkId = [];
+            if ($request->has('hallmarks')) {
+                foreach ($request->hallmarks as $hallmark) {
+                    if (!empty($hallmark)) {
+                        $projectHallmarks = new ProjectHallmarks();
+                        $projectHallmarks->project_details_id = $lastInsertedId;
+                        $projectHallmarks->hallmarks = $hallmark; // Store individual hallmark
+                        $projectHallmarks->inserted_at = Carbon::now();
+                        $projectHallmarks->inserted_by = Auth::user()->id;
+                        $projectHallmarks->save();
 
-        $hallmarkId = [];
-        if ($request->has('hallmarks')) {
-            foreach ($request->hallmarks as $hallmark) {
-                if (!empty($hallmark)) {
-                    $projectHallmarks = new ProjectHallmarks();
-                    $projectHallmarks->project_details_id = $lastInsertedId;
-                    $projectHallmarks->hallmarks = $hallmark; // Store individual hallmark
-                    $projectHallmarks->inserted_at = Carbon::now();
-                    $projectHallmarks->inserted_by = Auth::user()->id;
-                    $projectHallmarks->save();
-
-                    $hallmarkId[] = $projectHallmarks->id;
-                }
-            }
-        }
-
-        $projectLocationAdvantageId = [];
-        if ($request->has('feature_value')) {
-            foreach ($request->feature_value as $index => $featureValue) {
-                if (!empty($featureValue)) {
-                    $projectLocationAdvantages = new ProjectLocationAdvantages();
-                    $projectLocationAdvantages->project_details_id = $lastInsertedId;
-                    $projectLocationAdvantages->location_advantage_id = $request->location_advantage_id[$index];
-                    $projectLocationAdvantages->feature_value = $featureValue;
-                    $projectLocationAdvantages->inserted_at = Carbon::now();
-                    $projectLocationAdvantages->inserted_by = Auth::user()->id;
-                    $projectLocationAdvantages->save();
-
-                    $projectLocationAdvantageId[] = $projectLocationAdvantages->id;
-                }
-            }
-        }
-
-        $projectAmenitiesId = [];
-        if ($request->has('amenite_image_name')) {
-            foreach ($request->amenite_image_name as $index => $ameniteImageName) {
-                if (!empty($ameniteImageName)) {
-                    $projectAmenities = new ProjectAmenities();
-
-                    if ($request->hasFile('amenite_image.' . $index)) {
-                        $image = $request->file('amenite_image.' . $index);
-                        $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
-                        $image->move(public_path('/bhairaav/project_details/amenity_images'), $new_name);
-                        $projectAmenities->amenite_image = $new_name;
+                        $hallmarkId[] = $projectHallmarks->id;
                     }
-
-                    $projectAmenities->project_details_id = $lastInsertedId;
-                    $projectAmenities->amenity_image_name = $ameniteImageName;
-                    $projectAmenities->inserted_at = Carbon::now();
-                    $projectAmenities->inserted_by = Auth::user()->id;
-                    $projectAmenities->save();
-
-                    $projectAmenitiesId[] = $projectAmenities->id;
                 }
             }
-        }
 
-        $projectGalleryId = [];
-        if ($request->has('image_name')) {
-            foreach ($request->image_name as $index => $imageName) {
-                if (!empty($imageName)) {
-                    $projectGallery = new ProjectGallery();
+            $projectLocationAdvantageId = [];
+            if ($request->has('feature_value')) {
+                foreach ($request->feature_value as $index => $featureValue) {
+                    if (!empty($featureValue)) {
+                        $projectLocationAdvantages = new ProjectLocationAdvantages();
+                        $projectLocationAdvantages->project_details_id = $lastInsertedId;
+                        $projectLocationAdvantages->location_advantage_id = $request->location_advantage_id[$index];
+                        $projectLocationAdvantages->feature_value = $featureValue;
+                        $projectLocationAdvantages->inserted_at = Carbon::now();
+                        $projectLocationAdvantages->inserted_by = Auth::user()->id;
+                        $projectLocationAdvantages->save();
 
-                    if ($request->hasFile('gallery_image.' . $index)) {
-                        $image = $request->file('gallery_image.' . $index);
-                        $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
-                        $image->move(public_path('/bhairaav/project_details/gallery_image'), $new_name);
-                        $projectGallery->gallery_image = $new_name;
+                        $projectLocationAdvantageId[] = $projectLocationAdvantages->id;
                     }
-
-                    $projectGallery->project_details_id = $lastInsertedId;
-                    $projectGallery->gallery_image_name = $imageName;
-                    $projectGallery->inserted_at = Carbon::now();
-                    $projectGallery->inserted_by = Auth::user()->id;
-                    $projectGallery->save();
-
-                    $projectGalleryId[] = $projectGallery->id;
                 }
             }
+
+            $projectAmenitiesId = [];
+            if ($request->has('amenite_image_name')) {
+                foreach ($request->amenite_image_name as $index => $ameniteImageName) {
+                    if (!empty($ameniteImageName)) {
+                        $projectAmenities = new ProjectAmenities();
+
+                        if ($request->hasFile('amenite_image.' . $index)) {
+                            $image = $request->file('amenite_image.' . $index);
+                            $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
+                            $image->move(public_path('/bhairaav/project_details/amenity_images'), $new_name);
+                            $projectAmenities->amenite_image = $new_name;
+                        }
+
+                        $projectAmenities->project_details_id = $lastInsertedId;
+                        $projectAmenities->amenite_image_name = $ameniteImageName;
+                        $projectAmenities->inserted_at = Carbon::now();
+                        $projectAmenities->inserted_by = Auth::user()->id;
+                        $projectAmenities->save();
+
+                        $projectAmenitiesId[] = $projectAmenities->id;
+                    }
+                }
+            }
+
+            $projectGalleryId = [];
+            if ($request->has('gallery_image_name')) {
+                foreach ($request->gallery_image_name as $index => $imageName) {
+                    if (!empty($imageName)) {
+                        $projectGallery = new ProjectGallery();
+
+                        if ($request->hasFile('gallery_image.' . $index)) {
+                            $image = $request->file('gallery_image.' . $index);
+                            $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
+                            $image->move(public_path('/bhairaav/project_details/gallery_image'), $new_name);
+                            $projectGallery->gallery_image = $new_name;
+                        }
+
+                        $projectGallery->project_details_id = $lastInsertedId;
+                        $projectGallery->gallery_image_name	 = $imageName;
+                        $projectGallery->inserted_at = Carbon::now();
+                        $projectGallery->inserted_by = Auth::user()->id;
+                        $projectGallery->save();
+
+                        $projectGalleryId[] = $projectGallery->id;
+                    }
+                }
+            }
+
+            // Update Project Details with associated IDs
+            $update = [
+                "project_hallmarks_id" => json_encode($hallmarkId, true),
+                "project_location_advantages_id" => json_encode($projectLocationAdvantageId, true),
+                "location_advantages_title" => $request->location_advantages_title,
+                "project_amenities_id" => json_encode($projectAmenitiesId, true),
+                "amenities_title" => $request->amenities_title,
+                "project_gallery_id" => json_encode($projectGalleryId, true),
+                "gallery_title" => $request->gallery_title,
+            ];
+            ProjectDetails::where('id', $lastInsertedId)->update($update);
+
+            // DB::commit();
+
+            return redirect()->route('project-details.index')->with('message','Your record has been successfully updated.');
+
+        } catch (\Exception $ex) {
+            // DB::rollBack();
+            return redirect()->back()->with('error','Something went wrong - ' . $ex->getMessage());
         }
-
-        // Update Project Details with associated IDs
-        $update = [
-            "project_hallmarks_id" => json_encode($hallmarkId, true),
-            "project_location_advantages_id" => json_encode($projectLocationAdvantageId, true),
-            "location_advantages_title" => $request->location_advantages_title,
-            "project_amenities_id" => json_encode($projectAmenitiesId, true),
-            "amenities_title" => $request->amenities_title,
-            "project_gallery_id" => json_encode($projectGalleryId, true),
-            "gallery_title" => $request->gallery_title,
-        ];
-        ProjectDetails::where('id', $lastInsertedId)->update($update);
-
-        // DB::commit();
-
-        return redirect()->route('project_details.index')->with('message','Your record has been successfully updated.');
-
-    } catch (\Exception $ex) {
-        // DB::rollBack();
-        return redirect()->back()->with('error','Something went wrong - ' . $ex->getMessage());
     }
-}
-
-
 
     /**
      * Display the specified resource.
@@ -198,50 +199,77 @@ class ProjectDetailsController extends Controller
      */
     public function edit(string $id)
     {
+        // Fetch the main project details
         $projectDetail = ProjectDetails::findOrFail($id);
-        $featureName = LocationAdvantage::with('projectHallmarks', 'projectLocationAdvantages', 'projectAmenities', 'projectGallery')->orderBy('id', 'desc')->whereNull('deleted_at')->get(['id', 'feature_name']);
 
-        return view('backend.project.project_detail.edit', ['projectDetail' => $projectDetail, 'featureName' => $featureName]);
+        $bannerImages = $projectDetail->banner_image;
+
+        // Fetch Project
+        $projectNames = Projects::where('id', $id)->get();
+
+        // Fetch related hallmarks
+        $projectHallmarks = ProjectHallmarks::where('project_details_id', $id)->get();
+
+        // Fetch related location advantages
+        $projectLocationAdvantages = ProjectLocationAdvantages::where('project_details_id', $id)->get();
+
+        // Fetch related amenities
+        $projectAmenities = ProjectAmenities::where('project_details_id', $id)->get();
+
+        // Fetch related gallery images
+        $projectGallery = ProjectGallery::where('project_details_id', $id)->get();
+
+        // Fetch additional data, such as location advantages feature names
+        $featureName = LocationAdvantage::orderBy('id', 'desc')->whereNull('deleted_at')->get(['id', 'feature_name']);
+
+        // Pass all fetched data to the edit view
+        return view('backend.project.project_page.edit', [
+            'projectDetail' => $projectDetail,
+            'featureName' => $featureName,
+            'projectHallmarks' => $projectHallmarks,
+            'projectLocationAdvantages' => $projectLocationAdvantages,
+            'projectAmenities' => $projectAmenities,
+            'projectGallery' => $projectGallery,
+            'bannerImages' => $bannerImages,
+            'projectNames' => $projectNames,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(ProjectDetailsRequest $request, string $id)
+    public function update(ProjectDetailsRequest $request, $id)
     {
         $data = $request->validated();
+
+        // Find the existing project detail record
+        $projectDetails = ProjectDetails::findOrFail($id);
 
         // DB::beginTransaction();
 
         try {
-            // Fetch existing project details record
-            $projectDetails = ProjectDetails::findOrFail($id);
-
-            // Handle banner images
-            $bannerImagePaths = json_decode($projectDetails->banner_images, true) ?: [];
+            // Update banner images
+            $bannerImagePaths = json_decode($projectDetails->banner_image, true) ?? [];
             if ($request->hasFile('banner_image')) {
-                // Delete old banner images from storage if necessary
-                foreach ($bannerImagePaths as $oldImage) {
-                    if (file_exists(public_path('/bhairaav/project_details/banner_image/' . $oldImage))) {
-                        unlink(public_path('/bhairaav/project_details/banner_image/' . $oldImage));
-                    }
+                // Remove existing images if required (logic depends on your needs)
+                foreach ($projectDetails->banner_image as $existingImage) {
+                    // Delete old images from storage
+                    File::delete(public_path('/bhairaav/project_details/banner_image/' . $existingImage));
                 }
 
-                $bannerImagePaths = [];
+                $bannerImagePaths = []; // Clear the old images
                 foreach ($request->file('banner_image') as $image) {
                     $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
                     $image->move(public_path('/bhairaav/project_details/banner_image'), $new_name);
                     $bannerImagePaths[] = $new_name;
                 }
-                $projectDetails->banner_images = json_encode($bannerImagePaths);
+                $projectDetails->banner_image = json_encode($bannerImagePaths);
             }
 
-            // Handle overview image
+            // Update overview image
             if ($request->hasFile('overview_image')) {
-                // Delete old overview image from storage if necessary
-                if ($projectDetails->overview_image && file_exists(public_path('/bhairaav/project_details/overview_image/' . $projectDetails->overview_image))) {
-                    unlink(public_path('/bhairaav/project_details/overview_image/' . $projectDetails->overview_image));
-                }
+                // Delete old overview image if exists
+                // File::delete(public_path('/bhairaav/project_details/overview_image/' . $projectDetails->overview_image));
 
                 $image = $request->file('overview_image');
                 $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
@@ -255,100 +283,116 @@ class ProjectDetailsController extends Controller
             $projectDetails->maha_rera_registration_number = $request->maha_rera_registration_number;
             $projectDetails->project_link = $request->project_link;
             $projectDetails->project_description = $request->project_description;
-            $projectDetails->updated_at = Carbon::now();
-            $projectDetails->updated_by = Auth::user()->id;
+            $projectDetails->modified_at = Carbon::now();
+            $projectDetails->modified_by = Auth::user()->id;
             $projectDetails->save();
 
-            // Handle hallmarks
+            $lastInsertedId = $projectDetails->id;
+
+            // Update hallmarks
+            ProjectHallmarks::where('project_details_id', $lastInsertedId)->delete(); // Remove old entries
+            $hallmarkId = [];
             if ($request->has('hallmarks')) {
-                ProjectHallmarks::where('project_details_id', $id)->delete();
                 foreach ($request->hallmarks as $hallmark) {
                     if (!empty($hallmark)) {
                         $projectHallmarks = new ProjectHallmarks();
-                        $projectHallmarks->project_details_id = $id;
+                        $projectHallmarks->project_details_id = $lastInsertedId;
                         $projectHallmarks->hallmarks = $hallmark;
-                        $projectHallmarks->inserted_at = Carbon::now();
-                        $projectHallmarks->inserted_by = Auth::user()->id;
+                        $projectHallmarks->modified_at = Carbon::now();
+                        $projectHallmarks->modified_by = Auth::user()->id;
                         $projectHallmarks->save();
+
+                        $hallmarkId[] = $projectHallmarks->id;
                     }
                 }
             }
 
-            // Handle location advantages
+            // Update location advantages
+            ProjectLocationAdvantages::where('project_details_id', $lastInsertedId)->delete(); // Remove old entries
+            $projectLocationAdvantageId = [];
             if ($request->has('feature_value')) {
-                ProjectLocationAdvantages::where('project_details_id', $id)->delete();
                 foreach ($request->feature_value as $index => $featureValue) {
                     if (!empty($featureValue)) {
                         $projectLocationAdvantages = new ProjectLocationAdvantages();
-                        $projectLocationAdvantages->project_details_id = $id;
+                        $projectLocationAdvantages->project_details_id = $lastInsertedId;
                         $projectLocationAdvantages->location_advantage_id = $request->location_advantage_id[$index];
                         $projectLocationAdvantages->feature_value = $featureValue;
-                        $projectLocationAdvantages->inserted_at = Carbon::now();
-                        $projectLocationAdvantages->inserted_by = Auth::user()->id;
+                        $projectLocationAdvantages->modified_at = Carbon::now();
+                        $projectLocationAdvantages->modified_by = Auth::user()->id;
                         $projectLocationAdvantages->save();
+
+                        $projectLocationAdvantageId[] = $projectLocationAdvantages->id;
                     }
                 }
             }
 
-            // Handle amenities images
+            // Update amenities
+            ProjectAmenities::where('project_details_id', $lastInsertedId)->delete(); // Remove old entries
+            $projectAmenitiesId = [];
             if ($request->has('amenite_image_name')) {
-                ProjectAmenities::where('project_details_id', $id)->delete();
                 foreach ($request->amenite_image_name as $index => $ameniteImageName) {
                     if (!empty($ameniteImageName)) {
                         $projectAmenities = new ProjectAmenities();
 
                         if ($request->hasFile('amenite_image.' . $index)) {
-                            // Delete old amenity image from storage if necessary
-                            if ($projectAmenities->amenite_image && file_exists(public_path('/bhairaav/project_details/amenity_images/' . $projectAmenities->amenite_image))) {
-                                unlink(public_path('/bhairaav/project_details/amenity_images/' . $projectAmenities->amenite_image));
-                            }
-
                             $image = $request->file('amenite_image.' . $index);
                             $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
                             $image->move(public_path('/bhairaav/project_details/amenity_images'), $new_name);
                             $projectAmenities->amenite_image = $new_name;
                         }
 
-                        $projectAmenities->project_details_id = $id;
-                        $projectAmenities->amenity_image_name = $ameniteImageName;
-                        $projectAmenities->inserted_at = Carbon::now();
-                        $projectAmenities->inserted_by = Auth::user()->id;
+                        $projectAmenities->project_details_id = $lastInsertedId;
+                        $projectAmenities->amenite_image_name = $ameniteImageName;
+                        $projectAmenities->modified_at = Carbon::now();
+                        $projectAmenities->modified_by = Auth::user()->id;
                         $projectAmenities->save();
+
+                        $projectAmenitiesId[] = $projectAmenities->id;
                     }
                 }
             }
 
-            // Handle gallery images
-            if ($request->has('image_name')) {
-                ProjectGallery::where('project_details_id', $id)->delete();
-                foreach ($request->image_name as $index => $imageName) {
+            // Update gallery
+            ProjectGallery::where('project_details_id', $lastInsertedId)->delete(); // Remove old entries
+            $projectGalleryId = [];
+            if ($request->has('gallery_image_name')) {
+                foreach ($request->gallery_image_name as $index => $imageName) {
                     if (!empty($imageName)) {
                         $projectGallery = new ProjectGallery();
 
                         if ($request->hasFile('gallery_image.' . $index)) {
-                            // Delete old gallery image from storage if necessary
-                            if ($projectGallery->gallery_image && file_exists(public_path('/bhairaav/project_details/gallery_image/' . $projectGallery->gallery_image))) {
-                                unlink(public_path('/bhairaav/project_details/gallery_image/' . $projectGallery->gallery_image));
-                            }
-
                             $image = $request->file('gallery_image.' . $index);
                             $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
                             $image->move(public_path('/bhairaav/project_details/gallery_image'), $new_name);
                             $projectGallery->gallery_image = $new_name;
                         }
 
-                        $projectGallery->project_details_id = $id;
+                        $projectGallery->project_details_id = $lastInsertedId;
                         $projectGallery->gallery_image_name = $imageName;
-                        $projectGallery->inserted_at = Carbon::now();
-                        $projectGallery->inserted_by = Auth::user()->id;
+                        $projectGallery->modified_at = Carbon::now();
+                        $projectGallery->modified_by = Auth::user()->id;
                         $projectGallery->save();
+
+                        $projectGalleryId[] = $projectGallery->id;
                     }
                 }
             }
 
+            // Update Project Details with associated IDs
+            $update = [
+                "project_hallmarks_id" => json_encode($hallmarkId, true),
+                "project_location_advantages_id" => json_encode($projectLocationAdvantageId, true),
+                "location_advantages_title" => $request->location_advantages_title,
+                "project_amenities_id" => json_encode($projectAmenitiesId, true),
+                "amenities_title" => $request->amenities_title,
+                "project_gallery_id" => json_encode($projectGalleryId, true),
+                "gallery_title" => $request->gallery_title,
+            ];
+            ProjectDetails::where('id', $lastInsertedId)->update($update);
+
             // DB::commit();
 
-            return redirect()->route('project_details.index')->with('message', 'Your record has been successfully updated.');
+            return redirect()->route('project-details.index')->with('message', 'Your record has been successfully updated.');
 
         } catch (\Exception $ex) {
             // DB::rollBack();
@@ -365,10 +409,22 @@ class ProjectDetailsController extends Controller
         $data['deleted_by'] =  Auth::user()->id;
         $data['deleted_at'] =  Carbon::now();
         try {
-            $projectDetail = ProjectDetails::findOrFail($id);
-            $projectDetail->update($data);
+            // Find the project details record
+            ProjectDetails::findOrFail($id)->update($data);
 
-            return redirect()->route('project_details.index')->with('message','Your record has been successfully deleted.');
+            // Delete associated hallmarks
+            ProjectHallmarks::where('project_details_id', $id)->update($data);
+
+            // Delete associated location advantages
+            ProjectLocationAdvantages::where('project_details_id', $id)->update($data);
+
+            // Delete associated amenities
+            ProjectAmenities::where('project_details_id', $id)->update($data);
+
+            // Delete associated gallery images
+            ProjectGallery::where('project_details_id', $id)->update($data);
+
+            return redirect()->route('project-details.index')->with('message','Your record has been successfully deleted.');
         } catch(\Exception $ex){
 
             return redirect()->back()->with('error','Something Went Wrong - '.$ex->getMessage());
@@ -379,9 +435,9 @@ class ProjectDetailsController extends Controller
         $projectStatus = $request->projectTypeId;
 
         $ongoingProjects = Projects::where('project_type', $projectStatus)
-                                    ->orderBy("id", "desc")
-                                    ->whereNull('deleted_at')
-                                    ->get(['id', 'project_name']);
+                            ->orderBy("id", "desc")
+                            ->whereNull('deleted_at')
+                            ->get(['id', 'project_name']);
 
         // Merge all projects into a single collection
         $allProjects = $ongoingProjects;

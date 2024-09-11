@@ -166,7 +166,7 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
     Route::resource('location-advantage', LocationAdvantageController::class);
 
     // ==== manage Projects Details
-    Route::resource('project_details', ProjectDetailsController::class);
+    Route::resource('project-details', ProjectDetailsController::class);
 
     // ==== fetch api/fetch-projects
     Route::post('fetch-projects', [ProjectDetailsController::class, 'fetchProjects'])->name('fetch-projects');
@@ -224,6 +224,7 @@ Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware
 
             // ==== Residential Projects
             Route::get('/residential-project', [ResidentialProjectController::class, 'residentalProject'])->name('frontend.project.ongoing-project.residential-project');
+            Route::get('/residential-project/view-project-details/{id?}', [ResidentialProjectController::class, 'viewProjectDetails'])->name('frontend.project.residential-project.view-project-details');
 
             // ==== Commercial Projects
             Route::get('/commercial-project', [CommercialProjectController::class, 'commercialProject'])->name('frontend.project.ongoing-project.commercial-project');
