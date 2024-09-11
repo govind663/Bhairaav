@@ -341,7 +341,7 @@
     <!-- End Page Heading Section -->
 
     {{-- Start Why Choose Bhairaav --}}
-    <section class="container-fluid p-0">
+    {{-- <section class="container-fluid p-0">
         <div class="container">
             <div class="row align-items-center cs_gap_y_40">
                 <div class="col-lg-6">
@@ -352,9 +352,9 @@
                 <div class="col-lg-6">
                     <div class="cs_pl_110">
                         <div class="cs_section_heading cs_style_1">
-                            <p
-                                class="cs_section_subtitle cs_medium cs_letter_spacing_1 cs_mb_10 cs_mb_lg_15 text-uppercase">
-                                Why Choose Bhairaav</p>
+                            <p class="cs_section_subtitle cs_medium cs_letter_spacing_1 cs_mb_10 cs_mb_lg_15 text-uppercase">
+                                Why Choose Bhairaav
+                            </p>
                             <h2 class="cs_fs_38 cs_bold mb-10 ">
                                 {{ $whyChooseBhairaavs->title }}
                             </h2>
@@ -366,7 +366,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     {{-- End Why Choose Bhairaav --}}
 
     {{-- Start Testimonial --}}

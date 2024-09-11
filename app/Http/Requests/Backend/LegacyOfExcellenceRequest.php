@@ -25,13 +25,13 @@ class LegacyOfExcellenceRequest extends FormRequest
             $rule = [
                 'title' => 'required|string|max:555',
                 'description' => 'required|string',
-                'image' => 'mimes:jpeg,png,jpg,pdf|max:2048',
+                'image' => 'mimes:jpeg,png,jpg,pdf|max:100000',
             ];
         }else{
             $rule = [
                 'title' => 'required|string|max:555',
                 'description' => 'required|string',
-                'image' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
+                'image' => 'required|mimes:jpeg,png,jpg,pdf|max:100000',
             ];
         }
         return $rule;

@@ -121,9 +121,9 @@
                         <li>
                             <a href="{{ route('statistics.index') }}" class="{{ ($currentRoute === 'statistics.index') || ($currentRoute === 'statistics.create') || ($currentRoute === 'statistics.edit') ? 'active' : '' }}">Statistics</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('why_choose_bhiraavs.index') }}" class="{{ ($currentRoute === 'why_choose_bhiraavs.index') || ($currentRoute === 'why_choose_bhiraavs.create') || ($currentRoute === 'why_choose_bhiraavs.edit') ? 'active' : '' }}">Why Choose Bhairaav</a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="{{ route('testimonials.index') }}" class="{{ ($currentRoute === 'testimonials.index') || ($currentRoute === 'testimonials.create') || ($currentRoute === 'testimonials.edit') ? 'active' : '' }}">Testimonials</a>
                         </li>
