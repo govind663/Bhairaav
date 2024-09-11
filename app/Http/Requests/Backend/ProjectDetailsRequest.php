@@ -26,81 +26,65 @@ class ProjectDetailsRequest extends FormRequest
                 // ==== Project Details
                 'project_type_id' => 'required|numeric',
                 'project_name_id' => 'required|numeric',
-                'banner_image' => 'array',
-                'banner_image.*' => 'mimes:jpeg,png,jpg,pdf|max:2048',
+                'banner_image.*' => 'mimes:jpeg,png,jpg|max:2048',
                 'maha_rera_registration_number' => 'required|string|max:255',
                 'project_link' => 'required|string|max:255',
 
                 // ==== Project Overview Details
-                'overview_image' => 'mimes:jpeg,png,jpg,pdf|max:2048',
+                'overview_image' => 'mimes:jpeg,png,jpg|max:2048',
                 'project_description' => 'required|string',
 
                 // ==== Hallmarks
-                'hallmarks' => 'required|array|min:1',
-                'hallmarks.*' => 'required|string|min:2|max:255',
+                'hallmarks.*' => 'required|string',
 
                 // ==== Location Advantages
                 'location_advantages_title' => 'required|string|max:255',
-                'location_advantage_id' => 'required|array|min:1',
-                'location_advantage_id.*' => 'required|string|min:2|max:255',
-                'feature_value' => 'required|array|min:1',
-                'feature_value.*' => 'required|string|min:2|max:255',
+                'location_advantage_id.*' => 'required|string',
+                'feature_value.*' => 'required|string',
 
                 // ==== Amenities & Features
                 'amenities_title' => 'required|string|max:255',
-                'amenite_image' => 'required|array',
-                'amenite_image.*' => 'mimes:jpeg,png,jpg,pdf|max:2048',
-                'amenite_image_name' => 'required|array|min:1',
-                'amenite_image_name.*' => 'required|string|min:2|max:255',
+                'amenite_image.*' => 'mimes:jpeg,png,jpg|max:2048',
+                'amenite_image_name.*' => 'required|string',
 
                 // ==== Gallery
                 'gallery_title' => 'required|string|max:255',
-                'gallery_image' => 'required|array',
-                'gallery_image.*' => 'mimes:jpeg,png,jpg,pdf|max:2048',
-                'gallery_image_name' => 'required|array|min:1',
-                'gallery_image_name.*' => 'required|string|min:2|max:255',
+                'gallery_image.*' => 'mimes:jpeg,png,jpg|max:2048',
+                'gallery_image_name.*' => 'required|string',
             ];
         }else{
             $rule = [
                 // ==== Project Details
                 'project_type_id' => 'required|numeric',
                 'project_name_id' => 'required|numeric',
-                'banner_image' => 'required|array',
-                'banner_image.*' => 'mimes:jpeg,png,jpg,pdf|max:2048',
+                'banner_image.*' => 'required|mimes:jpeg,png,jpg|max:2048',
                 'maha_rera_registration_number' => 'required|string|max:255',
                 'project_link' => 'required|string|max:255',
 
                 // ==== Project Overview Details
-                'overview_image' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
+                'overview_image' => 'required|mimes:jpeg,png,jpg|max:2048',
                 'project_description' => 'required|string',
 
                 // ==== Hallmarks
-                'hallmarks' => 'required|array|min:1',
-                'hallmarks.*' => 'required|string|min:2|max:255',
+                'hallmarks.*' => 'required|string',
 
                 // ==== Location Advantages
                 'location_advantages_title' => 'required|string|max:255',
-                'location_advantage_id' => 'required|array|min:1',
-                'location_advantage_id.*' => 'required|string|min:2|max:255',
-                'feature_value' => 'required|array|min:1',
-                'feature_value.*' => 'required|string|min:2|max:255',
+                'location_advantage_id.*' => 'required|string',
+                'feature_value.*' => 'required|string',
 
                 // ==== Amenities & Features
                 'amenities_title' => 'required|string|max:255',
-                'amenite_image' => 'required|array',
-                'amenite_image.*' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
-                'amenite_image_name' => 'required|array|min:1',
-                'amenite_image_name.*' => 'required|string|min:2|max:255',
+                'amenite_image.*' => 'required|mimes:jpeg,png,jpg|max:2048',
+                'amenite_image_name.*' => 'required|string',
 
                 // ==== Gallery
                 'gallery_title' => 'required|string|max:255',
-                'gallery_image' => 'required|array',
-                'gallery_image.*' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
-                'gallery_image_name' => 'required|array|min:1',
-                'gallery_image_name.*' => 'required|string|min:2|max:255',
+                'gallery_image.*' => 'required|mimes:jpeg,png,jpg|max:2048',
+                'gallery_image_name.*' => 'required|string',
             ];
         }
-        dd($rule);
+        // dd($rule);
         return $rule;
     }
 

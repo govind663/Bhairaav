@@ -203,7 +203,7 @@ Bhairaav | Add Project Details
                     <h4 class="text-blue h4">Location Advantages</h4>
                     <div class="form-group row mt-3">
                         <label class="col-sm-1"><b>Title : <span class="text-danger">*</span></b></label>
-                        <div class="col-sm-5 col-md-5">
+                        <div class="col-sm-11 col-md-11">
                             <input type="text" name="location_advantages_title" id="location_advantages_title" class="form-control @error('location_advantages_title') is-invalid @enderror" value="{{ old('location_advantages_title') }}" placeholder="Enter Title.">
                             @error('location_advantages_title')
                                 <span class="invalid-feedback" role="alert">
@@ -263,7 +263,7 @@ Bhairaav | Add Project Details
                     <h4 class="text-blue h4">Amenities & Features</h4>
                     <div class="form-group row mt-3">
                         <label class="col-sm-1"><b>Amenities Title : <span class="text-danger">*</span></b></label>
-                        <div class="col-sm-4 col-md-4">
+                        <div class="col-sm-11 col-md-11">
                             <input type="text" name="amenities_title" id="amenities_title" class="form-control @error('amenities_title') is-invalid @enderror" value="{{ old('amenities_title') }}" placeholder="Enter Amenities Title.">
                             @error('amenities_title')
                                 <span class="invalid-feedback" role="alert">
@@ -321,7 +321,7 @@ Bhairaav | Add Project Details
                     <h4 class="text-blue h4">Gallery</h4>
                     <div class="form-group row mt-3">
                         <label class="col-sm-1"><b>Title : <span class="text-danger">*</span></b></label>
-                        <div class="col-sm-4 col-md-4">
+                        <div class="col-sm-11 col-md-11">
                             <input type="text" name="gallery_title" id="gallery_title" class="form-control @error('gallery_title') is-invalid @enderror" value="{{ old('gallery_title') }}" placeholder="Enter Title.">
                             @error('gallery_title')
                                 <span class="invalid-feedback" role="alert">
@@ -394,67 +394,7 @@ Bhairaav | Add Project Details
 @endsection
 
 @push('scripts')
-<!-- JavaScript for Dynamic Fields and Image Preview -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const addBannerImageRowButton = document.getElementById('addBannerImageRow');
-        const dynamicBannerImageTable = document.getElementById('dynamicBannerImageTable').getElementsByTagName('tbody')[0];
-
-        addBannerImageRowButton.addEventListener('click', function () {
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td>
-                    <div class="col-sm-8 col-md-8">
-                        <input type="file" accept=".png, .jpg, .jpeg" name="banner_image[]" id="banner_image" class="form-control @error('banner_image.*') is-invalid @enderror" value="{{ old('banner_image') }}">
-                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
-                        <br>
-                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
-                        <br>
-                        @error('banner_image.*')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-danger removeBannerImageRow">Remove</button>
-                </td>
-            `;
-            dynamicBannerImageTable.appendChild(newRow);
-        });
-
-        dynamicBannerImageTable.addEventListener('click', function (event) {
-            if (event.target.classList.contains('removeBannerImageRow')) {
-                event.target.closest('tr').remove();
-            }
-        });
-
-        dynamicBannerImageTable.addEventListener('change', function (event) {
-            if (event.target.classList.contains('banner-image-input')) {
-                const fileInput = event.target;
-                const imgPreview = fileInput.nextElementSibling;
-                const file = fileInput.files[0];
-
-                if (file) {
-                    const reader = new FileReader();
-
-                    reader.onload = function (e) {
-                        imgPreview.src = e.target.result;
-                        imgPreview.style.display = 'block';
-                    };
-
-                    reader.readAsDataURL(file);
-                } else {
-                    imgPreview.src = '';
-                    imgPreview.style.display = 'none';
-                }
-            }
-        });
-    });
-</script>
-
-{{-- Add More Hallmarks --}}
+{{-- Add More Banner Image --}}
 <script>
     $(document).ready(function () {
         // Add a new row with validation
@@ -517,55 +457,54 @@ Bhairaav | Add Project Details
 {{-- Add More Location Advantages --}}
 <script>
     $(document).ready(function () {
-    // Initialize Select2 on document ready for existing elements
-    $('.custom-select2').select2();
+        // Initialize Select2 on document ready for existing elements
+        $('.custom-select2').select2();
 
-    // Add a new row with validation
-    $('#addFeatureRow').click(function () {
-        var newRow = `<tr>
-            <td>
-                <div class="col-sm-12 col-md-12">
-                    <select name="location_advantage_id[]" class="form-control custom-select2 @error('location_advantage_id') is-invalid @enderror" value="{{ old('location_advantage_id.0') }}">
-                        <option value="">Select Feature Name</option>
-                        <optgroup label="Feature Name">
-                            @foreach ($featureName as $value )
-                                <option value="{{ $value->id }}" {{ (old("location_advantage_id") == $value->id ? "selected":"") }}>{{ $value->feature_name }}</option>
-                            @endforeach
-                        </optgroup>
-                    </select>
-                    @error('location_advantage_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </td>
-            <td>
-                <div class="col-sm-12 col-md-12">
-                    <input type="text" name="feature_value[]" class="form-control @error('feature_value.*') is-invalid @enderror" value="{{ old('feature_value.0') }}" placeholder="Enter Feature Value">
-                    @error('feature_value.*')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </td>
-            <td><button type="button" class="btn btn-danger removeFeatureRow">Remove</button></td>
-        </tr>`;
+        // Add a new row with validation
+        $('#addFeatureRow').click(function () {
+            var newRow = `<tr>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <select name="location_advantage_id[]" class="form-control custom-select2 @error('location_advantage_id') is-invalid @enderror" value="{{ old('location_advantage_id.0') }}">
+                            <option value="">Select Feature Name</option>
+                            <optgroup label="Feature Name">
+                                @foreach ($featureName as $value )
+                                    <option value="{{ $value->id }}" {{ (old("location_advantage_id") == $value->id ? "selected":"") }}>{{ $value->feature_name }}</option>
+                                @endforeach
+                            </optgroup>
+                        </select>
+                        @error('location_advantage_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="text" name="feature_value[]" class="form-control @error('feature_value.*') is-invalid @enderror" value="{{ old('feature_value.0') }}" placeholder="Enter Feature Value">
+                        @error('feature_value.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td><button type="button" class="btn btn-danger removeFeatureRow">Remove</button></td>
+            </tr>`;
 
-        // Append new row
-        var $newRow = $(newRow).appendTo('#dynamicFeatureTable tbody');
+            // Append new row
+            var $newRow = $(newRow).appendTo('#dynamicFeatureTable tbody');
 
-        // Initialize Select2 only for new elements within the new row
-        $newRow.find('.custom-select2').not('.select2-hidden-accessible').select2();
+            // Initialize Select2 only for new elements within the new row
+            $newRow.find('.custom-select2').not('.select2-hidden-accessible').select2();
+        });
+
+        // Remove a row
+        $(document).on('click', '.removeFeatureRow', function () {
+            $(this).closest('tr').remove();
+        });
     });
-
-    // Remove a row
-    $(document).on('click', '.removeFeatureRow', function () {
-        $(this).closest('tr').remove();
-    });
-});
-
 </script>
 
 {{-- Add More Amities --}}
