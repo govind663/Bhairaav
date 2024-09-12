@@ -164,7 +164,7 @@
                 </li>
 
                 <li class="dropdown {{
-                    (request()->routeIs('projects.index') && in_array(request('status'), [1, 2, 3])) ||
+                    (request()->routeIs('projects.index') && in_array(request('project_type'), [1, 2, 3])) ||
                         in_array($currentRoute, [
                             'bhairaav_projects.index', 'bhairaav_projects.create', 'bhairaav_projects.edit',
                             'location-advantage.index', 'location-advantage.create', 'location-advantage.edit',
@@ -183,19 +183,19 @@
                         </li>
 
                         <li>
-                            <a href="{{ route('projects.index', ['status' => 1]) }}" class="{{ (request()->routeIs('projects.index') && request('status') == 1) ? 'active' : '' }}">
+                            <a href="{{ route('projects.index', ['project_type' => 1]) }}" class="{{ (request()->routeIs('projects.index') && request('project_type') == 1) ? 'active' : '' }}">
                                 <span class="mtext">Ongoing Projects</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="{{ route('projects.index', ['status' => 2]) }}" class="{{ (request()->routeIs('projects.index') && request('status') == 2) ? 'active' : '' }}">
+                            <a href="{{ route('projects.index', ['project_type' => 2]) }}" class="{{ (request()->routeIs('projects.index') && request('project_type') == 2) ? 'active' : '' }}">
                                 <span class="mtext">Completed Projects</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="{{ route('projects.index', ['status' => 3]) }}" class="{{ (request()->routeIs('projects.index') && request('status') == 3) ? 'active' : '' }}">
+                            <a href="{{ route('projects.index', ['project_type' => 3]) }}" class="{{ (request()->routeIs('projects.index') && request('project_type') == 3) ? 'active' : '' }}">
                                 <span class="mtext">Upcoming Projects</span>
                             </a>
                         </li>

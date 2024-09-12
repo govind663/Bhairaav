@@ -128,7 +128,7 @@ Bhairaav | Manaage Projects List
                                             @csrf
                                             @method('DELETE')
                                             <input name="_method" type="hidden" value="DELETE">
-                                            <input name="status" id="status" type="hidden" value="{{ $value->status }}">
+                                            <input name="project_type" id="project_type" type="hidden" value="{{ $value->project_type }}">
                                             <button type="submit" class="btn btn-danger btn-sm"
                                                 onclick="return confirm('Are you sure to delete?')">
                                                 <i class="micon dw dw-trash"></i>

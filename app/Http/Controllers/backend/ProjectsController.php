@@ -71,7 +71,7 @@ class ProjectsController extends Controller
             $project->inserted_by = Auth::user()->id;
             $project->save();
 
-            return redirect()->route('projects.index', ['status' => $request->property_type])->with('message','Your record has been successfully created.');
+            return redirect()->route('projects.index', ['project_type' => $request->property_type])->with('message','Your record has been successfully created.');
 
         } catch(\Exception $ex){
 
@@ -128,7 +128,10 @@ class ProjectsController extends Controller
             $project->modified_by = Auth::user()->id;
             $project->save();
 
-            return redirect()->route('projects.index', ['status' => $request->property_type])->with('message','Your record has been successfully updated.');
+            // ==== get project_type
+            $project_type = $request->project_type;
+
+            return redirect()->route('projects.index', ['project_type' => $project_type])->with('message','Your record has been successfully updated.');
 
         } catch(\Exception $ex){
 
@@ -145,20 +148,23 @@ class ProjectsController extends Controller
         $data['deleted_at'] =  Carbon::now();
         try {
             $project = Projects::findOrFail($id);
-            $project->status = $request->status;
+            $project->project_type = $request->project_type;
             $project->update($data);
 
-            return redirect()->route('projects.index', ['status' => $request->property_type])->with('message','Your record has been successfully deleted.');
+            // ==== get project_type
+            $project_type = $request->project_type;
+
+            return redirect()->route('projects.index', ['project_type' =>  $project_type])->with('message','Your record has been successfully deleted.');
         } catch(\Exception $ex){
 
             return redirect()->back()->with('error','Something Went Wrong - '.$ex->getMessage());
         }
     }
 
-    public function projectList(Request $request, $status){
+    public function projectList(Request $request, $project_type){
 
-        $projects = Projects::where('project_type', $status)->orderBy("id","desc")->whereNull('deleted_at')->get();
+        $projects = Projects::where('project_type', $project_type)->orderBy("id","desc")->whereNull('deleted_at')->get();
 
-        return view('backend.project.all_projets.index', ['projects' => $projects, 'status' => $status]);
+        return view('backend.project.all_projets.index', ['projects' => $projects, 'status' => $project_type]);
     }
 }
