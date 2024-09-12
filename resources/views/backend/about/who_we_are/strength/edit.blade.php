@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-Bhairaav | Edit Strength
+Bhairaav | Edit Why Choose Bhairaav
 @endsection
 
 @push('styles')
@@ -19,7 +19,7 @@ Bhairaav | Edit Strength
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div class="title">
-                        <h4>Edit Strength</h4>
+                        <h4>Edit Why Choose Bhairaav</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
@@ -27,10 +27,10 @@ Bhairaav | Edit Strength
                                 <a href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('strengths.index') }}">Manage Strength</a>
+                                <a href="{{ route('strengths.index') }}">Manage Why Choose Bhairaav</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Edit Strength
+                                Edit Why Choose Bhairaav
                             </li>
                         </ol>
                     </nav>

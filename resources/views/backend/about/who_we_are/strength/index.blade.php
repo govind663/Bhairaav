@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-Bhairaav | Manaage  Strength
+Bhairaav | Manaage  Why Choose Bhairaav
 @endsection
 
 @push('styles')
@@ -14,7 +14,7 @@ Bhairaav | Manaage  Strength
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="title">
-                        <h4>Manage  Strength</h4>
+                        <h4>Manage  Why Choose Bhairaav</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
@@ -22,7 +22,7 @@ Bhairaav | Manaage  Strength
                                 <a href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Manage  Strength
+                                Manage  Why Choose Bhairaav
                             </li>
                         </ol>
                     </nav>
@@ -31,7 +31,7 @@ Bhairaav | Manaage  Strength
                 <div class="col-md-6 col-sm-12 text-right">
                     <div class="dropdown">
                         <a class="btn btn-primary" href="{{ route('strengths.create') }}">
-                            <i class="fa fa-plus" aria-hidden="true"> </i>  Strength
+                            <i class="fa fa-plus" aria-hidden="true"> </i>  Why Choose Bhairaav
                         </a>
 
                     </div>
@@ -42,7 +42,7 @@ Bhairaav | Manaage  Strength
         <!-- Export Datatable start -->
         <div class="card-box mb-30">
             <div class="pd-20">
-                <h4 class="text-blue h4">All  Strength List</h4>
+                <h4 class="text-blue h4">All  Why Choose Bhairaav List</h4>
             </div>
             <div class="pb-20">
                 <table class="table hover multiple-select-row data-table-export1 nowrap p-3">
