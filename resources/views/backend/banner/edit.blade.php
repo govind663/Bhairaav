@@ -90,6 +90,22 @@ Bhairaav | Edit Banner
                         <div id="file-preview"></div>
                     </div>
 
+                    <label class="col-sm-2"><b>Status : <span class="text-danger">*</span></b></label>
+                    <div class="col-sm-4 col-md-4">
+                        <select name="status" id="status" class="custom-select2 form-control @error('status') is-invalid @enderror">
+                            <option value=" " >Select Status</option>
+                            <optgroup label="Status">
+                                <option value="1" {{ $slider->category_id == '1' ? 'selected' : '' }}>Active</option>
+                                <option value="0" {{ $slider->category_id == '0' ? 'selected' : '' }}>Inactive</option>
+                            </optgroup>
+                        </select>
+                        @error('status')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
                 </div>
 
                 <div class="form-group row mt-4">

@@ -25,12 +25,14 @@ class SliderRequest extends FormRequest
             $rule = [
                 'title' => 'required|string|max:255',
                 'subtitle' => 'required|string|max:255',
+                'status' => 'required|numeric',
                 'banner_imag' => 'mimes:jpeg,png,jpg,pdf|max:2048',
             ];
         }else{
             $rule = [
                 'title' => 'required|string|max:255',
                 'subtitle' => 'required|string|max:255',
+                'status' => 'required|numeric',
                 'banner_imag' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
             ];
         }
@@ -47,6 +49,9 @@ class SliderRequest extends FormRequest
             'subtitle.required' => __('Subtitle is required'),
             'subtitle.max' => __('The length of subtitle should not exceed 255 characters'),
             'subtitle.string' => __('The subtitle must be a string.'),
+
+            'status.required' => __('Status is required'),
+            'status.numeric' => __('Status must be a number.'),
 
             'banner_imag.required' => __('Banner image is required'),
             'banner_imag.mimes' => __('Banner image must be a file of type: jpeg, png, jpg, pdf.'),

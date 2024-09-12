@@ -57,6 +57,7 @@ Bhairaav | Manaage Banner
                             <th>Title</th>
                             <th>Sub Title</th>
                             <th>Banner Image</th>
+                            <th>Status</th>
                             <th class="no-export">Edit</th>
                             <th class="no-export">Delete</th>
                         </tr>
@@ -70,8 +71,18 @@ Bhairaav | Manaage Banner
                             <td class="text-wrap text-justify">
                                 @if(!empty($slider->banner_imag))
                                     <a href="{{url('/')}}/bhairaav/slider/banner_imag/{{ $slider->banner_imag }}" target="_blank" class="btn btn-primary btn-sm">
-                                        <b> View Document</b>
+                                        <b>
+                                            <i class="micon dw dw-eye"></i>
+                                            Document
+                                        </b>
                                     </a>
+                                @endif
+                            </td>
+                            <td class="text-wrap text-justify">
+                                @if ($slider->status == 1)
+                                    <span class="badge badge-success">Active</span>
+                                @elseif ($slider->status == 0)
+                                    <span class="badge badge-danger">Inactive</span>
                                 @endif
                             </td>
 

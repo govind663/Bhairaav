@@ -58,11 +58,10 @@ use App\Models\Testimonial;
 use App\Models\WhyChooseBhairaav;
 use App\Models\Blog as ModelBlog;
 use App\Models\Projects as ModelProject;
-use App\Models\ProjectDetails as ModelProjectDetails;
 
 Route::get('/', function () {
     // ==== Fetch Banner
-    $sliders = Slider::orderBy("id","desc")->whereNull('deleted_at')->get();
+    $sliders = Slider::orderBy("id","desc")->where('status', 1)->whereNull('deleted_at')->get();
 
     // === Fetch The Statistics
     $statistics = Statistics::orderBy("id","asc")->whereNull('deleted_at')->get();

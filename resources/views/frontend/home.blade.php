@@ -18,27 +18,26 @@
         <div class="cs_parallax_slider loading overflow-hidden position-relative">
             <div class="swiper-wrapper">
                 @foreach ($sliders as $key => $value)
-                <div class="swiper-slide">
-                    <div class="cs_hero cs_style_1 cs_center text-center position-relative">
-                        <figure class="cs_swiper_parallax_bg cs_hero_bg cs_bg_filed h-100 w-100 position-absolute top-0 start-0 mb-0"
-                            data-src="{{ asset('/bhairaav/slider/banner_imag/' . $value->banner_imag ) }}">
-                        </figure>
+                    <div class="swiper-slide">
+                        <div class="cs_hero cs_style_1 cs_center text-center position-relative">
+                            <figure class="cs_swiper_parallax_bg cs_hero_bg cs_bg_filed h-100 w-100 position-absolute top-0 start-0 mb-0"
+                                data-src="{{ asset('/bhairaav/slider/banner_imag/' . $value->banner_imag ) }}">
+                            </figure>
 
-                        <div class="container position-relative cs_zindex_3">
-                            <div class="cs_hero_text">
-                                <p class="cs_hero_subtitle cs_white_color d-inline-flex position-relative cs_mb_25 cs_letter_spacing_1">
-                                    <img class="cs_hero_subtitle_icon_1 position-absolute start-0" src="{{ asset('frontend/assets/img/icons/star.svg') }}" alt="Star">
-                                    {{ $value->subtitle }}
-                                    <img class="cs_hero_subtitle_icon_2 position-absolute end-0" src="{{ asset('frontend/assets/img/icons/star.svg') }}" alt="Star">
-                                </p>
-                                <h1 class="cs_hero_title cs_fs_67 cs_white_color mb-0">
-                                {{ $value->title }}
-                                </h1>
+                            <div class="container position-relative cs_zindex_3">
+                                <div class="cs_hero_text">
+                                    <p class="cs_hero_subtitle cs_white_color d-inline-flex position-relative cs_mb_25 cs_letter_spacing_1">
+                                        <img class="cs_hero_subtitle_icon_1 position-absolute start-0" src="{{ asset('frontend/assets/img/icons/star.svg') }}" alt="Star">
+                                        {{ $value->subtitle }}
+                                        <img class="cs_hero_subtitle_icon_2 position-absolute end-0" src="{{ asset('frontend/assets/img/icons/star.svg') }}" alt="Star">
+                                    </p>
+                                    <h1 class="cs_hero_title cs_fs_67 cs_white_color mb-0">
+                                    {{ $value->title }}
+                                    </h1>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                </div>
                 @endforeach
             </div>
 

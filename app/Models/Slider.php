@@ -14,6 +14,7 @@ class Slider extends Model
         'id',
         'title',
         'subtitle',
+        'status',
         'banner_imag',
         'inserted_by',
         'inserted_at',

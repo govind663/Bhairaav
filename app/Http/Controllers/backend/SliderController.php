@@ -52,6 +52,7 @@ class SliderController extends Controller
 
             $slider->title = $data['title'];
             $slider->subtitle = $data['subtitle'];
+            $slider->status = $data['status'];
             $slider->inserted_at = Carbon::now();
             $slider->inserted_by = Auth::user()->id;
             $slider->save();
@@ -107,6 +108,7 @@ class SliderController extends Controller
 
             $slider->title = $data['title'];
             $slider->subtitle = $data['subtitle'];
+            $slider->status = $data['status'];
             $slider->modified_at = Carbon::now();
             $slider->modified_by = Auth::user()->id;
             $slider->save();
