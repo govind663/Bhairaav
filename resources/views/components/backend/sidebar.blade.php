@@ -196,7 +196,7 @@
 
                         <li>
                             <a href="{{ route('projects.index', ['status' => 3]) }}" class="{{ (request()->routeIs('projects.index') && request('status') == 3) ? 'active' : '' }}">
-                                <span class="mtext">Completed Projects</span>
+                                <span class="mtext">Upcoming Projects</span>
                             </a>
                         </li>
 

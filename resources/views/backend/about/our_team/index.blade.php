@@ -5,6 +5,11 @@ Bhairaav | Manaage  Team
 @endsection
 
 @push('styles')
+<style>
+    .flex-wrap {
+        display: none !important;
+    }
+</style>
 @endpush
 
 @section('content')

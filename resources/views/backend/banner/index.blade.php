@@ -5,6 +5,11 @@ Bhairaav | Manaage Banner
 @endsection
 
 @push('styles')
+<style>
+    .flex-wrap {
+        display: none !important;
+    }
+</style>
 @endpush
 
 @section('content')
