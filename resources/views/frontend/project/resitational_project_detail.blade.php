@@ -65,7 +65,7 @@ Bhairaav | Residental Projects
                 </div>
             </div>
             <div class="col-lg-6">
-                {{ $projectDetail->project_description }}
+                {!! $projectDetail->project_description !!}
             </div>
         </div>
         <div class="cs_height_35 cs_height_lg_35"></div>
@@ -124,148 +124,131 @@ Bhairaav | Residental Projects
             </div>
 
             @if(!empty($locationAdvantageIds))
-                @if (in_array(1, $locationAdvantageIds))
-                    <div class="col-lg-6">
-                        <div class="loc-adv-sec">
-                            <div class="loc-adv-img-sec">
-                                <img src="{{ asset('frontend/assets/img/icons/connectivity.png') }}" alt="">
-                            </div>
-                            <div class="loc-adv-con-sec">
-                                <h3 class="cs_post_title cs_fs_21 cs_bold cs_mb_1 cs_white_color">Supreme Connectivity</h3>
-                            </div>
-                        </div>
-                        <div class="loc-adv-list-sec">
-                            <ul>
-                                @foreach($locationAdvantages as $index => $locationAdvantage)
-                                    <li>
-                                        {{ $locationAdvantage->feature_value }}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                @elseif (in_array(2, $locationAdvantageIds))
-                    <div class="col-lg-6">
 
-                        <div class="loc-adv-sec">
-                            <div class="loc-adv-img-sec">
-                                <img src="{{ asset('frontend/assets/img/icons/locator.png') }}" alt="">
+                    {{-- @if ($locationAdvantage->location_advantage_id == 1) --}}
+                        <div class="col-lg-6">
+                            <div class="loc-adv-sec">
+                                <div class="loc-adv-img-sec">
+                                    <img src="{{ asset('frontend/assets/img/icons/connectivity.png') }}" alt="">
+                                </div>
+                                <div class="loc-adv-con-sec">
+                                    <h3 class="cs_post_title cs_fs_21 cs_bold cs_mb_1 cs_white_color">Supreme Connectivity</h3>
+                                </div>
                             </div>
-                            <div class="loc-adv-con-sec">
-                                <h3 class="cs_post_title cs_fs_21 cs_bold cs_mb_1 cs_white_color">
-                                    Proximity To It Hubs & Major Landmarks
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="loc-adv-list-sec">
-                            <ul>
-                                @foreach($locationAdvantages as $index => $locationAdvantage)
-                                    <li>
-                                        {{ $locationAdvantage->feature_value }}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-
-                    </div>
-                @elseif (in_array(3, $locationAdvantageIds))
-                    <div class="col-lg-12">
-                        <div class="loc-adv-sec">
-                            <div class="loc-adv-img-sec">
-                                <img src="{{ asset('frontend/assets/img/icons/map-pin.png') }}" alt="">
-                            </div>
-                            <div class="loc-adv-con-sec">
-                                <h3 class="cs_post_title cs_fs_21 cs_bold cs_mb_1 cs_white_color">
-                                    Site Address
-                                </h3>
+                            <div class="loc-adv-list-sec">
+                                <ul>
+                                    @foreach($locationAdvantages as $index => $locationAdvantage)
+                                        @if ($locationAdvantage->location_advantage_id == 1)
+                                            <li>
+                                                {{ $locationAdvantage->feature_value }}
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
-                        <div class="loc-adv-list-sec">
-                            <ul>
-                                @foreach($locationAdvantages as $index => $locationAdvantage)
-                                    <li>
-                                        {{ $locationAdvantage->feature_value }}
-                                    </li>
-                                @endforeach
-                            </ul>
-                            <a class="cs_btn cs_style_2 cs_white_btn cs_medium cs_radius_20 cs_fs_15" href="tel:+919071056755">
-                                +91-9071056755
-                                <span>
-                                    <i>
-                                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                                fill="currentColor">
-                                            </path>
-                                        </svg>
-                                    </i>
-                                    <i>
-                                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                                fill="currentColor">
-                                            </path>
-                                        </svg>
-                                    </i>
-                                </span>
-                            </a>
-                            <a class="cs_btn cs_style_2 cs_white_btn cs_medium cs_radius_20 cs_fs_15" href="#">
-                                Book A Site Visit
-                                <span>
-                                    <i>
-                                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                                fill="currentColor">
-                                            </path>
-                                        </svg>
-                                    </i>
-                                    <i>
-                                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                                fill="currentColor">
-                                            </path>
-                                        </svg>
-                                    </i>
-                                </span>
-                            </a>
-                            <a class="cs_btn cs_style_2 cs_white_btn cs_medium cs_radius_20 cs_fs_15" href="#">
-                                View Map on Google
-                                <span>
-                                    <i>
-                                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                                fill="currentColor">
-                                            </path>
-                                        </svg>
-                                    </i>
-                                    <i>
-                                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                                fill="currentColor">
-                                            </path>
-                                        </svg>
-                                    </i>
-                                </span>
-                            </a>
+                    {{-- @elseif ($locationAdvantage->location_advantage_id == 2) --}}
+                        <div class="col-lg-6">
+                            <div class="loc-adv-sec">
+                                <div class="loc-adv-img-sec">
+                                    <img src="{{ asset('frontend/assets/img/icons/locator.png') }}" alt="">
+                                </div>
+                                <div class="loc-adv-con-sec">
+                                    <h3 class="cs_post_title cs_fs_21 cs_bold cs_mb_1 cs_white_color">
+                                        Proximity To It Hubs & Major Landmarks
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="loc-adv-list-sec">
+                                <ul>
+                                    @foreach($locationAdvantages as $index => $locationAdvantage)
+                                        @if ($locationAdvantage->location_advantage_id == 2)
+                                            <li>
+                                                {{ $locationAdvantage->feature_value }}
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                @endif
-
+                    {{-- @elseif ($locationAdvantage->location_advantage_id == 3) --}}
+                        <div class="col-lg-12">
+                            <div class="loc-adv-sec">
+                                <div class="loc-adv-img-sec">
+                                    <img src="{{ asset('frontend/assets/img/icons/map-pin.png') }}" alt="">
+                                </div>
+                                <div class="loc-adv-con-sec">
+                                    <h3 class="cs_post_title cs_fs_21 cs_bold cs_mb_1 cs_white_color">
+                                        Site Address
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="loc-adv-list-sec">
+                                <ul>
+                                    @foreach($locationAdvantages as $index => $locationAdvantage)
+                                        @if ($locationAdvantage->location_advantage_id == 3)
+                                            <li>
+                                                {{ $locationAdvantage->feature_value }}
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                                <a class="cs_btn cs_style_2 cs_white_btn cs_medium cs_radius_20 cs_fs_15" href="tel:+919071056755">
+                                    +91-9071056755
+                                    <span>
+                                        <i>
+                                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                                    fill="currentColor">
+                                                </path>
+                                            </svg>
+                                        </i>
+                                        <i>
+                                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                                    fill="currentColor">
+                                                </path>
+                                            </svg>
+                                        </i>
+                                    </span>
+                                </a>
+                                <a class="cs_btn cs_style_2 cs_white_btn cs_medium cs_radius_20 cs_fs_15" href="#">
+                                    Book A Site Visit
+                                    <span>
+                                        <i>
+                                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                                    fill="currentColor">
+                                                </path>
+                                            </svg>
+                                        </i>
+                                        <i>
+                                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                                    fill="currentColor">
+                                                </path>
+                                            </svg>
+                                        </i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    {{-- @endif --}}
+                {{-- @endforeach --}}
             @endif
         </div>
     </div>
     <div class="cs_height_70 cs_height_lg_70"></div>
 </section>
+
 <!-- End Feature Section -->
 
 <!-- Amenities Features Section -->

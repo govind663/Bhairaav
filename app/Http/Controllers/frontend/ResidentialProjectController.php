@@ -34,18 +34,15 @@ class ResidentialProjectController extends Controller
         // Fetch related hallmarks
         $projectHallmarks = ProjectHallmarks::where('project_details_id', $id)->get();
 
-        // Convert location advantage IDs to array if needed
-        $locationAdvantageIds = is_array($projectDetail->project_location_advantages_id)
-                                ? $projectDetail->project_location_advantages_id
-                                : explode(',', $projectDetail->project_location_advantages_id);
+        // Convert location advantage IDs to array if needed jason_encode form
+        $locationAdvantageIds = json_decode($projectDetail->project_location_advantages_id);
 
-        // Ensure it's an array
-        $locationAdvantageIds = is_array($locationAdvantageIds) ? $locationAdvantageIds : [];
-
-        $locationAdvantages = ProjectLocationAdvantages::whereIn('project_details_id', $locationAdvantageIds)
-                                            ->whereNull('deleted_at')
-                                            ->orderBy('id', 'desc')
-                                            ->get(['id', 'feature_value']);
+        // Fetch related location advantages
+        $locationAdvantages = ProjectLocationAdvantages::whereIn('id', $locationAdvantageIds)
+                                                ->select('id', 'feature_value', 'location_advantage_id')
+                                                ->orderBy('id', 'desc')
+                                                ->whereNull('deleted_at')
+                                                ->get();
         // dd($locationAdvantages);
 
         // Fetch related amenities
@@ -55,7 +52,7 @@ class ResidentialProjectController extends Controller
         $projectGallery = ProjectGallery::where('project_details_id', $id)->get();
 
         // Fetch additional data, such as location advantages feature names
-        $featureName = LocationAdvantage::orderBy('id', 'desc')->whereNull('deleted_at')->get(['id', 'feature_name']);
+        $featureName = LocationAdvantage::orderBy('id', 'desc')->whereNull('deleted_at')->get(['id']);
 
         return view('frontend.project.resitational_project_detail', [
             'projectDetail' => $projectDetail,
