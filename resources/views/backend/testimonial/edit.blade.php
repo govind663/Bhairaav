@@ -93,7 +93,7 @@ Bhairaav | Edit Testimonial
 
                     <label class="col-sm-2"><b>Star Count : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="star_count" id="star_count" maxlength="2" class="form-control @error('star_count') is-invalid @enderror" value="{{ $testimonial->star_count }}" placeholder="Enter Star Count.">
+                        <input type="text" onchange="validateStarCount(this)" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="star_count" id="star_count" maxlength="2" class="form-control @error('star_count') is-invalid @enderror" value="{{ $testimonial->star_count }}" placeholder="Enter Star Count.">
                         @error('star_count')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -160,5 +160,15 @@ Bhairaav | Edit Testimonial
 
     }
 
+</script>
+
+<script>
+    function validateStarCount(input) {
+        const value = parseInt(input.value, 10);
+        if (value >= 10 || value < 0 || isNaN(value)) {
+            input.value = '';
+            alert('Please enter a value less than 10.');
+        }
+    }
 </script>
 @endpush
