@@ -29,13 +29,24 @@ class ResidentialProjectController extends Controller
         $bannerImages = $projectDetail->banner_image;
 
         // Fetch Project
-        $projectNames = Projects::where('id', $id)->get();
+        $projectNames = Projects::where('id', $id)->first(['project_name']);
 
         // Fetch related hallmarks
         $projectHallmarks = ProjectHallmarks::where('project_details_id', $id)->get();
 
-        // Fetch related location advantages
-        $projectLocationAdvantages = ProjectLocationAdvantages::where('project_details_id', $id)->get();
+        // Convert location advantage IDs to array if needed
+        $locationAdvantageIds = is_array($projectDetail->project_location_advantages_id)
+                                ? $projectDetail->project_location_advantages_id
+                                : explode(',', $projectDetail->project_location_advantages_id);
+
+        // Ensure it's an array
+        $locationAdvantageIds = is_array($locationAdvantageIds) ? $locationAdvantageIds : [];
+
+        $locationAdvantages = ProjectLocationAdvantages::whereIn('project_details_id', $locationAdvantageIds)
+                                            ->whereNull('deleted_at')
+                                            ->orderBy('id', 'desc')
+                                            ->get(['id', 'feature_value']);
+        // dd($locationAdvantages);
 
         // Fetch related amenities
         $projectAmenities = ProjectAmenities::where('project_details_id', $id)->get();
@@ -50,7 +61,8 @@ class ResidentialProjectController extends Controller
             'projectDetail' => $projectDetail,
             'featureName' => $featureName,
             'projectHallmarks' => $projectHallmarks,
-            'projectLocationAdvantages' => $projectLocationAdvantages,
+            'locationAdvantageIds' => $locationAdvantageIds,
+            'locationAdvantages' => $locationAdvantages,
             'projectAmenities' => $projectAmenities,
             'projectGallery' => $projectGallery,
             'bannerImages' => $bannerImages,
