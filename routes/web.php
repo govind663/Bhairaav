@@ -57,6 +57,8 @@ use App\Models\LegacyOfExcellence as ModelsLegacyOfExcellence;
 use App\Models\Testimonial;
 use App\Models\WhyChooseBhairaav;
 use App\Models\Blog as ModelBlog;
+use App\Models\Projects as ModelProject;
+use App\Models\ProjectDetails as ModelProjectDetails;
 
 Route::get('/', function () {
     // ==== Fetch Banner
@@ -78,13 +80,21 @@ Route::get('/', function () {
     $latestPosts = ModelBlog::orderBy('inserted_at', 'desc')->whereNull('deleted_at')->get();
     // dd($latestPosts);
 
+    // ==== Fetch Upcoming Projects
+    $upcomingProjects = ModelProject::orderBy("id","desc")->where('project_type', 1)->whereNull('deleted_at')->get();
+
+    // ==== Fetch Completed Projects
+    $completedProjects = ModelProject::orderBy("id","desc")->where('project_type', 2)->whereNull('deleted_at')->get();
+
     return view('frontend.home', [
         'sliders' => $sliders,
         'statistics' => $statistics,
         'legacy' => $legacy,
         'whyChooseBhairaavs' => $whyChooseBhairaavs,
         'testimonials' => $testimonials,
-        'latestPosts' => $latestPosts
+        'latestPosts' => $latestPosts,
+        'upcomingProjects' => $upcomingProjects,
+        'completedProjects' => $completedProjects
     ]);
 
 })->name('/');

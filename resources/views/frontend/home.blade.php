@@ -161,152 +161,85 @@
                 <div id="tab_1" class="cs_tab active">
                     <div class="container-fluid cs_plr_100">
                         <div class="row cs_row_gap_60 cs_gap_y_60">
-                            <div class="col-lg-4">
-                                <div class="cs_card cs_style_1 cs_color_1">
-                                    <a class='cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg'
-                                        href=''>
-                                        <img src="{{ asset('frontend/assets/img/projects/overview-left.jpg') }}" alt="Room">
-                                        <img src="{{ asset('frontend/assets/img/projects/overview-left.jpg') }}" alt="Room">
-                                    </a>
-                                    <div class="cs_card_info position-relative">
-                                        <h2 class="cs_card_title cs_fs_38 cs_mb_4"><a href=''>Bhairaav
-                                                Milestone</a></h2>
-                                        <div class="cs_card_price cs_mb_17">
-                                            <span class="cs_accent_color cs_fs_16 cs_primary_font">Wagle Estate</span>
+                            @if (!empty($upcomingProjects))
+                                @foreach ($upcomingProjects as $project)
+                                    <div class="col-lg-4">
+                                        <div class="cs_card cs_style_1 cs_color_1">
+                                            <a class='cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg'
+                                                href='{{ route('frontend.project.residential-project.view-project-details', ['id' => $project->id]) }}'>
+                                                <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $project->image ) }}" alt="Room">
+                                                <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $project->image ) }}" alt="Room">
+                                            </a>
+                                            <div class="cs_card_info position-relative">
+                                                <h2 class="cs_card_title cs_fs_38 cs_mb_4">
+                                                    <a href='{{ route('frontend.project.residential-project.view-project-details', ['id' => $project->id]) }}'>
+                                                        {{ $project->project_name }}
+                                                    </a>
+                                                </h2>
+                                                <div class="cs_card_price cs_mb_17">
+                                                    <span class="cs_accent_color cs_fs_16 cs_primary_font">
+                                                        {!! $value->address !!}
+                                                    </span>
+                                                </div>
+                                                {{-- <ul class="cs_card_list cs_mp_0">
+                                                    <li>Maha RERA : -  Phase I - P51700012365</li>
+                                                </ul> --}}
+                                                <a class='cs_card_btn cs_center' href='{{ route('frontend.project.residential-project.view-project-details', ['id' => $project->id]) }}'>
+                                                    <i class="fa-solid fa-chevron-right"></i>
+                                                </a>
+                                            </div>
                                         </div>
-                                        <ul class="cs_card_list cs_mp_0">
-                                            <li>MahaRERA: Phase I - P51700012365</li>
-                                        </ul>
-                                        <a class='cs_card_btn cs_center' href=''>
-                                            <i class="fa-solid fa-chevron-right"></i>
-                                        </a>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="cs_card cs_style_1 cs_color_1">
-                                    <a class='cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg'
-                                        href=''>
-                                        <img src="{{ asset('frontend/assets/img/projects/img-02.jpg') }}" alt="Room">
-                                        <img src="{{ asset('frontend/assets/img/projects/img-02.jpg') }}" alt="Room">
-                                    </a>
-                                    <div class="cs_card_info position-relative">
-                                        <h2 class="cs_card_title cs_fs_38 cs_mb_4"><a href=''>Jewel of
-                                                Queen</a></h2>
-                                        <div class="cs_card_price cs_mb_17">
-                                            <span class="cs_accent_color cs_fs_16 cs_primary_font">Girgaum</span>
-                                        </div>
-                                        <ul class="cs_card_list cs_mp_0">
-                                            <li>MahaRERA No.: P51900013962</li>
-                                        </ul>
-                                        <a class='cs_card_btn cs_center' href=''>
-                                            <i class="fa-solid fa-chevron-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="cs_card cs_style_1 cs_color_1">
-                                    <a class='cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg'
-                                        href=''>
-                                        <img src="{{ asset('frontend/assets/img/projects/img-3.jpg') }}" alt="Room">
-                                        <img src="{{ asset('frontend/assets/img/projects/img-3.jpg') }}" alt="Room">
-                                    </a>
-                                    <div class="cs_card_info position-relative">
-                                        <h2 class="cs_card_title cs_fs_38 cs_mb_4"><a href=''>Goldcrest
-                                                Residency</a></h2>
-                                        <div class="cs_card_price cs_mb_17">
-                                            <span class="cs_accent_color cs_fs_16 cs_primary_font">Ghansoli</span>
-                                        </div>
-                                        <ul class="cs_card_list cs_mp_0">
-                                            <li>MahaRERA: Phase I - P51700012365</li>
-                                        </ul>
-                                        <a class='cs_card_btn cs_center' href=''>
-                                            <i class="fa-solid fa-chevron-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                                @endforeach
+                            @else
+                            <h3 class="text-center">
+                                No Projects Found
+                            </h3>
+                            @endif
+
                         </div>
                     </div>
                 </div>
                 <div id="tab_2" class="cs_tab ">
                     <div class="container-fluid cs_plr_100">
                         <div class="row cs_row_gap_60 cs_gap_y_60">
-                            <div class="col-lg-4">
-                                <div class="cs_card cs_style_1 cs_color_1">
-                                    <a class='cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg'
-                                        href=''>
-                                        <img src="{{ asset('frontend/assets/img/projects/completed/Project-Photo-8-Bhairav-Darshan-Mumbai-5074840_1296_972.jpeg') }}"
-                                            alt="Room">
-                                        <img src="{{ asset('frontend/assets/img/projects/completed/Project-Photo-8-Bhairav-Darshan-Mumbai-5074840_1296_972.jpeg') }}"
-                                            alt="Room">
-                                    </a>
-                                    <div class="cs_card_info position-relative">
-                                        <h2 class="cs_card_title cs_fs_38 cs_mb_4"><a href=''>Bhairaav
-                                                Darshan</a></h2>
-                                        <div class="cs_card_price cs_mb_17">
-                                            <span class="cs_accent_color cs_fs_16 cs_primary_font">Elphinstone
-                                                Road</span>
+                            @if (!empty($completedProjects))
+                                @foreach ($completedProjects as $value)
+                                    <div class="col-lg-4">
+                                        <div class="cs_card cs_style_1 cs_color_1">
+                                            <a class='cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg'
+                                                href='{{ route('frontend.project.residential-project.view-project-details', ['id' => $value->id]) }}'>
+                                                <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $value->image ) }}"
+                                                    alt="Room">
+                                                <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $value->image ) }}"
+                                                    alt="Room">
+                                            </a>
+                                            <div class="cs_card_info position-relative">
+                                                <h2 class="cs_card_title cs_fs_38 cs_mb_4">
+                                                    <a href='{{ route('frontend.project.residential-project.view-project-details', ['id' => $value->id]) }}'>
+                                                        {{ $value->project_name }}
+                                                    </a>
+                                                </h2>
+                                                <div class="cs_card_price cs_mb_17">
+                                                    <span class="cs_accent_color cs_fs_16 cs_primary_font">
+                                                        {!! $value->address !!}
+                                                    </span>
+                                                </div>
+                                                <ul class="cs_card_list cs_mp_0">
+                                                    <li>Year Of Completion: 2003</li>
+                                                </ul>
+                                                <a class='cs_card_btn cs_center' href='{{ route('frontend.project.residential-project.view-project-details', ['id' => $value->id]) }}'>
+                                                    <i class="fa-solid fa-chevron-right"></i>
+                                                </a>
+                                            </div>
                                         </div>
-                                        <ul class="cs_card_list cs_mp_0">
-                                            <li>Year Of Completion: 2003</li>
-                                        </ul>
-                                        <a class='cs_card_btn cs_center' href=''>
-                                            <i class="fa-solid fa-chevron-right"></i>
-                                        </a>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="cs_card cs_style_1 cs_color_1">
-                                    <a class='cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg'
-                                        href=''>
-                                        <img src="{{ asset('frontend/assets/img/projects/completed/tn-bhairaav-parshwa-padma-project-flagship1.avif') }}"
-                                            alt="Room">
-                                        <img src="{{ asset('frontend/assets/img/projects/completed/tn-bhairaav-parshwa-padma-project-flagship1.avif') }}"
-                                            alt="Room">
-                                    </a>
-                                    <div class="cs_card_info position-relative">
-                                        <h2 class="cs_card_title cs_fs_38 cs_mb_4"><a href=''>Parshwa Padma
-                                            </a></h2>
-                                        <div class="cs_card_price cs_mb_17">
-                                            <span class="cs_accent_color cs_fs_16 cs_primary_font">Parel -
-                                                Lalbaug</span>
-                                        </div>
-                                        <ul class="cs_card_list cs_mp_0">
-                                            <li>Year Of Completion: 2009</li>
-                                        </ul>
-                                        <a class='cs_card_btn cs_center' href=''>
-                                            <i class="fa-solid fa-chevron-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="cs_card cs_style_1 cs_color_1">
-                                    <a class='cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg'
-                                        href=''>
-                                        <img src="{{ asset('frontend/assets/img/projects/completed/Project-Photo-10-The-Canvas-Residences-Mumbai-5239309_600_800_300_450.jpg') }}"
-                                            alt="Room">
-                                        <img src="{{ asset('frontend/assets/img/projects/completed/Project-Photo-10-The-Canvas-Residences-Mumbai-5239309_600_800_300_450.jpg') }}"
-                                            alt="Room">
-                                    </a>
-                                    <div class="cs_card_info position-relative">
-                                        <h2 class="cs_card_title cs_fs_38 cs_mb_4"><a href=''>Madhuban</a></h2>
-                                        <div class="cs_card_price cs_mb_17">
-                                            <span class="cs_accent_color cs_fs_16 cs_primary_font">Parel -
-                                                Lalbaug</span>
-                                        </div>
-                                        <ul class="cs_card_list cs_mp_0">
-                                            <li>Year Of Completion: 2007</li>
-                                        </ul>
-                                        <a class='cs_card_btn cs_center' href=''>
-                                            <i class="fa-solid fa-chevron-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                                @endforeach
+                            @else
+                                <h3 class="text-center">
+                                    No Projects Found
+                                </h3>
+                            @endif
                         </div>
                     </div>
                 </div>
