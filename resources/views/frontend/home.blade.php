@@ -5,6 +5,11 @@
 @endsection
 
 @push('styles')
+<style>
+    .cs_hero_title {
+        font-weight: 200 !important;
+    }
+</style>
 @endpush
 
 @section('content')

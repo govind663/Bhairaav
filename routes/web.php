@@ -75,7 +75,8 @@ Route::get('/', function () {
     $testimonials = Testimonial::orderBy("id","desc")->whereNull('deleted_at')->get();
 
     // Get latest 5 blog entries
-    $latestPosts = ModelBlog::orderBy('inserted_at', 'desc')->limit(3)->get();
+    $latestPosts = ModelBlog::orderBy('inserted_at', 'desc')->whereNull('deleted_at')->get();
+    // dd($latestPosts);
 
     return view('frontend.home', [
         'sliders' => $sliders,
@@ -85,6 +86,7 @@ Route::get('/', function () {
         'testimonials' => $testimonials,
         'latestPosts' => $latestPosts
     ]);
+
 })->name('/');
 
 Route::group(['prefix' => 'bhairaav'],function(){
