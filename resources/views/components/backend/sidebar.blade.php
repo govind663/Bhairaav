@@ -200,11 +200,11 @@
                             </a>
                         </li>
 
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('location-advantage.index') }}" class="{{ in_array($currentRoute, ['location-advantage.index', 'location-advantage.create', 'location-advantage.edit']) ? 'active' : '' }}">
                                 <span class="mtext">Location Advantages</span>
                             </a>
-                        </li>
+                        </li> --}}
 
                         <li>
                             <a href="{{ route('project-details.index') }}" class="{{ in_array($currentRoute, ['project-details.index', 'project-details.create', 'project-details.edit']) ? 'active' : '' }}">
