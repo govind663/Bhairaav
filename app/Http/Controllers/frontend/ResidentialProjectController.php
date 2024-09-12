@@ -54,7 +54,7 @@ class ResidentialProjectController extends Controller
         // Fetch additional data, such as location advantages feature names
         $featureName = LocationAdvantage::orderBy('id', 'desc')->whereNull('deleted_at')->get(['id']);
 
-        return view('frontend.project.resitational_project_detail', [
+        return view('frontend.project.project_detail', [
             'projectDetail' => $projectDetail,
             'featureName' => $featureName,
             'projectHallmarks' => $projectHallmarks,

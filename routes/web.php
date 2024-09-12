@@ -231,8 +231,13 @@ Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware
 
         });
 
-        // ==== Completed Projects
-        Route::get('/completed-project', [CompletedProjectController::class, 'completedProject'])->name('frontend.project.completed-project');
+        Route::group(['prefix'=> 'completed-project'],function(){
+
+            // ==== Residential Projects
+            Route::get('/completed-project/{projectId?}/{projectType?}', [CompletedProjectController::class, 'completedProject'])->name('frontend.project.completed-project');
+            Route::get('/completed-project/view-project-details/{id?}', [CompletedProjectController::class, 'viewProjectDetails'])->name('frontend.project.completed-project.view-project-details');
+
+        });
 
         // ==== Upcoming Projects
         Route::get('/upcoming-project', [UpcomingProjectController::class, 'upcomingProject'])->name('frontend.project.upcoming-project');
