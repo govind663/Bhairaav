@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 10, 2024 at 02:51 PM
+-- Generation Time: Sep 12, 2024 at 03:34 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -295,7 +295,7 @@ CREATE TABLE `journeys` (
 --
 
 INSERT INTO `journeys` (`id`, `description`, `journey_image`, `inserted_by`, `inserted_at`, `modified_by`, `modified_at`, `deleted_by`, `deleted_at`) VALUES
-(1, '<b>Shri. Madan Jain</b> through his dynamism as an entrepreneur established Bhairaav Group in the year 1972. In his initial years as a businessman, he had a largely successful stint in the garment industry. Later on, the&nbsp;<b>21st</b>&nbsp;year saw the group diversify into real estate, foraying into building a robust portfolio of world-class residential and commercial realty.', '1725859812982.jpeg', 1, '2024-09-09 05:30:12', NULL, NULL, NULL, NULL);
+(1, '<b>Shri. Madan Jain</b> through his dynamism as an entrepreneur established Bhairaav Group in the year 1972. In his initial years as a businessman, he had a largely successful stint in the garment industry. Later on, the&nbsp;<b>21st</b>&nbsp;year saw the group diversify into real estate, foraying into building a robust portfolio of world-class residential and commercial realty.', '1726093261890.jpeg', 1, '2024-09-09 05:30:12', 1, '2024-09-11 22:21:01', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -403,7 +403,7 @@ CREATE TABLE `legacy_of_excellences` (
 --
 
 INSERT INTO `legacy_of_excellences` (`id`, `title`, `description`, `image`, `inserted_by`, `inserted_at`, `modified_by`, `modified_at`, `deleted_by`, `deleted_at`) VALUES
-(1, 'Driven by a Mission to Deliver Superior Homes Ahead of Schedule.', 'Our Chairman, Shri Madan Jain, founded the Bhairaav Group in 1972. Following a successful career in the garment industry, he transitioned into the real estate sector. Today, Bhairaav Group has established a formidable reputation and is recognized as one of the most promising real estate developers in Mumbai and Navi Mumbai. Since its inception, the company has grown steadily and flourished through relentless hard work, dedication, and an unwavering commitment to quality.', '1725857572246.png', 1, '2024-09-09 04:52:52', NULL, NULL, NULL, NULL);
+(1, 'Driven by a Mission to Deliver Superior Homes Ahead of Schedule.', 'Our Chairman, Shri Madan Jain, founded the Bhairaav Group in 1972. Following a successful career in the garment industry, he transitioned into the real estate sector. Today, Bhairaav Group has established a formidable reputation and is recognized as one of the most promising real estate developers in Mumbai and Navi Mumbai. Since its inception, the company has grown steadily and flourished through relentless hard work, dedication, and an unwavering commitment to quality.', '1726093432528.png', 1, '2024-09-09 04:52:52', 1, '2024-09-11 22:23:52', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -735,6 +735,36 @@ CREATE TABLE `project_amenities` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `project_amenities`
+--
+
+INSERT INTO `project_amenities` (`id`, `project_details_id`, `amenite_image`, `amenite_image_name`, `inserted_by`, `inserted_at`, `modified_by`, `modified_at`, `deleted_by`, `deleted_at`) VALUES
+(1, 1, '1726092243865.png', 'Lavish Clubhouse', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(2, 1, '1726092243264.png', 'Gymnasium with Cardio Section & Fitness Studio', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(3, 1, '1726092243645.png', 'Herbal Garden with Organic Plantations', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(4, 1, '1726092243139.png', 'Jogging Track', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(5, 1, '1726092243644.png', 'Swimming Pool with Kid’s Pool & Deck', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(6, 1, '1726092243240.png', 'Community Banquet Hall with Pre-function Area', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(7, 1, '1726092243365.png', 'Multipurpose Court & Cricket Pitch', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(8, 1, '1726092243621.png', 'Yoga & Meditation Lawn', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(9, 1, '1726092243409.png', 'World-class Spa with Sauna & Jacuzzi', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(10, 1, '1726092243630.png', 'Indoor Game’s Zone with Snooker', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(11, 1, '1726092243398.png', 'Kid’s Play Area with Toddler Zone', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(12, 1, '1726092243851.png', 'Seniors’ Citizen Lounge', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(13, 2, '1726093054502.png', 'Lavish Clubhouse', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(14, 2, '1726093054313.png', 'Gymnasium with Cardio Section & Fitness Studio', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(15, 2, '172609305441.png', 'Herbal Garden with Organic Plantations', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(16, 2, '1726093054584.png', 'Jogging Track', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(17, 2, '1726093054588.png', 'Swimming Pool with Kid’s Pool & Deck', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(18, 2, '1726093054672.png', 'Community Banquet Hall with Pre-function Area', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(19, 2, '1726093054182.png', 'Multipurpose Court & Cricket Pitch', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(20, 2, '1726093054892.png', 'Yoga & Meditation Lawn', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(21, 2, '1726093054314.png', 'World-class Spa with Sauna & Jacuzzi', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(22, 2, '172609305434.png', 'Indoor Game’s Zone with Snooker', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(23, 2, '1726093054529.png', 'Kid’s Play Area with Toddler Zone', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(24, 2, '1726093054356.png', 'Seniors’ Citizen Lounge', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -765,6 +795,14 @@ CREATE TABLE `project_details` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `project_details`
+--
+
+INSERT INTO `project_details` (`id`, `project_type_id`, `project_name_id`, `banner_image`, `maha_rera_registration_number`, `project_link`, `overview_image`, `project_description`, `project_hallmarks_id`, `project_location_advantages_id`, `location_advantages_title`, `project_amenities_id`, `amenities_title`, `project_gallery_id`, `gallery_title`, `inserted_by`, `inserted_at`, `modified_by`, `modified_at`, `deleted_by`, `deleted_at`) VALUES
+(1, 1, 1, '[\"172609224331.jpg\",\"172609224324.jpg\",\"172609224362.jpg\"]', 'Phase I - P51700012365 | Phase II - P51700010579', 'https://maharera.maha.online.gov.in', '1726092243266.png', '<img alt=\"\" src=\"https://mbihosting.in/bhairaav/assets/img/project-logo/goldcrest-logo.png\"><br><div><div>Overview - Landmark at Ghansoli<h2>Navi Mumbai\'s Most Premium Water Front Living</h2></div></div>Uninterrupted Sea View. Unbound Lush Mangroves Trail. Unparalleled Connectivity &amp; Conveniences. Unmatched Luxury &amp; Indulgences.', '[1,2,3,4,5,6,7,8,9,10]', '[1,2,3,4,5,6,7,8,9,10,11,12,13]', 'Luxury Within Reach Of Everything', '[1,2,3,4,5,6,7,8,9,10,11,12]', 'Exclusive Indulgences Crafted With World-Class Amenities', '[1,2,3,4]', 'Explore Your Residence Of Bliss Mastercrafted With Comforts', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(2, 2, 2, '[\"1726093054379.jpg\",\"1726093054924.jpg\",\"172609305496.jpg\"]', 'Phase I - P51700012365 | Phase II - P51700010579', 'https://maharera.maha.online.gov.in', '1726093054977.png', '<img alt=\"\" src=\"https://mbihosting.in/bhairaav/assets/img/project-logo/goldcrest-logo.png\"><br><div><div>Overview - Landmark at Ghansoli<h2>Navi Mumbai\'s Most Premium Water Front Living</h2></div></div>Uninterrupted Sea View. Unbound Lush Mangroves Trail. Unparalleled Connectivity &amp; Conveniences. Unmatched Luxury &amp; Indulgences.', '[11,12,13,14,15,16,17,18,19,20]', '[14,15,16,17,18,19,20,21,22,23,24,25,26]', 'Luxury Within Reach Of Everything', '[13,14,15,16,17,18,19,20,21,22,23,24]', 'Exclusive Indulgences Crafted With World-Class Amenities', '[5,6,7,8]', 'Explore Your Residence Of Bliss Mastercrafted With Comforts', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -784,6 +822,20 @@ CREATE TABLE `project_galleries` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `project_galleries`
+--
+
+INSERT INTO `project_galleries` (`id`, `project_details_id`, `gallery_image`, `gallery_image_name`, `inserted_by`, `inserted_at`, `modified_by`, `modified_at`, `deleted_by`, `deleted_at`) VALUES
+(1, 1, '1726092243421.jpg', 'Construction updates', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(2, 1, '172609224383.jpg', 'Plans', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(3, 1, '1726092243111.jpg', 'Virtual Tour', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(4, 1, '1726092243675.jpg', 'Walkthrough', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(5, 2, '1726093054627.jpg', 'Construction updates', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(6, 2, '1726093054722.jpg', 'Plans', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(7, 2, '1726093054605.jpg', 'Virtual Tour', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(8, 2, '1726093054578.jpg', 'Walkthrough', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -801,6 +853,32 @@ CREATE TABLE `project_hallmarks` (
   `deleted_by` int(11) DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `project_hallmarks`
+--
+
+INSERT INTO `project_hallmarks` (`id`, `project_details_id`, `hallmarks`, `inserted_by`, `inserted_at`, `modified_by`, `modified_at`, `deleted_by`, `deleted_at`) VALUES
+(1, 1, '5 Towers of G + 28 Storeys', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(2, 1, '1, 2, 2.5 & 3.5 BHK Sea-view Residences', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(3, 1, '60,000 Sq. Ft. Podium Garden', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(4, 1, 'Superfast connectivity to Vashi, ATAL SETU, Mulund and Ghatkopar.', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(5, 1, 'Grand Entrance Lobby & Designer Lifts', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(6, 1, 'Uber-modern Club House', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(7, 1, '5 Minutes\' drive from the Palm Beach Road', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(8, 1, 'Upcoming 150 acres Sports Complex', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(9, 1, '45 acres Recreational Park at Neighbourhood', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(10, 1, 'Undisrupted Sea & Green Mangroves Views', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(11, 2, '5 Towers of G + 28 Storeys', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(12, 2, '1, 2, 2.5 & 3.5 BHK Sea-view Residences', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(13, 2, '60,000 Sq. Ft. Podium Garden', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(14, 2, 'Superfast connectivity to Vashi, ATAL SETU, Mulund and Ghatkopar.', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(15, 2, 'Grand Entrance Lobby & Designer Lifts', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(16, 2, 'Uber-modern Club House', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(17, 2, '5 Minutes\' drive from the Palm Beach Road', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(18, 2, 'Upcoming 150 acres Sports Complex', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(19, 2, '45 acres Recreational Park at Neighbourhood', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(20, 2, 'Undisrupted Sea & Green Mangroves Views', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -820,6 +898,38 @@ CREATE TABLE `project_location_advantages` (
   `deleted_by` int(11) DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `project_location_advantages`
+--
+
+INSERT INTO `project_location_advantages` (`id`, `project_details_id`, `location_advantage_id`, `feature_value`, `inserted_by`, `inserted_at`, `modified_by`, `modified_at`, `deleted_by`, `deleted_at`) VALUES
+(1, 1, 1, 'Proposed Navi Mumbai International Airport - 30 Mins', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(2, 1, 1, 'Thane Railway Station - 15 Mins', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(3, 1, 1, 'Vashi - 10 Mins', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(4, 1, 1, 'Reliance Hospital - 7 Mins', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(5, 1, 1, 'Ghansoli Railway Station - 5 Mins', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(6, 1, 1, 'Palm Beach Road - 2 Mins', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(7, 1, 1, 'Proposed Ghatkopar-Ghansoli Link Road - 1 Min', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(8, 1, 2, 'Close to D-Mart, Inorbit & Raghuleela Mall', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(9, 1, 2, 'Close to renowned Educational Institutions & Hospitals', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(10, 1, 2, 'Hotels like Ramada, Courtyard and eateries like McDonald\'s nearby', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(11, 1, 2, 'Well-known IT Parks, Dhirubhai Ambani Knowledge Centre', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(12, 1, 2, 'Mind Space, Millennium Business Park, etc., are in close proximity', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(13, 1, 3, 'Gagangiri Maharaj Marg, Jijamata Nagar, Sector 11, Ghansoli, Navi Mumbai, Maharashtra 400701, India', 1, '2024-09-11 22:04:03', NULL, NULL, NULL, NULL),
+(14, 2, 1, 'Proposed Navi Mumbai International Airport - 30 Mins', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(15, 2, 1, 'Thane Railway Station - 15 Mins', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(16, 2, 1, 'Vashi - 10 Mins', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(17, 2, 1, 'Reliance Hospital - 7 Mins', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(18, 2, 1, 'Ghansoli Railway Station - 5 Mins', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(19, 2, 1, 'Palm Beach Road - 2 Mins', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(20, 2, 1, 'Proposed Ghatkopar-Ghansoli Link Road - 1 Min', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(21, 2, 2, 'Close to D-Mart, Inorbit & Raghuleela Mall', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(22, 2, 2, 'Close to renowned Educational Institutions & Hospitals', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(23, 2, 2, 'Hotels like Ramada, Courtyard and eateries like McDonald\'s nearby', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(24, 2, 2, 'Well-known IT Parks, Dhirubhai Ambani Knowledge Centre', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(25, 2, 2, 'Mind Space, Millennium Business Park, etc., are in close proximity', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL),
+(26, 2, 3, 'Gagangiri Maharaj Marg, Jijamata Nagar, Sector 11, Ghansoli, Navi Mumbai, Maharashtra 400701, India', 1, '2024-09-11 22:17:34', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -891,9 +1001,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('jqjjcZLOoc4QR80qXsrtmP9SzaGn2LOtYqAl6zwW', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiblJCSlJ0RUo1RXdGR0NtaHR4cndmNXYxSjdIRTRGY0tNdE9VWGs1MCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9iaGFpcmFhdi9wcm9qZWN0X2RldGFpbHMvY3JlYXRlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czoxMDoiY3NyZl90b2tlbiI7czo0MDoiblJCSlJ0RUo1RXdGR0NtaHR4cndmNXYxSjdIRTRGY0tNdE9VWGs1MCI7czoxNToiY3NyZl90b2tlbl9mb3JtIjtzOjQwOiJuUkJKUnRFSjVFd0ZHQ21odHhyd2Y1djFKN0hFNEZjS010T1VYazUwIjtzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTU6ImNzcmZfdG9rZW5fYWpheCI7czo0MDoiblJCSlJ0RUo1RXdGR0NtaHR4cndmNXYxSjdIRTRGY0tNdE9VWGs1MCI7fQ==', 1725972509),
-('spRsZDmN6ci3Vl6akquMgiksFGg3EKigD7MC4HBj', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiMFF6RklKSDBuZmZ6RHVFazBQQkJtdW5nSmRpaHhrUmx0cm1Rcjl2TSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czoxMDoiY3NyZl90b2tlbiI7czo0MDoiMFF6RklKSDBuZmZ6RHVFazBQQkJtdW5nSmRpaHhrUmx0cm1Rcjl2TSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9iaGFpcmFhdi9ibG9nL2Jsb2ctZGV0YWlscy80Ijt9fQ==', 1725952537),
-('zxtq7Nnp9ii30QBmGpaG9r9kxf8aucjkGDxzPhN0', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidlBtZG9ja2ZjNlVQeXFZSm9Md0dlY1hVTW1pV3djVmdEc1U4eTQ1YiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1725970411);
+('IfDI6Lus5oOT6X4PMjowjFgNFe8siSLfqvDOnUkw', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQlN6MEFvSXYxNkFTdmRaeGxKSFluWktybHlpM01BTmE5bFB4bzF5TSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czoxMDoiY3NyZl90b2tlbiI7czo0MDoiQlN6MEFvSXYxNkFTdmRaeGxKSFluWktybHlpM01BTmE5bFB4bzF5TSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fX0=', 1726093669),
+('LMzNTNkdjjxQBBCdehUoaA2q7xtk75NWL3w1YWmt', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoibUQ3MFdCUFZTNHhaSFBTclA0Zm5VM0lLTGFLOXhSYkkxMzNvbmgwayI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6OTg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9iaGFpcmFhdi9wcm9qZWN0cy9vbmdvaW5nLXByb2plY3QvcmVzaWRlbnRpYWwtcHJvamVjdC92aWV3LXByb2plY3QtZGV0YWlscy8xIjt9czoxMDoiY3NyZl90b2tlbiI7czo0MDoibUQ3MFdCUFZTNHhaSFBTclA0Zm5VM0lLTGFLOXhSYkkxMzNvbmgwayI7fQ==', 1726104748);
 
 -- --------------------------------------------------------
 
@@ -1060,7 +1169,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `inserted_by`, `inserted_dt`, `modified_by`, `modified_dt`, `deleted_by`, `deleted_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', NULL, '$2y$12$fIZQf6b.DoJLAEkhVKh8ou353ZPSgBj3U0JGANcLEqzgm/..RZmKm', 'o1A09cnkf55Xvpt7IMkLjILLKKhT7awwJzltanzeuPFu8qAcD0xqqOEvAWSO', 1, '2024-09-09 04:07:57', NULL, NULL, NULL, NULL);
+(1, 'Admin', 'admin@gmail.com', NULL, '$2y$12$fIZQf6b.DoJLAEkhVKh8ou353ZPSgBj3U0JGANcLEqzgm/..RZmKm', 'TDnvnZ4KiWCd83YF7WP5GhOjFVso8oWCRDsxGYsmstN7bQLDD19akW7CbDo8', 1, '2024-09-09 04:07:57', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1489,31 +1598,31 @@ ALTER TABLE `projects`
 -- AUTO_INCREMENT for table `project_amenities`
 --
 ALTER TABLE `project_amenities`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `project_details`
 --
 ALTER TABLE `project_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `project_galleries`
 --
 ALTER TABLE `project_galleries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `project_hallmarks`
 --
 ALTER TABLE `project_hallmarks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `project_location_advantages`
 --
 ALTER TABLE `project_location_advantages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `refer_loyalty_programs`
