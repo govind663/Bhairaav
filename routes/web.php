@@ -32,6 +32,8 @@ use App\Http\Controllers\backend\ReInvestmentLoyaltyProgramController;
 use App\Http\Controllers\backend\ReferLoyaltyProgramController;
 use App\Http\Controllers\backend\BlogsController;
 use App\Http\Controllers\backend\GalleryController;
+use App\Http\Controllers\backend\AdminContactUsController;
+use App\Http\Controllers\backend\AdminChannelPartnerController;
 
 // ===== Frontend
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
@@ -203,6 +205,14 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
     // ==== Manage Blog resource
     Route::resource('blogs', BlogsController::class);
 
+    // ==== Contact Us List Route
+    Route::get('contact_us_list', [AdminContactUsController::class, 'contactUs'])->name('admin.contact_us');
+
+    // ==== Channel Partner List Route
+    Route::get('channel_partner_list', [AdminChannelPartnerController::class, 'channelPartner'])->name('admin.channel_partner');
+
+    // ==== View Chanel Partner
+    Route::get('view_channel_partner/{id?}', [AdminChannelPartnerController::class, 'viewChannelPartner'])->name('view_channel_partner');
 });
 
 

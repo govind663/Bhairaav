@@ -146,7 +146,7 @@
                 ($currentRoute === 'banking_partners.index') || ($currentRoute === 'banking_partners.create') || ($currentRoute === 'banking_partners.edit')
                 ? 'show' : '' }}" >
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon bi bi-hdd-stack"></span>
+                        <span class="micon bi bi-receipt-cutoff"></span>
                         <span class="mtext">About Bhairaav</span>
                     </a>
                     <ul class="submenu">
@@ -271,6 +271,20 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+
+                <li>
+                    <a href="{{ route('admin.contact_us') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'admin.contact_us') ? 'active' : '' }}">
+                        <span class="micon bi bi-chat-right-dots"></span>
+                        <span class="mtext">Contact Us</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('admin.channel_partner') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'admin.channel_partner') ? 'active' : '' }}">
+                        <span class="micon bi bi-hdd-stack"></span>
+                        <span class="mtext">Channel Partner</span>
+                    </a>
                 </li>
             </ul>
         </div>

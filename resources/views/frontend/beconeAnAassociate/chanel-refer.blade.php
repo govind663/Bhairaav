@@ -128,7 +128,7 @@
     </section>
     <!-- End Page Heading Section -->
 
-    <!-- Start Payment Section -->
+    <!-- Start Member Section -->
     <section>
         <div class="cs_height_70 cs_height_lg_70"></div>
         <div class="container">
@@ -163,7 +163,7 @@
 
                         <div class="ref-form-sec">
                             <div class="row ref_gap_y_10">
-                                <h2 class="cs_fs_28 cs_bold mb-1">Member Details</h2>
+                                <h2 class="cs_fs_28 cs_bold mb-1">Referral Details</h2>
                                 <div class="col-sm-3">
                                     <!-- <h4 class="cs_fs_16 cs_bold mb-0">First Name*</h4> -->
                                     <input type="text" placeholder="First Name*" class="cs_form_field_2 cs_radius_20">
@@ -235,7 +235,7 @@
         </div>
         <div class="cs_height_70 cs_height_lg_70"></div>
     </section>
-    <!-- End Payment Section -->
+    <!-- End Member Section -->
 @endsection
 
 @push('scripts')
