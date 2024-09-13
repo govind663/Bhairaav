@@ -7,7 +7,7 @@
 @push('styles')
 <style>
     .cs_hero_title {
-        font-weight: 200 !important;
+        font-weight: 600 !important;
     }
 </style>
 @endpush

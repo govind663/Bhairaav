@@ -25,4 +25,22 @@ class ChannelReferController extends Controller
             'refer' => $refer,
         ]);
     }
+
+    // ==== store storeMemberDetails
+
+    public function storeMemberDetails(Request $request)
+    {
+        $request->validate([
+            'f_name' => 'required',
+            'l_name' => 'required',
+            'mobile_no' => 'required',
+            'email' => 'required',
+            'project' => 'required',
+            'unit_or_flat' => 'required',
+            'refer_f_name' => 'required',
+            'refer_l_name' => 'required',
+            'refer_email' => 'required',
+            'refer_relation' => 'required',
+        ]);
+    }
 }

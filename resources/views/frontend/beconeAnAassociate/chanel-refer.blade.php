@@ -9,6 +9,7 @@
     .p{
         text-align: justify;
     }
+    
 </style>
 @endpush
 
@@ -134,102 +135,176 @@
         <div class="container">
             <div class="row cs_gap_y_50">
                 <div class="refer-s">
-                    <div class="row ref_gap_y_10">
-                        <h2 class="cs_fs_28 cs_bold mb-1">Member Details</h2>
-                        <div class="col-sm-4">
-                            <!-- <h4 class="cs_fs_16 cs_bold mb-0">First Name*</h4> -->
-                            <input type="text" placeholder="First Name*" class="cs_form_field_2 cs_radius_20">
-                        </div>
-                        <div class="col-sm-4">
-                            <!-- <h4 class="cs_fs_16 cs_bold mb-0">Last Name*</h4> -->
-                            <input type="text" placeholder="Last Name*" class="cs_form_field_2 cs_radius_20">
-                        </div>
-                        <div class="col-sm-4">
-                            <!-- <h4 class="cs_fs_16 cs_bold mb-0">Mobile No.</h4> -->
-                            <input type="text" placeholder="Mobile No.*" class="cs_form_field_2 cs_radius_20">
-                        </div>
-                        <div class="col-sm-4">
-                            <!-- <h4 class="cs_fs_16 cs_bold mb-0">Email Id*</h4> -->
-                            <input type="text" placeholder="Email Id*" class="cs_form_field_2 cs_radius_20">
-                        </div>
-                        <div class="col-sm-4">
-                            <!-- <h4 class="cs_fs_16 cs_bold mb-0">Project*</h4> -->
-                            <input type="text" placeholder="Project*" class="cs_form_field_2 cs_radius_20">
-                        </div>
-                        <div class="col-sm-4">
-                            <!-- <h4 class="cs_fs_16 cs_bold mb-0">Unit/Flat No.*</h4> -->
-                            <input type="text" placeholder="Unit/Flat No.*" class="cs_form_field_2 cs_radius_20">
-                        </div>
+                    <form method="POST" action="{{ route('store-member-details') }}" class="form-horizontal" enctype="multipart/form-data" autocomplete="off">
+                        @csrf
+                        <div class="row ref_gap_y_10">
+                            <h2 class="cs_fs_28 cs_bold mb-1">Member Details</h2>                        
+                            
+                            <div class="col-sm-4">
+                                <input type="text" class="cs_form_field_2 cs_radius_20 @error('f_name') is-invalid @enderror" name="f_name" id="f_name" value="{{ old('f_name') }}" placeholder="First Name *">
+                                @error('f_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                        <div class="ref-form-sec">
-                            <div class="row ref_gap_y_10">
-                                <h2 class="cs_fs_28 cs_bold mb-1">Referral Details</h2>
-                                <div class="col-sm-3">
-                                    <!-- <h4 class="cs_fs_16 cs_bold mb-0">First Name*</h4> -->
-                                    <input type="text" placeholder="First Name*" class="cs_form_field_2 cs_radius_20">
-                                </div>
-                                <div class="col-sm-3">
-                                    <!-- <h4 class="cs_fs_16 cs_bold mb-0">First Name*</h4> -->
-                                    <input type="text" placeholder="Last Name*" class="cs_form_field_2 cs_radius_20">
-                                </div>
-                                <div class="col-sm-3">
-                                    <!-- <h4 class="cs_fs_16 cs_bold mb-0">Email Id*</h4> -->
-                                    <input type="text" placeholder="Email Id*" class="cs_form_field_2 cs_radius_20">
-                                </div>
-                                <div class="col-sm-3">
-                                    <!-- <h4 class="cs_fs_16 cs_bold mb-0">Unit/Flat No.*</h4> -->
-                                    <input type="text" placeholder="Relation*" class="cs_form_field_2 cs_radius_20">
+                            <div class="col-sm-4">
+                                <input type="text" class="cs_form_field_2 cs_radius_20 @error('l_name') is-invalid @enderror" name="l_name" id="l_name" value="{{ old('l_name') }}" placeholder="Last Name *">
+                                @error('l_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-sm-4">
+                                <input type="text" class="cs_form_field_2 cs_radius_20 @error('mobile_no') is-invalid @enderror" maxlength="10" name="mobile_no" id="mobile_no" value="{{ old('mobile_no') }}" placeholder="Mobile Nuumber *">
+                                @error('mobile_no')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-sm-4">
+                                <input type="email" class="cs_form_field_2 cs_radius_20 @error('email') is-invalid @enderror" maxlength="10" name="email" id="email" value="{{ old('email') }}" placeholder="Email Id *">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-sm-4">
+                                <select name="project" id="project" class="cs_form_field_2 cs_radius_20 @error('project') is-invalid @enderror">
+                                    <optgroup>
+                                        <option value="">Select Project</option>
+                                        <option class="cs_bold">Residential Projects</option>
+                                        <option value="1" {{ old('project') == 1 ? 'selected' : '' }}>Goldcrest Residency</option>
+                                        <option value="2" {{ old('project') == 2 ? 'selected' : '' }}>Jewel of Queen</option>
+                                        <option class="cs_bold">Commercial Projects</option>
+                                        <option value="3" {{ old('project') == 3 ? 'selected' : '' }}>Bhairaav Milestone</option>
+                                        <option value="4" {{ old('project') == 4 ? 'selected' : '' }}>TCP The Corporate Park</option>
+                                        <option class="cs_bold">Completed Projects</option>
+                                        <option value="5" {{ old('project') == 5 ? 'selected' : '' }}>Bhairaav Darshan</option>
+                                        <option value="6" {{ old('project') == 6 ? 'selected' : '' }}>Parshwa Padma</option>
+                                        <option value="7" {{ old('project') == 7 ? 'selected' : '' }}>Madhuban</option>
+                                        <option value="8" {{ old('project') == 8 ? 'selected' : '' }}>Bhairaav Signature</option>
+                                        <option value="9" {{ old('project') == 9 ? 'selected' : '' }}>BHairaav Blessings</option>
+                                        <option value="10" {{ old('project') == 10 ? 'selected' : '' }}>Jupitor</option>
+                                        <option value="11" {{ old('project') == 11 ? 'selected' : '' }}>Four Season</option>
+                                        <option value="12" {{ old('project') == 12 ? 'selected' : '' }}>C Teja Signature</option>
+                                        <option class="cs_bold">Upcoming Projects</option>
+                                        <option value="13" {{ old('project') == 13 ? 'selected' : '' }}>Bhairaav Blossom </option>
+                                        <option value="14" {{ old('project') == 14 ? 'selected' : '' }}>SRA Project </option>
+                                        <option value="15" {{ old('project') == 15 ? 'selected' : '' }}>Bhairaav Moksh </option>
+                                        <option value="16" {{ old('project') == 16 ? 'selected' : '' }}>Redevelopment Project </option>
+                                    </optgroup>
+                                </select>
+                                @error('project')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-sm-4">
+                                <input type="text" class="cs_form_field_2 cs_radius_20 @error('unit_or_flat') is-invalid @enderror" name="unit_or_flat" id="unit_or_flat" value="{{ old('unit_or_flat') }}" placeholder="Unit / Flat No. *">
+                                @error('unit_or_flat')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="ref-form-sec">
+                                <div class="row ref_gap_y_10">
+                                    <h2 class="cs_fs_28 cs_bold mb-1">Referral Details</h2>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('refer_f_name') is-invalid @enderror" name="refer_f_name" id="refer_f_name" value="{{ old('refer_f_name') }}" placeholder="First Name *">
+                                        @error('refer_f_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('refer_l_name') is-invalid @enderror" name="refer_l_name" id="refer_l_name" value="{{ old('refer_l_name') }}" placeholder="Last Name *">
+                                        @error('refer_l_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <input type="email" class="cs_form_field_2 cs_radius_20 @error('refer_email') is-invalid @enderror" name="refer_email" id="refer_email" value="{{ old('refer_email') }}" placeholder="Email *">
+                                        @error('refer_email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('refer_relation') is-invalid @enderror" name="refer_relation" id="refer_relation" value="{{ old('refer_relation') }}" placeholder="Relation *">
+                                        @error('refer_relation')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="ref-btn-sec">
-                        <button class="cs_btn cs_style_2 mt-2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15">
-                            <b>Submit</b>
-                            <span>
-                                <i>
-                                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                            fill="currentColor">
-                                        </path>
-                                    </svg>
-                                </i>
-                                <i>
-                                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                            fill="currentColor">
-                                        </path>
-                                    </svg>
-                                </i>
-                            </span>
-                        </button>
-                        <button class="cs_btn cs_style_2 mt-2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15">
-                            <b>Add Member</b>
-                            <span>
-                                <i>
-                                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                            fill="currentColor">
-                                        </path>
-                                    </svg>
-                                </i>
-                                <i>
-                                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                            fill="currentColor">
-                                        </path>
-                                    </svg>
-                                </i>
-                            </span>
-                        </button>
-                    </div>
-
-
+                        <div class="ref-btn-sec">
+                            <button class="cs_btn cs_style_2 mt-2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15">
+                                <b>Submit</b>
+                                <span>
+                                    <i>
+                                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                                fill="currentColor">
+                                            </path>
+                                        </svg>
+                                    </i>
+                                    <i>
+                                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                                fill="currentColor">
+                                            </path>
+                                        </svg>
+                                    </i>
+                                </span>
+                            </button>
+                            <button class="cs_btn cs_style_2 mt-2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15">
+                                <b>Add Member</b>
+                                <span>
+                                    <i>
+                                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                                fill="currentColor">
+                                            </path>
+                                        </svg>
+                                    </i>
+                                    <i>
+                                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                                fill="currentColor">
+                                            </path>
+                                        </svg>
+                                    </i>
+                                </span>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -239,4 +314,5 @@
 @endsection
 
 @push('scripts')
+
 @endpush

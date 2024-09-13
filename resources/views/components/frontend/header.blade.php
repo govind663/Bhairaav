@@ -6,7 +6,7 @@
                 <div class="cs_main_header_left">
                     <nav class="cs_nav cs_fs_14 cs_semibold">
                         <ul class="cs_nav_list">
-                            <li><a href='{{ route('/') }}'>Home</a></li>
+                            {{-- <li><a href='{{ route('/') }}'>Home</a></li> --}}
 
                             <li class="menu-item-has-children">
                                 <a href='javascript:;'>About Bhairaav</a>

@@ -275,7 +275,8 @@ Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware
 
         // ==== Channel Refer
         Route::get('/chanel-refer', [ChannelReferController::class, 'chanelRefer'])->name('frontend.becone-an-associate.chanel-refer');
-
+        // ==== Store Member Details
+        Route::post('/store-member-details', [ChannelReferController::class, 'storeMemberDetails'])->name('store-member-details');
     });
 
     // ==== Media
@@ -292,6 +293,7 @@ Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware
 
     // ==== Contact Us
     Route::get('/contact-us', [ContactUsController::class, 'contactUs'])->name('frontend.contact-us');
+    
     // ==== Store Contact Us
     Route::post('/store-contact-us', [ContactUsController::class, 'storeContactUs'])->name('store-contact-us');
 });

@@ -440,8 +440,7 @@ Bhairaav | Residental Projects
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror
-                        
+                        @enderror                        
                     </div>
 
                     <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" type="submit">
