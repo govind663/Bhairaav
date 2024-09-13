@@ -64,7 +64,7 @@ use App\Models\Projects as ModelProject;
 Route::get('/', function () {
 
     // ==== Fetch Banner
-    $sliders = Slider::orderBy("id","desc")->where('status', 1)->whereNull('deleted_at')->get();
+    $sliders = Slider::orderBy("id","asc")->where('status', 1)->whereNull('deleted_at')->get();
 
     // === Fetch The Statistics
     $statistics = Statistics::orderBy("id","asc")->whereNull('deleted_at')->get();
@@ -79,14 +79,14 @@ Route::get('/', function () {
     $testimonials = Testimonial::orderBy("id","asc")->whereNull('deleted_at')->get();
 
     // Get latest 5 blog entries
-    $latestPosts = ModelBlog::orderBy('inserted_at', 'desc')->whereNull('deleted_at')->get();
+    $latestPosts = ModelBlog::orderBy('inserted_at', 'asc')->whereNull('deleted_at')->get();
     // dd($latestPosts);
 
     // ==== Fetch Upcoming Projects
-    $upcomingProjects = ModelProject::orderBy("id","desc")->where('project_type', 1)->whereNull('deleted_at')->get();
+    $upcomingProjects = ModelProject::orderBy("id","asc")->where('project_type', 1)->whereNull('deleted_at')->get();
 
     // ==== Fetch Completed Projects
-    $completedProjects = ModelProject::orderBy("id","desc")->where('project_type', 2)->whereNull('deleted_at')->get();
+    $completedProjects = ModelProject::orderBy("id","asc")->where('project_type', 2)->whereNull('deleted_at')->get();
 
     return view('frontend.home', [
         'sliders' => $sliders,
