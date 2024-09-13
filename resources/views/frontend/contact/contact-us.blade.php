@@ -136,7 +136,7 @@
                                 <a href="mailto:sales@bhairaavlifestyles.com">sales@bhairaavlifestyles.com</a>
                             </p>
                             <p class="mb-0">
-                                <a href="tel:90711 23428">90711 23428</a>
+                                <a href="tel:90711 23428">+91 90711 23428</a>
                             </p>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                                 <a href="mailto:customercare@bhairaavlifestyles.com">customercare@bhairaavlifestyles.com</a>
                             </p>
                             <p class="mb-0">
-                                <a href="tel:90710 16166">90710 16166</a>
+                                <a href="tel:90710 16166">+91 90710 16166</a>
                             </p>
                         </div>
                     </div>
@@ -212,35 +212,6 @@
                         </a>
                         <a target="_blank"
                             href="https://www.google.com/maps/place/Raheja+Centre,+Free+Press+Journal+Marg,+Nariman+Point,+Mumbai,+Maharashtra+400021/@18.9235599,72.8211563,17z/data=!3m1!4b1!4m5!3m4!1s0x3be7d1ebeae6c7f7:0xb652e869c16999c8!8m2!3d18.9235599!4d72.823345?shorturl=1"
-                            class="map" target="_blank">
-                            View on Map
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-md-6">
-                    <div class="location-boxes">
-                        <div class="img1">
-                            <img src="{{ asset('frontend/assets/img/icons/placeholder.png') }}" alt="">
-                        </div>
-                        <div class="space32"></div>
-                        <h3>
-                            Navi Mumbai Corporate Office
-                        </h3>
-                        <p>
-                            THE CORPORATE PARK
-                            16th Floor,
-                            Plot no. 14/15,
-                            Sector 18,
-                            Next to Warana Dairy,
-                            Opp. Pudhari Press,
-                            Sanpada,
-                            Navi Mumbai - 400 703
-                        </p>
-                        <a href="tel:022-2777 0707">
-                            Tel.: 022-2777 0707
-                        </a>
-                        <a href="https://www.google.com/maps/place/The+Corporate+Park/@19.068492,73.007163,12z/data=!4m5!3m4!1s0x0:0x21d330534c94fb16!8m2!3d19.0684921!4d73.0071629?hl=en&shorturl=1"
                             class="map" target="_blank">
                             View on Map
                         </a>
