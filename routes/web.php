@@ -62,6 +62,7 @@ use App\Models\Blog as ModelBlog;
 use App\Models\Projects as ModelProject;
 
 Route::get('/', function () {
+
     // ==== Fetch Banner
     $sliders = Slider::orderBy("id","desc")->where('status', 1)->whereNull('deleted_at')->get();
 
@@ -75,7 +76,7 @@ Route::get('/', function () {
     $whyChooseBhairaavs = WhyChooseBhairaav::orderBy("id","desc")->whereNull('deleted_at')->first();
 
     // ==== Fetch Testimonials
-    $testimonials = Testimonial::orderBy("id","desc")->whereNull('deleted_at')->get();
+    $testimonials = Testimonial::orderBy("id","asc")->whereNull('deleted_at')->get();
 
     // Get latest 5 blog entries
     $latestPosts = ModelBlog::orderBy('inserted_at', 'desc')->whereNull('deleted_at')->get();
