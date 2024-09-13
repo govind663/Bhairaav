@@ -39,10 +39,10 @@ class ResidentialProjectController extends Controller
 
         // Fetch related location advantages
         $locationAdvantages = ProjectLocationAdvantages::whereIn('id', $locationAdvantageIds)
-                                                ->select('id', 'feature_value', 'location_advantage_id')
-                                                ->orderBy('id', 'desc')
-                                                ->whereNull('deleted_at')
-                                                ->get();
+                                ->select('id', 'feature_value', 'location_advantage_id')
+                                ->orderBy('id', 'desc')
+                                ->whereNull('deleted_at')
+                                ->get();
         // dd($locationAdvantages);
 
         // Fetch related amenities

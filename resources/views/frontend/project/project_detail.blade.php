@@ -313,9 +313,7 @@ Bhairaav | Residental Projects
                     @if(!empty($projectAmenities))
                         @foreach($projectGallery as $index => $gallery)
                             <div class="cs_slide">
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $gallery->gallery_image_name }}"
-                                    class="cs_gallery_item cs_style_3 d-block cs_bg_filed position-relative"
-                                    data-src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="cs_gallery_item cs_style_3 d-block cs_bg_filed position-relative" data-src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}">
                                     <div class="cs_gallery_item_hover cs_primary_font cs_fs_38">
                                         <span class="cs_hover_icon cs_accent_color">
                                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
@@ -346,8 +344,8 @@ Bhairaav | Residental Projects
                                         </span>
                                     </div>
                                     <img src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}" alt="" class="d-none">
-                                </a>
-                            </div>
+                                </a>                                
+                            </div>                              
                         @endforeach
                     @endif
                 </div>
@@ -375,35 +373,78 @@ Bhairaav | Residental Projects
 </section>
 <!-- End Features Section -->
 
-<div class="modal fade" id="exampleModal_{{ $gallery->gallery_image_name }}" tabindex="-1" aria-labelledby="exampleModalLabel_{{ $gallery->gallery_image_name }}" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <!-- start report input popup -->
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title" id="staticBackdropLabel">Enter your details to unlock
-
+                <h1 class="modal-title" id="staticBackdropLabel">
+                    Enter your details to unlock
                 </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body space-y-20 p-40">
                 <!-- <h3>Register your interest</h3> -->
-                <form action="#" class="cs_form cs_style_2">
-                    <input type="text" placeholder="Full Name*" class="cs_form_field_2 cs_radius_20">
-                    <div class="cs_height_16 cs_height_lg_16"></div>
-                    <input type="email" placeholder="Email*" class="cs_form_field_2 cs_radius_20">
-                    <div class="cs_height_16 cs_height_lg_16"></div>
-                    <input type="number" placeholder="Phone No*" class="cs_form_field_2 cs_radius_20">
-                    <div class="cs_height_16 cs_height_lg_16"></div>
-                    <input type="text" placeholder="Subject*" class="cs_form_field_2 cs_radius_20">
-                    <div class="cs_height_16 cs_height_lg_16"></div>
-                    <select class="cs_form_field_2 cs_radius_20">
-                        <option>Select Flat Type</option>
-                        <option>1 BHK</option>
-                        <option>2 BHK</option>
-                        <option>Others</option>
-                    </select>
-                    <div class="cs_height_25 cs_height_lg_25"></div>
-                    <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15">
+                <form method="POST" action="{{ route('store-contact-us') }}" class="cs_form cs_style_2" enctype="multipart/form-data" autocomplete="off">
+                    @csrf
+
+                    <div class="col-sm-12 mb-3">
+                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>Full Name : <span class="text-danger">*</span></b></label> --}}
+                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}" placeholder="Full Name">
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>Email Id : <span class="text-danger">*</span></b></label> --}}
+                        <input type="email" class="cs_form_field_2 cs_radius_20 @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="Email Id">
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>Phone No. : <span class="text-danger">*</span></b></label> --}}
+                        <input type="text" maxlength="10" class="cs_form_field_2 cs_radius_20 @error('phone_no') is-invalid @enderror" name="phone_no" id="phone_no" value="{{ old('phone_no') }}" placeholder="Phone No.">
+                        @error('phone_no')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>Subject : <span class="text-danger">*</span></b></label> --}}
+                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('subject') is-invalid @enderror" name="subject" id="subject" value="{{ old('subject') }}" placeholder="Subject.">
+                        @error('subject')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>select Flat Type : <span class="text-danger">*</span></b></label> --}}
+                        <select class="cs_form_field_2 cs_radius_20 @error('flat_type') is-invalid @enderror" name="flat_type" id="flat_type">
+                            <option value="">Select Flat Type</option>
+                            <option value="1" {{ old('flat_type') == 1 ? 'selected' : '' }}>1 BHK</option>
+                            <option value="2" {{ old('flat_type') == 2 ? 'selected' : '' }}>2 BHK</option>
+                            <option value="3" {{ old('flat_type') == 3 ? 'selected' : '' }}>Other</option>
+                        </select>
+                        @error('flat_type')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        
+                    </div>
+
+                    <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" type="submit">
                         <b>Submit</b>
                         <span>
                             <i>
