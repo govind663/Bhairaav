@@ -1,7 +1,7 @@
 <footer class="cs_footer cs_primary_bg cs_ternary_color">
     <div class="cs_footer_main">
         <div class="container">
-            <div class="cs_footer_grid_4 pb-4">
+            {{-- <div class="cs_footer_grid_4 pb-4">
                 <div class="cs_footer_grid_item">
                     <div class="cs_footer_item">
                         <div class="cs_text_widget">
@@ -11,7 +11,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="cs_footer_grid_4">
                 <div class="cs_footer_grid_item">
                     <div class="cs_footer_item">
