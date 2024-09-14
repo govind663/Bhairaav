@@ -17,7 +17,6 @@ class ContactUsController extends Controller
     }
 
     // ==== Store Contact Us
-
     public function storeContactUs(ContactUsRequest $request){
         $data = $request->validated();
         try {
@@ -38,16 +37,21 @@ class ContactUsController extends Controller
 
             ContactUs::where('id', $contactUs->id)->update($update);
 
-            Mail::send('frontend.emails.contact_us_mail', [
+            // Send Mail
+            $mail = [
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'phone_no' => $request->input('phone_no'),
                 'subject' => $request->input('subject'),
                 'message' => $request->input('message'),
-            ], function($message) use ($request) {
-                $message->from('sales@bhairaavlifestyles.com', 'sales@bhairaavlifestyles.com');
+            ];
+
+            Mail::send('frontend.emails.contact_us_mail', $mail, function($message) use ($request) {
+                $message->from('sales@bhairaavlifestyle.com', 'sales@bhairaavlifestyle.com');
                 $message->to($request->input('email'));
-                $message->subject('Bhairava Lifestyles - Contact Us');
+                $message->subject('Contact Us');
+                $message->replyTo('sales@bhairaavlifestyle.com', 'sales@bhairaavlifestyle.com');
+                $message->cc('sales@bhairaavlifestyle.com', 'sales@bhairaavlifestyle.com');
             });
 
             return redirect()->route('frontend.contact-us')->with('message','Thank you for your interest. We will get back to you within 24 hours.');

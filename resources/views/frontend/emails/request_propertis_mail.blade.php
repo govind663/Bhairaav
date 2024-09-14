@@ -78,9 +78,20 @@
         <p class="details"><strong>Email:</strong> {{ $email }}</p>
         <p class="details"><strong>Phone No :</strong> {{ $phone_no }}</p>
         <p class="details"><strong>Subject:</strong> {{ $subject }}</p>
-        <p class="details"><strong>Message:</strong> {{ $message }}</p>
+        @if ($flat_type == 1)
+            <p class="details">
+                <strong>Flat Type:</strong>
+                1 BHK
+            </p>
+        @elseif ($flat_type == 2)
+            <p class="details">
+                <strong>Flat Type:</strong>
+                2 BHK
+            </p>
+        @endif
 
         <p>Thank you for reaching out to us. We will respond to your inquiry as soon as possible.</p>
+        <p class="footer">Bhairava Lifestyles</p>
 
         <div class="footer">
             <p>

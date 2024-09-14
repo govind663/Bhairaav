@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-Bhairaav | Manaage Channel Partner
+Bhairaav | Manaage Properties Request
 @endsection
 
 @push('styles')
@@ -19,7 +19,7 @@ Bhairaav | Manaage Channel Partner
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="title">
-                        <h4>Manage Channel Partner</h4>
+                        <h4>Manage Properties Request</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
@@ -27,7 +27,7 @@ Bhairaav | Manaage Channel Partner
                                 <a href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Manage Channel Partner
+                                Manage Properties Request
                             </li>
                         </ol>
                     </nav>
@@ -39,69 +39,49 @@ Bhairaav | Manaage Channel Partner
         <!-- Export Datatable start -->
         <div class="card-box mb-30">
             <div class="pd-20">
-                <h4 class="text-blue h4">All Channel Partner List</h4>
+                <h4 class="text-blue h4">All Properties Request List</h4>
             </div>
             <div class="pb-20">
                 <table class="table hover multiple-select-row data-table-export1 nowrap p-3">
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
-                            <th>Company Name / Individual Name</th>
-                            <th>Name of the owner</th>
-                            <th>Entity</th>
-                            <th>Mobile No.</th>
+                            <th>Name</th>
                             <th>Email Id</th>
-                            <th>Number of Years in Operation</th>
-                            <th>Expertise</th>
-                            <th class="no-export">View</th>
+                            <th>Phone Number</th>
+                            <th>Subject</th>
+                            <th>Flat Type</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($channelPartner as $key => $value)
+                        @foreach ($propertiesRequest as $key => $value)
                             <tr>
                                 <td>{{ ++$key }}</td>
-                                <td class="text-wrap text-justify">{{ $value->companyNameOrIndividualName }}</td>
                                 <td class="text-wrap text-justify">
-                                    {{ $value->nameOfTheOwner }}
-                                </td>
-                                @php
-                                    $entity = [];
-                                    if($value->entity == 1){
-                                        $entity = 'Individual';
-                                    }elseif ($value->entity == 2) {
-                                        $entity = 'Private Ltd. Co.';
-                                    }elseif ($value->entity == 3) {
-                                        $entity = 'Public Ltd. Co.';
-                                    }elseif ($value->entity == 4) {
-                                        $entity = 'Proprietorship';
-                                    }elseif ($value->entity == 5) {
-                                        $entity = 'Partnership';
-                                    }elseif($value->entity == 6){
-                                        $entity = 'LLP';
-                                    }
-                                @endphp
-                                <td class="text-wrap text-justify">
-                                    {{ $entity }}
+                                    {{ $value->name }}
                                 </td>
                                 <td class="text-wrap text-justify">
-                                    {{ $value->mobileNumber }}
+                                    {{ $value->email }}
                                 </td>
                                 <td class="text-wrap text-justify">
-                                    {{ $value->emailId }}
+                                    {{ $value->phone }}
                                 </td>
                                 <td class="text-wrap text-justify">
-                                    {{ $value->numberOfYearsInOperation }}
+                                    {{ $value->subject }}
                                 </td>
+                                @if ($value->flat_type == 1)
                                 <td class="text-wrap text-justify">
-                                    {{ $value->preferredExpertise }}
+                                    1 BHK
                                 </td>
-                                <td class="no-export">
-                                    <a href="{{ route('view_channel_partner', $value->id) }}">
-                                        <button class="btn btn-warning btn-sm">
-                                            <i class="micon dw dw-eye"></i>
-                                        </button>
-                                    </a>
+                                @elseif($value->flat_type == 2)
+                                <td class="text-wrap text-justify">
+                                    2 BHK
                                 </td>
+                                @elseif($value->flat_type == 3)
+                                <td class="text-wrap text-justify">
+                                    Other
+                                </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>
@@ -162,7 +142,7 @@ Bhairaav | Manaage Channel Partner
                     columns: ':not(.no-export)',
                 },
                header: true,
-               title: 'All Channel Partner List',
+               title: 'All Properties Request List',
                orientation: 'landscape',
                pageSize: 'A4',
                customize: function(doc) {

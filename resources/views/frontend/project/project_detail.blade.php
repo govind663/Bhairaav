@@ -344,8 +344,8 @@ Bhairaav | Residental Projects
                                         </span>
                                     </div>
                                     <img src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}" alt="" class="d-none">
-                                </a>                                
-                            </div>                              
+                                </a>
+                            </div>
                         @endforeach
                     @endif
                 </div>
@@ -385,7 +385,7 @@ Bhairaav | Residental Projects
             </div>
             <div class="modal-body space-y-20 p-40">
                 <!-- <h3>Register your interest</h3> -->
-                <form method="POST" action="{{ route('store-contact-us') }}" class="cs_form cs_style_2" enctype="multipart/form-data" autocomplete="off">
+                <form method="POST" action="{{ route('frontend.properties-request.store') }}" class="cs_form cs_style_2" enctype="multipart/form-data" autocomplete="off">
                     @csrf
 
                     <div class="col-sm-12 mb-3">
@@ -432,15 +432,15 @@ Bhairaav | Residental Projects
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>select Flat Type : <span class="text-danger">*</span></b></label> --}}
                         <select class="cs_form_field_2 cs_radius_20 @error('flat_type') is-invalid @enderror" name="flat_type" id="flat_type">
                             <option value="">Select Flat Type</option>
-                            <option value="1" {{ old('flat_type') == 1 ? 'selected' : '' }}>1 BHK</option>
-                            <option value="2" {{ old('flat_type') == 2 ? 'selected' : '' }}>2 BHK</option>
-                            <option value="3" {{ old('flat_type') == 3 ? 'selected' : '' }}>Other</option>
+                            <option value="1" {{ old('flat_type') == '1' ? 'selected' : '' }}>1 BHK</option>
+                            <option value="2" {{ old('flat_type') == '2' ? 'selected' : '' }}>2 BHK</option>
+                            <option value="3" {{ old('flat_type') == '3' ? 'selected' : '' }}>Other</option>
                         </select>
                         @error('flat_type')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror                        
+                        @enderror
                     </div>
 
                     <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" type="submit">

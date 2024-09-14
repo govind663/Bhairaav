@@ -146,7 +146,7 @@
                 ($currentRoute === 'banking_partners.index') || ($currentRoute === 'banking_partners.create') || ($currentRoute === 'banking_partners.edit')
                 ? 'show' : '' }}" >
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon bi bi-receipt-cutoff"></span>
+                        <span class="micon bi bi-diagram-2"></span>
                         <span class="mtext">About Bhairaav</span>
                     </a>
                     <ul class="submenu">
@@ -172,7 +172,7 @@
                         ]) ? 'show' : ''
                     }}" >
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon bi bi-textarea-resize"></span>
+                        <span class="micon bi bi-receipt-cutoff"></span>
                         <span class="mtext">Project Manage</span>
                     </a>
                     <ul class="submenu">
@@ -214,9 +214,16 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="{{ route('admin.channel_partner') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'admin.channel_partner') ? 'active' : '' }}">
+                        <span class="micon bi bi-hdd-stack"></span>
+                        <span class="mtext">Channel Partner</span>
+                    </a>
+                </li>
+
                 <li class="dropdown {{ ($currentRoute === 'loyalty_programs.index') || ($currentRoute === 'loyalty_programs.create') || ($currentRoute === 'loyalty_programs.edit') || ($currentRoute === 'how_work_loyalty_programs.index') || ($currentRoute === 'how_work_loyalty_programs.create') || ($currentRoute === 'how_work_loyalty_programs.edit') || ($currentRoute === 're_investment_loyalty_programs.index') || ($currentRoute === 're_investment_loyalty_programs.create') || ($currentRoute === 're_investment_loyalty_programs.edit') || ($currentRoute === 'refer_loyalty_programs.index') || ($currentRoute === 'refer_loyalty_programs.create') || ($currentRoute === 'refer_loyalty_programs.edit') ? 'show' : '' }}">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon bi bi-diagram-2"></span>
+                        <span class="micon bi bi-receipt"></span>
                         <span class="mtext">Refer a friend</span>
                     </a>
                     <ul class="submenu">
@@ -247,15 +254,22 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('admin.member_details') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'admin.member_details') ? 'active' : '' }}">
+                        <span class="micon bi bi-people"></span>
+                        <span class="mtext">Member Details</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ route('gallery.index') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'gallery.index') || ($currentRoute === 'gallery.create') || ($currentRoute === 'gallery.edit') ? 'active' : '' }}">
-                        <span class="micon bi bi-command"></span>
+                        <span class="micon bi bi-images"></span>
                         <span class="mtext">Gallery</span>
                     </a>
                 </li>
 
                 <li class="dropdown {{ ($currentRoute === 'categories.index') || ($currentRoute === 'categories.create') || ($currentRoute === 'categories.edit') || ($currentRoute === 'blogs.index') || ($currentRoute === 'blogs.create') || ($currentRoute === 'blogs.edit') ? 'show' : '' }}">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon bi bi-file-earmark-text"></span>
+                        <span class="micon bi bi-book"></span>
                         <span class="mtext">Blog</span>
                     </a>
                     <ul class="submenu">
@@ -275,15 +289,15 @@
 
                 <li>
                     <a href="{{ route('admin.contact_us') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'admin.contact_us') ? 'active' : '' }}">
-                        <span class="micon bi bi-chat-right-dots"></span>
+                        <span class="micon bi bi-envelope"></span>
                         <span class="mtext">Contact Us</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ route('admin.channel_partner') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'admin.channel_partner') ? 'active' : '' }}">
-                        <span class="micon bi bi-hdd-stack"></span>
-                        <span class="mtext">Channel Partner</span>
+                    <a href="{{ route('admin.properties_request') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'admin.properties_request') ? 'active' : '' }}">
+                        <span class="micon bi bi-geo-alt"></span>
+                        <span class="mtext">Properties Request</span>
                     </a>
                 </li>
             </ul>

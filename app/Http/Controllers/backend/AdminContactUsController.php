@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class AdminContactUsController extends Controller
 {
 
-    public function contactUs(){
+    public function contactUs(Request $request){
 
         $contactus = ContactUs::orderBy("id","desc")->whereNull('deleted_at')->get();
 

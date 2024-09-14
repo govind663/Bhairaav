@@ -34,6 +34,8 @@ use App\Http\Controllers\backend\BlogsController;
 use App\Http\Controllers\backend\GalleryController;
 use App\Http\Controllers\backend\AdminContactUsController;
 use App\Http\Controllers\backend\AdminChannelPartnerController;
+use App\Http\Controllers\backend\AdminMemberController;
+use App\Http\Controllers\backend\AdminPropertiesRequestController;
 
 // ===== Frontend
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
@@ -50,6 +52,7 @@ use App\Http\Controllers\frontend\ChannelReferController;
 use App\Http\Controllers\frontend\MediaController;
 use App\Http\Controllers\frontend\BlogController;
 use App\Http\Controllers\frontend\ContactUsController;
+use App\Http\Controllers\frontend\PropertiesRequestController;
 
 // ===== Import Model
 use App\Models\LatestUpdate;
@@ -214,6 +217,15 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
 
     // ==== View Chanel Partner
     Route::get('view_channel_partner/{id?}', [AdminChannelPartnerController::class, 'viewChannelPartner'])->name('view_channel_partner');
+
+    // ==== Member Details List
+    Route::get('member_details_list', [AdminMemberController::class, 'memberDetails'])->name('admin.member_details');
+
+    // ==== Member Details View
+    Route::get('member_details_view/{id?}', [AdminMemberController::class, 'memberDetailsView'])->name('member_details_view');
+
+    // ==== Properties Request List
+    Route::get('properties_request_list', [AdminPropertiesRequestController::class, 'propertiesRequest'])->name('admin.properties_request');
 });
 
 
@@ -298,4 +310,7 @@ Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware
 
     // ==== Store Contact Us
     Route::post('/store-contact-us', [ContactUsController::class, 'storeContactUs'])->name('store-contact-us');
+
+    // ==== Store Properties Request
+    Route::post('/properties-request-store', [PropertiesRequestController::class, 'storePropertiesRequest'])->name('frontend.properties-request.store');
 });
