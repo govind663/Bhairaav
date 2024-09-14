@@ -3,6 +3,8 @@
 <script src="{{ asset('assets/vendors/scripts/script.min.js') }}"></script>
 <script src="{{ asset('assets/vendors/scripts/process.js') }}"></script>
 <script src="{{ asset('assets/vendors/scripts/layout-settings.js') }}"></script>
+<script src="{{ asset('assets/src/plugins/jquery-steps/jquery.steps.js') }}"></script>
+<script src="{{ asset('assets/vendors/scripts/steps-setting.js') }}"></script>
 
 <script src="{{ asset('assets/src/plugins/datatables/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/src/plugins/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
