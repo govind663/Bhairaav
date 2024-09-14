@@ -5,6 +5,16 @@
 @endsection
 
 @push('styles')
+<style>
+    .is-invalid {
+        border-color: #dc3545; /* Bootstrap's red color for errors */
+    }
+
+    .invalid-feedback {
+        color: #dc3545; /* Match the border color */
+        font-size: 0.875em; /* Adjust font size as needed */
+    }
+</style>
 @endpush
 
 @section('content')

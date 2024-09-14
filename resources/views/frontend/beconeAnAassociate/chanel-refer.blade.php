@@ -9,7 +9,14 @@
     .p{
         text-align: justify;
     }
-    
+    .is-invalid {
+        border-color: #dc3545; /* Bootstrap's red color for errors */
+    }
+
+    .invalid-feedback {
+        color: #dc3545; /* Match the border color */
+        font-size: 0.875em; /* Adjust font size as needed */
+    }
 </style>
 @endpush
 
@@ -135,11 +142,12 @@
         <div class="container">
             <div class="row cs_gap_y_50">
                 <div class="refer-s">
-                    <form method="POST" action="{{ route('store-member-details') }}" class="form-horizontal" enctype="multipart/form-data" autocomplete="off">
+
+                    <form method="POST" action="{{ route('store-member-details') }}" enctype="multipart/form-data" autocomplete="off">
                         @csrf
                         <div class="row ref_gap_y_10">
-                            <h2 class="cs_fs_28 cs_bold mb-1">Member Details</h2>                        
-                            
+                            <h2 class="cs_fs_28 cs_bold mb-1">Member Details</h2>
+
                             <div class="col-sm-4">
                                 <input type="text" class="cs_form_field_2 cs_radius_20 @error('f_name') is-invalid @enderror" name="f_name" id="f_name" value="{{ old('f_name') }}" placeholder="First Name *">
                                 @error('f_name')
@@ -183,9 +191,13 @@
                                         <option class="cs_bold">Residential Projects</option>
                                         <option value="1" {{ old('project') == 1 ? 'selected' : '' }}>Goldcrest Residency</option>
                                         <option value="2" {{ old('project') == 2 ? 'selected' : '' }}>Jewel of Queen</option>
+                                    </optgroup>
+                                    <optgroup>
                                         <option class="cs_bold">Commercial Projects</option>
                                         <option value="3" {{ old('project') == 3 ? 'selected' : '' }}>Bhairaav Milestone</option>
                                         <option value="4" {{ old('project') == 4 ? 'selected' : '' }}>TCP The Corporate Park</option>
+                                    </optgroup>
+                                    <optgroup>
                                         <option class="cs_bold">Completed Projects</option>
                                         <option value="5" {{ old('project') == 5 ? 'selected' : '' }}>Bhairaav Darshan</option>
                                         <option value="6" {{ old('project') == 6 ? 'selected' : '' }}>Parshwa Padma</option>
@@ -195,6 +207,8 @@
                                         <option value="10" {{ old('project') == 10 ? 'selected' : '' }}>Jupitor</option>
                                         <option value="11" {{ old('project') == 11 ? 'selected' : '' }}>Four Season</option>
                                         <option value="12" {{ old('project') == 12 ? 'selected' : '' }}>C Teja Signature</option>
+                                    </optgroup>
+                                    <optgroup>
                                         <option class="cs_bold">Upcoming Projects</option>
                                         <option value="13" {{ old('project') == 13 ? 'selected' : '' }}>Bhairaav Blossom </option>
                                         <option value="14" {{ old('project') == 14 ? 'selected' : '' }}>SRA Project </option>
@@ -218,12 +232,13 @@
                                 @enderror
                             </div>
 
-                            <div class="ref-form-sec">
+                            <div class="ref-form-sec" id="dynamicReferralDetail">
+                                <h2 class="cs_fs_28 cs_bold mb-1">Referral Details</h2>
+
                                 <div class="row ref_gap_y_10">
-                                    <h2 class="cs_fs_28 cs_bold mb-1">Referral Details</h2>
                                     <div class="col-sm-3">
-                                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('refer_f_name') is-invalid @enderror" name="refer_f_name" id="refer_f_name" value="{{ old('refer_f_name') }}" placeholder="First Name *">
-                                        @error('refer_f_name')
+                                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('refer_f_name.*') is-invalid @enderror" name="refer_f_name[]" id="refer_f_name" value="{{ old('refer_f_name.0') }}" placeholder="First Name *">
+                                        @error('refer_f_name.*')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -231,8 +246,8 @@
                                     </div>
 
                                     <div class="col-sm-3">
-                                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('refer_l_name') is-invalid @enderror" name="refer_l_name" id="refer_l_name" value="{{ old('refer_l_name') }}" placeholder="Last Name *">
-                                        @error('refer_l_name')
+                                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('refer_l_name.*') is-invalid @enderror" name="refer_l_name[]" id="refer_l_name" value="{{ old('refer_l_name.0') }}" placeholder="Last Name *">
+                                        @error('refer_l_name.*')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -240,8 +255,8 @@
                                     </div>
 
                                     <div class="col-sm-3">
-                                        <input type="email" class="cs_form_field_2 cs_radius_20 @error('refer_email') is-invalid @enderror" name="refer_email" id="refer_email" value="{{ old('refer_email') }}" placeholder="Email *">
-                                        @error('refer_email')
+                                        <input type="email" class="cs_form_field_2 cs_radius_20 @error('refer_email.*') is-invalid @enderror" name="refer_email[]" id="refer_email" value="{{ old('refer_email.0') }}" placeholder="Email *">
+                                        @error('refer_email.*')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -249,8 +264,8 @@
                                     </div>
 
                                     <div class="col-sm-3">
-                                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('refer_relation') is-invalid @enderror" name="refer_relation" id="refer_relation" value="{{ old('refer_relation') }}" placeholder="Relation *">
-                                        @error('refer_relation')
+                                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('refer_relation.*') is-invalid @enderror" name="refer_relation[]" id="refer_relation" value="{{ old('refer_relation.0') }}" placeholder="Relation *">
+                                        @error('refer_relation.*')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -261,7 +276,7 @@
                         </div>
 
                         <div class="ref-btn-sec">
-                            <button class="cs_btn cs_style_2 mt-2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15">
+                            <button type="submit" class="cs_btn cs_style_2 mt-2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15">
                                 <b>Submit</b>
                                 <span>
                                     <i>
@@ -282,7 +297,7 @@
                                     </i>
                                 </span>
                             </button>
-                            <button class="cs_btn cs_style_2 mt-2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15">
+                            <button type="button" class="cs_btn cs_style_2 mt-2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" id="addReferralDetailRow">
                                 <b>Add Member</b>
                                 <span>
                                     <i>
@@ -314,5 +329,88 @@
 @endsection
 
 @push('scripts')
+<script>
+    $(document).ready(function () {
+        // Add a new row for Referral Details
+        $('#addReferralDetailRow').click(function () {
+            var newRow = `
+                <div class="ref-form-sec">
+                    <div class="row ref_gap_y_10">
+                        <div class="col-sm-3">
+                            <input type="text" class="cs_form_field_2 cs_radius_20 @error('refer_f_name.*') is-invalid @enderror" name="refer_f_name[]" id="refer_f_name" value="{{ old('refer_f_name.0') }}" placeholder="First Name *">
+                            @error('refer_f_name.*')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
 
+                        <div class="col-sm-3">
+                            <input type="text" class="cs_form_field_2 cs_radius_20 @error('refer_l_name.*') is-invalid @enderror" name="refer_l_name[]" id="refer_l_name" value="{{ old('refer_l_name.0') }}" placeholder="Last Name *">
+                            @error('refer_l_name.*')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="col-sm-3">
+                            <input type="email" class="cs_form_field_2 cs_radius_20 @error('refer_email.*') is-invalid @enderror" name="refer_email[]" id="refer_email" value="{{ old('refer_email.0') }}" placeholder="Email *">
+                            @error('refer_email.*')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="col-sm-3">
+                            <input type="text" class="cs_form_field_2 cs_radius_20 @error('refer_relation.*') is-invalid @enderror" name="refer_relation[]" id="refer_relation" value="{{ old('refer_relation.0') }}" placeholder="Relation *">
+                            @error('refer_relation.*')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="ref-btn-sec">
+                        <button type="button" class="btn btn-danger cs_radius_20 cs_fs_15 removeReferralDetailRow ">
+                            <b>Remove Member</b>
+                            <span>
+                                <i>
+                                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                            fill="currentColor">
+                                        </path>
+                                    </svg>
+                                </i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            // Append the new row to the dynamic section
+            $('#dynamicReferralDetail').append(newRow);
+        });
+
+        // Remove a row for Referral Details
+        $(document).on('click', '.removeReferralDetailRow', function () {
+            // Remove the row
+            $(this).closest('.ref-form-sec').remove();
+
+            // Reindex the rows
+            $('.ref-form-sec').each(function (index) {
+                $(this).find('input').each(function () {
+                    var name = $(this).attr('name').replace(/\[\d+\]/, `[${index}]`);
+                    $(this).attr('name', name).attr('id', $(this).attr('id').replace(/\d+/, index));
+                });
+            });
+
+            // Update the counter
+            counter = $('.ref-form-sec').length;
+
+        });
+    });
+</script>
 @endpush

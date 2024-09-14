@@ -1,3 +1,14 @@
+<style>
+    .is-invalid {
+        border-color: #dc3545; /* Bootstrap's red color for errors */
+    }
+
+    .invalid-feedback {
+        color: #dc3545; /* Match the border color */
+        font-size: 0.875em; /* Adjust font size as needed */
+    }
+</style>
+
 <div class="adminActions">
     <input type="checkbox" name="adminToggle" class="adminToggle" />
     <a class="adminButton" href="#!">

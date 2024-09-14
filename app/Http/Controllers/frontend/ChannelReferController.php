@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\MemberDetailRequest;
 use App\Models\HowWorkLoyaltyProgram;
 use App\Models\LoyaltyProgram;
+use App\Models\MemberDetail;
 use Illuminate\Http\Request;
 use App\Models\ReferLoyaltyProgram;
 use App\Models\ReInvestmentLoyaltyProgram;
+use Carbon\Carbon;
 
 class ChannelReferController extends Controller
 {
@@ -27,20 +30,39 @@ class ChannelReferController extends Controller
     }
 
     // ==== store storeMemberDetails
-
-    public function storeMemberDetails(Request $request)
+    public function storeMemberDetails(MemberDetailRequest $request)
     {
-        $request->validate([
-            'f_name' => 'required',
-            'l_name' => 'required',
-            'mobile_no' => 'required',
-            'email' => 'required',
-            'project' => 'required',
-            'unit_or_flat' => 'required',
-            'refer_f_name' => 'required',
-            'refer_l_name' => 'required',
-            'refer_email' => 'required',
-            'refer_relation' => 'required',
-        ]);
+
+        $data = $request->validated();
+        try {
+
+            // ==== Create new record in Member Detail
+            $memberDetail = new MemberDetail();
+
+            $memberDetail->f_name = $request->f_name;
+            $memberDetail->l_name = $request->l_name;
+            $memberDetail->mobile_no = $request->mobile_no;
+            $memberDetail->email = $request->email;
+            $memberDetail->projects_id = $request->project;
+            $memberDetail->unit_or_flat = $request->unit_or_flat;
+            $memberDetail->refer_f_name = json_encode($request->refer_f_name);
+            $memberDetail->refer_l_name = json_encode($request->refer_l_name);
+            $memberDetail->refer_email = json_encode($request->refer_email);
+            $memberDetail->refer_relation = json_encode($request->refer_relation);
+            $memberDetail->inserted_at = Carbon::now();
+            $memberDetail->save();
+
+            $update = [
+                'inserted_by' => $memberDetail->id,
+            ];
+
+            MemberDetail::where('id', $memberDetail->id)->update($update);
+
+            return redirect()->back()->with('message','Member details have been successfully added. Thank you for updating the referral information.');
+
+        } catch(\Exception $ex){
+
+            return redirect()->back()->with('error','Something Went Wrong  - '.$ex->getMessage());
+        }
     }
 }
