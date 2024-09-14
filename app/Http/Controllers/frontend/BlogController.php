@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\DB;
 class BlogController extends Controller
 {
     public function blogList(Request $request){
-        $blogs = Blog::orderBy("id","desc")->whereNull('deleted_at')->paginate(3);
+
+        $blogs = Blog::orderBy("id","asc")->whereNull('deleted_at')->get();
+
         return view("frontend.blog.all-blog-list", ['blogs'=> $blogs]);
     }
 

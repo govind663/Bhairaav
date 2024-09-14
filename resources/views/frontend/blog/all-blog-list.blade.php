@@ -67,7 +67,7 @@ Bhairaav | Blog
     <div class="container">
         <div class="row cs_row_gap_60 cs_gap_y_80">
             @foreach ($blogs as $blog)
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-4 col-md-6" id="blog-list">
                 <div class="cs_post cs_style_1 cs_size_1">
                     <a class='cs_post_thumb cs_radius_5 overflow-hidden d-block cs_mb_29 cs_mb_lg_20 position-relative' href='{{ route('frontend.blog.blog-details', ['id' => $blog->id] ) }}'>
                         <img src="{{ asset('/bhairaav/blog/blog_image/' . $blog->blog_image ) }}" alt="Feature">
@@ -108,16 +108,16 @@ Bhairaav | Blog
             @endforeach
         </div>
         <!-- Pagination Links -->
-        <div class="text-center">
+        {{-- <div class="text-center">
             <div class="cs_height_80 cs_height_lg_50"></div>
-            {{-- {{ $blogs->links('pagination::bootstrap-5') }} --}}
-        </div>
-        <div class="text-center">
+            {{ $blogs->links('pagination::bootstrap-5') }}
+        </div> --}}
+        {{-- <div class="text-center" id="load-more-container">
             <div class="cs_height_80 cs_height_lg_50"></div>
-            <button class="cs_btn cs_style_2 cs_primary_btn cs_medium cs_radius_20 cs_fs_15">
+            <button type="button" class="cs_btn cs_style_2 cs_primary_btn cs_medium cs_radius_20 cs_fs_15" id="load-more-btn">
                 Learn More
             </button>
-        </div>
+        </div> --}}
     </div>
     <div class="cs_height_70 cs_height_lg_70"></div>
 </section>
