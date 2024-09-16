@@ -51,9 +51,8 @@
                                     @if($description == null)
 
                                     @else
-                                        <br>
                                         <ul class="cs_list cs_style_1 cs_type_1 cs_mp_0">
-                                            <li>
+                                            <li class="mb-2">
                                                 <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <g clip-path="url(.clip0_95_13)">
