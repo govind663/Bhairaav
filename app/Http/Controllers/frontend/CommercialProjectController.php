@@ -10,7 +10,7 @@ class CommercialProjectController extends Controller
 {
     public function commercialProject(Request $request)
     {
-        $projects = Projects::where('project_type', 2)->where('property_type', 2)->orderBy("id","desc")->whereNull('deleted_at')->get();
+        $projects = Projects::where('project_type', 2)->where('property_type', 2)->orderBy("id","asc")->whereNull('deleted_at')->get();
         return view("frontend.project.commercial-project" , ['projects' => $projects]);
     }
 }
