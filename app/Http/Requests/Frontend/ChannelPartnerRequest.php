@@ -108,9 +108,9 @@ class ChannelPartnerRequest extends FormRequest
             'numberOfYearsInOperation.required' => __('Number of Years in Operation is required'),
             'numberOfYearsInOperation.numeric' => __('The Number of Years in Operation be a number.'),
 
-            'preferredExpertise.required' => __('Preferred Expertise is required'),
-            'preferredExpertise.numeric' => __('The Preferred Expertise be a number.'),
-            'preferredExpertise.in' => __('The Preferred Expertise must be one of the following: 1, 2, 3, 4, 5.'),
+            'preferredExpertise.required' => __('Expertise is required'),
+            'preferredExpertise.numeric' => __('The Expertise be a number.'),
+            'preferredExpertise.in' => __('The Expertise must be one of the following: 1, 2, 3, 4, 5.'),
 
             'panCardNo.required' => __('Pan Card Number is required'),
             'panCardNo.string' => __('The Pan Card Number be a string.'),
@@ -124,18 +124,18 @@ class ChannelPartnerRequest extends FormRequest
             'reraNo.string' => __('The RERA Number be a string.'),
             'reraNo.max' => __('The length of RERA Number should not exceed 255 characters.'),
 
-            'brokerAffiliation.required' => __('Do you have Affiliation to any Broker Association is required'),
-            'brokerAffiliation.numeric' => __('The Do you have Affiliation to any Broker Association be a number.'),
-            'brokerAffiliation.in' => __('The Do you have Affiliation to any Broker Association must be one of the following: 1, 2.'),
+            'brokerAffiliation.required' => __('Affiliation to any Broker Association is required'),
+            'brokerAffiliation.numeric' => __('The Affiliation to any Broker Association be a number.'),
+            'brokerAffiliation.in' => __('The Affiliation to any Broker Association must be one of the following: 1, 2.'),
 
             'propertiesType.required' => __("Which of the Bhairaav's Properties are you interested is required"),
             'propertiesType.min' => __('The length of Which of the Bhairaav \'s Properties are you interested should not less than 3 characters'),
             'propertiesType.numeric' => __('The Which of the Bhairaav \'s Properties are you interested be a number.'),
             'propertiesType.in' => __('The Which of the Bhairaav \'s Properties are you interested must be one of the following: 1, 2, 3, 4, 5.'),
 
-            'authorizedSignatories.required' => __('Are you Authorised Signatories is required'),
-            'authorizedSignatories.numeric' => __('The Are you Authorised Signatories be a number.'),
-            'authorizedSignatories.in' => __('The Are you Authorised Signatories must be one of the following: 1, 2, 3.'),
+            'authorizedSignatories.required' => __('Authorised Signatories is required'),
+            'authorizedSignatories.numeric' => __('The Authorised Signatories be a number.'),
+            'authorizedSignatories.in' => __('The Authorised Signatories must be one of the following: 1, 2, 3.'),
 
             'name.required' => __('Name is required'),
             'name.max' => __('The length of Name should not exceed 255 characters'),

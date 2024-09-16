@@ -22,7 +22,7 @@
     <section class="cs_page_heading cs_breadcumbs cs_primary_bg cs_bg_filed cs_center"
         data-src="{{ asset('frontend/assets/img/bg/17050.jpg') }}">
         <div class="container">
-            <h1 class="cs_white_color text-center mb-0 cs_fs_67">Refer a friend</h1>
+            <h1 class="cs_white_color text-center mb-0 cs_fs_67">Channel Partner</h1>
         </div>
     </section>
     <!-- End Page Heading Section -->
@@ -173,7 +173,7 @@
 
                         <div class="col-sm-12">
                             <h4 class="cs_fs_16 cs_bold mb-0">
-                                <b>Preferred Expertise : <span class="text-danger">*</span></b>
+                                <b>Expertise : <span class="text-danger">*</span></b>
                             </h4>
                             <ul class="cs_payment_method_list cs_primary_color cs_payment_method_list @error('preferredExpertise') is-invalid @enderror">
                                 <li>
@@ -246,7 +246,7 @@
 
                         <div class="col-sm-12">
                             <h4 class="cs_fs_16 cs_bold mb-0">
-                                <b>Do you have Affiliation to any Broker Association ? : <span class="text-danger">*</span></b>
+                                <b>Affiliation to any Broker Association ? : <span class="text-danger">*</span></b>
                             </h4>
                             <ul class="cs_payment_method_list cs_primary_color cs_payment_method_list @error('brokerAffiliation') is-invalid @enderror">
                                 <li>
@@ -314,7 +314,7 @@
 
                         <div class="col-sm-12">
                             <h4 class="cs_fs_16 cs_bold mb-0">
-                                <b>Are you Authorised Signatories ? : <span class="text-danger">*</span></b>
+                                <b>Authorised Signatories ? : <span class="text-danger">*</span></b>
                             </h4>
                             <ul class="cs_payment_method_list cs_primary_color cs_payment_method_list @error('authorizedSignatories') is-invalid @enderror">
                                 <li>
