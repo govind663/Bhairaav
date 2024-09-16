@@ -136,9 +136,9 @@ Bhairaav | Edit Project
                 </div>
 
                 <div class="form-group row mt-3">
-                    <label class="col-sm-1"><b>Address : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-4 col-md-4">
-                        <textarea type="text" name="address" id="address" class="form-control @error('address') is-invalid @enderror" value="{!! $project->address !!}" placeholder="Enter Address.">{!! $project->address !!}</textarea>
+                    <label class="col-sm-2"><b>Address : <span class="text-danger">*</span></b></label>
+                    <div class="col-sm-12 col-md-12">
+                        <textarea type="text" name="address" id="address" class="textarea_editor form-control @error('address') is-invalid @enderror" value="{!! $project->address !!}" placeholder="Enter Address.">{!! $project->address !!}</textarea>
                         @error('address')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

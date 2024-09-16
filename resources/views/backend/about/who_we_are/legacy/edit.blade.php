@@ -45,19 +45,19 @@ Bhairaav | Edit The Legacy
                 <div class="form-group row mt-3">
                     <label class="col-sm-2"><b>Upload Image : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="the_legacy" id="the_legacy" class="form-control @error('the_legacy') is-invalid @enderror" value="{{ $legacy->the_legacy }}">
+                        <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="legacies_image" id="legacies_image" class="form-control @error('legacies_image') is-invalid @enderror" value="{{ $legacy->legacies_image }}">
                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                         <br>
                         <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
                         <br>
-                        @error('the_legacy')
+                        @error('legacies_image')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                         <br>
-                        @if(!empty($legacy->the_legacy))
-                            <a href="{{ url('/') }}/bhairaav/who_we_are/the_legacy/{{ $legacy->the_legacy }}" target="_blank" class="btn btn-primary btn-sm">
+                        @if(!empty($legacy->legacies_image))
+                            <a href="{{ url('/') }}/bhairaav/who_we_are/legacies_image/{{ $legacy->legacies_image }}" target="_blank" class="btn btn-primary btn-sm">
                                 <i class="micon dw dw-eye"></i> Document
                             </a>
                         @endif

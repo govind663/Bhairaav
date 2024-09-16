@@ -63,6 +63,7 @@ use App\Models\Testimonial;
 use App\Models\WhyChooseBhairaav;
 use App\Models\Blog as ModelBlog;
 use App\Models\Projects as ModelProject;
+use App\Models\ProjectDetails as ModelProjectDetails;
 
 Route::get('/', function () {
 
@@ -87,6 +88,7 @@ Route::get('/', function () {
 
     // ==== Fetch Upcoming Projects
     $upcomingProjects = ModelProject::orderBy("id","asc")->where('project_type', 1)->whereNull('deleted_at')->get();
+    // dd($upcomingProjects);
 
     // ==== Fetch Completed Projects
     $completedProjects = ModelProject::orderBy("id","asc")->where('project_type', 2)->whereNull('deleted_at')->get();
@@ -99,7 +101,7 @@ Route::get('/', function () {
         'testimonials' => $testimonials,
         'latestPosts' => $latestPosts,
         'upcomingProjects' => $upcomingProjects,
-        'completedProjects' => $completedProjects
+        'completedProjects' => $completedProjects,
     ]);
 
 })->name('/');
