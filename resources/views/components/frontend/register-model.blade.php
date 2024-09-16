@@ -44,7 +44,7 @@
 
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>Full Name : <span class="text-danger">*</span></b></label> --}}
-                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}" placeholder="Full Name">
+                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}" placeholder="Full Name *">
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -54,7 +54,7 @@
 
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>Email Id : <span class="text-danger">*</span></b></label> --}}
-                        <input type="email" class="cs_form_field_2 cs_radius_20 @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="Email Id">
+                        <input type="email" class="cs_form_field_2 cs_radius_20 @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="Email Id *">
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -64,7 +64,7 @@
 
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>Phone No. : <span class="text-danger">*</span></b></label> --}}
-                        <input type="text" maxlength="10" class="cs_form_field_2 cs_radius_20 @error('phone_no') is-invalid @enderror" name="phone_no" id="phone_no" value="{{ old('phone_no') }}" placeholder="Phone No.">
+                        <input type="text" maxlength="10" class="cs_form_field_2 cs_radius_20 @error('phone_no') is-invalid @enderror" name="phone_no" id="phone_no" value="{{ old('phone_no') }}" placeholder="Phone No. *">
                         @error('phone_no')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -74,7 +74,7 @@
 
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>Subject : <span class="text-danger">*</span></b></label> --}}
-                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('subject') is-invalid @enderror" name="subject" id="subject" value="{{ old('subject') }}" placeholder="Subject.">
+                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('subject') is-invalid @enderror" name="subject" id="subject" value="{{ old('subject') }}" placeholder="Subject. *">
                         @error('subject')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
