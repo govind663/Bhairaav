@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Projects;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -23,7 +24,23 @@ class HomeController extends Controller
 
     public function Admin_Home()
     {
-        return view('backend.admin-dashboard');
+        // === Total Projects Counts
+        $total_projects = Projects::orderBy("id","desc")->whereNull('deleted_at')->count();
+
+        // === Total Ongoing Projects Counts
+        $ongoing_projects = Projects::where('project_type', 1)->orderBy("id","desc")->whereNull('deleted_at')->count();
+
+        // === Total Completed Projects Counts
+        $completed_projects = Projects::where('project_type', 2)->orderBy("id","desc")->whereNull('deleted_at')->count();
+
+        // === Total Upcoming Projects Counts
+        $upcoming_projects = Projects::where('project_type', 3)->orderBy("id","desc")->whereNull('deleted_at')->count();
+        return view('backend.admin-dashboard',[
+            'total_projects' => $total_projects,
+            'ongoing_projects' => $ongoing_projects,
+            'completed_projects' => $completed_projects,
+            'upcoming_projects' => $upcoming_projects
+        ]);
     }
 
     public function changePassword(Request $request)

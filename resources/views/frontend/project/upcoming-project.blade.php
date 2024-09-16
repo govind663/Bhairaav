@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="tr-destination-item">
-                        <h4 class="tr-destination-title">Bhairaav moksh </h4>
+                        <h4 class="tr-destination-title">Bhairaav Samruddhi</h4>
                         <p class="tr-destination-location"> (Redevelopment) lalbaug</p>
                     </div>
                 </div>
