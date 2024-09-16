@@ -270,7 +270,7 @@ Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware
         Route::group(['prefix'=> 'completed-project'],function(){
 
             // ==== Residential Projects
-            Route::get('/completed-project/{projectId?}/{projectType?}', [CompletedProjectController::class, 'completedProject'])->name('frontend.project.completed-project');
+            Route::get('/completed-project/{projectId?}', [CompletedProjectController::class, 'completedProject'])->name('frontend.project.completed-project');
             Route::get('/completed-project/view-project-details/{id?}', [CompletedProjectController::class, 'viewProjectDetails'])->name('frontend.project.completed-project.view-project-details');
 
         });

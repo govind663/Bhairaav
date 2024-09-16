@@ -13,16 +13,6 @@
         data-src="{{ asset('frontend/assets/img/projects/completedbg.jpg') }}">
         <div class="container">
             <h1 class="cs_white_color text-center mb-0 cs_fs_67">Completed Projects</h1>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb justify-content-center">
-                    <h3 class="breadcrumb-item text-white"><a href="{{ route('/') }}">Home</a></h3>
-                    @if ($projectType == '1')
-                        <h3 class="breadcrumb-item active text-white" aria-current="page">Residential Projects</h3>
-                    @elseif ($projectType == '2')
-                        <h3 class="breadcrumb-item active text-white" aria-current="page">Commercial Projects</h3>
-                    @endif
-                </ol>
-            </nav>
         </div>
     </section>
     <!-- End Page Heading Section -->

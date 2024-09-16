@@ -40,16 +40,8 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item-has-children">
-                                        <a href='javascript:;'>Completed Projects</a>
-                                        <ul>
-                                            <li>
-                                                <a href='{{ route('frontend.project.completed-project', ['projectId' => '2', 'projectType' => '1']) }}'>Residential Projects</a>
-                                            </li>
-                                            <li>
-                                                <a href='{{ route('frontend.project.completed-project', ['projectId' => '2', 'projectType' => '2']) }}'>Commercial Projects</a>
-                                            </li>
-                                        </ul>
+                                    <li>
+                                        <a href='{{ route('frontend.project.completed-project', ['projectId' => '2']) }}'>Completed Projects</a>
                                     </li>
                                     <li>
                                         <a href='{{ route('frontend.project.upcoming-project') }}'>Upcoming Projects</a>
