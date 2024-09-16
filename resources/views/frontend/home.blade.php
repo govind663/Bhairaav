@@ -184,7 +184,8 @@
                                                     $projectDetails = App\Models\ProjectDetails::where('project_name_id', $project->id)->first();
                                                 @endphp
                                                 <ul class="cs_card_list cs_mp_0">
-                                                    <li>Maha RERA : -  {{ $projectDetails->maha_rera_registration_number }}</li>
+                                                    {{-- <li>Maha RERA : -  {{ $projectDetails->maha_rera_registration_number }}</li> --}}
+                                                    <li>Maha RERA : - Phase I - P51700012365</li>
                                                 </ul>
 
                                                 <a class='cs_card_btn cs_center' href='{{ route('frontend.project.residential-project.view-project-details', ['id' => $project->id]) }}'>
