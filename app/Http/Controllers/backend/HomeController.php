@@ -28,18 +28,19 @@ class HomeController extends Controller
         $total_projects = Projects::orderBy("id","desc")->whereNull('deleted_at')->count();
 
         // === Total Ongoing Projects Counts
-        $ongoing_projects = Projects::where('project_type', 1)->orderBy("id","desc")->whereNull('deleted_at')->count();
+        $total_ongoing_projects = Projects::where('project_type', 1)->orderBy("id","desc")->whereNull('deleted_at')->count();
 
         // === Total Completed Projects Counts
-        $completed_projects = Projects::where('project_type', 2)->orderBy("id","desc")->whereNull('deleted_at')->count();
+        $total_completed_projects = Projects::where('project_type', 2)->orderBy("id","desc")->whereNull('deleted_at')->count();
 
         // === Total Upcoming Projects Counts
-        $upcoming_projects = Projects::where('project_type', 3)->orderBy("id","desc")->whereNull('deleted_at')->count();
+        $total_upcoming_projects = Projects::where('project_type', 3)->orderBy("id","desc")->whereNull('deleted_at')->count();
+
         return view('backend.admin-dashboard',[
             'total_projects' => $total_projects,
-            'ongoing_projects' => $ongoing_projects,
-            'completed_projects' => $completed_projects,
-            'upcoming_projects' => $upcoming_projects
+            'total_ongoing_projects' => $total_ongoing_projects,
+            'total_completed_projects' => $total_completed_projects,
+            'total_upcoming_projects' => $total_upcoming_projects
         ]);
     }
 

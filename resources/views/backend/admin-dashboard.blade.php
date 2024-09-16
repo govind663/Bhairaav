@@ -57,7 +57,9 @@ Bhairaav | Home
             <div class="card-box height-100-p widget-style3">
                 <div class="d-flex flex-wrap">
                     <div class="widget-data">
-                        <div class="weight-700 font-24 text-dark">0</div>
+                        <div class="weight-700 font-24 text-dark">
+                            {{ $total_ongoing_projects ? $total_ongoing_projects : 0 }}
+                        </div>
                         <div class="font-14 text-secondary weight-500">
                             Total Ongoing Projects
                         </div>
@@ -74,7 +76,9 @@ Bhairaav | Home
             <div class="card-box height-100-p widget-style3">
                 <div class="d-flex flex-wrap">
                     <div class="widget-data">
-                        <div class="weight-700 font-24 text-dark">0</div>
+                        <div class="weight-700 font-24 text-dark">
+                            {{ $total_completed_projects ? $total_completed_projects : 0 }}
+                        </div>
                         <div class="font-14 text-secondary weight-500">
                             Total Completed Projected
                         </div>
@@ -91,7 +95,9 @@ Bhairaav | Home
             <div class="card-box height-100-p widget-style3">
                 <div class="d-flex flex-wrap">
                     <div class="widget-data">
-                        <div class="weight-700 font-24 text-dark">0</div>
+                        <div class="weight-700 font-24 text-dark">
+                            {{ $total_upcoming_projects ? $total_upcoming_projects : 0 }}
+                        </div>
                         <div class="font-14 text-secondary weight-500">
                             Total Upcoming Projects
                         </div>
