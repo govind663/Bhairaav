@@ -113,7 +113,10 @@ Bhairaav | Add Project Details
                             <tr>
                                 <td>
                                     <div class="col-sm-8 col-md-8">
-                                        <input type="file" accept=".png, .jpg, .jpeg" name="banner_image[]" id="banner_image" class="form-control @error('banner_image.*') is-invalid @enderror" value="{{ old('banner_image') }}">
+                                        <div id="banner-container-0">
+                                            <div id="file-banner-0"></div>
+                                        </div>
+                                        <input type="file" onchange="bannerPreviewFiles(0)" accept=".png, .jpg, .jpeg" name="banner_image[]" id="banner_image_0" class="form-control @error('banner_image.*') is-invalid @enderror">
                                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                                         <br>
                                         <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
@@ -285,7 +288,10 @@ Bhairaav | Add Project Details
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12">
-                                        <input type="file" accept=".png, .jpg, .jpeg"  name="amenite_image[]" id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image.0')}}">
+                                        <div id="overview-amenite-container-0">
+                                            <div id="file-overview-amenite-0"></div>
+                                        </div>
+                                        <input type="file" onchange="overviewAmenitePreviewFiles(0)" accept=".png, .jpg, .jpeg"  name="amenite_image[]" id="amenite_image_0" class="form-control @error('amenite_image.*') is-invalid @enderror">
                                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                                         <br>
                                         <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
@@ -300,7 +306,7 @@ Bhairaav | Add Project Details
 
                                 <td>
                                     <div class="col-sm-12 col-md-12">
-                                        <input type="text" name="amenite_image_name[]" id="amenite_image_name" class="form-control @error('amenite_image_name.*') is-invalid @enderror" value="{{ old('amenite_image_name.0') }}" placeholder="Enter Feature Value">
+                                        <input type="text" name="amenite_image_name[]" id="amenite_image_name_0" class="form-control @error('amenite_image_name.*') is-invalid @enderror" placeholder="Enter Feature Value">
                                         @error('amenite_image_name.*')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -343,7 +349,10 @@ Bhairaav | Add Project Details
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12">
-                                        <input type="file" accept=".png, .jpg, .jpeg" name="gallery_image[]" id="gallery_image" class="form-control @error('gallery_image') is-invalid @enderror" value="{{ old('gallery_image.0') }}">
+                                        <div id="overview-gallery-container-0">
+                                            <div id="file-overview-gallery-0"></div>
+                                        </div>
+                                        <input type="file" onchange="overviewGalleryPreviewFiles(0)" accept=".png, .jpg, .jpeg" name="gallery_image[]" id="gallery_image_0" class="form-control @error('gallery_image.*') is-invalid @enderror">
                                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                                         <br>
                                         <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
@@ -357,7 +366,7 @@ Bhairaav | Add Project Details
                                 </td>
                                 <td>
                                     <div class="col-sm-12 col-md-12">
-                                        <input type="text" name="gallery_image_name[]" id="gallery_image_name" class="form-control @error('gallery_image_name.*') is-invalid @enderror" value="{{ old('gallery_image_name.0') }}" placeholder="Enter Gallery Image Name">
+                                        <input type="text" name="gallery_image_name[]" id="gallery_image_name_0" class="form-control @error('gallery_image_name.*') is-invalid @enderror" placeholder="Enter Gallery Image Name">
                                         @error('gallery_image_name.*')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -394,15 +403,21 @@ Bhairaav | Add Project Details
 @endsection
 
 @push('scripts')
-{{-- Add More Banner Image --}}
+{{-- Add More Banner Image or View both Image and PDF --}}
 <script>
     $(document).ready(function () {
+        let rowId = 0;
+
         // Add a new row with validation
         $('#addBannerImageRow').click(function () {
+            rowId++;
             var newRow = `<tr>
                 <td>
                     <div class="col-sm-8 col-md-8">
-                        <input type="file" accept=".png, .jpg, .jpeg" name="banner_image[]" id="banner_image" class="form-control @error('banner_image.*') is-invalid @enderror" value="{{ old('banner_image') }}">
+                        <div id="banner-container-${rowId}">
+                            <div id="file-banner-${rowId}"></div>
+                        </div>
+                        <input type="file" onchange="bannerPreviewFiles(${rowId})" accept=".png, .jpg, .jpeg" name="banner_image[]" id="banner_image_${rowId}" class="form-control @error('banner_image.*') is-invalid @enderror">
                         <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                         <br>
                         <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
@@ -424,6 +439,86 @@ Bhairaav | Add Project Details
             $(this).closest('tr').remove();
         });
     });
+
+    // Banner Image Preview
+    function bannerPreviewFiles(rowId) {
+        const fileInput = document.getElementById(`banner_image_${rowId}`);
+        const previewContainer = document.getElementById(`banner-container-${rowId}`);
+        const filePreview = document.getElementById(`file-banner-${rowId}`);
+        const file = fileInput.files[0];
+
+        if (file) {
+            const fileType = file.type;
+            const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+            const validPdfTypes = ['application/pdf'];
+
+            if (validImageTypes.includes(fileType)) {
+                // Image preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    filePreview.innerHTML = `<img src="${e.target.result}" alt="File Preview" style="width:150px; height:60px !important;">`;
+                };
+                reader.readAsDataURL(file);
+            } else if (validPdfTypes.includes(fileType)) {
+                // PDF preview using an embed element
+                filePreview.innerHTML =
+                    `<embed src="${URL.createObjectURL(file)}" type="application/pdf" width="100%" height="25%" />`;
+            } else {
+                // Unsupported file type
+                filePreview.innerHTML = '<p>Unsupported file type</p>';
+            }
+
+            previewContainer.style.display = 'block';
+        } else {
+            // No file selected
+            previewContainer.style.display = 'none';
+        }
+    }
+</script>
+
+{{-- Overview both Image and PDF --}}
+<script>
+    function overviewPreviewFiles() {
+        const fileInput = document.getElementById('overview_image');
+        const previewContainer = document.getElementById('overview-container');
+        const filePreview = document.getElementById('file-overview');
+        const file = fileInput.files[0];
+
+        if (file) {
+            const fileType = file.type;
+            const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+            const validPdfTypes = ['application/pdf'];
+
+            if (validImageTypes.includes(fileType)) {
+                // Image preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    filePreview.innerHTML = `<img src="${e.target.result}" alt="File Preview" style="width:500px; height:300px !important;">`;
+                };
+                reader.readAsDataURL(file);
+            } else if (validPdfTypes.includes(fileType)) {
+                // PDF preview using an embed element
+                filePreview.innerHTML =
+                    `<embed src="${URL.createObjectURL(file)}" type="application/pdf" width="100%" height="25%" />`;
+            } else {
+                // Unsupported file type
+                filePreview.innerHTML = '<p>Unsupported file type</p>';
+                filePreview.innerHTML += `<p>Please select a valid image or PDF file.</p>`;
+                filePreview.innerHTML += `<p>You can also drag and drop a file here to preview.</p>`;
+
+                previewContainer.style.display = 'none';
+
+                return;
+            }
+
+            previewContainer.style.display = 'block';
+        } else {
+            // No file selected
+            previewContainer.style.display = 'none';
+        }
+
+    }
+
 </script>
 
 {{-- Add More Hallmarks --}}
@@ -507,38 +602,40 @@ Bhairaav | Add Project Details
     });
 </script>
 
-{{-- Add More Amities --}}
+{{-- Add More Amities & Features or View both Image and PDF --}}
 <script>
     $(document).ready(function () {
-        // Add a new row with validation
+        let rowId = 0;
+
+        // Add a new row
         $('#addAmenitiesRow').click(function () {
-            var newRow = `<tr>
-                <td>
-                    <div class="col-sm-12 col-md-12">
-                        <input type="file" accept=".png, .jpg, .jpeg"  name="amenite_image[]" id="amenite_image" class="form-control @error('amenite_image') is-invalid @enderror" value="{{old('amenite_image.0')}}">
-                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
-                        <br>
-                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
-                        <br>
-                        @error('amenite_image.*')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </td>
-                <td>
-                    <div class="col-sm-12 col-md-12">
-                        <input type="text" name="amenite_image_name[]" id="amenite_image_name" class="form-control @error('amenite_image_name.*') is-invalid @enderror" value="{{ old('amenite_image_name.0') }}" placeholder="Enter Feature Value">
-                        @error('amenite_image_name.*')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </td>
-                <td><button type="button" class="btn btn-danger removeAmenitiesRow">Remove</button></td>
-            </tr>`;
+            rowId++;
+            const newRow = `
+                <tr>
+                    <td>
+                        <div class="col-sm-12 col-md-12">
+                            <div id="overview-amenite-container-${rowId}">
+                                <div id="file-overview-amenite-${rowId}"></div>
+                            </div>
+                            <input type="file" onchange="overviewAmenitePreviewFiles(${rowId})" accept=".png, .jpg, .jpeg" name="amenite_image[]" id="amenite_image_${rowId}" class="form-control @error('amenite_image.*') is-invalid @enderror">
+                            <small class="text-secondary"><b>Note : The file size should be less than 2MB.</b></small>
+                            <br>
+                            <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded.</b></small>
+                            <br>
+                            @error('amenite_image.*')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-sm-12 col-md-12">
+                            <input type="text" name="amenite_image_name[]" id="amenite_image_name_${rowId}" class="form-control @error('amenite_image_name.*') is-invalid @enderror" placeholder="Enter Feature Value">
+                        </div>
+                    </td>
+                    <td><button type="button" class="btn btn-danger removeAmenitiesRow">Remove</button></td>
+                </tr>`;
             $('#dynamicAmenitiesTable tbody').append(newRow);
         });
 
@@ -547,126 +644,98 @@ Bhairaav | Add Project Details
             $(this).closest('tr').remove();
         });
     });
-</script>
 
-{{-- Add More Gallery --}}
-<script>
-    $(document).ready(function () {
-        // Add a new row with validation
-        $('#addGalleryRow').click(function () {
-            var newRow = `<tr>
-                <td>
-                    <div class="col-sm-12 col-md-12">
-                        <input type="file" accept=".png, .jpg, .jpeg" name="gallery_image[]" id="gallery_image" class="form-control @error('gallery_image') is-invalid @enderror" value="{{ old('gallery_image.0') }}">
-                        <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
-                        <br>
-                        <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
-                        <br>
-                        @error('gallery_image.*')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </td>
-                <td>
-                    <div class="col-sm-12 col-md-12">
-                        <input type="text" name="gallery_image_name[]" id="gallery_image_name" class="form-control @error('gallery_image_name.*') is-invalid @enderror" value="{{ old('gallery_image_name.0') }}" placeholder="Enter Gallery Image Name">
-                        @error('gallery_image_name.*')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </td>
-                <td><button type="button" class="btn btn-danger removeGalleryRow">Remove</button></td>
-            </tr>`;
-            $('#dynamicGalleryTable tbody').append(newRow);
-        });
+    // Preview file
+    function overviewAmenitePreviewFiles(rowId) {
+        const fileInput = document.getElementById(`amenite_image_${rowId}`);
+        const previewContainer = document.getElementById(`overview-amenite-container-${rowId}`);
+        const filePreview = document.getElementById(`file-overview-amenite-${rowId}`);
+        const file = fileInput.files[0];
 
-        // Remove a row
-        $(document).on('click', '.removeGalleryRow', function () {
-            $(this).closest('tr').remove();
-        });
-    });
-</script>
+        if (!fileInput || !previewContainer || !filePreview) return; // Guard clause
 
-{{-- preview Multiple Image both PDF --}}
-<script>
-    function agentPreviewFiles() {
-        const fileInput = document.getElementById('banner_image');
-        const filePreview = document.getElementById('file-preview');
-
-        const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-        const validPdfTypes = ['application/pdf'];
-
-        Array.from(fileInput.files).forEach(file => {
+        if (file) {
             const fileType = file.type;
-
-            // Create a container for each file preview with a delete button
-            const previewContainer = document.createElement('div');
-            previewContainer.style.position = 'relative';
-            previewContainer.style.display = 'inline-block';
-
-            // Create the delete icon
-            const deleteIcon = document.createElement('span');
-            deleteIcon.innerHTML = '&times;';
-            deleteIcon.style.position = 'absolute';
-            deleteIcon.style.top = '5px';
-            deleteIcon.style.right = '5px';
-            deleteIcon.style.cursor = 'pointer';
-            deleteIcon.style.color = 'red';
-            deleteIcon.style.fontSize = '18px';
-            deleteIcon.title = 'Remove this file';
-            deleteIcon.onclick = function() {
-                previewContainer.remove(); // Remove the preview container on delete icon click
-            };
+            const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+            const validPdfTypes = ['application/pdf'];
 
             if (validImageTypes.includes(fileType)) {
                 // Image preview
                 const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.alt = 'File Preview';
-                    img.style.width = '100px';
-                    img.style.height = '100px';
-                    img.style.objectFit = 'cover';
-                    img.style.margin = '5px';
-                    previewContainer.appendChild(img);
-                    previewContainer.appendChild(deleteIcon); // Add delete icon to the preview
+                reader.onload = function (e) {
+                    filePreview.innerHTML = `<img src="${e.target.result}" alt="File Preview" style="width:120px; height:100px !important;">`;
                 };
                 reader.readAsDataURL(file);
             } else if (validPdfTypes.includes(fileType)) {
-                // PDF preview using an embed element
-                const embed = document.createElement('embed');
-                embed.src = URL.createObjectURL(file);
-                embed.type = 'application/pdf';
-                embed.style.width = '100px';
-                embed.style.height = '100px';
-                embed.style.margin = '5px';
-                previewContainer.appendChild(embed);
-                previewContainer.appendChild(deleteIcon); // Add delete icon to the preview
+                // PDF preview
+                filePreview.innerHTML = `<embed src="${URL.createObjectURL(file)}" type="application/pdf" width="100%" height="25%" />`;
             } else {
                 // Unsupported file type
-                const errorText = document.createElement('p');
-                errorText.textContent = 'Unsupported file type';
-                previewContainer.appendChild(errorText);
-                previewContainer.appendChild(deleteIcon); // Add delete icon to the preview
+                filePreview.innerHTML = '<p>Unsupported file type</p>';
+                filePreview.innerHTML += `<p>Please select a valid image or PDF file.</p>`;
             }
 
-            // Append the preview container with the file and delete icon to the filePreview element
-            filePreview.appendChild(previewContainer);
-        });
+            previewContainer.style.display = 'block';
+        } else {
+            // No file selected
+            previewContainer.style.display = 'none';
+        }
     }
 </script>
 
-{{-- Overview preview both Image and PDF --}}
+{{-- Add More Gallery or View both Image and PDF --}}
 <script>
-    function overviewPreviewFiles() {
-        const fileInput = document.getElementById('overview_image');
-        const previewContainer = document.getElementById('overview-container');
-        const filePreview = document.getElementById('file-overview');
+    $(document).ready(function () {
+    let rowId = 0;
+
+    $('#addGalleryRow').click(function () {
+        rowId++;
+        var newRow = `
+        <tr>
+            <td>
+                <div class="col-sm-12 col-md-12">
+                    <div id="overview-gallery-container-${rowId}">
+                        <div id="file-overview-gallery-${rowId}"></div>
+                    </div>
+
+                    <input type="file" onchange="overviewGalleryPreviewFiles(${rowId})" accept=".png, .jpg, .jpeg" name="gallery_image[]" id="gallery_image_${rowId}" class="form-control @error('gallery_image.*') is-invalid @enderror">
+                    <small class="text-secondary"><b>Note: The file size should be less than 2MB.</b></small>
+                    <br>
+                    <small class="text-secondary"><b>Note: Only files in .jpg, .jpeg, .png format can be uploaded.</b></small>
+                    <br>
+                    @error('gallery_image.*')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </td>
+            <td>
+                <div class="col-sm-12 col-md-12">
+                    <input type="text" name="gallery_image_name[]" id="gallery_image_name_${rowId}" class="form-control @error('gallery_image_name.*') is-invalid @enderror" placeholder="Enter Gallery Image Name">
+                    @error('gallery_image_name.*')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </td>
+            <td><button type="button" class="btn btn-danger removeGalleryRow">Remove</button></td>
+        </tr>`;
+        $('#dynamicGalleryTable tbody').append(newRow);
+    });
+
+    // Remove row
+    $(document).on('click', '.removeGalleryRow', function () {
+            $(this).closest('tr').remove();
+        });
+    });
+
+    // Preview files
+    function overviewGalleryPreviewFiles(rowId) {
+        const fileInput = document.getElementById(`gallery_image_${rowId}`);
+        const previewContainer = document.getElementById(`overview-gallery-container-${rowId}`);
+        const filePreview = document.getElementById(`file-overview-gallery-${rowId}`);
         const file = fileInput.files[0];
 
         if (file) {
@@ -678,22 +747,15 @@ Bhairaav | Add Project Details
                 // Image preview
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    filePreview.innerHTML = `<img src="${e.target.result}" alt="File Preview" style="width:500px; height:300px !important;">`;
+                    filePreview.innerHTML = `<img src="${e.target.result}" alt="File Preview" style="width:120px; height:100px !important;">`;
                 };
                 reader.readAsDataURL(file);
             } else if (validPdfTypes.includes(fileType)) {
-                // PDF preview using an embed element
-                filePreview.innerHTML =
-                    `<embed src="${URL.createObjectURL(file)}" type="application/pdf" width="100%" height="25%" />`;
+                // PDF preview
+                filePreview.innerHTML = `<embed src="${URL.createObjectURL(file)}" type="application/pdf" width="100%" height="100px" />`;
             } else {
                 // Unsupported file type
                 filePreview.innerHTML = '<p>Unsupported file type</p>';
-                filePreview.innerHTML += `<p>Please select a valid image or PDF file.</p>`;
-                filePreview.innerHTML += `<p>You can also drag and drop a file here to preview.</p>`;
-
-                previewContainer.style.display = 'none';
-
-                return;
             }
 
             previewContainer.style.display = 'block';
@@ -701,9 +763,7 @@ Bhairaav | Add Project Details
             // No file selected
             previewContainer.style.display = 'none';
         }
-
     }
-
 </script>
 
 {{-- fetch all projects --}}
