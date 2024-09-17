@@ -27,7 +27,7 @@ class ContactUsRequest extends FormRequest
                 'email' => 'required|email|string|max:255',
                 'phone_no' => 'required|numeric',
                 'subject' => 'required|string|max:255',
-                'message' => 'string|max:600',
+                'message' => 'nullable|max:600',
             ];
         }else{
             $rule = [
@@ -35,7 +35,7 @@ class ContactUsRequest extends FormRequest
                 'email' => 'required|email|string|max:255',
                 'phone_no' => 'required|numeric',
                 'subject' => 'required|string|max:255',
-                'message' => 'string|max:600',
+                'message' => 'nullable|max:600',
             ];
         }
         return $rule;

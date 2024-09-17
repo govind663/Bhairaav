@@ -431,7 +431,7 @@ Bhairaav | Residental Projects
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>select Flat Type : <span class="text-danger">*</span></b></label> --}}
                         <select class="cs_form_field_2 cs_radius_20 @error('flat_type') is-invalid @enderror" name="flat_type" id="flat_type">
-                            <option value="">Select Flat Type *</option>
+                            <option value="">Select Flat Type</option>
                             <option value="1" {{ old('flat_type') == '1' ? 'selected' : '' }}>1 BHK</option>
                             <option value="2" {{ old('flat_type') == '2' ? 'selected' : '' }}>2 BHK</option>
                             <option value="3" {{ old('flat_type') == '3' ? 'selected' : '' }}>Other</option>

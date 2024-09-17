@@ -27,7 +27,7 @@ class PropertyRequest extends FormRequest
                 'email' => 'required|email|string|max:255',
                 'phone_no' => 'required|numeric',
                 'subject' => 'required|string|max:255',
-                'flat_type' => 'required|numeric',
+                'flat_type' => 'nullable',
             ];
         }else{
             $rule = [
@@ -35,7 +35,7 @@ class PropertyRequest extends FormRequest
                 'email' => 'required|email|string|max:255',
                 'phone_no' => 'required|numeric',
                 'subject' => 'required|string|max:255',
-                'flat_type' => 'required|numeric',
+                'flat_type' => 'nullable',
             ];
         }
         return $rule;

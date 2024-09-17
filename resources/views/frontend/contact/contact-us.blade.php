@@ -88,7 +88,7 @@
 
                             <div class="col-sm-12 mb-3">
                                 {{-- <label class="cs_height_16 cs_height_lg_16"><b>Message : </b></label> --}}
-                                <textarea cols="30"  rows="5" class="cs_form_field_2 cs_radius_20 @error('message') is-invalid @enderror" name="message" id="message" value="{{ old('message') }}" placeholder="Message *">{{ old('message') }}</textarea>
+                                <textarea cols="30"  rows="5" class="cs_form_field_2 cs_radius_20 @error('message') is-invalid @enderror" name="message" id="message" value="{{ old('message') }}" placeholder="Message">{{ old('message') }}</textarea>
                                 @error('message')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
