@@ -39,7 +39,7 @@
                                 We're here for all your queries
                             </p>
                             <h2 class="cs_fs_50 cs_bold">
-                                Contact us
+                                Contact Us
                             </h2>
                         </div>
                         <div class="cs_height_10 cs_height_lg_10"></div>

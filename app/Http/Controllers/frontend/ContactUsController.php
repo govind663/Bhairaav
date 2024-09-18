@@ -47,9 +47,8 @@ class ContactUsController extends Controller
             ];
 
             Mail::send('frontend.emails.contact_us_mail', $mail, function($message) use ($request) {
-                $message->from($request->input('email'), $request->input('email'));
-                $message->to('infobhairaav@gmail.com');
-                $message->subject('Contact Us');
+                $message->from('infobhairaav@gmail.com', 'infobhairaav@gmail.com');
+                $message->to($request->input('email'))->subject('Contact Us Mail');
             });
 
             return redirect()->route('frontend.contact-us')->with('message','Thank you for your interest. We will get back to you within 24 hours.');
