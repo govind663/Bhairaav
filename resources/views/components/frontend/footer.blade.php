@@ -110,7 +110,7 @@
                                 </button>
                             </form>
                             <p class="cs_newsletter_subtitle cs_ternary_color cs_mb_30">
-                                Your Weekly/Monthly Dose of
+                                Your Dose of
                                 Knowledge and
                                 Inspiration
                             </p>

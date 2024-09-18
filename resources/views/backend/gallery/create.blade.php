@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-Bhairaav | Add Gallery
+Bhairaav | Add Recognition
 @endsection
 
 @push('styles')
@@ -14,7 +14,7 @@ Bhairaav | Add Gallery
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="title">
-                        <h4>Add Gallery</h4>
+                        <h4>Add Recognition</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
@@ -22,10 +22,10 @@ Bhairaav | Add Gallery
                                 <a href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('gallery.index') }}">Manage Gallery</a>
+                                <a href="{{ route('gallery.index') }}">Manage Recognition</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Add Gallery
+                                Add Recognition
                             </li>
                         </ol>
                     </nav>

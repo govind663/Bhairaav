@@ -62,7 +62,7 @@
                             </li>
 
                             <li>
-                                <a href='{{ route('frontend.media') }}'>Media</a>
+                                <a href='{{ route('frontend.media') }}'>Recognition</a>
                             </li>
 
                             <li>

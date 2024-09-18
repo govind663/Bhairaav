@@ -263,7 +263,7 @@
                 <li>
                     <a href="{{ route('gallery.index') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'gallery.index') || ($currentRoute === 'gallery.create') || ($currentRoute === 'gallery.edit') ? 'active' : '' }}">
                         <span class="micon bi bi-images"></span>
-                        <span class="mtext">Gallery</span>
+                        <span class="mtext">Recognition</span>
                     </a>
                 </li>
 

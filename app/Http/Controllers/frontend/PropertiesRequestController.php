@@ -42,11 +42,9 @@ class PropertiesRequestController extends Controller
             ];
 
             Mail::send('frontend.emails.request_propertis_mail', $mailData, function($message) use ($request) {
-                $message->from('sales@bhairaavlifestyle.com', 'sales@bhairaavlifestyle.com');
-                $message->to($request->input('email'));
+                $message->from($request->input('email'), $request->input('email'));
+                $message->to('infobhairaav@gmail.com');
                 $message->subject('Property Request');
-                $message->replyTo('sales@bhairaavlifestyle.com', 'sales@bhairaavlifestyle.com');
-                $message->cc('sales@bhairaavlifestyle.com', 'sales@bhairaavlifestyle.com');
             });
 
             return redirect()->back()->with('message','Thank you for your interest. We will get back to you within 24 hours.');
