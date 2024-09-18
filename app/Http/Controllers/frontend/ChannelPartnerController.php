@@ -14,7 +14,7 @@ class ChannelPartnerController extends Controller
     public function channelPartner(Request $request)
     {
         // Fetch the Chanel
-        $chanelName = Chanel::orderBy("id","desc")->whereNull('deleted_at')->get(['id', 'name']);
+        $chanelName = Chanel::orderBy("id","desc")->where('status', 1)->whereNull('deleted_at')->get(['id', 'name']);
 
         return view("frontend.beconeAnAassociate.channel-partner", [
             'chanelName' => $chanelName
