@@ -57,7 +57,7 @@ class ChanelController extends Controller
             $chanel->inserted_by = Auth::user()->id;
             $chanel->save();
 
-            return redirect()->route('chanel.index')->with('message','Your record has been successfully created.');
+            return redirect()->route('chanel_name.index')->with('message','Your record has been successfully created.');
 
         } catch(\Exception $ex){
 
@@ -78,7 +78,8 @@ class ChanelController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $chanel = Chanel::findOrFail($id);
+        return view('backend.chanels.edit', ['chanel' => $chanel]);
     }
 
     /**
@@ -86,7 +87,36 @@ class ChanelController extends Controller
      */
     public function update(ChanelRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+        try {
+
+            $chanel = Chanel::findOrFail($id);
+
+            // ==== Upload (image)
+            if (!empty($request->hasFile('image'))) {
+                $image = $request->file('image');
+                $image_name = $image->getClientOriginalName();
+                $extension = $image->getClientOriginalExtension();
+                $new_name = time() . rand(10, 999) . '.' . $extension;
+                $image->move(public_path('/bhairaav/chanel/image'), $new_name);
+
+                $image_path = "/bhairaav/chanel/image" . $new_name;
+                $chanel->image = $new_name;
+            }
+
+            $chanel->name = $request->name;
+            $chanel->description = $request->description;
+            $chanel->status = $request->status;
+            $chanel->modified_at = Carbon::now();
+            $chanel->modified_by = Auth::user()->id;
+            $chanel->save();
+
+            return redirect()->route('chanel_name.index')->with('message','Your record has been successfully updated.');
+
+        } catch(\Exception $ex){
+
+            return redirect()->back()->with('error','Something Went Wrong - '.$ex->getMessage());
+        }
     }
 
     /**
@@ -94,6 +124,17 @@ class ChanelController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data['deleted_by'] =  Auth::user()->id;
+        $data['deleted_at'] =  Carbon::now();
+        try {
+
+            $chanel = Chanel::findOrFail($id);
+            $chanel->update($data);
+
+            return redirect()->route('chanel_name.index')->with('message','Your record has been successfully deleted.');
+        } catch(\Exception $ex){
+
+            return redirect()->back()->with('error','Something Went Wrong - '.$ex->getMessage());
+        }
     }
 }

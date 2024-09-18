@@ -230,8 +230,8 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
     // ==== Properties Request List
     Route::get('properties_request_list', [AdminPropertiesRequestController::class, 'propertiesRequest'])->name('admin.properties_request');
 
-    // ==== Manage Chanel
-    Route::resource('chanel', ChanelController::class);
+    // ==== Manage Chanel Name
+    Route::resource('chanel_name', ChanelController::class);
 });
 
 

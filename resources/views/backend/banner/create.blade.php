@@ -84,8 +84,8 @@ Bhairaav | Add Banner
                         <select name="status" id="status" class="custom-select2 form-control @error('status') is-invalid @enderror">
                             <option value=" " >Select Status</option>
                             <optgroup label="Status">
-                                <option value="1" {{ old('category_id') == '1' ? 'selected' : '' }}>Active</option>
-                                <option value="0" {{ old('category_id') == '0' ? 'selected' : '' }}>Inactive</option>
+                                <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>Active</option>
+                                <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Inactive</option>
                             </optgroup>
                         </select>
                         @error('status')

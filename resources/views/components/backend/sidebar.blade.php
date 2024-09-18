@@ -214,11 +214,23 @@
                     </ul>
                 </li>
 
-                <li>
-                    <a href="{{ route('admin.channel_partner') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'admin.channel_partner') ? 'active' : '' }}">
+                <li class="dropdown {{ ($currentRoute === 'admin.channel_partner') || ($currentRoute === 'chanel_name.index') || ($currentRoute === 'chanel_name.create') || ($currentRoute === 'chanel_name.edit') ? 'show' : '' }}">
+                    <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon bi bi-hdd-stack"></span>
-                        <span class="mtext">Channel Partner</span>
+                        <span class="mtext">Chanel</span>
                     </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="{{ route('chanel_name.index') }}" class="{{ in_array($currentRoute,['chanel_name.index','chanel_name.create', 'chanel_name.edit']) ? 'active' : '' }}">
+                                <span class="mtext">Chanel</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.channel_partner') }}" class="{{ in_array($currentRoute,['admin.channel_partner']) ? 'active' : '' }}">
+                                <span class="mtext">Channel Partner</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="dropdown {{ ($currentRoute === 'loyalty_programs.index') || ($currentRoute === 'loyalty_programs.create') || ($currentRoute === 'loyalty_programs.edit') || ($currentRoute === 'how_work_loyalty_programs.index') || ($currentRoute === 'how_work_loyalty_programs.create') || ($currentRoute === 'how_work_loyalty_programs.edit') || ($currentRoute === 're_investment_loyalty_programs.index') || ($currentRoute === 're_investment_loyalty_programs.create') || ($currentRoute === 're_investment_loyalty_programs.edit') || ($currentRoute === 'refer_loyalty_programs.index') || ($currentRoute === 'refer_loyalty_programs.create') || ($currentRoute === 'refer_loyalty_programs.edit') ? 'show' : '' }}">
