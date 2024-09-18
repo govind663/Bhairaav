@@ -216,7 +216,7 @@
 
                         <div class="col-sm-4">
                             <h4 class="cs_fs_16 cs_bold mb-0"><b>PAN Card No. : <span class="text-danger">*</span></b></h4>
-                            <input type="text" class="cs_form_field_2 cs_radius_20 @error('panCardNo') is-invalid @enderror" maxlength="10" name="panCardNo" id="panCardNo" value="{{ old('panCardNo') }}" placeholder="Enter PAN Card No.">
+                            <input type="text" maxlength="12" class="cs_form_field_2 cs_radius_20 @error('panCardNo') is-invalid @enderror" maxlength="10" name="panCardNo" id="panCardNo" value="{{ old('panCardNo') }}" placeholder="Enter PAN Card No.">
                             @error('panCardNo')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
