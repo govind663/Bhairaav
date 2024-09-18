@@ -173,7 +173,7 @@
                             <img src="{{ asset('frontend/assets/img/icons/contact_icon_2.svg') }}" alt="Icon">
                         </div>
                         <div class="cs_iconbox_right">
-                            <h3 class="cs_fs_16 cs_bold cs_mb_5">Mail us</h3>
+                            <h3 class="cs_fs_16 cs_bold cs_mb_5">Mail Us</h3>
                             <p class="mb-0">
                                 <a href="mailto:info@bhairaavlifestyles.com">info@bhairaavlifestyles.com</a>
                             </p>
