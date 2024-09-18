@@ -25,7 +25,7 @@ class ChannelPartnerRequest extends FormRequest
             $rule = [
                 'companyNameOrIndividualName' => 'required|string|max:555',
                 'nameOfTheOwner' => 'required|string|max:255',
-                'entity' => 'required|numeric|min:3|in:1,2,3,4,5',
+                'entity' => 'required|numeric|min:1|in:1,2,3,4,5',
                 'officeAddress' => 'required|string|max:255',
                 'telephoneNumber' => 'numeric',
                 'mobileNumber' => 'numeric',
@@ -37,6 +37,7 @@ class ChannelPartnerRequest extends FormRequest
                 'gstNo' => 'nullable|max:255',
                 'reraNo' => 'required|string|max:255',
                 'brokerAffiliation' => 'required|numeric|in:1,2',
+                'chanel_id' => 'required|numeric',
                 'propertiesType' => 'required|numeric||in:1,2,3,4,5',
                 'authorizedSignatories' => 'required|numeric||in:1,2,3',
                 'name' => 'required|string|max:255',
@@ -49,7 +50,7 @@ class ChannelPartnerRequest extends FormRequest
             $rule = [
                 'companyNameOrIndividualName' => 'required|string|max:555',
                 'nameOfTheOwner' => 'required|string|max:255',
-                'entity' => 'required|numeric|min:3|in:1,2,3,4,5',
+                'entity' => 'required|numeric|min:1|in:1,2,3,4,5',
                 'officeAddress' => 'required|string|max:255',
                 'telephoneNumber' => 'numeric',
                 'mobileNumber' => 'numeric',
@@ -61,6 +62,7 @@ class ChannelPartnerRequest extends FormRequest
                 'gstNo' => 'nullable|max:255',
                 'reraNo' => 'required|string|max:255',
                 'brokerAffiliation' => 'required|numeric|in:1,2',
+                'chanel_id' => 'required|numeric',
                 'propertiesType' => 'required|numeric||in:1,2,3,4,5',
                 'authorizedSignatories' => 'required|numeric||in:1,2,3',
                 'name' => 'required|string|max:255',

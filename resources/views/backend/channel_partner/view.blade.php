@@ -122,7 +122,7 @@ Bhairaav | Add Channel Partner
                         <input type="text" readonly class="form-control" value="{{ $channelPartner->numberOfYearsInOperation }}">
                     </div>
 
-                    <label class="col-sm-2"><b>Preferred Expertise : </b></label>
+                    <label class="col-sm-2"><b>Expertise : </b></label>
                     <div class="col-sm-4 col-md-4">
                         <input type="text" readonly class="form-control" value="{{ $preferredExpertise }}">
                     </div>
@@ -154,11 +154,20 @@ Bhairaav | Add Channel Partner
                         <input type="text" readonly class="form-control" value="{{ $channelPartner->reraNo }}">
                     </div>
 
-                    <label class="col-sm-2"><b>Do you have Affiliation to any Broker Association ? : </b></label>
+                    <label class="col-sm-2"><b>Affiliation to any Broker Association ? : </b></label>
                     <div class="col-sm-4 col-md-4">
                         <input type="text" readonly class="form-control" value="{{ $brokerAffiliation }}">
                     </div>
                 </div>
+
+                @if($channelPartner->brokerAffiliation == 1)
+                <div class="form-group row mt-3">
+                    <label class="col-sm-2"><b>Channel Name : </b></label>
+                    <div class="col-sm-4 col-md-4">
+                        <input type="text" readonly class="form-control" value="{{ $channelPartner->channel?->name }}">
+                    </div>
+                </div>
+                @endif
 
                 @php
                     $propertiesType = [];
@@ -191,7 +200,7 @@ Bhairaav | Add Channel Partner
                         <input type="text" readonly class="form-control" value="{{ $propertiesType }}">
                     </div>
 
-                    <label class="col-sm-2"><b>Are you Authorised Signatories ? : </b></label>
+                    <label class="col-sm-2"><b>Authorised Signatories ? : </b></label>
                     <div class="col-sm-4 col-md-4">
                         <input type="text" readonly class="form-control" value="{{ $authorizedSignatories }}">
                     </div>
@@ -214,20 +223,20 @@ Bhairaav | Add Channel Partner
                     <div class="col-sm-4 col-md-4">
                         @if(!empty($channelPartner->pancard_doc))
                         <img src="{{ url('/') }}/bhairaav/channel_partner/pancard_doc/{{ $channelPartner->pancard_doc }}" alt="{{ $channelPartner->pancard_doc }}" style="height: 30% !important;">
-                        @endif                        
+                        @endif
                     </div>
 
                     <label class="col-sm-2"><b>Upload Aadhar Card : </b></label>
                     <div class="col-sm-4 col-md-4">
                         @if(!empty($channelPartner->aadhar_doc))
                         <img src="{{ url('/') }}/bhairaav/channel_partner/aadhar_doc/{{ $channelPartner->aadhar_doc }}" alt="{{ $channelPartner->aadhar_doc }}" style="height: 30% !important;">
-                        @endif                        
+                        @endif
                     </div>
                 </div>
 
                 <div class="form-group row mt-3">
                     <label class="col-sm-8"><b>I agree to all Terms & Conditions for appointment as Bhairaav Group's Channel Partner.</b></label>
-                    
+
                     <div class="col-sm-2 col-md-2">
                         @if($channelPartner->terms == 1)
                             {{-- show radio button checked or not --}}

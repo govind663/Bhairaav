@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-    Bhairaav | Refer a friend
+    Bhairaav | Channel Partner
 @endsection
 
 @push('styles')
@@ -272,13 +272,12 @@
                         <!-- Channel Name Dropdown (hidden initially) -->
                         <div class="col-sm-6" id="channelNameDiv" style="display:none;">
                             <label for="channelName"><b>Channel Name :</b></label>
-                            <select name="channelName" id="channelName" class="cs_form_field_2 cs_radius_20">
+                            <select name="chanel_id" id="chanel_id" class="cs_form_field_2 cs_radius_20">
                                 <optgroup>
                                     <option value=" ">Select Channel Name</option>
-                                    <option class="cs_bold">Channel Name</option>
-                                    <option value="channel">Channel 1</option>
-                                    <option value="channel">Channel 2</option>
-                                    <option value="channel">Channel 3</option>
+                                    @foreach ($chanelName as $value)
+                                        <option value="{{ $value->id }}" {{ old('chanel_id') == $value->id ? 'selected' : '' }}>{{ $value->name }}</option>
+                                    @endforeach
                                 </optgroup>
                             </select>
                         </div>

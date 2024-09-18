@@ -4,14 +4,21 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\ChannelPartnerRequest;
+use App\Models\Chanel;
 use App\Models\ChannelPartner;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 class ChannelPartnerController extends Controller
 {
-    public function channelPartner(Request $request){
-        return view("frontend.beconeAnAassociate.channel-partner");
+    public function channelPartner(Request $request)
+    {
+        // Fetch the Chanel
+        $chanelName = Chanel::orderBy("id","desc")->whereNull('deleted_at')->get(['id', 'name']);
+
+        return view("frontend.beconeAnAassociate.channel-partner", [
+            'chanelName' => $chanelName
+        ]);
     }
 
     // ===== Store  Channel Partner
@@ -60,6 +67,7 @@ class ChannelPartnerController extends Controller
             $channelPartner->gstNo = $request->gstNo;
             $channelPartner->reraNo = $request->reraNo;
             $channelPartner->brokerAffiliation = $request->brokerAffiliation;
+            $channelPartner->chanel_id = $request->chanel_id;
             $channelPartner->propertiesType = $request->propertiesType;
             $channelPartner->authorizedSignatories = $request->authorizedSignatories;
             $channelPartner->name = $request->name;

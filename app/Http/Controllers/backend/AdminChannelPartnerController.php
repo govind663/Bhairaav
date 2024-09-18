@@ -18,8 +18,8 @@ class AdminChannelPartnerController extends Controller
 
     public function viewChannelPartner($id){
 
-        $channelPartner = ChannelPartner::find($id);
-        
+        $channelPartner = ChannelPartner::with('channel')->find($id);
+
         return view('backend.channel_partner.view', ['channelPartner' => $channelPartner]);
     }
 }

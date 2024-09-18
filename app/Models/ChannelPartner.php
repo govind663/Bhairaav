@@ -26,6 +26,7 @@ class ChannelPartner extends Model
         'gstNo',
         'reraNo',
         'brokerAffiliation',
+        'chanel_id',
         'propertiesType',
         'authorizedSignatories',
         'name',
@@ -46,4 +47,9 @@ class ChannelPartner extends Model
         'modified_at',
         'deleted_at',
     ];
+
+    // Relationsjip with chanel_id
+    public function channel(){
+        return $this->belongsTo(Chanel::class, 'chanel_id', 'id');
+    }
 }

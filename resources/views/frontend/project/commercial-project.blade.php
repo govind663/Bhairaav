@@ -52,9 +52,9 @@
                 </div>
                 @endforeach
                 @else
-                <h3 class="text-center">
+                {{-- <h3 class="text-center">
                     No Projects Found
-                </h3>
+                </h3> --}}
                 @endif
             </div>
 
