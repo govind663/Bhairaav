@@ -310,10 +310,6 @@
                                     </div>
                                     @endif
                                 @endforeach
-                            @else
-                                <h3 class="text-center">
-                                    No Projects Found
-                                </h3>
                             @endif
                         </div>
                     </div>
