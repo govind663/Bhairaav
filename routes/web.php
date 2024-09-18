@@ -36,6 +36,7 @@ use App\Http\Controllers\backend\AdminContactUsController;
 use App\Http\Controllers\backend\AdminChannelPartnerController;
 use App\Http\Controllers\backend\AdminMemberController;
 use App\Http\Controllers\backend\AdminPropertiesRequestController;
+use App\Http\Controllers\backend\ChanelController;
 
 // ===== Frontend
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
@@ -228,6 +229,9 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
 
     // ==== Properties Request List
     Route::get('properties_request_list', [AdminPropertiesRequestController::class, 'propertiesRequest'])->name('admin.properties_request');
+
+    // ==== Manage Chanel
+    Route::resource('chanel', ChanelController::class);
 });
 
 

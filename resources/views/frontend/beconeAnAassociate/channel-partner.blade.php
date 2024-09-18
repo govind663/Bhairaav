@@ -251,13 +251,13 @@
                             <ul class="cs_payment_method_list cs_primary_color cs_payment_method_list @error('brokerAffiliation') is-invalid @enderror">
                                 <li>
                                     <div class="cs_radiobox">
-                                        <input type="radio" name="brokerAffiliation" id="brokerAffiliation" value="1" {{ old('brokerAffiliation') == '1' ? 'checked' : '' }}>
+                                        <input type="radio" name="brokerAffiliation" id="brokerAffiliationYes" value="1" {{ old('brokerAffiliation') == '1' ? 'checked' : '' }}>
                                         <label>Yes</label>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="cs_radiobox">
-                                        <input type="radio" name="brokerAffiliation" id="brokerAffiliation" value="2" {{ old('brokerAffiliation') == '2' ? 'checked' : '' }}>
+                                        <input type="radio" name="brokerAffiliation" id="brokerAffiliationNo" value="2" {{ old('brokerAffiliation') == '2' ? 'checked' : '' }}>
                                         <label>No</label>
                                     </div>
                                 </li>
@@ -267,6 +267,20 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                        </div>
+
+                        <!-- Channel Name Dropdown (hidden initially) -->
+                        <div class="col-sm-6" id="channelNameDiv" style="display:none;">
+                            <label for="channelName"><b>Channel Name :</b></label>
+                            <select name="channelName" id="channelName" class="cs_form_field_2 cs_radius_20">
+                                <optgroup>
+                                    <option value=" ">Select Channel Name</option>
+                                    <option class="cs_bold">Channel Name</option>
+                                    <option value="channel">Channel 1</option>
+                                    <option value="channel">Channel 2</option>
+                                    <option value="channel">Channel 3</option>
+                                </optgroup>
+                            </select>
                         </div>
 
                         <div class="col-sm-12">
@@ -534,5 +548,30 @@
         }
         return false;
     }
+</script>
+
+{{-- Show and Hide Div --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const yesRadio = document.getElementById('brokerAffiliationYes');
+        const noRadio = document.getElementById('brokerAffiliationNo');
+        const channelNameDiv = document.getElementById('channelNameDiv');
+
+        // Function to toggle the visibility
+        function toggleChannelDropdown() {
+            if (yesRadio.checked) {
+                channelNameDiv.style.display = 'block'; // Show dropdown
+            } else {
+                channelNameDiv.style.display = 'none'; // Hide dropdown
+            }
+        }
+
+        // Event listeners for radio buttons
+        yesRadio.addEventListener('change', toggleChannelDropdown);
+        noRadio.addEventListener('change', toggleChannelDropdown);
+
+        // Initial check on page load
+        toggleChannelDropdown();
+    });
 </script>
 @endpush
