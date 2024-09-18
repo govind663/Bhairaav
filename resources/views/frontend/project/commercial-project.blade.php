@@ -27,7 +27,7 @@
                 {{-- If data is avilable then show data --}}
                 @foreach ($projects as $key => $value)
                 @php
-                    $projectDetails = App\Models\ProjectDetails::where('project_name_id', $project->id)->first();
+                    $projectDetails = App\Models\ProjectDetails::where('project_name_id', $value->id)->first();
                 @endphp
                 @if(!empty($projectDetails))
                     <div class="col-lg-4">
@@ -79,6 +79,7 @@
                             </div>
                         </div>
                     </div>
+                @endif
                 @endforeach
                 @else
                 {{-- <h3 class="text-center">
