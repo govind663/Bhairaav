@@ -25,9 +25,9 @@ class ProjectsRequest extends FormRequest
             $rule = [
                 'project_name' => 'required|string|max:255',
                 'address' => 'required|string',
-                'configuration' => 'required|string',
+                'configuration' => 'nullable|string',
                 'image' => 'mimes:jpeg,png,jpg,pdf|max:2048',
-                'mobile_no' => 'required|numeric|digits_between:10,13',
+                'mobile_no' => 'nullable',
                 'project_type' =>'required|numeric',
                 'property_type' =>'required|numeric',
             ];
@@ -35,11 +35,11 @@ class ProjectsRequest extends FormRequest
             $rule = [
                 'project_name' => 'required|string|max:255',
                 'address' => 'required|string',
-                'configuration' => 'required|string',
+                'configuration' => 'nullable|string',
                 'image' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
-                'mobile_no' => 'required|numeric|digits_between:10,13',
+                'mobile_no' => 'nullable',
                 'project_type' =>'required|numeric',
-                'property_type' =>'required|numeric',
+                'property_type' =>'nullable|numeric',
             ];
         }
         return $rule;

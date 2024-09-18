@@ -13,17 +13,22 @@ Bhairaav | Residental Projects
     <div class="cs_gallery_slider_thumb_2 slick-slider">
         @if(!empty($bannerImages))
             @foreach(json_decode($bannerImages) as $key => $bannerImage)
+                @if($bannerImage)
                 <div class="cs_gallery_slider_thumb_item_2 cs_bg_filed" data-src="{{ asset('/bhairaav/project_details/banner_image/' . $bannerImage) }}"></div>
+                @endif
             @endforeach
         @endif
     </div>
     <div class="cs_gallery_slider_nav_2_wrap">
         <div class="container position-relative cs_gallery_slider_nav_2_in">
             <div>
-                <h1 class="cs_white_color mb-0 cs_fs_50 cs_bold">{{ $projectNames->project_name }}</h1>
+                <h1 class="cs_white_color mb-0 cs_fs_50 cs_bold">
+                    {{-- Check null  --}}
+                    {{ $projectNames->project_name ?? '' }}
+                </h1>
                 <p class="cs_white_color">
-                    MahaRERA Registration No. : {{ $projectDetail->maha_rera_registration_number }}
-                    ({{ $projectDetail->project_link }} )
+                    MahaRERA Registration No. : {{ $projectDetail->maha_rera_registration_number ?? '' }}
+                    ({{ $projectDetail->project_link ?? '' }} )
                 </p>
             </div>
             <div class="cs_gallery_slider_nav_2 slick-slider">
@@ -65,7 +70,7 @@ Bhairaav | Residental Projects
                 </div>
             </div>
             <div class="col-lg-6">
-                {!! $projectDetail->project_description !!}
+                {!! $projectDetail->project_description ?? '' !!}
             </div>
         </div>
         <div class="cs_height_35 cs_height_lg_35"></div>
@@ -118,12 +123,12 @@ Bhairaav | Residental Projects
                         Location Advantages
                     </p>
                     <h2 class="cs_fs_38 cs_bold cs_mb_18 cs_white_color">
-                        {{ $projectDetail->location_advantages_title }}
+                        {{ $projectDetail->location_advantages_title ?? '' }}
                     </h2>
                 </div>
             </div>
 
-            @if(!empty($locationAdvantageIds))
+            @if(!empty($locationAdvantages))
 
                     {{-- @if ($locationAdvantage->location_advantage_id == 1) --}}
                         <div class="col-lg-6">
@@ -261,7 +266,7 @@ Bhairaav | Residental Projects
             </p>
             <h2 class="cs_fs_38 cs_bold mb-0 wow fadeInUp cs_white_color" data-wow-duration="0.8s" data-wow-delay="0.2s"
                 style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: fadeInUp;">
-                {{ $projectDetail->amenities_title }}
+                {{ $projectDetail->amenities_title ?? '' }}
             </h2>
         </div>
         <div class="cs_height_50 cs_height_lg_50"></div>
@@ -299,7 +304,7 @@ Bhairaav | Residental Projects
             <p class="cs_section_subtitle cs_medium cs_letter_spacing_1 cs_mb_8 cs_mb_lg_15 text-uppercase">Gallery</p>
             <h2 class="cs_fs_50 cs_bold mb-0 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s"
                 style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: fadeInUp;">
-                {{ $projectDetail->gallery_title }}
+                {{ $projectDetail->gallery_title ?? '' }}
             </h2>
         </div>
         <div class="cs_height_50 cs_height_lg_50"></div>

@@ -112,6 +112,8 @@ Bhairaav | Manaage Projects List
                                         <td>Residential</td>
                                     @elseif($value->property_type == 2)
                                         <td>Commercial</td>
+                                    @else
+                                    <td></td>
                                     @endif
 
                                     @if ($value->project_type == 1 || $value->project_type == 2 || $value->project_type == 3)

@@ -71,7 +71,7 @@ class ProjectsController extends Controller
             $project->inserted_by = Auth::user()->id;
             $project->save();
 
-            return redirect()->route('projects.index', ['project_type' => $request->property_type])->with('message','Your record has been successfully created.');
+            return redirect()->route('projects.index', ['project_type' => $request->project_type])->with('message','Your record has been successfully created.');
 
         } catch(\Exception $ex){
 

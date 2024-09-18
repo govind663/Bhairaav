@@ -143,11 +143,9 @@
                 <div class="cs_tabs_heading">
                     <div class="cs_section_heading cs_style_1">
                         <p class="cs_section_subtitle cs_medium cs_letter_spacing_1 cs_mb_10 cs_mb_lg_15 text-uppercase cs_white_color wow fadeInLeft"
-                            data-wow-duration="0.8s" data-wow-delay="0.2s">PROJECT LOCATIONS
-
+                            data-wow-duration="0.8s" data-wow-delay="0.2s">
+                            PROJECT LOCATIONS
                         </p>
-                        <h2 class="cs_fs_50 cs_bold mb-0 cs_white_color">Ongoing Projects
-                        </h2>
                     </div>
                     <ul class="cs_mp_0 cs_tab_links cs_style_1 cs_fs_15 cs_medium cs_white_color">
                         <li class="active"><a href="#tab_1">Ongoing </a></li>
@@ -160,8 +158,16 @@
                 <div id="tab_1" class="cs_tab active">
                     <div class="container-fluid cs_plr_100">
                         <div class="row cs_row_gap_60 cs_gap_y_60">
+                            <h2 class="cs_fs_50 cs_bold mb-0 cs_white_color">
+                                Ongoing Projects
+                            </h2>
                             @if (!empty($upcomingProjects))
                                 @foreach ($upcomingProjects as $project)
+                                    @php
+                                        $projectDetails = App\Models\ProjectDetails::where('project_name_id', $project->id)->first();
+                                    @endphp
+
+                                    @if(!empty($projectDetails))
                                     <div class="col-lg-4">
                                         <div class="cs_card cs_style_1 cs_color_1">
                                             <a class='cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg'
@@ -180,20 +186,47 @@
                                                         {!! $project->address !!}
                                                     </span>
                                                 </div>
-                                                @php
-                                                    $projectDetails = App\Models\ProjectDetails::where('project_name_id', $project->id)->first();
-                                                @endphp
                                                 <ul class="cs_card_list cs_mp_0">
                                                     {{-- <li>Maha RERA : -  {{ $projectDetails->maha_rera_registration_number }}</li> --}}
                                                     <li>Maha RERA : - Phase I - P51700012365</li>
                                                 </ul>
-
                                                 <a class='cs_card_btn cs_center' href='{{ route('frontend.project.residential-project.view-project-details', ['id' => $project->id]) }}'>
                                                     <i class="fa-solid fa-chevron-right"></i>
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
+                                    @else
+                                    <div class="col-lg-4">
+                                        <div class="cs_card cs_style_1 cs_color_1">
+                                            <a class='cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg'
+                                                href='{{ route('/') }}'>
+                                                <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $project->image ) }}" alt="Room">
+                                                <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $project->image ) }}" alt="Room">
+                                            </a>
+                                            <div class="cs_card_info position-relative">
+                                                <h2 class="cs_card_title cs_fs_38 cs_mb_4">
+                                                    <a href='{{ route('/') }}'>
+                                                        {{ $project->project_name }}
+                                                    </a>
+                                                </h2>
+                                                <div class="cs_card_price cs_mb_17">
+                                                    <span class="cs_accent_color cs_fs_16 cs_primary_font">
+                                                        {!! $project->address !!}
+                                                    </span>
+                                                </div>
+                                                <ul class="cs_card_list cs_mp_0">
+                                                    {{-- <li>Maha RERA : -  {{ $projectDetails->maha_rera_registration_number }}</li> --}}
+                                                    <li>Maha RERA : - Phase I - P51700012365</li>
+                                                </ul>
+                                                <a class='cs_card_btn cs_center' href='{{ route('/') }}'>
+                                                    <i class="fa-solid fa-chevron-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+
                                 @endforeach
                             @else
                             {{-- <h3 class="text-center">
@@ -207,8 +240,15 @@
                 <div id="tab_2" class="cs_tab ">
                     <div class="container-fluid cs_plr_100">
                         <div class="row cs_row_gap_60 cs_gap_y_60">
+                            <h2 class="cs_fs_50 cs_bold mb-0 cs_white_color">
+                                Completed Projects
+                            </h2>
                             @if (!empty($completedProjects))
                                 @foreach ($completedProjects as $value)
+                                    @php
+                                        $projectDetails = App\Models\ProjectDetails::where('project_name_id', $project->id)->first();
+                                    @endphp
+                                    @if(!empty($projectDetails))
                                     <div class="col-lg-4">
                                         <div class="cs_card cs_style_1 cs_color_1">
                                             <a class='cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg'
@@ -238,6 +278,37 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @else
+                                    <div class="col-lg-4">
+                                        <div class="cs_card cs_style_1 cs_color_1">
+                                            <a class='cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg'
+                                                href='{{ route('/') }}'>
+                                                <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $value->image ) }}"
+                                                    alt="Room">
+                                                <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $value->image ) }}"
+                                                    alt="Room">
+                                            </a>
+                                            <div class="cs_card_info position-relative">
+                                                <h2 class="cs_card_title cs_fs_38 cs_mb_4">
+                                                    <a href='{{ route('/') }}'>
+                                                        {{ $value->project_name }}
+                                                    </a>
+                                                </h2>
+                                                <div class="cs_card_price cs_mb_17">
+                                                    <span class="cs_accent_color cs_fs_16 cs_primary_font">
+                                                        {!! $value->address !!}
+                                                    </span>
+                                                </div>
+                                                <ul class="cs_card_list cs_mp_0">
+                                                    <li>Year Of Completion: 2003</li>
+                                                </ul>
+                                                <a class='cs_card_btn cs_center' href='{{ route('/') }}'>
+                                                    <i class="fa-solid fa-chevron-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
                                 @endforeach
                             @else
                                 <h3 class="text-center">

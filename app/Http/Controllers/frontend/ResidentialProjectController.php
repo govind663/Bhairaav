@@ -17,7 +17,6 @@ class ResidentialProjectController extends Controller
     public function residentalProject(Request $request)
     {
         $projects = Projects::where('project_type', 1)->where('property_type', 1)->orderBy("id","asc")->whereNull('deleted_at')->get();
-
         return view("frontend.project.residential-project", ['projects' => $projects,]);
     }
 
@@ -53,6 +52,7 @@ class ResidentialProjectController extends Controller
 
         // Fetch additional data, such as location advantages feature names
         $featureName = LocationAdvantage::orderBy('id', 'desc')->whereNull('deleted_at')->get(['id']);
+
 
         return view('frontend.project.project_detail', [
             'projectDetail' => $projectDetail,

@@ -53,7 +53,7 @@ Bhairaav | Edit Project
                         @enderror
                     </div>
 
-                    <label class="col-sm-2"><b>Configuration : <span class="text-danger">*</span></b></label>
+                    <label class="col-sm-2"><b>Configuration : </b></label>
                     <div class="col-sm-4 col-md-4">
                         <input type="text" name="configuration" id="configuration" class="form-control @error('configuration') is-invalid @enderror" value="{{ $project->configuration }}" placeholder="Enter Configuration.">
                         @error('configuration')
@@ -82,7 +82,7 @@ Bhairaav | Edit Project
                             </span>
                         @enderror
                     </div>
-                    <label class="col-sm-2"><b>Property Type : <span class="text-danger">*</span></b></label>
+                    <label class="col-sm-2"><b>Property Type : </b></label>
                     <div class="col-sm-4 col-md-4">
                         <select name="property_type" id="property_type" class="form-control custom-select2 @error('property_type') is-invalid @enderror" value="{{ old('property_type') }}">
                             <option value="">Select Property Type</option>
@@ -100,7 +100,7 @@ Bhairaav | Edit Project
                 </div>
 
                 <div class="form-group row mt-3">
-                    <label class="col-sm-2"><b>Mobile Number : <span class="text-danger">*</span></b></label>
+                    <label class="col-sm-2"><b>Mobile Number : </b></label>
                     <div class="col-sm-4 col-md-4">
                         <input type="text" maxlength="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="mobile_no" id="mobile_no" class="form-control @error('mobile_no') is-invalid @enderror" value="{{ $project->mobile_no }}" placeholder="Enter Mobile Number.">
                         @error('mobile_no')
