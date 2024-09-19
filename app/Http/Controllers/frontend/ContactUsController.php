@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\ContactUsRequest;
+use App\Mail\ContactUsMail;
 use App\Models\ContactUs;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -38,7 +39,7 @@ class ContactUsController extends Controller
             ContactUs::where('id', $contactUs->id)->update($update);
 
             // Send Mail
-            $mail = [
+            $mailData = [
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'phone_no' => $request->input('phone_no'),
@@ -46,10 +47,12 @@ class ContactUsController extends Controller
                 'message' => $request->input('message'),
             ];
 
-            Mail::send('frontend.emails.contact_us_mail', $mail, function($message) use ($request) {
-                $message->from('infobhairaav@gmail.com', 'infobhairaav@gmail.com');
-                $message->to($request->input('email'))->subject('Contact Us Mail');
-            });
+            // Mail::send('frontend.emails.contact_us_mail', $mail, function($message) use ($request) {
+            //     $message->from('infobhairaav@gmail.com', 'infobhairaav@gmail.com');
+            //     $message->to($request->input('email'))->subject('Contact Us Mail');
+            // });
+
+            Mail::to('infobhairaav@gmail.com')->send(new ContactUsMail($mailData));
 
             return redirect()->route('frontend.contact-us')->with('message','Thank you for your interest. We will get back to you within 24 hours.');
 

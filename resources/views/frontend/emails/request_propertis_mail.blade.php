@@ -9,7 +9,7 @@
     <meta name="author" content="Bhairaav">
     <meta name="keywords" content="Bhairaav">
 
-    <title>Contact Us Submission</title>
+    <title>Properties Request Mail</title>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="content">
@@ -73,20 +73,26 @@
         <!-- Logo Section -->
         <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
 
-        <h2>Contact Us Submission</h2>
-        <p class="details"><strong>Name:</strong> {{ $name }}</p>
-        <p class="details"><strong>Email:</strong> {{ $email }}</p>
-        <p class="details"><strong>Phone No :</strong> {{ $phone_no }}</p>
-        <p class="details"><strong>Subject:</strong> {{ $subject }}</p>
-        @if ($flat_type == 1)
+        <h2>Properties Request Mail</h2>
+
+        <p class="details"><strong>Name:</strong> {{ $mailData['name'] }}</p>
+        <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
+        <p class="details"><strong>Phone No :</strong> {{ $mailData['phone_no'] }}</p>
+        <p class="details"><strong>Subject:</strong> {{ $mailData['subject'] }}</p>
+        @if ($mailData['flat_type'] == 1)
             <p class="details">
                 <strong>Flat Type:</strong>
                 1 BHK
             </p>
-        @elseif ($flat_type == 2)
+        @elseif ($mailData['flat_type'] == 2)
             <p class="details">
                 <strong>Flat Type:</strong>
                 2 BHK
+            </p>
+        @elseif ($mailData['flat_type'] == 3)
+            <p class="details">
+                <strong>Flat Type:</strong>
+                Other
             </p>
         @endif
 
@@ -96,7 +102,7 @@
         <div class="footer">
             <p>
                 Bhairaav Lifestyles<br>
-                Email: sales@bhairaavlifestyles.com
+                Email: infobhairaav@gmail.com
             </p>
         </div>
     </div>

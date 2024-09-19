@@ -74,18 +74,18 @@
         <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
 
         <h2>Contact Us Submission</h2>
-        <p class="details"><strong>Name:</strong> {{ $name }}</p>
-        <p class="details"><strong>Email:</strong> {{ $email }}</p>
-        <p class="details"><strong>Phone No :</strong> {{ $phone_no }}</p>
-        <p class="details"><strong>Subject:</strong> {{ $subject }}</p>
-        <p class="details"><strong>Message:</strong> {{ $message }}</p>
+        <p class="details"><strong>Name:</strong> {{ $mailData['name'] }}</p>
+        <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
+        <p class="details"><strong>Phone No :</strong> {{ $mailData['phone_no'] }}</p>
+        <p class="details"><strong>Subject:</strong> {{ $mailData['subject'] }}</p>
+        <p class="details"><strong>Message:</strong> {{ $mailData['message'] }}</p>
 
         <p>Thank you for reaching out to us. We will respond to your inquiry as soon as possible.</p>
 
         <div class="footer">
             <p>
                 Bhairaav Lifestyles<br>
-                Email: sales@bhairaavlifestyles.com
+                Email: infobhairaav@gmail.com
             </p>
         </div>
     </div>

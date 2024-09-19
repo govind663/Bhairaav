@@ -21,10 +21,10 @@
         <div class="cs_height_70 cs_height_lg_70"></div>
         <div class="container">
             <div class="row align-items-center cs_gap_y_45">
-                @if (!empty($completedProjects))
+                @if (!empty($projects))
                 @foreach ($projects as $key => $value)
                 @php
-                    $projectDetails = App\Models\ProjectDetails::where('project_name_id', $project->id)->first();
+                    $projectDetails = App\Models\ProjectDetails::where('project_name_id', $value->id)->first();
                 @endphp
                 @if(!empty($projectDetails))
                     <div class="col-lg-4">

@@ -16,7 +16,7 @@ class ResidentialProjectController extends Controller
 {
     public function residentalProject(Request $request)
     {
-        $projects = Projects::where('project_type', 1)->where('property_type', 1)->orderBy("id","asc")->whereNull('deleted_at')->get();
+        $projects = Projects::where('project_type', 1)->orderBy("id","asc")->whereNull('deleted_at')->get();
         return view("frontend.project.residential-project", ['projects' => $projects,]);
     }
 
