@@ -168,6 +168,7 @@
                         in_array($currentRoute, [
                             'bhairaav_projects.index', 'bhairaav_projects.create', 'bhairaav_projects.edit',
                             'location-advantage.index', 'location-advantage.create', 'location-advantage.edit',
+                            'multiple_phase.index', 'multiple_phase.create', 'multiple_phase.edit',
                             'project-details.index', 'project-details.create', 'project-details.edit'
                         ]) ? 'show' : ''
                     }}" >
@@ -176,6 +177,12 @@
                         <span class="mtext">Project Manage</span>
                     </a>
                     <ul class="submenu">
+                        <li>
+                            <a href="{{ route('multiple_phase.index') }}" class="{{ in_array($currentRoute, ['multiple_phase.index', 'multiple_phase.create', 'multiple_phase.edit']) ? 'active' : '' }}">
+                                <span class="mtext">Phase</span>
+                            </a>
+                        </li>
+
                         <li>
                             <a href="{{ route('bhairaav_projects.create') }}"  class="{{ in_array($currentRoute, ['bhairaav_projects.index', 'bhairaav_projects.create', 'bhairaav_projects.edit']) ? 'active' : '' }}">
                                 <span class="mtext">Add Projects</span>

@@ -37,6 +37,7 @@ use App\Http\Controllers\backend\AdminChannelPartnerController;
 use App\Http\Controllers\backend\AdminMemberController;
 use App\Http\Controllers\backend\AdminPropertiesRequestController;
 use App\Http\Controllers\backend\ChanelController;
+use App\Http\Controllers\backend\PhaseController;
 
 // ===== Frontend
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
@@ -232,6 +233,9 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
 
     // ==== Manage Chanel Name
     Route::resource('chanel_name', ChanelController::class);
+
+    // ==== Manage Multiple Phase
+    Route::resource('multiple_phase', PhaseController::class);
 });
 
 
