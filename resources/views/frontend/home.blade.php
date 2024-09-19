@@ -167,101 +167,128 @@
                                     @php
                                         $projectDetails = App\Models\ProjectDetails::where('project_name_id', $project->id)->first();
 
-                                        // Fetch Phase Id in jason encode
+                                        // Fetch Phase Id and Maha RERA Registration Number in JSON decode
                                         $phase_id = json_decode($project->phase_id, true);
                                         $maha_rera_registration_number = json_decode($project->maha_rera_registration_number, true);
+
+                                        // Define phase names
+                                        $phaseNames = [
+                                            1 => 'Phase I',
+                                            2 => 'Phase II',
+                                            3 => 'Phase III',
+                                            // Add more phases if needed
+                                        ];
+
+                                        // Determine the phase name
+                                        $phaseName = '';
+                                        if (!empty($phase_id)) {
+                                            foreach ($phase_id as $id) {
+                                                if (isset($phaseNames[$id])) {
+                                                    $phaseName = $phaseNames[$id];
+                                                    break; // Assuming you want the first phase name if multiple phases exist
+                                                }
+                                            }
+                                        }
                                     @endphp
 
-                                    @if(!empty($projectDetails))
-                                    <div class="col-lg-4">
-                                        <div class="cs_card cs_style_1 cs_color_1">
-                                            <a class='cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg'
-                                                href='{{ route('frontend.project.residential-project.view-project-details', ['id' => $project->id]) }}'>
-                                                <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $project->image ) }}" alt="Room">
-                                                <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $project->image ) }}" alt="Room">
-                                            </a>
-                                            <div class="cs_card_info position-relative">
-                                                <h2 class="cs_card_title cs_fs_38 cs_mb_4">
-                                                    <a href='{{ route('frontend.project.residential-project.view-project-details', ['id' => $project->id]) }}'>
-                                                        {{ $project->project_name }}
-                                                    </a>
-                                                </h2>
-                                                <div class="cs_card_price cs_mb_17">
-                                                    <span class="cs_accent_color cs_fs_16 cs_primary_font">
-                                                        {!! $project->address !!}
-                                                    </span>
-                                                </div>
-                                                <ul class="cs_card_list cs_mp_0">
-                                                    {{-- <li>Maha RERA : -  {{ $projectDetails->maha_rera_registration_number }}</li> --}}
-
-                                                    <li>
-                                                        Maha RERA : -
-                                                        @foreach ($maha_rera_registration_number as $key => $value)
-                                                            @if($key == 0)
-                                                                {{ $value }}
-                                                            @else
-                                                                {{ $value }}
-                                                            @endif
-                                                        @endforeach
-                                                    </li>
-                                                </ul>
-                                                <a class='cs_card_btn cs_center' href='{{ route('frontend.project.residential-project.view-project-details', ['id' => $project->id]) }}'>
-                                                    <i class="fa-solid fa-chevron-right"></i>
+                                    @if (!empty($projectDetails))
+                                        <div class="col-lg-4">
+                                            <div class="cs_card cs_style_1 cs_color_1">
+                                                <a class='cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg'
+                                                    href='{{ route('frontend.project.residential-project.view-project-details', ['id' => $project->id]) }}'>
+                                                    <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $project->image ) }}" alt="Room">
+                                                    <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $project->image ) }}" alt="Room">
                                                 </a>
+                                                <div class="cs_card_info position-relative">
+                                                    <h2 class="cs_card_title cs_fs_38 cs_mb_4">
+                                                        <a href='{{ route('frontend.project.residential-project.view-project-details', ['id' => $project->id]) }}'>
+                                                            {{ $project->project_name }}
+                                                        </a>
+                                                    </h2>
+                                                    <div class="cs_card_price cs_mb_17">
+                                                        <span class="cs_accent_color cs_fs_16 cs_primary_font">
+                                                            {!! $project->address !!}
+                                                        </span>
+                                                    </div>
+                                                    <ul class="cs_card_list cs_mp_0">
+                                                        <li>
+                                                            Maha RERA :
+                                                            @if (in_array(1, $phase_id))
+                                                                {{ $phaseName }} -
+                                                                {{-- excute loop only get last record --}}
+                                                                @php
+                                                                    $maha_rera_registration_number = array_reverse($maha_rera_registration_number);
+                                                                @endphp
+                                                                {{ $maha_rera_registration_number[0] }}
+
+                                                                {{-- @foreach ($maha_rera_registration_number as $key => $value)
+                                                                    {{ $value }}@if($key < count($maha_rera_registration_number) - 1), @endif
+                                                                @endforeach --}}
+                                                            @else
+                                                                N/A
+                                                            @endif
+                                                        </li>
+                                                    </ul>
+                                                    <a class='cs_card_btn cs_center' href='{{ route('frontend.project.residential-project.view-project-details', ['id' => $project->id]) }}'>
+                                                        <i class="fa-solid fa-chevron-right"></i>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @else
-                                    <div class="col-lg-4">
-                                        <div class="cs_card cs_style_1 cs_color_1">
-                                            <a class='cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg'
-                                                href='{{ route('/') }}'>
-                                                <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $project->image ) }}" alt="Room">
-                                                <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $project->image ) }}" alt="Room">
-                                            </a>
-                                            <div class="cs_card_info position-relative">
-                                                <h2 class="cs_card_title cs_fs_38 cs_mb_4">
-                                                    <a href='{{ route('/') }}'>
-                                                        {{ $project->project_name }}
-                                                    </a>
-                                                </h2>
-                                                <div class="cs_card_price cs_mb_17">
-                                                    <span class="cs_accent_color cs_fs_16 cs_primary_font">
-                                                        {!! $project->address !!}
-                                                    </span>
-                                                </div>
-                                                <ul class="cs_card_list cs_mp_0">
-                                                    {{-- <li>Maha RERA : -  {{ $projectDetails->maha_rera_registration_number }}</li> --}}
-                                                    <li>
-                                                        Maha RERA : -
-
-                                                        @foreach ($maha_rera_registration_number as $key => $value)
-                                                            @if($key == 0)
-                                                                {{ $value }}
-                                                            @else
-                                                                {{ $value }}
-                                                            @endif
-                                                        @endforeach
-                                                    </li>
-                                                </ul>
-                                                <a class='cs_card_btn cs_center' href='{{ route('/') }}'>
-                                                    <i class="fa-solid fa-chevron-right"></i>
+                                        <div class="col-lg-4">
+                                            <div class="cs_card cs_style_1 cs_color_1">
+                                                <a class='cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg'
+                                                    href='{{ route('/') }}'>
+                                                    <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $project->image ) }}" alt="Room">
+                                                    <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $project->image ) }}" alt="Room">
                                                 </a>
+                                                <div class="cs_card_info position-relative">
+                                                    <h2 class="cs_card_title cs_fs_38 cs_mb_4">
+                                                        <a href='{{ route('/') }}'>
+                                                            {{ $project->project_name }}
+                                                        </a>
+                                                    </h2>
+                                                    <div class="cs_card_price cs_mb_17">
+                                                        <span class="cs_accent_color cs_fs_16 cs_primary_font">
+                                                            {!! $project->address !!}
+                                                        </span>
+                                                    </div>
+                                                    <ul class="cs_card_list cs_mp_0">
+                                                        <li>
+                                                            Maha RERA :
+                                                            @if (in_array(1, $phase_id))
+                                                                {{ $phaseName }} -
+                                                                @php
+                                                                    $maha_rera_registration_number = array_reverse($maha_rera_registration_number);
+                                                                @endphp
+                                                                {{ $maha_rera_registration_number[0] }}
+                                                                {{-- @foreach ($maha_rera_registration_number as $key => $value)
+                                                                    {{ $value }}@if($key < count($maha_rera_registration_number) - 1), @endif
+                                                                @endforeach --}}
+                                                            @else
+                                                                N/A
+                                                            @endif
+                                                        </li>
+                                                    </ul>
+                                                    <a class='cs_card_btn cs_center' href='{{ route('/') }}'>
+                                                        <i class="fa-solid fa-chevron-right"></i>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @endif
-
                                 @endforeach
                             @else
-                            {{-- <h3 class="text-center">
-                                No Projects Found
-                            </h3> --}}
+                                {{-- <h3 class="text-center">
+                                    No Projects Found
+                                </h3> --}}
                             @endif
 
                         </div>
                     </div>
                 </div>
+
                 <div id="tab_2" class="cs_tab ">
                     <div class="container-fluid cs_plr_100">
                         <div class="row cs_row_gap_60 cs_gap_y_60">
