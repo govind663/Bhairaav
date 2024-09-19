@@ -161,10 +161,15 @@
                             <h2 class="cs_fs_50 cs_bold mb-0 cs_white_color">
                                 Ongoing Projects
                             </h2>
+
                             @if (!empty($upcomingProjects))
                                 @foreach ($upcomingProjects as $project)
                                     @php
                                         $projectDetails = App\Models\ProjectDetails::where('project_name_id', $project->id)->first();
+
+                                        // Fetch Phase Id in jason encode
+                                        $phase_id = json_decode($project->phase_id, true);
+                                        $maha_rera_registration_number = json_decode($project->maha_rera_registration_number, true);
                                     @endphp
 
                                     @if(!empty($projectDetails))
@@ -188,7 +193,17 @@
                                                 </div>
                                                 <ul class="cs_card_list cs_mp_0">
                                                     {{-- <li>Maha RERA : -  {{ $projectDetails->maha_rera_registration_number }}</li> --}}
-                                                    <li>Maha RERA : - Phase I - P51700012365</li>
+
+                                                    <li>
+                                                        Maha RERA : -
+                                                        @foreach ($maha_rera_registration_number as $key => $value)
+                                                            @if($key == 0)
+                                                                {{ $value }}
+                                                            @else
+                                                                {{ $value }}
+                                                            @endif
+                                                        @endforeach
+                                                    </li>
                                                 </ul>
                                                 <a class='cs_card_btn cs_center' href='{{ route('frontend.project.residential-project.view-project-details', ['id' => $project->id]) }}'>
                                                     <i class="fa-solid fa-chevron-right"></i>
@@ -217,7 +232,17 @@
                                                 </div>
                                                 <ul class="cs_card_list cs_mp_0">
                                                     {{-- <li>Maha RERA : -  {{ $projectDetails->maha_rera_registration_number }}</li> --}}
-                                                    <li>Maha RERA : - Phase I - P51700012365</li>
+                                                    <li>
+                                                        Maha RERA : -
+
+                                                        @foreach ($maha_rera_registration_number as $key => $value)
+                                                            @if($key == 0)
+                                                                {{ $value }}
+                                                            @else
+                                                                {{ $value }}
+                                                            @endif
+                                                        @endforeach
+                                                    </li>
                                                 </ul>
                                                 <a class='cs_card_btn cs_center' href='{{ route('/') }}'>
                                                     <i class="fa-solid fa-chevron-right"></i>
@@ -270,7 +295,7 @@
                                                     </span>
                                                 </div>
                                                 <ul class="cs_card_list cs_mp_0">
-                                                    <li>Year Of Completion: 2003</li>
+                                                    <li>Year Of Completion: {{ $value->year_of_completion }}</li>
                                                 </ul>
                                                 <a class='cs_card_btn cs_center' href='{{ route('frontend.project.residential-project.view-project-details', ['id' => $value->id]) }}'>
                                                     <i class="fa-solid fa-chevron-right"></i>

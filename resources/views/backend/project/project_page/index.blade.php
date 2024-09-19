@@ -56,7 +56,6 @@ Bhairaav | Manaage  Project Details
                             <th>Sr. No.</th>
                             <th>Project Name</th>
                             <th>Project Type</th>
-                            <th>Maha RERA Registration Number</th>
                             <th>Project Link</th>
                             <th class="no-export">Edit</th>
                             <th class="no-export">Delete</th>
@@ -73,7 +72,6 @@ Bhairaav | Manaage  Project Details
                                 <td>Commercial</td>
                             @endif
 
-                            <td>{{ $value->maha_rera_registration_number }}</td>
                             <td>{{ $value->project_link }}</td>
                             <td class="no-export">
                                 <a href="{{ route('project-details.edit', $value->id) }}">

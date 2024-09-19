@@ -13,6 +13,9 @@ class Projects extends Model
     protected $fillable = [
         'id',
         'project_name',
+        'phase_id',
+        'maha_rera_registration_number',
+        'year_of_completion',
         'address',
         'configuration',
         'image',

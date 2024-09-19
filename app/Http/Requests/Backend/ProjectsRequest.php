@@ -29,7 +29,7 @@ class ProjectsRequest extends FormRequest
                 'image' => 'mimes:jpeg,png,jpg,pdf|max:2048',
                 'mobile_no' => 'nullable',
                 'project_type' =>'required|numeric',
-                'property_type' =>'required|numeric',
+                'property_type' =>'nullable|numeric',
             ];
         }else{
             $rule = [

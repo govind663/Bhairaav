@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\ProjectsRequest;
+use App\Models\Phase;
 use App\Models\Projects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,10 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('backend.project.all_projets.create');
+        $phase = Phase::orderBy("id","desc")->whereNull('deleted_at')->get(['id', 'name']);
+        return view('backend.project.all_projets.create', [
+            'phases' => $phase,
+        ]);
     }
 
     /**
@@ -62,6 +66,9 @@ class ProjectsController extends Controller
             }
 
             $project->project_name = $request->project_name;
+            $project->phase_id = json_encode($request->phase_id, true);
+            $project->maha_rera_registration_number = json_encode($request->maha_rera_registration_number, true);
+            $project->year_of_completion = $request->year_of_completion;
             $project->address = $request->address;
             $project->configuration = $request->configuration;
             $project->mobile_no = $request->mobile_no;
@@ -93,7 +100,18 @@ class ProjectsController extends Controller
     public function edit(string $id)
     {
         $project = Projects::findOrFail($id);
-        return view('backend.project.all_projets.edit', ['project' => $project]);
+        $phase = Phase::orderBy("id","desc")->whereNull('deleted_at')->get(['id', 'name']);
+
+        // Fetch Phase Id in jason encode
+        $phase_id = json_decode($project->phase_id, true);
+        $maha_rera_registration_number = json_decode($project->maha_rera_registration_number, true);
+
+        return view('backend.project.all_projets.edit', [
+            'project' => $project,
+            'phases' => $phase,
+            'phase_id' => $phase_id,
+            'maha_rera_registration_number' => $maha_rera_registration_number,
+        ]);
     }
 
     /**
@@ -119,6 +137,9 @@ class ProjectsController extends Controller
             }
 
             $project->project_name = $request->project_name;
+            $project->phase_id = json_encode($request->phase_id, true);
+            $project->maha_rera_registration_number = json_encode($request->maha_rera_registration_number, true);
+            $project->year_of_completion = $request->year_of_completion;
             $project->address = $request->address;
             $project->configuration = $request->configuration;
             $project->mobile_no = $request->mobile_no;

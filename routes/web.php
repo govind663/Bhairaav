@@ -92,6 +92,19 @@ Route::get('/', function () {
     $upcomingProjects = ModelProject::orderBy("id","asc")->where('project_type', 1)->whereNull('deleted_at')->get();
     // dd($upcomingProjects);
 
+    // Extract phase IDs and RERA numbers
+    $reraNumbers = $upcomingProjects->pluck('maha_rera_registration_number', 'phase_id')->toArray();
+
+    // Convert arrays to strings
+    foreach ($reraNumbers as $phaseId => $numbers) {
+        // Check if $numbers is an array and convert it to a string
+        if (is_array($numbers)) {
+            $reraNumbers[$phaseId] = implode(', ', $numbers);
+        } else {
+            $reraNumbers[$phaseId] = $numbers;
+        }
+    }
+
     // ==== Fetch Completed Projects
     $completedProjects = ModelProject::orderBy("id","asc")->where('project_type', 2)->whereNull('deleted_at')->get();
 
@@ -104,6 +117,7 @@ Route::get('/', function () {
         'latestPosts' => $latestPosts,
         'upcomingProjects' => $upcomingProjects,
         'completedProjects' => $completedProjects,
+        'reraNumbers' => $reraNumbers
     ]);
 
 })->name('/');

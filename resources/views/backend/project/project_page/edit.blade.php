@@ -83,7 +83,7 @@ Bhairaav | Edit Project Details
                     </div>
 
                     <div class="form-group row mt-3">
-                        <label class="col-sm-2"><b>Maha RERA Registration Number : <span class="text-danger">*</span></b></label>
+                        {{-- <label class="col-sm-2"><b>Maha RERA Registration Number : <span class="text-danger">*</span></b></label>
                         <div class="col-sm-4 col-md-4">
                             <input type="text" name="maha_rera_registration_number" id="maha_rera_registration_number" class="form-control @error('maha_rera_registration_number') is-invalid @enderror" value="{{ $projectDetail->maha_rera_registration_number }}" placeholder="Enter Maha RERA Registration Number.">
                             @error('maha_rera_registration_number')
@@ -91,7 +91,7 @@ Bhairaav | Edit Project Details
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>
+                        </div> --}}
 
                         <label class="col-sm-2"><b>Project Link : <span class="text-danger">*</span></b></label>
                         <div class="col-sm-4 col-md-4">

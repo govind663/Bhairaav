@@ -99,7 +99,130 @@ Bhairaav | Edit Project
                     </div>
                 </div>
 
+                <table class="table table-bordered p-3"  id="dynamicFeatureTable">
+                    <thead>
+                        <tr>
+                            <th>Select Phase : </th>
+                            <th>Maha RERA Registration Number : </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if(old('phase_id'))
+                            {{-- Display old form data after validation error --}}
+                            @foreach(old('phase_id') as $index => $oldPhaseId)
+                                <tr>
+                                    <td>
+                                        <div class="col-sm-12 col-md-12">
+                                            <select name="phase_id[]" class="form-control custom-select2 @error('phase_id.' . $index) is-invalid @enderror">
+                                                <option value="">Select Phase</option>
+                                                <optgroup label="Phase">
+                                                    @foreach ($phases as $value)
+                                                        <option value="{{ $value->id }}" {{ ($oldPhaseId == $value->id) ? 'selected' : '' }}>{{ $value->name }}</option>
+                                                    @endforeach
+                                                </optgroup>
+                                            </select>
+                                            @error('phase_id.' . $index)
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="col-sm-12 col-md-12">
+                                            <input type="text" name="maha_rera_registration_number[]" class="form-control @error('maha_rera_registration_number.' . $index) is-invalid @enderror" value="{{ old('maha_rera_registration_number.' . $index) }}" placeholder="Enter Maha RERA Registration Number">
+                                            @error('maha_rera_registration_number.' . $index)
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </td>
+                                    <td><button type="button" class="btn btn-danger removeFeatureRow">Remove</button></td>
+                                </tr>
+                            @endforeach
+                        @elseif(isset($phase_id) && isset($maha_rera_registration_number))
+                            {{-- Display saved data from the database --}}
+                            @foreach($phase_id as $index => $phase)
+                                <tr>
+                                    <td>
+                                        <div class="col-sm-12 col-md-12">
+                                            <select name="phase_id[]" class="form-control custom-select2 @error('phase_id.' . $index) is-invalid @enderror">
+                                                <option value="">Select Phase</option>
+                                                <optgroup label="Phase">
+                                                    @foreach ($phases as $value)
+                                                        <option value="{{ $value->id }}" {{ ($phase == $value->id) ? 'selected' : '' }}>{{ $value->name }}</option>
+                                                    @endforeach
+                                                </optgroup>
+                                            </select>
+                                            @error('phase_id.' . $index)
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="col-sm-12 col-md-12">
+                                            <input type="text" name="maha_rera_registration_number[]" class="form-control @error('maha_rera_registration_number.' . $index) is-invalid @enderror" value="{{ $maha_rera_registration_number[$index] }}" placeholder="Enter Maha RERA Registration Number">
+                                            @error('maha_rera_registration_number.' . $index)
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </td>
+                                    <td><button type="button" class="btn btn-danger removeFeatureRow">Remove</button></td>
+                                </tr>
+                            @endforeach
+                        @else
+                            {{-- Default empty row --}}
+                            <tr>
+                                <td>
+                                    <div class="col-sm-12 col-md-12">
+                                        <select name="phase_id[]" class="form-control custom-select2 @error('phase_id.0') is-invalid @enderror">
+                                            <option value="">Select Phase</option>
+                                            <optgroup label="Phase">
+                                                @foreach ($phases as $value)
+                                                    <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                                @endforeach
+                                            </optgroup>
+                                        </select>
+                                        @error('phase_id.0')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col-sm-12 col-md-12">
+                                        <input type="text" name="maha_rera_registration_number[]" class="form-control @error('maha_rera_registration_number.0') is-invalid @enderror" value="{{ old('maha_rera_registration_number.0') }}" placeholder="Enter Maha RERA Registration Number">
+                                        @error('maha_rera_registration_number.0')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </td>
+                                <td><button type="button" class="btn btn-primary" id="addFeatureRow">Add More</button></td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+
                 <div class="form-group row mt-3">
+                    <label class="col-sm-2"><b>Year Of Completion : </b></label>
+                    <div class="col-sm-4 col-md-4">
+                        <input type="text" maxlength="4" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="year_of_completion" id="year_of_completion" class="form-control @error('year_of_completion') is-invalid @enderror" value="{{ $project->year_of_completion }}" placeholder="Enter Year Of Completion.">
+                        @error('year_of_completion')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
                     <label class="col-sm-2"><b>Mobile Number : </b></label>
                     <div class="col-sm-4 col-md-4">
                         <input type="text" maxlength="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="mobile_no" id="mobile_no" class="form-control @error('mobile_no') is-invalid @enderror" value="{{ $project->mobile_no }}" placeholder="Enter Mobile Number.">
@@ -109,7 +232,9 @@ Bhairaav | Edit Project
                             </span>
                         @enderror
                     </div>
+                </div>
 
+                <div class="form-group row mt-3">
                     <label class="col-sm-2"><b>Upload Image : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
                         <input type="file" onchange="agentPreviewFile()" accept=".png, .jpg, .jpeg, .pdf" name="image" id="image" class="form-control @error('image') is-invalid @enderror" value="{{ $project->image }}">
@@ -205,5 +330,58 @@ Bhairaav | Edit Project
 
     }
 
+</script>
+
+{{-- Add More RERA Registration Number --}}
+<script>
+    $(document).ready(function () {
+        // Initialize Select2 on document ready for existing elements
+        $('.custom-select2').select2();
+
+        // Add a new row with validation
+        $('#addFeatureRow').click(function () {
+            var newRow = `<tr>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <select name="phase_id[]" class="form-control custom-select2 @error('phase_id.*') is-invalid @enderror" value="{{ old('phase_id.0') }}">
+                            <option value="">Select Phase</option>
+                            <optgroup label="Phase">
+                                @foreach ($phases as $value)
+                                    <option value="{{$value->id}}" {{ (old("phase_id") == $value->id ? "selected":"") }}>{{$value->name}}</option>
+                                @endforeach
+                            </optgroup>
+                        </select>
+                        @error('phase_id.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td>
+                    <div class="col-sm-12 col-md-12">
+                        <input type="text" name="maha_rera_registration_number[]" id="maha_rera_registration_number" class="form-control @error('maha_rera_registration_number.*') is-invalid @enderror" value="{{ old('maha_rera_registration_number.0') }}" placeholder="Enter Maha RERA Registration Number">
+                        @error('maha_rera_registration_number.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </td>
+                <td><button type="button" class="btn btn-danger removeFeatureRow">Remove</button></td>
+            </tr>`;
+
+            // Append new row
+        var $newRow = $(newRow).appendTo('#dynamicFeatureTable tbody');
+
+        // Reinitialize Select2 for the new row
+        $newRow.find('.custom-select2').select2();
+        });
+
+        // Remove a row
+        $(document).on('click', '.removeFeatureRow', function () {
+            $(this).closest('tr').remove();
+        });
+    });
 </script>
 @endpush
