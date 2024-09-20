@@ -27,7 +27,12 @@ Bhairaav | Residental Projects
                     {{ $projectNames->project_name ?? '' }}
                 </h1>
                 <p class="cs_white_color">
-                    MahaRERA Registration No. : {{ $projectDetail->maha_rera_registration_number ?? '' }}
+                    MahaRERA Registration No.:
+                    @foreach($reraNumbers as $key => $value)
+                        Phase - {{ $key+1 }}
+                        {{ $value ?? '' }}
+                    @endforeach
+                    <br>
                     ({{ $projectDetail->project_link ?? '' }} )
                 </p>
             </div>
