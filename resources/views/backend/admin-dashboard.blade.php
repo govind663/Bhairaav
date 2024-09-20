@@ -29,9 +29,9 @@ Bhairaav | Home
         </div>
     </div>
 
-    {{-- <div class="title pb-20">
-        <h2 class="h3 mb-0">Hospital Overview</h2>
-    </div> --}}
+    <div class="title pb-20">
+        <h2 class="h3 mb-0">Project Overview</h2>
+    </div>
 
     <div class="row pb-10">
         <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
