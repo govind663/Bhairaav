@@ -55,6 +55,8 @@ use App\Http\Controllers\frontend\MediaController;
 use App\Http\Controllers\frontend\BlogController;
 use App\Http\Controllers\frontend\ContactUsController;
 use App\Http\Controllers\frontend\PropertiesRequestController;
+use App\Http\Controllers\frontend\DisclaimerController;
+use App\Http\Controllers\frontend\PrivacyPolicyController;
 
 // ===== Import Model
 use App\Models\LatestUpdate;
@@ -254,7 +256,7 @@ Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryM
 
 
 // ======================= Frontend
-Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware::class]],function(){
+Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class]],function(){
 
     // ==== Home
     Route::get('/home', [FrontendHomeController::class, 'index'])->name('frontend.home');
@@ -337,4 +339,10 @@ Route::group(['prefix'=> 'bhairaav', 'middleware'=>[PreventBackHistoryMiddleware
 
     // ==== Store Properties Request
     Route::post('/properties-request-store', [PropertiesRequestController::class, 'storePropertiesRequest'])->name('frontend.properties-request.store');
+
+    // ==== Disclaimer
+    Route::get('/disclaimer', [DisclaimerController::class, 'disclaimer'])->name('frontend.disclaimer');
+
+    // ==== Privacy Policy
+    Route::get('/privacy-policy', [PrivacyPolicyController::class, 'privacyPolicy'])->name('frontend.privacy-policy');
 });

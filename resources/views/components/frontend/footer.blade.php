@@ -144,10 +144,10 @@
                 <div class="cs_bottom_footer_right">
                     <ul class="cs_footer_links cs_mp_0">
                         <li>
-                            <a href="disclaimer.html">Disclaimer </a>
+                            <a href="{{ route('frontend.disclaimer') }}">Disclaimer </a>
                         </li>
                         <li>
-                            <a href="privacy-policy.html">Privacy Policy </a>
+                            <a href="{{ route('frontend.privacy-policy') }}">Privacy Policy </a>
                         </li>
                         <li>
                             <a href="#">Sitemap</a>
