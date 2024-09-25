@@ -24,8 +24,8 @@
                                 Nariman Point - 400021
                             </li>
                             <li class="cs_white_color">
-                                <a href="tel:+919071123428">
-                                    +91 9322225030
+                                <a href="tel:+919322225030">
+                                    / 9322225030
                                 </a>
                             </li>
                             <li class="cs_white_color">
