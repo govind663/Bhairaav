@@ -209,11 +209,11 @@
                             </a>
                         </li>
 
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('projects.index', ['project_type' => 3]) }}" class="{{ (request()->routeIs('projects.index') && request('project_type') == 3) ? 'active' : '' }}">
                                 <span class="mtext">Upcoming Projects</span>
                             </a>
-                        </li>
+                        </li> --}}
 
                         {{-- <li>
                             <a href="{{ route('location-advantage.index') }}" class="{{ in_array($currentRoute, ['location-advantage.index', 'location-advantage.create', 'location-advantage.edit']) ? 'active' : '' }}">
