@@ -25,7 +25,7 @@
                             </li>
                             <li class="cs_white_color">
                                 <a href="tel:+919322225030">
-                                    / 9322225030
+                                    9322225030 /
                                 </a>
                             </li>
                             <li class="cs_white_color">
