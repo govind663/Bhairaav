@@ -23,6 +23,18 @@
         text-transform: capitalize;
         margin-bottom: 6px;
     }
+    .tr-destination-item h4 {
+        margin-bottom: 0px;
+        font-weight: 700;
+        color: #01609d;
+        text-transform: capitalize;
+        margin-bottom: 6px;
+    }
+    .tr-destination-location {
+        text-transform: uppercase;
+        margin-bottom: 0px;
+        color: #3e3e3e;
+    }
 </style>
 @endpush
 
@@ -44,7 +56,7 @@
                 <div class="col-lg-4">
                     <div class="tr-destination-item">
                         <h4 class="tr-destination-title">Bhairaav blossom </h4>
-                        <p class="tr-destination-location">(Commercial ) bkc</p>
+                        <p class="tr-destination-location">(Commercial) bkc</p>
                     </div>
                 </div>
                 <div class="col-lg-4">
