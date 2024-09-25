@@ -29,6 +29,7 @@ class PropertiesRequestMail extends Mailable
     {
         return new Envelope(
             subject: 'Properties Request Mail',
+            from: env('MAIL_FROM_ADDRESS'),
         );
     }
 

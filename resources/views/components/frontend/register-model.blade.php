@@ -15,10 +15,10 @@
         <i class="fa fa-cog"></i>
     </a>
     <div class="adminButtons">
-        <a aria-label="Chat on WhatsApp" href=" https://wa.me/9071123428" target="_blank">
+        <a aria-label="Chat on WhatsApp" href=" https://wa.me/9322225030" target="_blank">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
-        <a href="tel:+222-4454-6789">
+        <a href="tel:9322225030">
             <i class="fa fa-phone"></i>
         </a>
         <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">

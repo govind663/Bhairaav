@@ -27,7 +27,7 @@ class ProjectDetailsRequest extends FormRequest
                 'project_type_id' => 'required|numeric',
                 'project_name_id' => 'required|numeric',
                 'banner_image.*' => 'mimes:jpeg,png,jpg|max:2048',
-                'maha_rera_registration_number' => 'required|string|max:255',
+                // 'maha_rera_registration_number' => 'required|string|max:255',
                 'project_link' => 'required|string|max:255',
 
                 // ==== Project Overview Details
@@ -58,7 +58,7 @@ class ProjectDetailsRequest extends FormRequest
                 'project_type_id' => 'required|numeric',
                 'project_name_id' => 'required|numeric',
                 'banner_image.*' => 'required|mimes:jpeg,png,jpg|max:2048',
-                'maha_rera_registration_number' => 'required|string|max:255',
+                // 'maha_rera_registration_number' => 'required|string|max:255',
                 'project_link' => 'required|string|max:255',
 
                 // ==== Project Overview Details

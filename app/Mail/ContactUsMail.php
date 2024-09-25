@@ -29,6 +29,7 @@ class ContactUsMail extends Mailable
     {
         return new Envelope(
             subject: 'Contact Us Mail',
+            from: env('MAIL_FROM_ADDRESS'),
         );
     }
 
