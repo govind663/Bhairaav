@@ -52,7 +52,7 @@ Bhairaav | Edit Project Details
                                 <optgroup label="Project Type">
                                     <option value="1" {{ ( $projectDetail->project_type_id == '1' ? "selected":"") }}>Ongoing Project</option>
                                     <option value="2" {{ ( $projectDetail->project_type_id == '2' ? "selected":"") }}>Completed Project</option>
-                                    <option value="3" {{ ( $projectDetail->project_type_id == '3' ? "selected":"") }}>Upcoming Project</option>
+                                    {{-- <option value="3" {{ ( $projectDetail->project_type_id == '3' ? "selected":"") }}>Upcoming Project</option> --}}
                                 </optgroup>
                             </select>
                             @error('project_type_id')
