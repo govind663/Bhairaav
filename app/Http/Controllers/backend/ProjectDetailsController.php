@@ -74,7 +74,6 @@ class ProjectDetailsController extends Controller
             // Save Project Details
             $projectDetails->project_type_id = $request->project_type_id;
             $projectDetails->project_name_id = $request->project_name_id;
-            $projectDetails->maha_rera_registration_number = $request->maha_rera_registration_number;
             $projectDetails->project_link = $request->project_link;
             $projectDetails->project_description = $request->project_description;
             $projectDetails->inserted_at = Carbon::now();
@@ -281,7 +280,6 @@ class ProjectDetailsController extends Controller
             $projectDetails->fill($request->only([
                 'project_type_id',
                 'project_name_id',
-                'maha_rera_registration_number',
                 'project_link',
                 'project_description'
             ]));
