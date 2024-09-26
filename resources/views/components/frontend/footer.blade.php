@@ -59,7 +59,7 @@
                         <ul class="cs_menu_widget cs_mp0">
                             <li><a href='{{ route('/') }}'>Home</a></li>
                             <li><a href='{{ route('frontend.about.who-we-are') }}'>About Bhairaav</a></li>
-                            <li><a href='#'>Career</a></li>
+                            <li><a href='{{ route('frontend.career') }}'>Career</a></li>
                             <li><a href='{{ route('frontend.media') }}'>Recognition</a></li>
                             <li><a href='{{ route('frontend.blog') }}'>Blog</a></li>
                             <li><a href='{{ route('frontend.contact-us') }}'>Contact us</a></li>
@@ -150,7 +150,7 @@
                             <a href="{{ route('frontend.privacy-policy') }}">Privacy Policy </a>
                         </li>
                         <li>
-                            <a href="#">Sitemap</a>
+                            <a href="{{ route('frontend.sitemap') }}">Sitemap</a>
                         </li>
                     </ul>
                 </div>

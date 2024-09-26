@@ -57,6 +57,8 @@ use App\Http\Controllers\frontend\ContactUsController;
 use App\Http\Controllers\frontend\PropertiesRequestController;
 use App\Http\Controllers\frontend\DisclaimerController;
 use App\Http\Controllers\frontend\PrivacyPolicyController;
+use App\Http\Controllers\frontend\CareerController;
+use App\Http\Controllers\frontend\SitemapController;
 
 // ===== Import Model
 use App\Models\LatestUpdate;
@@ -124,7 +126,7 @@ Route::get('/', function () {
 
 })->name('/');
 
-Route::group(['prefix' => 'bhairaav'],function(){
+Route::group(['prefix' => ''],function(){
 
     // ======================= Admin Login/Logout
     Route::get('/login', [LoginController::class, 'login'])->name('login');
@@ -345,4 +347,10 @@ Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class]
 
     // ==== Privacy Policy
     Route::get('/privacy-policy', [PrivacyPolicyController::class, 'privacyPolicy'])->name('frontend.privacy-policy');
+
+    // ==== Career
+    Route::get('/career', [CareerController::class, 'career'])->name('frontend.career');
+
+    // ===== Site Map
+    Route::get('/sitemap', [SitemapController::class, 'sitemap'])->name('frontend.sitemap');
 });
