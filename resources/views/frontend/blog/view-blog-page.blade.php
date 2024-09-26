@@ -27,7 +27,7 @@
                         <h2 class="cs_fs_38 cs_bold mb-10">
                             {{ $blog->blog_title }}
                         </h2>
-                        <img src="{{ asset('/bhairaav/blog/blog_image/' . $blog->blog_image ) }}" alt="{{ $blog->blog_title }}">
+                        {{-- <img src="{{ asset('/bhairaav/blog/blog_image/' . $blog->blog_image ) }}" alt="{{ $blog->blog_title }}"> --}}
                         {!! $blog->description !!}
                     </div>
 
