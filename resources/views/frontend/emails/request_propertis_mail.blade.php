@@ -102,7 +102,7 @@
         <div class="footer">
             <p>
                 Bhairaav Lifestyles<br>
-                Email: infobhairaav@gmail.com
+                Email: sales@bhairaav.com
             </p>
         </div>
     </div>
