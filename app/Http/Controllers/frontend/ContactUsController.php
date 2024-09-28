@@ -48,11 +48,12 @@ class ContactUsController extends Controller
             ];
 
             // Mail::send('frontend.emails.contact_us_mail', $mailData, function($message) use ($request) {
-            //     $message->from($request->input('email'));
-            //     $message->to('sales@bhairaav.com', 'sales@bhairaav.com');
+            //     $message->from($request->input('email'), $request->input('name'));
+            //     $message->to('sales@bhairaav.com', 'Bhairaav Sales Team');
+            //     $message->subject('Contact Us Mail');
             // });
 
-            Mail::to('sales@bhairaav.com')
+            Mail::to('sales@bhairaav.com', $request->input('name'))
                 ->cc('sales@bhairaav.com')
                 ->bcc('sales@bhairaav.com')
                 ->send(new ContactUsMail($mailData));

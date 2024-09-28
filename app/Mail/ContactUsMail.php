@@ -40,8 +40,12 @@ class ContactUsMail extends Mailable
     {
         return new Content(
             view: 'frontend.emails.contact_us_mail',
+            with: [
+                'mailData' => $this->mailData
+            ]
         );
     }
+
 
     /**
      * Get the attachments for the message.
