@@ -315,6 +315,20 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('disclaimers.index') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'disclaimers.index') || ($currentRoute === 'disclaimers.create') || ($currentRoute === 'disclaimers.edit') ? 'active' : '' }}">
+                        <span class="micon bi bi-file-earmark-text"></span>
+                        <span class="mtext">Disclaimer</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('privacy_policies.index') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'privacy_policies.index') || ($currentRoute === 'privacy_policies.create') || ($currentRoute === 'privacy_policies.edit') ? 'active' : '' }}">
+                        <span class="micon bi bi-file"></span>
+                        <span class="mtext">Privacy Policies</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ route('admin.contact_us') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'admin.contact_us') ? 'active' : '' }}">
                         <span class="micon bi bi-envelope"></span>
                         <span class="mtext">Contact Us</span>

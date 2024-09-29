@@ -1,0 +1,125 @@
+<?php
+
+namespace App\Http\Controllers\backend;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\PrivacyPolicyRequest;
+use App\Models\PrivacyPolicy;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+
+class AdminPrivacyPolicyController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $privacyPolicy = PrivacyPolicy::orderBy("id","desc")->whereNull('deleted_at')->get();
+        return view('backend.privacy_policy.index', ['privacyPolicy' => $privacyPolicy]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('backend.privacy_policy.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(PrivacyPolicyRequest $request)
+    {
+        $data = $request->validated();
+        try {
+
+            $privacyPolicy = new PrivacyPolicy();
+
+            $privacyPolicy->introduction = $request->introduction;
+            $privacyPolicy->data_collection = $request->data_collection;
+            $privacyPolicy->use_of_information = $request->use_of_information;
+            $privacyPolicy->closure_of_information = $request->closure_of_information;
+            $privacyPolicy->data_storage = $request->data_storage;
+            $privacyPolicy->cookies = $request->cookies;
+            $privacyPolicy->rights = $request->rights;
+            $privacyPolicy->changes = $request->changes;
+            $privacyPolicy->inserted_at = Carbon::now();
+            $privacyPolicy->inserted_by = Auth::user()->id;
+            $privacyPolicy->save();
+
+            return redirect()->route('privacy_policies.index')->with('message','Your record has been successfully created.');
+
+        } catch(\Exception $ex){
+
+            return redirect()->back()->with('error','Something Went Wrong  - '.$ex->getMessage());
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        $privacyPolicy = PrivacyPolicy::findOrFail($id);
+        return view('backend.privacy_policy.edit', ['privacyPolicy' => $privacyPolicy]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(PrivacyPolicyRequest $request, string $id)
+    {
+        $data = $request->validated();
+        try {
+
+            $privacyPolicy = PrivacyPolicy::findOrFail($id);
+
+            $privacyPolicy->introduction = $request->introduction;
+            $privacyPolicy->data_collection = $request->data_collection;
+            $privacyPolicy->use_of_information = $request->use_of_information;
+            $privacyPolicy->closure_of_information = $request->closure_of_information;
+            $privacyPolicy->data_storage = $request->data_storage;
+            $privacyPolicy->cookies = $request->cookies;
+            $privacyPolicy->rights = $request->rights;
+            $privacyPolicy->changes = $request->changes;
+            $privacyPolicy->inserted_at = Carbon::now();
+            $privacyPolicy->inserted_by = Auth::user()->id;
+            $privacyPolicy->save();
+
+            return redirect()->route('privacy_policies.index')->with('message','Your record has been successfully created.');
+
+        } catch(\Exception $ex){
+
+            return redirect()->back()->with('error','Something Went Wrong  - '.$ex->getMessage());
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        $data['deleted_by'] =  Auth::user()->id;
+        $data['deleted_at'] =  Carbon::now();
+        try {
+            $privacyPolicy = PrivacyPolicy::findOrFail($id);
+            $privacyPolicy->update($data);
+
+            return redirect()->route('privacy_policies.index')->with('message','Your record has been successfully deleted.');
+        } catch(\Exception $ex){
+
+            return redirect()->back()->with('error','Something Went Wrong - '.$ex->getMessage());
+        }
+    }
+}

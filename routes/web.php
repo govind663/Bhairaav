@@ -38,6 +38,8 @@ use App\Http\Controllers\backend\AdminMemberController;
 use App\Http\Controllers\backend\AdminPropertiesRequestController;
 use App\Http\Controllers\backend\ChanelController;
 use App\Http\Controllers\backend\PhaseController;
+use App\Http\Controllers\backend\AdminDisclaimerController;
+use App\Http\Controllers\backend\AdminPrivacyPolicyController;
 
 // ===== Frontend
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
@@ -253,6 +255,12 @@ Route::group(['prefix' => '', 'middleware'=>['auth', PreventBackHistoryMiddlewar
 
     // ==== Manage Multiple Phase
     Route::resource('multiple_phase', PhaseController::class);
+
+    // ==== Manage Disclaimer
+    Route::resource('disclaimers', AdminDisclaimerController::class);
+
+    // ==== Manage Privacy Policy
+    Route::resource('privacy_policies', AdminPrivacyPolicyController::class);
 });
 
 
