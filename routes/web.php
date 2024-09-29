@@ -69,7 +69,6 @@ use App\Models\Testimonial;
 use App\Models\WhyChooseBhairaav;
 use App\Models\Blog as ModelBlog;
 use App\Models\Projects as ModelProject;
-use App\Models\ProjectDetails as ModelProjectDetails;
 
 Route::get('/', function () {
 
@@ -93,7 +92,7 @@ Route::get('/', function () {
     // dd($latestPosts);
 
     // ==== Fetch Upcoming Projects
-    $upcomingProjects = ModelProject::orderBy("id","asc")->where('project_type', 1)->whereNull('deleted_at')->get();
+    $upcomingProjects = ModelProject::orderBy("id","asc")->where('project_type', 1)->whereNull('deleted_at')->limit(3)->get();
     // dd($upcomingProjects);
 
     // Extract phase IDs and RERA numbers
@@ -109,8 +108,8 @@ Route::get('/', function () {
         }
     }
 
-    // ==== Fetch Completed Projects
-    $completedProjects = ModelProject::orderBy("id","asc")->where('project_type', 2)->whereNull('deleted_at')->get();
+    // ==== Fetch Completed Projects with latest 3
+    $completedProjects = ModelProject::orderBy("id","asc")->where('project_type', 2)->whereNull('deleted_at')->limit(3)->get();
 
     return view('frontend.home', [
         'sliders' => $sliders,
@@ -138,7 +137,7 @@ Route::group(['prefix' => ''],function(){
 });
 
 // ======================= Admin Dashboard
-Route::group(['prefix' => 'bhairaav', 'middleware'=>['auth', PreventBackHistoryMiddleware::class]],function(){
+Route::group(['prefix' => '', 'middleware'=>['auth', PreventBackHistoryMiddleware::class]],function(){
 
     // ==== Dashboard
     Route::get('/dashboard', [BackendHomeController::class, 'Admin_Home'])->name('admin.dashboard');

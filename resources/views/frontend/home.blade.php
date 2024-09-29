@@ -287,6 +287,31 @@
 
                         </div>
                     </div>
+
+                    <div class="cs_height_70 cs_height_lg_50"></div>
+                    <div class="projects-btn">
+                        <a class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" href="">
+                            <b>Explore More</b>
+                            <span>
+                                <i>
+                                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </i>
+                                <i>
+                                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </i>
+                            </span>
+                        </a>
+                    </div>
                 </div>
 
                 <div id="tab_2" class="cs_tab ">
@@ -365,33 +390,33 @@
                             @endif
                         </div>
                     </div>
+
+                    <div class="cs_height_70 cs_height_lg_50"></div>
+                    <div class="projects-btn">
+                        <a class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" href="{{ route('frontend.project.completed-project', ['projectId' => '2']) }}">
+                            <b>Explore More</b>
+                            <span>
+                                <i>
+                                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </i>
+                                <i>
+                                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </i>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="cs_height_70 cs_height_lg_50"></div>
-            <div class="projects-btn">
-                <a class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" href="">
-                    <b>Explore More</b>
-                    <span>
-                        <i>
-                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                    fill="currentColor"></path>
-                            </svg>
-                        </i>
-                        <i>
-                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                    fill="currentColor"></path>
-                            </svg>
-                        </i>
-                    </span>
-                </a>
-            </div>
-
         </div>
         <div class="cs_height_70 cs_height_lg_75"></div>
     </section>
@@ -400,35 +425,6 @@
     <!-- Start Page Heading Section -->
     <section class="cs_page_heading cs_primary_bg cs_bg_filed cs_center" data-src="{{ asset('frontend/assets/img/pp/10.jpg') }}"></section>
     <!-- End Page Heading Section -->
-
-    {{-- Start Why Choose Bhairaav --}}
-    {{-- <section class="container-fluid p-0">
-        <div class="container">
-            <div class="row align-items-center cs_gap_y_40">
-                <div class="col-lg-6">
-                    <div class="cs_image_layer cs_style_4 position-relative cs_bg_filed cs_width_left_50_vw"
-                        data-src="{{ asset('/bhairaav/why_choose_bhiraav/image/' . $whyChooseBhairaavs->image ) }}" style="background-image: url({{ asset('/bhairaav/why_choose_bhiraav/image/' . $whyChooseBhairaavs->image ) }});">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="cs_pl_110">
-                        <div class="cs_section_heading cs_style_1">
-                            <p class="cs_section_subtitle cs_medium cs_letter_spacing_1 cs_mb_10 cs_mb_lg_15 text-uppercase">
-                                Why Choose Bhairaav
-                            </p>
-                            <h2 class="cs_fs_38 cs_bold mb-10 ">
-                                {{ $whyChooseBhairaavs->title }}
-                            </h2>
-                            <p class="mb-0">
-                                {!! $whyChooseBhairaavs->description !!}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    {{-- End Why Choose Bhairaav --}}
 
     {{-- Start Testimonial --}}
     <section class="cs_white_bg cs_half_bg position-relative testimonial-sec">

@@ -48,15 +48,11 @@ class ContactUsController extends Controller
             ];
 
             // Mail::send('frontend.emails.contact_us_mail', $mailData, function($message) use ($request) {
-            //     $message->from($request->input('email'), $request->input('name'));
-            //     $message->to('sales@bhairaav.com', 'Bhairaav Sales Team');
-            //     $message->subject('Contact Us Mail');
+            //     $message->from($request->input('email'));
+            //     $message->to('sales@bhairaav.com', 'sales@bhairaav.com');
             // });
 
-            Mail::to('sales@bhairaav.com', $request->input('name'))
-                ->cc('sales@bhairaav.com')
-                ->bcc('sales@bhairaav.com')
-                ->send(new ContactUsMail($mailData));
+            Mail::to('demo@xoom-digital.gadiinsurance.com')->send(new ContactUsMail($mailData));
 
             return redirect()->route('frontend.contact-us')->with('message','Thank you for your interest. We will get back to you within 24 hours.');
 

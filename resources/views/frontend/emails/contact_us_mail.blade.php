@@ -70,7 +70,7 @@
 
 <body>
     <div class="container">
-        <div class="logo">
+        <div class="logo text-center justify-items-center">
             <!-- Logo Section -->
             <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
         </div>
