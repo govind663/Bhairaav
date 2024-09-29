@@ -22,10 +22,11 @@ class ResidentialProjectController extends Controller
         return view("frontend.project.residential-project", ['projects' => $projects,]);
     }
 
-    public function viewProjectDetails(Request $request, string $id)
+    public function viewProjectDetails(Request $request, string $id, string $projectDetailsId)
     {
         // Fetch the main project details
-        $projectDetail = ProjectDetails::findOrFail($id);
+        $projectDetail = ProjectDetails::where('project_name_id', $id)->findOrFail($id);
+        // dd($projectDetail);
 
         $bannerImages = $projectDetail->banner_image;
 
@@ -36,7 +37,7 @@ class ResidentialProjectController extends Controller
         $projectRera = Projects::where('id', $id)->first(['maha_rera_registration_number', 'phase_id']);
 
         // Fetch related hallmarks
-        $projectHallmarks = ProjectHallmarks::where('project_details_id', $id)->get();
+        $projectHallmarks = ProjectHallmarks::where('project_details_id', $projectDetailsId)->get();
 
         // Convert location advantage IDs to array if needed
         $locationAdvantageIds = json_decode($projectDetail->project_location_advantages_id);
@@ -49,10 +50,10 @@ class ResidentialProjectController extends Controller
             ->get();
 
         // Fetch related amenities
-        $projectAmenities = ProjectAmenities::where('project_details_id', $id)->get();
+        $projectAmenities = ProjectAmenities::where('project_details_id', $projectDetailsId)->get();
 
         // Fetch related gallery images
-        $projectGallery = ProjectGallery::where('project_details_id', $id)->get();
+        $projectGallery = ProjectGallery::where('project_details_id', $projectDetailsId)->get();
 
         // Fetch additional data, such as location advantages feature names
         $featureName = LocationAdvantage::orderBy('id', 'desc')->whereNull('deleted_at')->get(['id']);

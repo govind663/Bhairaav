@@ -24,9 +24,10 @@
                 @if (!empty($projects))
                 @foreach ($projects as $key => $value)
                 @php
-                    $projectDetails = App\Models\ProjectDetails::where('project_name_id', $value->id)->first();
+                    $projectDetailsId = App\Models\ProjectDetails::where('project_name_id', $value->id)->first(['id']);
+                    // dd($projectDetailsId);
                 @endphp
-                @if(!empty($projectDetails))
+                @if(!empty($projectDetailsId))
                     <div class="col-lg-4">
                         <div class="tj-project-item wow fadeInUp" data-wow-delay=".2s">
                             <div class="tj-project-images">
@@ -34,7 +35,7 @@
                             </div>
                             <div class="project-content">
                                 <h4 class="project-title cs_fs_28 cs_bold">
-                                    <a href="{{ route('frontend.project.residential-project.view-project-details', ['id' => $projectDetails->project_name_id]) }}">
+                                    <a href="{{ route('frontend.project.residential-project.view-project-details', ['id' => $value->id, 'projectDetailsId' => $projectDetailsId->id]) }}">
                                         {{ $value->project_name }}
                                     </a>
                                 </h4>
@@ -43,7 +44,7 @@
                                     <p>Configuration: {{ $value->configuration }}</p>
                                     <p> +91-{{ $value->mobile_no }}</p>
                                     <div class="poject-icon">
-                                        <a href="{{ route('frontend.project.residential-project.view-project-details', ['id' => $projectDetails->project_name_id]) }}">
+                                        <a href="{{ route('frontend.project.residential-project.view-project-details', ['id' => $value->id, 'projectDetailsId' => $projectDetailsId->id]) }}">
                                             <i class="fa fa-link"></i>
                                         </a>
                                     </div>
