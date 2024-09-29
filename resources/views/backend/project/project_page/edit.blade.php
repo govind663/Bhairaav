@@ -68,7 +68,7 @@ Bhairaav | Edit Project Details
                                 <option value="">Select Project Name</option>
                                 <optgroup label="Project Name">
                                     @foreach ($projectNames as $projectName)
-                                        <option value="{{ $projectName->id }}" {{ $projectName->id == old('project_name_id', $projectDetail->project_name_id) ? 'selected' : '' }}>
+                                    <option value="{{ $projectName->id }}" {{ ( $projectDetail->project_name_id == $projectName->id ? "selected":"") }}>
                                             {{ $projectName->project_name }}
                                         </option>
                                     @endforeach

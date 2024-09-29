@@ -17,18 +17,23 @@ class ResidentialProjectController extends Controller
 {
     public function residentalProject(Request $request)
     {
-        $projects = Projects::where('project_type', 1)
-            ->where('property_type', 1)->orderBy("id","asc")->whereNull('deleted_at')->get();
+        $projects = Projects::where('project_type', 1)->where('property_type', 1)->orderBy("id","asc")->whereNull('deleted_at')->get();
+
         return view("frontend.project.residential-project", ['projects' => $projects,]);
     }
 
-    public function viewProjectDetails(Request $request, string $id, string $projectDetailsId)
+    public function viewCommercialProjectDetails(Request $request, string $id)
     {
         // Fetch the main project details
-        $projectDetail = ProjectDetails::where('project_name_id', $id)->findOrFail($id);
+        $projectDetail = ProjectDetails::where('project_name_id', $id)->whereNull('deleted_at')->first();
         // dd($projectDetail);
 
         $bannerImages = $projectDetail->banner_image;
+        // dd($bannerImages);
+
+        // === Project Details ID
+        $projectDetailsId = $projectDetail->id;
+        // dd($projectDetailsId);
 
         // Fetch Project
         $projectNames = Projects::where('id', $id)->first(['project_name']);
@@ -88,7 +93,9 @@ class ResidentialProjectController extends Controller
             'projectRera' => $projectRera,
             'phases' => $phases,
             'phaseReraInfo' => $phaseReraInfo,
-            'reraNumbers' => $reraNumbers
+            'reraNumbers' => $reraNumbers,
+            'projectDetailsId' => $projectDetailsId,
+            'id' => $id
         ]);
     }
 

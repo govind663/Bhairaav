@@ -285,10 +285,11 @@ Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class]
 
             // ==== Residential Projects
             Route::get('/residential-project', [ResidentialProjectController::class, 'residentalProject'])->name('frontend.project.ongoing-project.residential-project');
-            Route::get('/residential-project/view-project-details/{id?}/{projectDetailsId?}', [ResidentialProjectController::class, 'viewProjectDetails'])->name('frontend.project.residential-project.view-project-details');
+            Route::get('/residential-project/view-project-details/{id?}', [ResidentialProjectController::class, 'viewProjectDetails'])->name('frontend.project.residential-project.view-project-details');
 
             // ==== Commercial Projects
             Route::get('/commercial-project', [CommercialProjectController::class, 'commercialProject'])->name('frontend.project.ongoing-project.commercial-project');
+            Route::get('/commercial-project/view-project-details/{id?}', [CommercialProjectController::class, 'viewCommercialProjectDetails'])->name('frontend.project.commercial-project.view-project-details');
 
         });
 
@@ -296,7 +297,7 @@ Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class]
 
             // ==== Residential Projects
             Route::get('/completed-project/{projectId?}', [CompletedProjectController::class, 'completedProject'])->name('frontend.project.completed-project');
-            Route::get('/completed-project/view-project-details/{id?}', [CompletedProjectController::class, 'viewProjectDetails'])->name('frontend.project.completed-project.view-project-details');
+            Route::get('/completed-project/view-project-details/{id?}', [CompletedProjectController::class, 'viewCompletedProjectDetails'])->name('frontend.project.completed-project.view-project-details');
 
         });
 

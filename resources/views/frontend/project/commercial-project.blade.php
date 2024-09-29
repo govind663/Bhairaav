@@ -22,74 +22,61 @@
         <div class="cs_height_70 cs_height_lg_70"></div>
         <div class="container">
             <div class="row align-items-center cs_gap_y_45">
-
-                @if (!empty($projects))
-                {{-- If data is avilable then show data --}}
                 @foreach ($projects as $key => $value)
-                @php
-                    $projectDetailsId = App\Models\ProjectDetails::where('project_name_id', $value->id)->first(['id']);
-                    // dd($projectDetailsId);
-                @endphp
-                @if(!empty($projectDetailsId))
-                    <div class="col-lg-4">
-                        <div class="tj-project-item wow fadeInUp" data-wow-delay=".2s">
-                            <div class="tj-project-images">
-                                <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $value->image ) }}" alt="Images" />
-                            </div>
-                            <div class="project-content">
-                                <h4 class="project-title cs_fs_28 cs_bold">
-                                    <a href="{{ route('frontend.project.residential-project.view-project-details', ['id' => $value->id, 'projectDetailsId' => $projectDetailsId->id]) }}">
-                                        {{ $value->project_name }}
-                                    </a>
-                                </h4>
-                                <div class="project-button">
-                                    <p>{!! $value->address !!}</p>
-                                    <p>Configuration: {{ $value->configuration }}</p>
-                                    <p> +91-{{ $value->mobile_no }}</p>
-                                    <div class="poject-icon">
-                                        <a href="{{ route('frontend.project.residential-project.view-project-details', ['id' => $value->id, 'projectDetailsId' => $projectDetailsId->id]) }}">
-                                            <i class="fa fa-link"></i>
+                    @if(!empty($projects))
+                        <div class="col-lg-4">
+                            <div class="tj-project-item wow fadeInUp" data-wow-delay=".2s">
+                                <div class="tj-project-images">
+                                    <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $value->image ) }}" alt="Images" />
+                                </div>
+                                <div class="project-content">
+                                    <h4 class="project-title cs_fs_28 cs_bold">
+                                        <a href="{{ route('frontend.project.commercial-project.view-project-details', ['id' => $value->id]) }}">
+                                            {{ $value->project_name }}
                                         </a>
+                                    </h4>
+                                    <div class="project-button">
+                                        <p>{!! $value->address !!}</p>
+                                        <p>Configuration: {{ $value->configuration }}</p>
+                                        <p> +91-{{ $value->mobile_no }}</p>
+                                        <div class="poject-icon">
+                                            <a href="{{ route('frontend.project.commercial-project.view-project-details', ['id' => $value->id]) }}">
+                                                <i class="fa fa-link"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @else
-                    <div class="col-lg-4">
-                        <div class="tj-project-item wow fadeInUp" data-wow-delay=".2s">
-                            <div class="tj-project-images">
-                                <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $value->image ) }}" alt="Images" />
-                            </div>
-                            <div class="project-content">
-                                <h4 class="project-title cs_fs_28 cs_bold">
-                                    <a href="#">
-                                        {{ $value->project_name }}
-                                    </a>
-                                </h4>
-                                <div class="project-button">
-                                    <p>{!! $value->address !!}</p>
-                                    <p>Year Of Completion: {{ $value->year_of_completion }}</p>
-                                    <p>Configuration: {{ $value->configuration }}</p>
-                                    <p> +91-{{ $value->mobile_no }}</p>
-                                    <div class="poject-icon">
+                    @else
+                        <div class="col-lg-4">
+                            <div class="tj-project-item wow fadeInUp" data-wow-delay=".2s">
+                                <div class="tj-project-images">
+                                    <img src="{{ asset('/bhairaav/projects/bhairaav_projects/image/' . $value->image ) }}" alt="Images" />
+                                </div>
+                                <div class="project-content">
+                                    <h4 class="project-title cs_fs_28 cs_bold">
                                         <a href="#">
-                                            <i class="fa fa-link"></i>
+                                            {{ $value->project_name }}
                                         </a>
+                                    </h4>
+                                    <div class="project-button">
+                                        <p>{!! $value->address !!}</p>
+                                        <p>Year Of Completion: {{ $value->year_of_completion }}</p>
+                                        <p>Configuration: {{ $value->configuration }}</p>
+                                        <p> +91-{{ $value->mobile_no }}</p>
+                                        <div class="poject-icon">
+                                            <a href="#">
+                                                <i class="fa fa-link"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endif
+                    @endif
                 @endforeach
-                @else
-                {{-- <h3 class="text-center">
-                    No Projects Found
-                </h3> --}}
-                @endif
             </div>
-
         </div>
         <div class="cs_height_70 cs_height_lg_70"></div>
     </section>

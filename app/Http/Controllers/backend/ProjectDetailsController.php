@@ -204,7 +204,10 @@ class ProjectDetailsController extends Controller
         $bannerImages = $projectDetail->banner_image;
 
         // Fetch Project
-        $projectNames = Projects::where('id', $id)->get();
+        $projectNames = Projects::where('id', $id)->get([
+            'project_name',
+            'id'
+        ]);
 
         // Fetch related hallmarks
         $projectHallmarks = ProjectHallmarks::where('project_details_id', $id)->get();
