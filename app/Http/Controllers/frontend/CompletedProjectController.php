@@ -22,7 +22,7 @@ class CompletedProjectController extends Controller
         return view("frontend.project.completed-project" , ['projects' => $projects]);
     }
 
-    public function viewCommercialProjectDetails(Request $request, string $id)
+    public function viewCompletedProjectDetails(Request $request, string $id)
     {
         // Fetch the main project details
         $projectDetail = ProjectDetails::where('project_name_id', $id)->whereNull('deleted_at')->first();
