@@ -55,11 +55,7 @@ Bhairaav | Manaage Privacy Policy
                         <tr>
                             <th>Sr. No.</th>
                             <th>Introduction</th>
-                            <th>Data Collection</th>
-                            <th>Use of the information</th>
-                            <th>Data storage</th>
-                            <th>Cookies</th>
-                            <th>Our Rights</th>
+                            <th>Changes to our privacy policy</th>
                             <th class="no-export">Edit</th>
                             <th class="no-export">Delete</th>
                         </tr>
@@ -69,11 +65,7 @@ Bhairaav | Manaage Privacy Policy
                         <tr>
                             <td>{{ ++$key }}</td>
                             <td class="text-wrap text-justify">{{ $value->introduction }}</td>
-                            <td class="text-wrap text-justify">{{ $value->data_collection }}</td>
-                            <td class="text-wrap text-justify">{{ $value->use_of_information }}</td>
-                            <td class="text-wrap text-justify">{{ $value->data_storage }}</td>
-                            <td class="text-wrap text-justify">{{ $value->cookies }}</td>
-                            <td class="text-wrap text-justify">{{ $value->our_rights }}</td>
+                            <td class="text-wrap text-justify">{{ $value->changing_privacy_policy }}<br></td>
                             <td class="no-export">
                                 <a href="{{ route('privacy_policies.edit', $value->id) }}">
                                     <button class="btn btn-warning btn-sm">

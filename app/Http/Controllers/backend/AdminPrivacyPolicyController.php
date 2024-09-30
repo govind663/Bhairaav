@@ -33,30 +33,35 @@ class AdminPrivacyPolicyController extends Controller
      */
     public function store(PrivacyPolicyRequest $request)
     {
-        $request->validated();
-        try {
+        $request->validated(); // Validation logic
 
+        try {
             $privacyPolicy = new PrivacyPolicy();
 
-            $privacyPolicy->introduction = $request->introduction;
-            $privacyPolicy->data_collection = json_encode($request->data_collection);
-            $privacyPolicy->use_of_information = json_encode($request->use_of_information);
-            $privacyPolicy->closure_of_information = json_encode($request->closure_of_information);
-            $privacyPolicy->data_storage = json_encode($request->data_storage);
-            $privacyPolicy->cookies = $request->cookies;
-            $privacyPolicy->rights = json_encode($request->rights);
-            $privacyPolicy->changing_privacy_policy = $request->changing_privacy_policy;
+            // Save fields as JSON-encoded arrays
+            $privacyPolicy->introduction = $request->input('introduction');
+            $privacyPolicy->data_collection = json_encode($request->input('data_collection', []));
+            $privacyPolicy->use_of_information = json_encode($request->input('use_of_information', []));
+            $privacyPolicy->closure_of_information = json_encode($request->input('closure_of_information', []));
+            $privacyPolicy->data_storage = json_encode($request->input('data_storage', []));
+            $privacyPolicy->cookies = $request->input('cookies');
+            $privacyPolicy->rights = json_encode($request->input('rights', []));
+            $privacyPolicy->changing_privacy_policy = $request->input('changing_privacy_policy');
+
+            // Additional fields
             $privacyPolicy->inserted_at = Carbon::now();
             $privacyPolicy->inserted_by = Auth::user()->id;
+
+            // Save to database
             $privacyPolicy->save();
 
-            return redirect()->route('privacy_policies.index')->with('message','Your record has been successfully created.');
+            return redirect()->route('privacy_policies.index')->with('message', 'Your record has been successfully created.');
 
-        } catch(\Exception $ex){
-
-            return redirect()->back()->with('error','Something Went Wrong  - '.$ex->getMessage());
+        } catch(\Exception $ex) {
+            return redirect()->back()->with('error', 'Something Went Wrong - ' . $ex->getMessage());
         }
     }
+
 
     /**
      * Display the specified resource.
@@ -92,14 +97,16 @@ class AdminPrivacyPolicyController extends Controller
 
             $privacyPolicy = PrivacyPolicy::findOrFail($id);
 
-            $privacyPolicy->introduction = $request->introduction;
-            $privacyPolicy->data_collection = json_encode($request->data_collection, true);
-            $privacyPolicy->use_of_information = json_encode($request->use_of_information, true);
-            $privacyPolicy->closure_of_information = json_encode($request->closure_of_information, true);
-            $privacyPolicy->data_storage = json_encode($request->data_storage, true);
-            $privacyPolicy->cookies = $request->cookies;
-            $privacyPolicy->rights = json_encode($request->rights, true);
-            $privacyPolicy->changing_privacy_policy = $request->changing_privacy_policy;
+            // Save fields as JSON-encoded arrays
+            $privacyPolicy->introduction = $request->input('introduction');
+            $privacyPolicy->data_collection = json_encode($request->input('data_collection', []));
+            $privacyPolicy->use_of_information = json_encode($request->input('use_of_information', []));
+            $privacyPolicy->closure_of_information = json_encode($request->input('closure_of_information', []));
+            $privacyPolicy->data_storage = json_encode($request->input('data_storage', []));
+            $privacyPolicy->cookies = $request->input('cookies');
+            $privacyPolicy->rights = json_encode($request->input('rights', []));
+            $privacyPolicy->changing_privacy_policy = $request->input('changing_privacy_policy');
+
             $privacyPolicy->inserted_at = Carbon::now();
             $privacyPolicy->inserted_by = Auth::user()->id;
             $privacyPolicy->save();

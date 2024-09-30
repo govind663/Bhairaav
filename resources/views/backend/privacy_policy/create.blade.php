@@ -63,8 +63,8 @@ Bhairaav | Add Privacy Policy
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12 mb-3">
-                                        <textarea  id="data_collection" name="data_collection[]" class="form-control border-radius-0 @error('data_collection.*') is-invalid @enderror" placeholder="Enter Data Collection ..." value="{{ old('data_collection.*') }}">
-                                            {{ old('data_collection.*') }}
+                                        <textarea  id="data_collection" name="data_collection[]" class="form-control border-radius-0 @error('data_collection.*') is-invalid @enderror" placeholder="Enter Data Collection ..." value="{{ old('data_collection.0') }}">
+                                            {{ old('data_collection.0') }}
                                         </textarea>
                                         @error('data_collection.*')
                                             <span class="invalid-feedback" role="alert">
@@ -89,8 +89,8 @@ Bhairaav | Add Privacy Policy
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12 mb-3">
-                                        <textarea  id="use_of_information" name="use_of_information[]" class="form-control border-radius-0 @error('use_of_information.*') is-invalid @enderror" placeholder="Enter Data Collection ..." value="{{ old('use_of_information.*') }}">
-                                            {{ old('use_of_information.*') }}
+                                        <textarea  id="use_of_information" name="use_of_information[]" class="form-control border-radius-0 @error('use_of_information.*') is-invalid @enderror" placeholder="Enter Data Collection ..." value="{{ old('use_of_information.0') }}">
+                                            {{ old('use_of_information.0') }}
                                         </textarea>
                                         @error('use_of_information.*')
                                             <span class="invalid-feedback" role="alert">
@@ -115,8 +115,8 @@ Bhairaav | Add Privacy Policy
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12 mb-3">
-                                        <textarea  id="closure_of_information" name="closure_of_information[]" class="form-control border-radius-0 @error('closure_of_information.*') is-invalid @enderror" placeholder="Enter Closure of your information ..." value="{{ old('closure_of_information.*') }}">
-                                            {{ old('closure_of_information.*') }}
+                                        <textarea  id="closure_of_information" name="closure_of_information[]" class="form-control border-radius-0 @error('closure_of_information.*') is-invalid @enderror" placeholder="Enter Closure of your information ..." value="{{ old('closure_of_information.0') }}">
+                                            {{ old('closure_of_information.0') }}
                                         </textarea>
                                         @error('closure_of_information.*')
                                             <span class="invalid-feedback" role="alert">
@@ -141,8 +141,8 @@ Bhairaav | Add Privacy Policy
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12 mb-3">
-                                        <textarea  id="data_storage" name="data_storage[]" class="form-control border-radius-0 @error('data_storage.*') is-invalid @enderror" placeholder="Enter We store your personal data ..." value="{{ old('data_storage.*') }}">
-                                            {{ old('data_storage.*') }}
+                                        <textarea  id="data_storage" name="data_storage[]" class="form-control border-radius-0 @error('data_storage.*') is-invalid @enderror" placeholder="Enter We store your personal data ..." value="{{ old('data_storage.0') }}">
+                                            {{ old('data_storage.0') }}
                                         </textarea>
                                         @error('data_storage.*')
                                             <span class="invalid-feedback" role="alert">
@@ -179,8 +179,8 @@ Bhairaav | Add Privacy Policy
                             <tr>
                                 <td>
                                     <div class="col-sm-12 col-md-12 mb-3">
-                                        <textarea  id="rights" name="rights[]" class="form-control border-radius-0 @error('rights.*') is-invalid @enderror" placeholder="Enter Our Rights ..." value="{{ old('rights.*') }}">
-                                            {{ old('rights.*') }}
+                                        <textarea  id="rights" name="rights[]" class="form-control border-radius-0 @error('rights.*') is-invalid @enderror" placeholder="Enter Our Rights ..." value="{{ old('rights.0') }}">
+                                            {{ old('rights.0') }}
                                         </textarea>
                                         @error('rights.*')
                                             <span class="invalid-feedback" role="alert">
@@ -239,8 +239,8 @@ Bhairaav | Add Privacy Policy
             var newRow = `<tr>
                 <td>
                     <div class="col-sm-12 col-md-12 mb-3">
-                        <textarea  id="data_collection" name="data_collection[]" class="form-control border-radius-0 @error('data_collection.*') is-invalid @enderror" placeholder="Enter Data Collection ..." value="{{ old('data_collection.*') }}">
-                            {{ old('data_collection.*') }}
+                        <textarea  id="data_collection" name="data_collection[]" class="form-control border-radius-0 @error('data_collection.*') is-invalid @enderror" placeholder="Enter Data Collection ..." value="{{ old('data_collection.0') }}">
+                            {{ old('data_collection.0') }}
                         </textarea>
                         @error('data_collection.*')
                             <span class="invalid-feedback" role="alert">
@@ -269,8 +269,8 @@ Bhairaav | Add Privacy Policy
             var newRow = `<tr>
                 <td>
                     <div class="col-sm-12 col-md-12 mb-3">
-                        <textarea  id="use_of_information" name="use_of_information[]" class="form-control border-radius-0 @error('use_of_information.*') is-invalid @enderror" placeholder="Enter Data Collection ..." value="{{ old('use_of_information.*') }}">
-                            {{ old('use_of_information.*') }}
+                        <textarea  id="use_of_information" name="use_of_information[]" class="form-control border-radius-0 @error('use_of_information.*') is-invalid @enderror" placeholder="Enter Data Collection ..." value="{{ old('use_of_information.0') }}">
+                            {{ old('use_of_information.0') }}
                         </textarea>
                         @error('use_of_information.*')
                             <span class="invalid-feedback" role="alert">
@@ -299,8 +299,8 @@ Bhairaav | Add Privacy Policy
             var newRow = `<tr>
                 <td>
                     <div class="col-sm-12 col-md-12 mb-3">
-                        <textarea  id="closure_of_information" name="closure_of_information[]" class="form-control border-radius-0 @error('closure_of_information.*') is-invalid @enderror" placeholder="Enter Closure of your information ..." value="{{ old('closure_of_information.*') }}">
-                            {{ old('closure_of_information.*') }}
+                        <textarea  id="closure_of_information" name="closure_of_information[]" class="form-control border-radius-0 @error('closure_of_information.*') is-invalid @enderror" placeholder="Enter Closure of your information ..." value="{{ old('closure_of_information.0') }}">
+                            {{ old('closure_of_information.0') }}
                         </textarea>
                         @error('closure_of_information.*')
                             <span class="invalid-feedback" role="alert">
@@ -329,8 +329,8 @@ Bhairaav | Add Privacy Policy
             var newRow = `<tr>
                 <td>
                     <div class="col-sm-12 col-md-12 mb-3">
-                        <textarea  id="data_storage" name="data_storage[]" class="form-control border-radius-0 @error('data_storage.*') is-invalid @enderror" placeholder="Enter We store your personal data ..." value="{{ old('data_storage.*') }}">
-                            {{ old('data_storage.*') }}
+                        <textarea  id="data_storage" name="data_storage[]" class="form-control border-radius-0 @error('data_storage.*') is-invalid @enderror" placeholder="Enter We store your personal data ..." value="{{ old('data_storage.0') }}">
+                            {{ old('data_storage.0') }}
                         </textarea>
                         @error('data_storage.*')
                             <span class="invalid-feedback" role="alert">
@@ -359,8 +359,8 @@ Bhairaav | Add Privacy Policy
             var newRow = `<tr>
                 <td>
                     <div class="col-sm-12 col-md-12 mb-3">
-                        <textarea  id="rights" name="rights[]" class="form-control border-radius-0 @error('rights.*') is-invalid @enderror" placeholder="Enter Our Rights ..." value="{{ old('rights.*') }}">
-                            {{ old('rights.*') }}
+                        <textarea  id="rights" name="rights[]" class="form-control border-radius-0 @error('rights.*') is-invalid @enderror" placeholder="Enter Our Rights ..." value="{{ old('rights.0') }}">
+                            {{ old('rights.0') }}
                         </textarea>
                         @error('rights.*')
                             <span class="invalid-feedback" role="alert">
