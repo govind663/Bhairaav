@@ -52,7 +52,7 @@ class ContactUsController extends Controller
             //     $message->to('sales@bhairaav.com', 'sales@bhairaav.com');
             // });
 
-            Mail::to('demo@xoom-digital.gadiinsurance.com')->send(new ContactUsMail($mailData));
+            Mail::to('infobhairaav@gmail.com')->send(new ContactUsMail($mailData));
 
             return redirect()->route('frontend.contact-us')->with('message','Thank you for your interest. We will get back to you within 24 hours.');
 

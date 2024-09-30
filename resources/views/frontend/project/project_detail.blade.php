@@ -5,6 +5,31 @@ Bhairaav | Residental Projects
 @endsection
 
 @push('styles')
+<style>
+    .modal-header {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        padding: var(--bs-modal-header-padding);
+        border-bottom: var(--bs-modal-header-border-width) solid var(--bs-modal-header-border-color);
+        border-top-left-radius: var(--bs-modal-inner-border-radius);
+        border-top-right-radius: var(--bs-modal-inner-border-radius);
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+</style>
+
+<style>
+    .is-invalid {
+        border-color: #dc3545; /* Bootstrap's red color for errors */
+    }
+
+    .invalid-feedback {
+        color: #dc3545; /* Match the border color */
+        font-size: 0.875em; /* Adjust font size as needed */
+    }
+</style>
 @endpush
 
 @section('content')
@@ -379,70 +404,100 @@ Bhairaav | Residental Projects
 <!-- End Property Gallary Section -->
 
 <!-- Site-visit form modal -->
-<div class="modal fade" id="site-visit-form" tabindex="-1" role="dialog" aria-labelledby="site-visit-formTitle" aria-hidden="true">
+<div class="modal fade" id="site-visit-form" tabindex="-1" aria-labelledby="site-visit-formTitle" aria-hidden="true">
+    <!-- start report input popup -->
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title text-left color-primary" id="exampleModalLongTitle">BOOK A SITE VISIT</h2>
+                <h1 class="modal-title" id="exampleModalLongTitle">
+                    Book a Site Visit
+                </h1>
                 <button type="button" class="close custom-close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body d-flex flex-column">
-                <div id="errmsg"></div>
-                <div id="msg"></div>
-                <form id="popupSiteVisit" action="javascript:void(0);" method="POST">
-                    <ul style="list-style:none">
-                        <!-- Name Field -->
-                        <li class="mb-3">
-                            <input type="text" class="px-3 py-2" placeholder="Name" maxlength="50"
-                                onkeyup="this.value=this.value.replace(/[^a-zA-Z \n\r.]+/g, '');" name="name" id="sname">
-                        </li>
-                        <!-- Email Field -->
-                        <li class="mb-3">
-                            <input type="email" class="px-3 py-2" placeholder="Email" name="email"
-                                pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}"
-                                onkeyup="this.value=this.value.replace(/[^a-zA-Z@.[0-9] \n\r.]+/g, '');" id="semail">
-                        </li>
-                        <!-- Phone Field -->
-                        <li class="mb-3">
-                            <input type="tel" class="px-3 py-2" placeholder="Phone" autocomplete="off"
-                                role="presentation" onkeyup="this.value=this.value.replace(/[^0-9]+/g,'');"
-                                onkeypress="if(this.value.length==12) return false;" name="mobile" id="smobile">
-                        </li>
-                        <!-- Date Picker -->
-                        <li class="mb-3">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text rounded-0" for="inputGroupSelect01">Select Date</label>
-                                    <input type="date" id="start" class="" name="visitsite" required="true">
-                                </div>
-                            </div>
-                        </li>
-                        <!-- Time Picker -->
-                        <li class="mb-3">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text rounded-0" for="inputGroupSelect01">Select time</label>
-                                </div>
-                                <select class="custom-select rounded-0" id="inputGroupSelect01" name="time" required="true">
-                                    <option value="" selected="true" disabled="true"> Select Time </option>
-                                    <option value="10:00 AM">10:00 AM</option>
-                                    <option value="10:30 AM">10:30 AM</option>
-                                    <!-- Add more options -->
-                                    <!-- ... -->
-                                </select>
-                            </div>
-                        </li>
-                    </ul>
-                    <div>
-                        <input type="hidden" name="project" id="project">
-                        <button type="submit" id="btn-sitevisit" class="btn btn-outline-dark mt-2 btncarerr">Submit</button>
+            <div class="modal-body space-y-20 p-40">
+                <!-- <h3>Register your interest</h3> -->
+                <form method="POST" action="{{ route('frontend.book-site-visit') }}" class="cs_form cs_style_2" enctype="multipart/form-data" autocomplete="off">
+                    @csrf
+
+                    {{-- add hidden input table --}}
+                    <input type="hidden" name="projects_id" id="projects_id" value="{{ $id }}">
+                    <div class="col-sm-12 mb-3">
+                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>Full Name : <span class="text-danger">*</span></b></label> --}}
+                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}" placeholder="Full Name *">
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
+
+                    <div class="col-sm-12 mb-3">
+                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>Email Id : <span class="text-danger">*</span></b></label> --}}
+                        <input type="email" class="cs_form_field_2 cs_radius_20 @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="Email Id *">
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>Phone No. : <span class="text-danger">*</span></b></label> --}}
+                        <input type="text" maxlength="10" class="cs_form_field_2 cs_radius_20 @error('phone') is-invalid @enderror" name="phone" id="phone" value="{{ old('phone') }}" placeholder="Phone No. *">
+                        @error('phone')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>Subject : <span class="text-danger">*</span></b></label> --}}
+                        <input type="date" class="cs_form_field_2 cs_radius_20 @error('visiting_date') is-invalid @enderror" name="visiting_date" id="visiting_date" value="{{ old('visiting_date') }}" placeholder="Start Date *">
+                        @error('visiting_date')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>select Time : <span class="text-danger">*</span></b></label> --}}
+                        <input type="time" class="cs_form_field_2 cs_radius_20 @error('visiting_time') is-invalid @enderror" name="visiting_time" id="visiting_time" value="{{ old('visiting_time') }}" placeholder="Time *">
+                        @error('visiting_time')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" type="submit">
+                        <b>Submit</b>
+                        <span>
+                            <i>
+                                <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </i>
+                            <i>
+                                <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </i>
+                        </span>
+                    </button>
                 </form>
-            </div>
-        </div>
-    </div>
+            </div><!-- end modal body -->
+        </div><!-- end modal content -->
+    </div><!-- end modal dialog -->
 </div>
 
 {{-- Properties Request Form Model --}}
@@ -548,8 +603,8 @@ Bhairaav | Residental Projects
 <!-- jQuery (required for Bootstrap 4) -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-<!-- Bootstrap JS (Bootstrap 5 uses Popper.js internally) -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function(){
         $('.cs_gallery_slider').slick({

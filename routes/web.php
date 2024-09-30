@@ -61,6 +61,7 @@ use App\Http\Controllers\frontend\DisclaimerController;
 use App\Http\Controllers\frontend\PrivacyPolicyController;
 use App\Http\Controllers\frontend\CareerController;
 use App\Http\Controllers\frontend\SitemapController;
+use App\Http\Controllers\frontend\BookSiteVisitController;
 
 // ===== Import Model
 use App\Models\LatestUpdate;
@@ -361,4 +362,7 @@ Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class]
 
     // ===== Site Map
     Route::get('/sitemap', [SitemapController::class, 'sitemap'])->name('frontend.sitemap');
+
+    // ===== Book a Site Visit
+    Route::post('/book-site-visit', [BookSiteVisitController::class, 'bookVisit'])->name('frontend.book-site-visit');
 });

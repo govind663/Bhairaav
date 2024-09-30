@@ -9,7 +9,7 @@
     <meta name="author" content="Bhairaav">
     <meta name="keywords" content="Bhairaav">
 
-    <title>Properties Request Mail</title>
+    <title>Book Site Visit Mail</title>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="content">
@@ -70,38 +70,38 @@
 
 <body>
     <div class="container">
-        <!-- Logo Section -->
-        <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
+        <div class="logo text-center justify-items-center">
+            <!-- Logo Section -->
+            <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
+        </div>
 
-        <h2>Properties Request Mail Details</h2>
+        <!-- Book Site Visit Mail Section -->
+        <div class="contact">
+            <h2>Book Site Visit Mail Details :- </h2>
 
-        <p class="details"><strong>Name:</strong> {{ $mailData['name'] }}</p>
-        <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
-        <p class="details"><strong>Phone No :</strong> {{ $mailData['phone_no'] }}</p>
-        <p class="details"><strong>Subject:</strong> {{ $mailData['subject'] }}</p>
-        @if ($mailData['flat_type'] == 1)
-            <p class="details">
-                <strong>Flat Type:</strong>
-                1 BHK
-            </p>
-        @elseif ($mailData['flat_type'] == 2)
-            <p class="details">
-                <strong>Flat Type:</strong>
-                2 BHK
-            </p>
-        @elseif ($mailData['flat_type'] == 3)
-            <p class="details">
-                <strong>Flat Type:</strong>
-                Other
-            </p>
-        @endif
+            <p class="details"><strong>Project Name : </strong> {{ $mailData['project_name'] }}</p>
+            <p class="details"><strong>Name : </strong> {{ $mailData['name'] }}</p>
+            <p class="details"><strong>Email : </strong> {{ $mailData['email'] }}</p>
+            <p class="details"><strong>Phone No : </strong> {{ $mailData['phone_no'] }}</p>
+            <p class="details"><strong>Visiting Date : </strong> {{ $mailData['visiting_date'] }}</p>
+            <p class="details"><strong>Visiting Time : </strong> {{ $mailData['visiting_time'] }}</p>
 
-        <p>Thank you for reaching out to us. We will respond to your inquiry as soon as possible.</p>
-        <p class="footer">Bhairava Lifestyles</p>
-
-        <div class="footer">
             <p>
-                Bhairaav Lifestyles<br>
+                Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
+            </p>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <p style="font-size: 12px;color: #666;">
+                Copyright © {{ date('Y') }}
+                <a href="https://bhairaav.com" target="_blank">Bhairaav</a>.
+                All Rights Reserved.
+            </p>
+
+            <p class="mb-0" style="font-size: 12px;color: #666;">
+                Bhairaav Lifestyles
+                <br>
                 Email: sales@bhairaav.com
             </p>
         </div>

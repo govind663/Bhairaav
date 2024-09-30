@@ -9,7 +9,7 @@
     <meta name="author" content="Bhairaav">
     <meta name="keywords" content="Bhairaav">
 
-    <title>Contact Us Submission</title>
+    <title>Contact Us Mail</title>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="content">
@@ -77,7 +77,7 @@
 
         <!-- Contact Us Section -->
         <div class="contact">
-            <h2>Contact Us Details : -</h2>
+            <h2>Contact Us Mail Details : -</h2>
             <p class="details"><strong>Name:</strong> {{ $mailData['name'] }}</p>
             <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
             <p class="details"><strong>Phone No :</strong> {{ $mailData['phone_no'] }}</p>
