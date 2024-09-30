@@ -45,7 +45,7 @@ class AdminPrivacyPolicyController extends Controller
             $privacyPolicy->data_storage = $request->data_storage;
             $privacyPolicy->cookies = $request->cookies;
             $privacyPolicy->rights = $request->rights;
-            $privacyPolicy->changes = $request->changes;
+            $privacyPolicy->changing_privacy_policy = $request->changing_privacy_policy;
             $privacyPolicy->inserted_at = Carbon::now();
             $privacyPolicy->inserted_by = Auth::user()->id;
             $privacyPolicy->save();
@@ -92,7 +92,7 @@ class AdminPrivacyPolicyController extends Controller
             $privacyPolicy->data_storage = $request->data_storage;
             $privacyPolicy->cookies = $request->cookies;
             $privacyPolicy->rights = $request->rights;
-            $privacyPolicy->changes = $request->changes;
+            $privacyPolicy->changing_privacy_policy = $request->changing_privacy_policy;
             $privacyPolicy->inserted_at = Carbon::now();
             $privacyPolicy->inserted_by = Auth::user()->id;
             $privacyPolicy->save();

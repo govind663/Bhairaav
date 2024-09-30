@@ -30,7 +30,7 @@ class PrivacyPolicyRequest extends FormRequest
                 'data_storage' => 'required|string',
                 'cookies' => 'required|string',
                 'rights' => 'required|string',
-                'changes' => 'required|string',
+                'changing_privacy_policy' => 'required|string',
             ];
         }else{
             $rule = [
@@ -41,7 +41,7 @@ class PrivacyPolicyRequest extends FormRequest
                 'data_storage' => 'required|string',
                 'cookies' => 'required|string',
                 'rights' => 'required|string',
-                'changes' => 'required|string',
+                'changing_privacy_policy' => 'required|string',
             ];
         }
         return $rule;
@@ -71,8 +71,8 @@ class PrivacyPolicyRequest extends FormRequest
             'rights.required' => __('Rights is required.'),
             'rights.string' => __('The Rights must be a string.'),
 
-            'changes.required' => __('Changes is required.'),
-            'changes.string' => __('The Changes must be a string.'),
+            'changing_privacy_policy.required' => __('Changes is required.'),
+            'changing_privacy_policy.string' => __('The Changes must be a string.'),
         ];
     }
 }

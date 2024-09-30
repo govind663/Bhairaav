@@ -19,7 +19,7 @@ class PrivacyPolicy extends Model
         'data_storage',
         'cookies',
         'rights',
-        'changes',
+        'changing_privacy_policy',
         'inserted_by',
         'inserted_at',
         'modified_by',
