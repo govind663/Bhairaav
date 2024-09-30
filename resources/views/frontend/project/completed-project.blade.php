@@ -65,7 +65,7 @@
                                         <p>{!! $value->address !!}</p>
                                         {{-- <p>Configuration: {{ $value->configuration }}</p> --}}
                                         <p> +91-{{ $value->mobile_no }}</p>
-                                        <li>Year Of Completion: {{ $value->year_of_completion }}</li>
+                                        <p>Year Of Completion: {{ $value->year_of_completion }}</p>
                                         <div class="poject-icon">
                                             <a href="#">
                                                 <i class="fa fa-link"></i>
