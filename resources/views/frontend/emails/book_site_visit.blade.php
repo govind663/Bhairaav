@@ -64,25 +64,26 @@
             /* Adjust the width as needed */
             margin-bottom: 20px;
             /* Space between logo and heading */
+            /* align in center */
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="logo text-center justify-items-center">
+        <div class="logo" style="text-align: center !important;">
             <!-- Logo Section -->
             <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
         </div>
 
+        <h2>Book Site Visit Mail Details :- </h2>
+
         <!-- Book Site Visit Mail Section -->
         <div class="contact">
-            <h2>Book Site Visit Mail Details :- </h2>
-
             <p class="details"><strong>Project Name : </strong> {{ $mailData['project_name'] }}</p>
             <p class="details"><strong>Name : </strong> {{ $mailData['name'] }}</p>
             <p class="details"><strong>Email : </strong> {{ $mailData['email'] }}</p>
-            <p class="details"><strong>Phone No : </strong> {{ $mailData['phone_no'] }}</p>
+            <p class="details"><strong>Phone No : </strong> {{ $mailData['phone'] }}</p>
             <p class="details"><strong>Visiting Date : </strong> {{ $mailData['visiting_date'] }}</p>
             <p class="details"><strong>Visiting Time : </strong> {{ $mailData['visiting_time'] }}</p>
 
