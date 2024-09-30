@@ -218,7 +218,7 @@ Bhairaav | Edit Project Details
                                 <tr>
                                     <td>
                                         <div class="col-sm-12 col-md-12">
-                                            <input type="text" name="hallmarks[]" id="hallmarks" class="form-control @error('hallmarks.*') is-invalid @enderror" value="{{ $hallmark->hallmarks }}" placeholder="Enter Project Hallmarks">
+                                            <input type="text" name="hallmarks[]" id="hallmarks" class="form-control @error('hallmarks.*') is-invalid @enderror" value="{{ is_string($hallmark) ? $hallmark : $hallmark->hallmarks }}" placeholder="Enter Project Hallmarks">
                                             @error('hallmarks.*')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
