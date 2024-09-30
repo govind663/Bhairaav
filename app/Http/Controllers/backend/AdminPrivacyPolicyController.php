@@ -33,18 +33,18 @@ class AdminPrivacyPolicyController extends Controller
      */
     public function store(PrivacyPolicyRequest $request)
     {
-        $data = $request->validated();
+        $request->validated();
         try {
 
             $privacyPolicy = new PrivacyPolicy();
 
             $privacyPolicy->introduction = $request->introduction;
-            $privacyPolicy->data_collection = $request->data_collection;
-            $privacyPolicy->use_of_information = $request->use_of_information;
-            $privacyPolicy->closure_of_information = $request->closure_of_information;
-            $privacyPolicy->data_storage = $request->data_storage;
+            $privacyPolicy->data_collection = json_encode($request->data_collection);
+            $privacyPolicy->use_of_information = json_encode($request->use_of_information);
+            $privacyPolicy->closure_of_information = json_encode($request->closure_of_information);
+            $privacyPolicy->data_storage = json_encode($request->data_storage);
             $privacyPolicy->cookies = $request->cookies;
-            $privacyPolicy->rights = $request->rights;
+            $privacyPolicy->rights = json_encode($request->rights);
             $privacyPolicy->changing_privacy_policy = $request->changing_privacy_policy;
             $privacyPolicy->inserted_at = Carbon::now();
             $privacyPolicy->inserted_by = Auth::user()->id;
@@ -72,6 +72,13 @@ class AdminPrivacyPolicyController extends Controller
     public function edit(string $id)
     {
         $privacyPolicy = PrivacyPolicy::findOrFail($id);
+
+        $privacyPolicy->data_collection = json_decode($privacyPolicy->data_collection, true);
+        $privacyPolicy->use_of_information = json_decode($privacyPolicy->use_of_information, true);
+        $privacyPolicy->closure_of_information = json_decode($privacyPolicy->closure_of_information, true);
+        $privacyPolicy->data_storage = json_decode($privacyPolicy->data_storage, true);
+        $privacyPolicy->rights = json_decode($privacyPolicy->rights, true);
+
         return view('backend.privacy_policy.edit', ['privacyPolicy' => $privacyPolicy]);
     }
 
@@ -86,12 +93,12 @@ class AdminPrivacyPolicyController extends Controller
             $privacyPolicy = PrivacyPolicy::findOrFail($id);
 
             $privacyPolicy->introduction = $request->introduction;
-            $privacyPolicy->data_collection = $request->data_collection;
-            $privacyPolicy->use_of_information = $request->use_of_information;
-            $privacyPolicy->closure_of_information = $request->closure_of_information;
-            $privacyPolicy->data_storage = $request->data_storage;
+            $privacyPolicy->data_collection = json_encode($request->data_collection, true);
+            $privacyPolicy->use_of_information = json_encode($request->use_of_information, true);
+            $privacyPolicy->closure_of_information = json_encode($request->closure_of_information, true);
+            $privacyPolicy->data_storage = json_encode($request->data_storage, true);
             $privacyPolicy->cookies = $request->cookies;
-            $privacyPolicy->rights = $request->rights;
+            $privacyPolicy->rights = json_encode($request->rights, true);
             $privacyPolicy->changing_privacy_policy = $request->changing_privacy_policy;
             $privacyPolicy->inserted_at = Carbon::now();
             $privacyPolicy->inserted_by = Auth::user()->id;

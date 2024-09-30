@@ -48,7 +48,7 @@ class PropertiesRequestController extends Controller
             //     $message->subject('Property Request');
             // });
 
-            Mail::to('infobhairaav@gmail.com')->send(new PropertiesRequestMail($mailData));
+            Mail::to('sales@bhairaav.com')->send(new PropertiesRequestMail($mailData));
 
             return redirect()->back()->with('message','Thank you for your interest. We will get back to you within 24 hours.');
 
