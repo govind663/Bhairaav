@@ -224,7 +224,7 @@ Bhairaav | Residental Projects
                                 </i>
                             </span>
                         </a>
-                        <a class="cs_btn cs_style_2 cs_white_btn cs_medium cs_radius_20 cs_fs_15" href="#">
+                        <a href="#" class="cs_btn cs_style_2 cs_white_btn cs_medium cs_radius_20 cs_fs_15" data-toggle="modal" data-target="#site-visit-form">
                             Book A Site Visit
                             <span>
                                 <i>
@@ -378,6 +378,74 @@ Bhairaav | Residental Projects
 </section>
 <!-- End Property Gallary Section -->
 
+<!-- Site-visit form modal -->
+<div class="modal fade" id="site-visit-form" tabindex="-1" role="dialog" aria-labelledby="site-visit-formTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title text-left color-primary" id="exampleModalLongTitle">BOOK A SITE VISIT</h2>
+                <button type="button" class="close custom-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex flex-column">
+                <div id="errmsg"></div>
+                <div id="msg"></div>
+                <form id="popupSiteVisit" action="javascript:void(0);" method="POST">
+                    <ul style="list-style:none">
+                        <!-- Name Field -->
+                        <li class="mb-3">
+                            <input type="text" class="px-3 py-2" placeholder="Name" maxlength="50"
+                                onkeyup="this.value=this.value.replace(/[^a-zA-Z \n\r.]+/g, '');" name="name" id="sname">
+                        </li>
+                        <!-- Email Field -->
+                        <li class="mb-3">
+                            <input type="email" class="px-3 py-2" placeholder="Email" name="email"
+                                pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}"
+                                onkeyup="this.value=this.value.replace(/[^a-zA-Z@.[0-9] \n\r.]+/g, '');" id="semail">
+                        </li>
+                        <!-- Phone Field -->
+                        <li class="mb-3">
+                            <input type="tel" class="px-3 py-2" placeholder="Phone" autocomplete="off"
+                                role="presentation" onkeyup="this.value=this.value.replace(/[^0-9]+/g,'');"
+                                onkeypress="if(this.value.length==12) return false;" name="mobile" id="smobile">
+                        </li>
+                        <!-- Date Picker -->
+                        <li class="mb-3">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text rounded-0" for="inputGroupSelect01">Select Date</label>
+                                    <input type="date" id="start" class="" name="visitsite" required="true">
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Time Picker -->
+                        <li class="mb-3">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text rounded-0" for="inputGroupSelect01">Select time</label>
+                                </div>
+                                <select class="custom-select rounded-0" id="inputGroupSelect01" name="time" required="true">
+                                    <option value="" selected="true" disabled="true"> Select Time </option>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="10:30 AM">10:30 AM</option>
+                                    <!-- Add more options -->
+                                    <!-- ... -->
+                                </select>
+                            </div>
+                        </li>
+                    </ul>
+                    <div>
+                        <input type="hidden" name="project" id="project">
+                        <button type="submit" id="btn-sitevisit" class="btn btn-outline-dark mt-2 btncarerr">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- Properties Request Form Model --}}
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <!-- start report input popup -->
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -477,6 +545,11 @@ Bhairaav | Residental Projects
 @endsection
 
 @push('scripts')
+<!-- jQuery (required for Bootstrap 4) -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- Bootstrap JS (Bootstrap 5 uses Popper.js internally) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
 <script>
     $(document).ready(function(){
         $('.cs_gallery_slider').slick({
@@ -491,5 +564,4 @@ Bhairaav | Residental Projects
         });
     });
 </script>
-
 @endpush
