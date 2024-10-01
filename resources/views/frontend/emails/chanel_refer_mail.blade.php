@@ -9,11 +9,7 @@
     <meta name="author" content="Bhairaav">
     <meta name="keywords" content="Bhairaav">
 
-    <title>Contact Us Mail</title>
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="content">
-    <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
+    <title>Channel Refer Mail</title>
 
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/src/images/favicon.png') }}" />
@@ -26,6 +22,7 @@
             background-color: #f9f9f9;
             color: #333;
             padding: 20px;
+            margin: 0;
         }
 
         .container {
@@ -35,7 +32,7 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 20px;
-            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         h2 {
@@ -49,24 +46,30 @@
 
         .details strong {
             display: inline-block;
-            width: 150px; /* Adjust width as needed */
+            width: 180px; /* Adjust width as needed */
+            color: #555; /* Slightly darker for contrast */
         }
 
         .footer {
             margin-top: 20px;
             font-size: 12px;
             color: #666;
+            text-align: center; /* Center footer content */
         }
 
         .logo {
             max-width: 150px;
             margin-bottom: 10px; /* Space between logo and heading */
+            display: block; /* Ensure it is centered */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .logo-title {
             font-size: 18px;
             color: #0073e6; /* Match the color of h2 */
             margin-bottom: 20px; /* Space below the title */
+            text-align: center; /* Center title */
         }
     </style>
 </head>
@@ -74,36 +77,39 @@
 <body>
     <div class="container">
         <div class="logo text-center">
-            <!-- Logo Section -->
             <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
         </div>
 
-        <!-- Contact Us Section -->
+        <div class="logo-title">Channel Refer Mail</div>
+
         <div class="contact">
-            <h2>Contact Us Mail Details : -</h2>
-            <p class="details"><strong>Name:</strong> {{ $mailData['name'] }}</p>
+            <h2>Channel Refer Mail Details:</h2>
+            <p class="details"><strong>First Name:</strong> {{ $mailData['f_name'] }}</p>
+            <p class="details"><strong>Last Name:</strong> {{ $mailData['l_name'] }}</p>
             <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
-            <p class="details"><strong>Phone No :</strong> {{ $mailData['phone_no'] }}</p>
-            <p class="details"><strong>Subject:</strong> {{ $mailData['subject'] }}</p>
-            <p class="details"><strong>Message:</strong> {{ $mailData['message'] }}</p>
+            <p class="details"><strong>Phone No:</strong> {{ $mailData['mobile_no'] }}</p>
+            <p class="details"><strong>Project:</strong> {{ $mailData['project'] }}</p>
+            <p class="details"><strong>Unit/Flat:</strong> {{ $mailData['unit_or_flat'] }}</p>
+            <p class="details"><strong>Referral First Name:</strong> {{ json_decode($mailData['refer_f_name']) }}</p>
+            <p class="details"><strong>Referral Last Name:</strong> {{ json_decode($mailData['refer_l_name']) }}</p>
+            <p class="details"><strong>Referral Email:</strong> {{ json_decode($mailData['refer_email']) }}</p>
+            <p class="details"><strong>Referral Relation:</strong> {{ json_decode($mailData['refer_relation']) }}</p>
 
             <p>
                 Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
             </p>
         </div>
 
-        <!-- Footer Section -->
         <div class="footer">
-            <p style="font-size: 12px;color: #666;">
+            <p>
                 Copyright © {{ date('Y') }}
                 <a href="https://bhairaav.com" target="_blank">Bhairaav</a>.
                 All Rights Reserved.
             </p>
-
-            <p class="mb-0" style="font-size: 12px;color: #666;">
+            <p class="mb-0">
                 Bhairaav Lifestyles
                 <br>
-                Email: sales@bhairaav.com
+                Email: <a href="mailto:sales@bhairaav.com">sales@bhairaav.com</a>
             </p>
         </div>
     </div>

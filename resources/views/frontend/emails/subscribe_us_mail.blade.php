@@ -9,11 +9,10 @@
     <meta name="author" content="Bhairaav">
     <meta name="keywords" content="Bhairaav">
 
-    <title>Contact Us Mail</title>
+    <title>Subscription Confirmation Mail</title>
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="content">
-    <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/src/images/favicon.png') }}" />
@@ -72,37 +71,21 @@
 </head>
 
 <body>
+    <div class="logo text-center">
+        <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
+        <div class="logo-title">New Subscription Notification</div>
+    </div>
     <div class="container">
-        <div class="logo text-center">
-            <!-- Logo Section -->
-            <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
-        </div>
+        <h2>New Subscriber Details</h2>
 
-        <!-- Contact Us Section -->
-        <div class="contact">
-            <h2>Contact Us Mail Details : -</h2>
-            <p class="details"><strong>Name:</strong> {{ $mailData['name'] }}</p>
-            <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
-            <p class="details"><strong>Phone No :</strong> {{ $mailData['phone_no'] }}</p>
-            <p class="details"><strong>Subject:</strong> {{ $mailData['subject'] }}</p>
-            <p class="details"><strong>Message:</strong> {{ $mailData['message'] }}</p>
+        <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
+        <p>Thank you for subscribing to Bhairaav! We will keep you updated with our latest offerings and news.</p>
 
-            <p>
-                Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
-            </p>
-        </div>
+        <p class="footer">Bhairava Lifestyles</p>
 
-        <!-- Footer Section -->
         <div class="footer">
-            <p style="font-size: 12px;color: #666;">
-                Copyright © {{ date('Y') }}
-                <a href="https://bhairaav.com" target="_blank">Bhairaav</a>.
-                All Rights Reserved.
-            </p>
-
-            <p class="mb-0" style="font-size: 12px;color: #666;">
-                Bhairaav Lifestyles
-                <br>
+            <p>
+                Bhairaav Lifestyles<br>
                 Email: sales@bhairaav.com
             </p>
         </div>

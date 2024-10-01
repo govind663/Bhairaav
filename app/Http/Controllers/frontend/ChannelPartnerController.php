@@ -4,10 +4,12 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\ChannelPartnerRequest;
+use App\Mail\sendChannelPartnerEmail;
 use App\Models\Chanel;
 use App\Models\ChannelPartner;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class ChannelPartnerController extends Controller
 {
@@ -22,7 +24,6 @@ class ChannelPartnerController extends Controller
     }
 
     // ===== Store  Channel Partner
-
     public function storeChannelPartner(ChannelPartnerRequest $request){
         $data = $request->validated();
         try {
@@ -81,6 +82,20 @@ class ChannelPartnerController extends Controller
             ];
 
             ChannelPartner::where('id', $channelPartner->id)->update($update);
+
+            // ==== Send Email
+            $mailData = [
+                'companyNameOrIndividualName' => $request->input('companyNameOrIndividualName'),
+                'nameOfTheOwner' => $request->input('nameOfTheOwner'),
+                'entity' => $request->input('entity'),
+                'officeAddress' => $request->input('officeAddress'),
+                'telephoneNumber' => $request->input('telephoneNumber'),
+                'mobileNumber' => $request->input('mobileNumber'),
+                'website' => $request->input('website'),
+                'emailId' => $request->input('emailId'),
+            ];
+
+            Mail::to('sales@bhairaav.com')->send(new sendChannelPartnerEmail($mailData));
 
             return redirect()->back()->with('message','Your record has been successfully created.');
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\MemberDetailRequest;
+use App\Mail\sendChannelReferMail;
 use App\Models\HowWorkLoyaltyProgram;
 use App\Models\LoyaltyProgram;
 use App\Models\MemberDetail;
@@ -11,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Models\ReferLoyaltyProgram;
 use App\Models\ReInvestmentLoyaltyProgram;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class ChannelReferController extends Controller
 {
@@ -57,6 +59,21 @@ class ChannelReferController extends Controller
             ];
 
             MemberDetail::where('id', $memberDetail->id)->update($update);
+
+            // ==== send Email
+            $mailData = [
+                'f_name' => $request->f_name,
+                'l_name' => $request->l_name,
+                'mobile_no' => $request->mobile_no,
+                'email' => $request->email,
+                'project' => $request->project,
+                'unit_or_flat' => $request->unit_or_flat,
+                'refer_f_name' => $request->refer_f_name,
+                'refer_l_name' => $request->refer_l_name,
+                'refer_email' => $request->refer_email,
+                'refer_relation' => $request->refer_relation
+            ];
+            Mail::to('sales@bhairaav.com')->send(new sendChannelReferMail($mailData));
 
             return redirect()->back()->with('message','Member details have been successfully added. Thank you for updating the referral information.');
 

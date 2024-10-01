@@ -62,6 +62,7 @@ use App\Http\Controllers\frontend\PrivacyPolicyController;
 use App\Http\Controllers\frontend\CareerController;
 use App\Http\Controllers\frontend\SitemapController;
 use App\Http\Controllers\frontend\BookSiteVisitController;
+use App\Http\Controllers\frontend\SubscribeUsController;
 
 // ===== Import Model
 use App\Models\LatestUpdate;
@@ -365,4 +366,7 @@ Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class]
 
     // ===== Book a Site Visit
     Route::post('/book-site-visit', [BookSiteVisitController::class, 'bookVisit'])->name('frontend.book-site-visit');
+
+    // ===== Subscribe Us
+    Route::post('/subscribe-us', [SubscribeUsController::class, 'subscribe'])->name('frontend.subscribe-us');
 });

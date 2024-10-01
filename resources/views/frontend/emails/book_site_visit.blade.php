@@ -19,6 +19,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/src/images/favicon.png') }}" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/src/images/favicon.png') }}" />
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/src/images/favicon.png') }}" />
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,7 +36,6 @@
             border-radius: 8px;
             padding: 20px;
             text-align: center;
-            /* Center content within the container */
         }
 
         h2 {
@@ -45,12 +45,11 @@
         .details {
             margin-bottom: 15px;
             text-align: left;
-            /* Align text to left for details */
         }
 
         .details strong {
             display: inline-block;
-            width: 100px;
+            width: 150px; /* Adjust width as needed */
         }
 
         .footer {
@@ -61,17 +60,20 @@
 
         .logo {
             max-width: 150px;
-            /* Adjust the width as needed */
-            margin-bottom: 20px;
-            /* Space between logo and heading */
-            /* align in center */
+            margin-bottom: 10px; /* Space between logo and heading */
+        }
+
+        .logo-title {
+            font-size: 18px;
+            color: #0073e6; /* Match the color of h2 */
+            margin-bottom: 20px; /* Space below the title */
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="logo" style="text-align: center !important;">
+        <div class="logo text-center">
             <!-- Logo Section -->
             <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
         </div>

@@ -1,3 +1,13 @@
+<style>
+    .is-invalid {
+        border-color: #dc3545; /* Bootstrap's red color for errors */
+    }
+
+    .invalid-feedback {
+        color: #dc3545; /* Match the border color */
+        font-size: 0.875em; /* Adjust font size as needed */
+    }
+</style>
 <footer class="cs_footer cs_primary_bg cs_ternary_color">
     <div class="cs_footer_main">
         <div class="container">
@@ -82,10 +92,11 @@
                     <div class="cs_footer_item">
                         <h2 class="cs_widget_title cs_bold cs_fs_21 cs_white_color"><span>Subscribe</span></h2>
                         <div class="cs_newsletter cs_style_1 cs_color_1">
-                            <form action="#" class="cs_newsletter_form position-relative">
-                                <input type="email" class="cs_newsletter_input cs_radius_5"
-                                    placeholder="Enter Your Email Address">
-                                <button class="cs_btn cs_style_2 cs_medium cs_radius_5 cs_fs_15">
+                            <form method="POST" action="{{ route('frontend.subscribe-us') }}" class="cs_newsletter_form position-relative" enctype="multipart/form-data">
+                                @csrf
+
+                                <input type="email" id="email" name="emai" value="{{ old('email') }}" class=" @error('email') is-invalid @enderror cs_newsletter_input cs_radius_5" placeholder="Enter Your Email Address">
+                                <button class="cs_btn cs_style_2 cs_medium cs_radius_5 cs_fs_15" type="submit">
                                     Subscribe
                                     <span>
                                         <i>
@@ -108,6 +119,11 @@
                                         </i>
                                     </span>
                                 </button>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </form>
                             <p class="cs_newsletter_subtitle cs_ternary_color cs_mb_30">
                                 Your Dose of
