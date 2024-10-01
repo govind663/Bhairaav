@@ -71,12 +71,9 @@
 </head>
 
 <body>
-    <div class="logo text-center">
-        <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
-        <div class="logo-title">New Subscription Notification</div>
-    </div>
     <div class="container">
-        <h2>New Subscriber Details</h2>
+        <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
+        <h2>New Subscriber Details : -</h2>
 
         <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
         <p>Thank you for subscribing to Bhairaav! We will keep you updated with our latest offerings and news.</p>

@@ -76,29 +76,23 @@
 
 <body>
     <div class="container">
-        <div class="logo text-center">
-            <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
-        </div>
+        <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
 
-        <div class="logo-title">Channel Refer Mail</div>
+        <h2>Channel Refer Mail Details:</h2>
+        <p class="details"><strong>First Name:</strong> {{ $mailData['f_name'] }}</p>
+        <p class="details"><strong>Last Name:</strong> {{ $mailData['l_name'] }}</p>
+        <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
+        <p class="details"><strong>Phone No:</strong> {{ $mailData['mobile_no'] }}</p>
+        <p class="details"><strong>Project:</strong> {{ $mailData['project'] }}</p>
+        <p class="details"><strong>Unit/Flat:</strong> {{ $mailData['unit_or_flat'] }}</p>
+        <p class="details"><strong>Referral First Name:</strong> {{ json_decode($mailData['refer_f_name']) }}</p>
+        <p class="details"><strong>Referral Last Name:</strong> {{ json_decode($mailData['refer_l_name']) }}</p>
+        <p class="details"><strong>Referral Email:</strong> {{ json_decode($mailData['refer_email']) }}</p>
+        <p class="details"><strong>Referral Relation:</strong> {{ json_decode($mailData['refer_relation']) }}</p>
 
-        <div class="contact">
-            <h2>Channel Refer Mail Details:</h2>
-            <p class="details"><strong>First Name:</strong> {{ $mailData['f_name'] }}</p>
-            <p class="details"><strong>Last Name:</strong> {{ $mailData['l_name'] }}</p>
-            <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
-            <p class="details"><strong>Phone No:</strong> {{ $mailData['mobile_no'] }}</p>
-            <p class="details"><strong>Project:</strong> {{ $mailData['project'] }}</p>
-            <p class="details"><strong>Unit/Flat:</strong> {{ $mailData['unit_or_flat'] }}</p>
-            <p class="details"><strong>Referral First Name:</strong> {{ json_decode($mailData['refer_f_name']) }}</p>
-            <p class="details"><strong>Referral Last Name:</strong> {{ json_decode($mailData['refer_l_name']) }}</p>
-            <p class="details"><strong>Referral Email:</strong> {{ json_decode($mailData['refer_email']) }}</p>
-            <p class="details"><strong>Referral Relation:</strong> {{ json_decode($mailData['refer_relation']) }}</p>
-
-            <p>
-                Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
-            </p>
-        </div>
+        <p>
+            Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
+        </p>
 
         <div class="footer">
             <p>

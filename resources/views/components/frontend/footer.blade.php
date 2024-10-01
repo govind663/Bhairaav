@@ -95,7 +95,7 @@
                             <form method="POST" action="{{ route('frontend.subscribe-us') }}" class="cs_newsletter_form position-relative" enctype="multipart/form-data">
                                 @csrf
 
-                                <input type="email" id="email" name="emai" value="{{ old('email') }}" class=" @error('email') is-invalid @enderror cs_newsletter_input cs_radius_5" placeholder="Enter Your Email Address">
+                                <input type="email" id="email" name="email" value="{{ old('email') }}" class=" @error('email') is-invalid @enderror cs_newsletter_input cs_radius_5" placeholder="Enter Your Email Address">
                                 <button class="cs_btn cs_style_2 cs_medium cs_radius_5 cs_fs_15" type="submit">
                                     Subscribe
                                     <span>

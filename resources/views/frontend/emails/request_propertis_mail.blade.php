@@ -72,12 +72,9 @@
 </head>
 
 <body>
-    <div class="logo text-center">
-        <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
-        <div class="logo-title">Send Channel Refer Mail</div>
-    </div>
     <div class="container">
-        <h2>Properties Request Mail Details</h2>
+        <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
+        <h2>Properties Request Mail Details : -</h2>
 
         <p class="details"><strong>Name:</strong> {{ $mailData['name'] }}</p>
         <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>

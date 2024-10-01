@@ -72,29 +72,24 @@
 
 <body>
     <div class="container">
-        <div class="logo text-center">
-            <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
-        </div>
+        <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
+        <h1>New Channel Partner Registration : -</h1>
+        <p>Dear Sales Team,</p>
+        <p>A new channel partner has been successfully registered with the following details:</p>
 
-        <div class="contact">
-            <h1>New Channel Partner Registration</h1>
-            <p>Dear Sales Team,</p>
-            <p>A new channel partner has been successfully registered with the following details:</p>
+        <ul>
+            <li><strong>Company Name / Individual Name:</strong> {{ $companyNameOrIndividualName }}</li>
+            <li><strong>Name of the Owner:</strong> {{ $nameOfTheOwner }}</li>
+            <li><strong>Entity:</strong> {{ $entity }}</li>
+            <li><strong>Office Address:</strong> {{ $officeAddress }}</li>
+            <li><strong>Telephone Number:</strong> +91-{{ $telephoneNumber }}</li>
+            <li><strong>Mobile Number:</strong> +91-{{ $mobileNumber }}</li>
+            <li><strong>Website:</strong> {{ $website }}</li>
+            <li><strong>Email ID:</strong> {{ $emailId }}</li>
+        </ul>
 
-            <ul>
-                <li><strong>Company Name / Individual Name:</strong> {{ $companyNameOrIndividualName }}</li>
-                <li><strong>Name of the Owner:</strong> {{ $nameOfTheOwner }}</li>
-                <li><strong>Entity:</strong> {{ $entity }}</li>
-                <li><strong>Office Address:</strong> {{ $officeAddress }}</li>
-                <li><strong>Telephone Number:</strong> +91-{{ $telephoneNumber }}</li>
-                <li><strong>Mobile Number:</strong> +91-{{ $mobileNumber }}</li>
-                <li><strong>Website:</strong> {{ $website }}</li>
-                <li><strong>Email ID:</strong> {{ $emailId }}</li>
-            </ul>
-
-            <p>Thank you,</p>
-            <p>The Bhairaav Team</p>
-        </div>
+        <p>Thank you,</p>
+        <p>The Bhairaav Team</p>
 
         <div class="footer">
             <div class="footer">

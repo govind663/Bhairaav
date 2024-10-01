@@ -27,7 +27,7 @@ class SubscriberRequest extends FormRequest
             ];
         }else{
             $rule = [
-                'email' => 'required|email|string|max:255|unique:table,column,except,id',
+                'email' => 'required|email|string|max:255|unique:subscribers,email,except,id',
             ];
         }
         return $rule;

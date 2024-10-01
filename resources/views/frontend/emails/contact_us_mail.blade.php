@@ -73,13 +73,9 @@
 
 <body>
     <div class="container">
-        <div class="logo text-center">
-            <!-- Logo Section -->
-            <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
-        </div>
-
         <!-- Contact Us Section -->
         <div class="contact">
+            <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
             <h2>Contact Us Mail Details : -</h2>
             <p class="details"><strong>Name:</strong> {{ $mailData['name'] }}</p>
             <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>

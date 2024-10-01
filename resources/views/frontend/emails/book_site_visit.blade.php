@@ -73,26 +73,21 @@
 
 <body>
     <div class="container">
-        <div class="logo text-center">
-            <!-- Logo Section -->
-            <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
-        </div>
 
+        <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
         <h2>Book Site Visit Mail Details :- </h2>
 
         <!-- Book Site Visit Mail Section -->
-        <div class="contact">
-            <p class="details"><strong>Project Name : </strong> {{ $mailData['project_name'] }}</p>
-            <p class="details"><strong>Name : </strong> {{ $mailData['name'] }}</p>
-            <p class="details"><strong>Email : </strong> {{ $mailData['email'] }}</p>
-            <p class="details"><strong>Phone No : </strong> {{ $mailData['phone'] }}</p>
-            <p class="details"><strong>Visiting Date : </strong> {{ $mailData['visiting_date'] }}</p>
-            <p class="details"><strong>Visiting Time : </strong> {{ $mailData['visiting_time'] }}</p>
+        <p class="details"><strong>Project Name : </strong> {{ $mailData['project_name'] }}</p>
+        <p class="details"><strong>Name : </strong> {{ $mailData['name'] }}</p>
+        <p class="details"><strong>Email : </strong> {{ $mailData['email'] }}</p>
+        <p class="details"><strong>Phone No : </strong> {{ $mailData['phone'] }}</p>
+        <p class="details"><strong>Visiting Date : </strong> {{ $mailData['visiting_date'] }}</p>
+        <p class="details"><strong>Visiting Time : </strong> {{ $mailData['visiting_time'] }}</p>
 
-            <p>
-                Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
-            </p>
-        </div>
+        <p>
+            Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
+        </p>
 
         <!-- Footer Section -->
         <div class="footer">
