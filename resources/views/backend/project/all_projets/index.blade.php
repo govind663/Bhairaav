@@ -97,7 +97,7 @@ Bhairaav | Manaage Projects List
                                     <td class="text-wrap text-justify">{{ $value->project_name }}</td>
                                     <td class="text-wrap text-justify">{!! $value->address !!}</td>
                                     <td class="text-wrap text-justify">{{ $value->configuration }}</td>
-                                    <td class="text-wrap text-justify">+91-{{ $value->mobile_no }}</td>
+                                    <td class="text-wrap text-justify">{{ $value->mobile_no }}</td>
 
                                     <td class="text-wrap text-justify">
                                         @if (!empty($value->image))
