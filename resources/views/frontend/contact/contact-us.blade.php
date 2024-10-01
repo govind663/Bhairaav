@@ -146,7 +146,7 @@
                                 <a href="mailto:sales@bhairaav.com">sales@bhairaav.com</a>
                             </p>
                             <p class="mb-0">
-                                <a href="tel:90711 23428">+91 7353955395</a>
+                                {{-- <a href="tel:90711 23428">+91 7353955395</a> --}}
                             </p>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
                                 <a href="mailto:customercare@bhairaavlifestyles.com">customercare@bhairaavlifestyles.com</a>
                             </p>
                             <p class="mb-0">
-                                <a href="tel:90710 16166">+91 7353955395</a>
+                                {{-- <a href="tel:90710 16166">+91 7353955395</a> --}}
                             </p>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                         <div class="cs_iconbox_right">
                             <h3 class="cs_fs_16 cs_bold cs_mb_5">Mail Us</h3>
                             <p class="mb-0">
-                                <a href="mailto:info@bhairaavlifestyles.com">info@bhairaavlifestyles.com</a>
+                                <a href="mailto:info@bhairaav.com">info@bhairaav.com</a>
                             </p>
                         </div>
                     </div>

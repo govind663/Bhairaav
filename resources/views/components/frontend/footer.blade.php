@@ -35,7 +35,7 @@
                             </li>
                             <li class="cs_white_color">
                                 <a href="tel:+919322225030">
-                                    +91 90711 23428 / 9322225030
+                                    +91 90711 23428
                                 </a>
                             </li>
                             <li class="cs_white_color">

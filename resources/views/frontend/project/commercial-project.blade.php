@@ -38,7 +38,7 @@
                                     <div class="project-button">
                                         <p>{!! $value->address !!}</p>
                                         <p>Configuration: {{ $value->configuration }}</p>
-                                        <p> +91-{{ $value->mobile_no }}</p>
+                                        <p> {{ $value->mobile_no }}</p>
                                         <div class="poject-icon">
                                             <a href="{{ route('frontend.project.commercial-project.view-project-details', ['id' => $value->id]) }}">
                                                 <i class="fa fa-link"></i>
@@ -64,7 +64,7 @@
                                         <p>{!! $value->address !!}</p>
                                         {{-- <p>Year Of Completion: {{ $value->year_of_completion }}</p> --}}
                                         <p>Configuration: {{ $value->configuration }}</p>
-                                        <p> +91-{{ $value->mobile_no }}</p>
+                                        <p> {{ $value->mobile_no }}</p>
                                         <div class="poject-icon">
                                             <a href="#">
                                                 <i class="fa fa-link"></i>

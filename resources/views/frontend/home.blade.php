@@ -214,16 +214,23 @@
                                                         <li>
                                                             Maha RERA :
                                                             @if (in_array(1, $phase_id))
-                                                                {{ $phaseName }} -
-                                                                {{-- excute loop only get last record --}}
                                                                 @php
+                                                                    // Reverse the registration numbers to match phase ordering
                                                                     $maha_rera_registration_number = array_reverse($maha_rera_registration_number);
-                                                                @endphp
-                                                                {{ $maha_rera_registration_number[0] }}
 
-                                                                {{-- @foreach ($maha_rera_registration_number as $key => $value)
-                                                                    {{ $value }}@if($key < count($maha_rera_registration_number) - 1), @endif
-                                                                @endforeach --}}
+                                                                    // Prepare an array to hold formatted phase strings
+                                                                    $phaseDetails = [];
+
+                                                                    // Loop through the phase IDs and their corresponding Maha RERA registration numbers
+                                                                    foreach ($phase_id as $index => $id) {
+                                                                        if (isset($phaseNames[$id]) && isset($maha_rera_registration_number[$index])) {
+                                                                            $phaseDetails[] = $phaseNames[$id] . ' ' . $maha_rera_registration_number[$index];
+                                                                        }
+                                                                    }
+
+                                                                    // Join the details into a single string
+                                                                    echo implode(' ', $phaseDetails);
+                                                                @endphp
                                                             @else
                                                                 N/A
                                                             @endif
@@ -257,15 +264,17 @@
                                                     <ul class="cs_card_list cs_mp_0">
                                                         <li>
                                                             Maha RERA :
-                                                            @if (in_array(1, $phase_id))
+                                                            @if (isset($phase_id) && isset($maha_rera_registration_number))
                                                                 {{ $phaseName }} -
                                                                 @php
                                                                     $maha_rera_registration_number = array_reverse($maha_rera_registration_number);
                                                                 @endphp
-                                                                {{ $maha_rera_registration_number[0] }}
-                                                                {{-- @foreach ($maha_rera_registration_number as $key => $value)
+                                                                {{-- {{ $maha_rera_registration_number[0] }} --}}
+                                                                @foreach ($maha_rera_registration_number as $key => $value)
                                                                     {{ $value }}@if($key < count($maha_rera_registration_number) - 1), @endif
-                                                                @endforeach --}}
+                                                                @endforeach
+                                                            @elseif (isset($phase_id) && isset($maha_rera_registration_number))
+                                                                N/A
                                                             @else
                                                                 N/A
                                                             @endif
