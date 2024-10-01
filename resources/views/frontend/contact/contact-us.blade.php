@@ -159,7 +159,7 @@
                         <div class="cs_iconbox_right">
                             <h3 class="cs_fs_16 cs_bold cs_mb_5">Existing Customers reach us on</h3>
                             <p class="mb-0">
-                                <a href="mailto:customercare@bhairaavlifestyles.com">customercare@bhairaavlifestyles.com</a>
+                                <a href="mailto:customercare@bhairaav.com">customercare@bhairaav.com</a>
                             </p>
                             <p class="mb-0">
                                 {{-- <a href="tel:90710 16166">+91 7353955395</a> --}}
