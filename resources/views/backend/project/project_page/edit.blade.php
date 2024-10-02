@@ -366,6 +366,9 @@ Bhairaav | Edit Project Details
                                                 <img src="{{ asset('/bhairaav/project_details/amenity_images/' . $amenity->amenite_image) }}" alt="Amenitie Image" class="img-thumbnail" style="max-width: 150px; max-height: 150px;">
                                             @endif
                                             <input type="file" accept=".png, .jpg, .jpeg" name="amenite_image[]" id="amenite_image_{{ $index }}" class="form-control @error('amenite_image.*') is-invalid @enderror" value="{{ $amenity->amenite_image }}">
+                                            <!-- Hidden field to store the existing image -->
+                                            <input type="hidden" name="existing_amenite_image[]" value="{{ $amenity->amenite_image }}">
+
                                             <small class="text-secondary"><b>Note : The file size should be less than 2MB.</b></small>
                                             <br>
                                             <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded.</b></small>
@@ -428,6 +431,9 @@ Bhairaav | Edit Project Details
                                                 <img src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}" alt="Gallery Image" class="img-thumbnail" style="max-width: 150px; max-height: 150px;">
                                             @endif
                                             <input type="file" accept=".png, .jpg, .jpeg" name="gallery_image[]" id="gallery_image_{{ $index }}" class="form-control @error('gallery_image.*') is-invalid @enderror" value="{{ $gallery->gallery_image }}">
+                                            <!-- Hidden field to store the existing image -->
+                                            <input type="hidden" name="existing_gallery_image[]" value="{{ $gallery->gallery_image }}">
+
                                             <small class="text-secondary"><b>Note : The file size should be less than 2MB.</b></small>
                                             <br>
                                             <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded.</b></small>

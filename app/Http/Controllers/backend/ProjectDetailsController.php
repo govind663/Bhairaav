@@ -275,6 +275,8 @@ class ProjectDetailsController extends Controller
                     $bannerImagePaths[] = $new_name;
                 }
                 $projectDetails->banner_image = json_encode($bannerImagePaths);
+            } else {
+                $projectDetails->banner_image = json_encode($bannerImagePaths);
             }
 
             // Update overview image
@@ -355,6 +357,7 @@ class ProjectDetailsController extends Controller
                 foreach ($request->amenite_image_name as $index => $ameniteImageName) {
                     if (!empty($ameniteImageName)) {
 
+
                         $projectAmenities = new ProjectAmenities();
 
                         if ($request->hasFile('amenite_image.' . $index)) {
@@ -362,6 +365,9 @@ class ProjectDetailsController extends Controller
                             $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
                             $image->move(public_path('/bhairaav/project_details/amenity_images'), $new_name);
                             $projectAmenities->amenite_image = $new_name;
+                        } else {
+                            // Use existing image if no new image is uploaded
+                            $projectAmenities->amenite_image = $request->existing_amenite_image[$index] ?? null;
                         }
 
                         $projectAmenities->project_details_id = $id;
@@ -379,6 +385,9 @@ class ProjectDetailsController extends Controller
             ProjectGallery::where('project_details_id', $id)->delete();
             $projectGalleryId = [];
 
+            // Fetch existing gallery entries first
+            $existingGallery = ProjectGallery::where('project_details_id', $id)->get();
+
             if ($request->has('gallery_image_name')) {
                 foreach ($request->gallery_image_name as $index => $imageName) {
                     if (!empty($imageName)) {
@@ -389,6 +398,9 @@ class ProjectDetailsController extends Controller
                             $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
                             $image->move(public_path('/bhairaav/project_details/gallery_image'), $new_name);
                             $projectGallery->gallery_image = $new_name;
+                        } else {
+                            // Use existing image if no new image is uploaded (existing_gallery_image)
+                            $projectGallery->gallery_image = $request->existing_gallery_image[$index] ?? null;
                         }
 
                         $projectGallery->project_details_id = $id;
