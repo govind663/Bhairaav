@@ -9,6 +9,7 @@ use App\Models\ContactUs;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class ContactUsController extends Controller
 {
@@ -22,6 +23,11 @@ class ContactUsController extends Controller
         $data = $request->validated();
         try {
 
+            // ==== Store form data in session
+            Session::put('form_data', $data);
+            Session::put('form_time', Carbon::now());
+
+            // Create and save the contact
             $contactUs = new ContactUs();
 
             $contactUs->name = $request->name;

@@ -46,15 +46,17 @@ class PreventBackHistoryMiddleware
         $response->headers->setCookie(cookie('XSRF-TOKEN-OLD-NEW-OLD', csrf_token(), 60 * 24 * 365));
         $response->headers->setCookie(cookie('XSRF-TOKEN-NEW-OLD-NEW', csrf_token(), 60 * 24 * 365));
 
-        // rdirect session expire go to login page
-        if ($request->session()->get('logged_in')) {
-            if (time() - $request->session()->get('last_activity') > 1800) {
+        // Handle session expiration manually (if required)
+        if ($request->session()->has('logged_in')) {
+            if (time() - $request->session()->get('last_activity') > 3600) { // 30 minutes
                 $request->session()->invalidate();
                 $request->session()->regenerate();
                 return redirect()->route('admin.login');
             } else {
                 $request->session()->put('last_activity', time());
             }
+        } else {
+            $request->session()->put('last_activity', time());
         }
 
 
@@ -66,12 +68,18 @@ class PreventBackHistoryMiddleware
 
         // Set a CSRF token in the session for AJAX requests
         if ($request->ajax()) {
+            $request->session()->put('csrf_token', csrf_token());
             $request->session()->put('csrf_token_ajax', csrf_token());
+        } else {
+            $request->session()->forget('csrf_token_ajax');
         }
 
         // Set a CSRF token in the session for form submissions
         if ($request->isMethod('post')) {
+            $request->session()->put('csrf_token', csrf_token());
             $request->session()->put('csrf_token_form', csrf_token());
+        } else {
+            $request->session()->forget('csrf_token_form');
         }
         return $response;
     }

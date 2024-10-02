@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\FormSessionMiddleware;
 use App\Http\Middleware\PreventBackHistoryMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -14,6 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         // === PreventBackHistoryMiddleware
         $middleware->append(PreventBackHistoryMiddleware::class);
+        // === FormSessionMiddleware
+        $middleware->append(FormSessionMiddleware::class);
+
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

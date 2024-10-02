@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\PropertyRequest;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class PropertiesRequestController extends Controller
 {
@@ -16,6 +17,10 @@ class PropertiesRequestController extends Controller
     public function storePropertiesRequest(PropertiesRequest $request){
         $data = $request->validated();
         try {
+
+            // ==== Store form data in session
+            Session::put('form_data', $data);
+            Session::put('form_time', Carbon::now());
 
             $propertyRequest = new PropertyRequest();
 

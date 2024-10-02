@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\FormSessionMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\PreventBackHistoryMiddleware;
 
@@ -267,7 +268,7 @@ Route::group(['prefix' => '', 'middleware'=>['auth', PreventBackHistoryMiddlewar
 
 
 // ======================= Frontend
-Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class]],function(){
+Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class, FormSessionMiddleware::class]],function(){
 
     // ==== Home
     Route::get('/home', [FrontendHomeController::class, 'index'])->name('frontend.home');
