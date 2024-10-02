@@ -277,7 +277,7 @@ Bhairaav | Edit Project Details
                             @enderror
                             <br>
                             <!-- Image preview -->
-                            <img src="{{ $projectDetail->overview_image ? asset('/bhairaav/project_details/overview_image/' . $projectDetail->overview_image) : '' }}" alt="Overview Image" class="img-thumbnail mt-2" style="max-width: 200px; max-height: 200px; {{ $projectDetail->overview_image ? '' : 'display: none;' }}">
+                            <img src="{{ $projectDetail->project_image ? asset('/bhairaav/project_details/project_image/' . $projectDetail->project_image) : '' }}" alt="Project Image" class="img-thumbnail mt-2" style="max-width: 200px; max-height: 200px; {{ $projectDetail->project_image ? '' : 'display: none;' }}">
                             <br>
                             <div id="project-image-container">
                                 <div id="file-project-image"></div>
@@ -365,7 +365,7 @@ Bhairaav | Edit Project Details
                                             @if($amenity->amenite_image)
                                                 <img src="{{ asset('/bhairaav/project_details/amenity_images/' . $amenity->amenite_image) }}" alt="Amenitie Image" class="img-thumbnail" style="max-width: 150px; max-height: 150px;">
                                             @endif
-                                            <input type="file" accept=".png, .jpg, .jpeg" name="amenite_image[]" id="amenite_image_{{ $index }}" class="form-control @error('amenite_image.*') is-invalid @enderror" value="{{  $amenity->amenite_image }}">
+                                            <input type="file" accept=".png, .jpg, .jpeg" name="amenite_image[]" id="amenite_image_{{ $index }}" class="form-control @error('amenite_image.*') is-invalid @enderror" value="{{ $amenity->amenite_image }}">
                                             <small class="text-secondary"><b>Note : The file size should be less than 2MB.</b></small>
                                             <br>
                                             <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded.</b></small>
