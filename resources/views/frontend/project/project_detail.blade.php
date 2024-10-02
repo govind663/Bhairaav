@@ -272,27 +272,25 @@ Bhairaav | Residental Projects
                                 </i>
                             </span>
                         </a>
-                        @if (!empty($locationAdvantages))
-                            <a class="cs_btn cs_style_2 cs_white_btn cs_medium cs_radius_20 cs_fs_15" href="{{ $locationAdvantages->gps_link }}">
-                                View Map on Google
-                                <span>
-                                <i>
-                                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                        fill="currentColor"></path>
-                                    </svg>
-                                </i>
-                                <i>
-                                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                        fill="currentColor"></path>
-                                    </svg>
-                                </i>
-                                </span>
-                            </a>
-                        @endif
+                        <a class="cs_btn cs_style_2 cs_white_btn cs_medium cs_radius_20 cs_fs_15" href="{{ $projectDetail->gps_link }}">
+                            View Map on Google
+                            <span>
+                              <i>
+                                <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                    fill="currentColor"></path>
+                                </svg>
+                              </i>
+                              <i>
+                                <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                    d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                    fill="currentColor"></path>
+                                </svg>
+                              </i>
+                            </span>
+                        </a>
                     </div>
                 </div>
             @endif
@@ -338,7 +336,7 @@ Bhairaav | Residental Projects
 <!-- Amenities Features Section -->
 
 <!-- Start Page Heading Section -->
-<section class="cs_page_heading cs_primary_bg cs_bg_filed cs_center" data-src="{{ asset('frontend/assets/img/pp/1.jpg') }}">
+<section class="cs_page_heading cs_primary_bg cs_bg_filed cs_center" data-src="{{ $projectDetail->project_image ? asset('/bhairaav/project_details/project_image/' . $projectDetail->project_image) : '' }}">
 </section>
 <!-- End Page Heading Section -->
 
