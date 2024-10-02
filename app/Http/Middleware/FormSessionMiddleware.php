@@ -20,20 +20,14 @@ class FormSessionMiddleware
                 Session::forget('form_time');
             } else {
                 // Continue with the request
-                return $next($request)
-                    ->withInput()->withErrors(['your_form_field' => 'Your form field is required.'])
-                    ->with('form_data', Session::get('form_data'));
+                return $next($request);
             }
         } else {
             // Continue with the request
-            return $next($request)
-                ->withInput()->withErrors(['your_form_field' => 'Your form field is required.'])
-                ->with('form_data', Session::get('form_data'));
+            return $next($request);
         }
 
-        return $next($request)
-            ->withInput()->withErrors(['your_form_field' => 'Your form field is required.'])
-            ->with('form_data', Session::get('form_data'));
+        return $next($request);
     }
 
     public function terminate($request, $response)
