@@ -216,6 +216,38 @@ Bhairaav | Add Project Details
                         </div>
                     </div>
 
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-3"><b>Project Location Link : <span class="text-danger">*</span></b></label>
+                        <div class="col-sm-9 col-md-9">
+                            <input type="text" name="gps_link" id="gps_link" class="form-control @error('gps_link') is-invalid @enderror" value="{{ old('gps_link') }}" placeholder="Enter Project Location Link.">
+                            @error('gps_link')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-3"><b>Upload Project Image : <span class="text-danger">*</span></b></label>
+                        <div class="col-sm-9 col-md-9">
+                            <input type="file" onchange="projectImageFiles()" accept=".png, .jpg, .jpeg" name="project_image" id="project_image" class="form-control @error('project_image') is-invalid @enderror" value="{{ old('project_image') }}" placeholder="Enter Title.">
+                            <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
+                            <br>
+                            <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png format can be uploaded .</b></small>
+                            <br>
+                            @error('project_image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <br>
+                            <div id="project-image-container">
+                                <div id="file-project-image"></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <table class="table table-bordered p-3"  id="dynamicFeatureTable">
                         <thead>
                             <tr>
@@ -789,5 +821,50 @@ Bhairaav | Add Project Details
             });
         });
     });
+</script>
+
+{{-- Project preview both Image and PDF --}}
+<script>
+    function projectImageFiles() {
+        const fileInput = document.getElementById('project_image');
+        const previewContainer = document.getElementById('project-image-container');
+        const filePreview = document.getElementById('file-project-image');
+        const file = fileInput.files[0];
+
+        if (file) {
+            const fileType = file.type;
+            const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+            const validPdfTypes = ['application/pdf'];
+
+            if (validImageTypes.includes(fileType)) {
+                // Image preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    filePreview.innerHTML = `<img src="${e.target.result}" alt="File Preview" style="width:500px; height:300px !important;">`;
+                };
+                reader.readAsDataURL(file);
+            } else if (validPdfTypes.includes(fileType)) {
+                // PDF preview using an embed element
+                filePreview.innerHTML =
+                    `<embed src="${URL.createObjectURL(file)}" type="application/pdf" width="100%" height="25%" />`;
+            } else {
+                // Unsupported file type
+                filePreview.innerHTML = '<p>Unsupported file type</p>';
+                filePreview.innerHTML += `<p>Please select a valid image or PDF file.</p>`;
+                filePreview.innerHTML += `<p>You can also drag and drop a file here to preview.</p>`;
+
+                previewContainer.style.display = 'none';
+
+                return;
+            }
+
+            previewContainer.style.display = 'block';
+        } else {
+            // No file selected
+            previewContainer.style.display = 'none';
+        }
+
+    }
+
 </script>
 @endpush

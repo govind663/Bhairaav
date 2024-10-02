@@ -23,6 +23,8 @@ class ProjectDetails extends Model
         'project_description',
         'project_hallmarks_id',
         'project_location_advantages_id',
+        'gps_link',
+        'project_image',
         'project_amenities_id',
         'project_gallery_id',
         'inserted_by',

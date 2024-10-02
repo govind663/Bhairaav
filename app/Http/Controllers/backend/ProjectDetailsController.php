@@ -71,6 +71,14 @@ class ProjectDetailsController extends Controller
                 $projectDetails->overview_image = $new_name;
             }
 
+            // Upload Overview Image (project_image)
+            if ($request->hasFile('project_image')) {
+                $image = $request->file('project_image');
+                $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('/bhairaav/project_details/project_image'), $new_name);
+                $projectDetails->project_image = $new_name;
+            }
+
             // Save Project Details
             $projectDetails->project_type_id = $request->project_type_id;
             $projectDetails->project_name_id = $request->project_name_id;
@@ -168,6 +176,7 @@ class ProjectDetailsController extends Controller
                 "project_hallmarks_id" => json_encode($hallmarkId, true),
                 "project_location_advantages_id" => json_encode($projectLocationAdvantageId, true),
                 "location_advantages_title" => $request->location_advantages_title,
+                "gps_link" => $request->gps_link,
                 "project_amenities_id" => json_encode($projectAmenitiesId, true),
                 "amenities_title" => $request->amenities_title,
                 "project_gallery_id" => json_encode($projectGalleryId, true),
@@ -279,6 +288,17 @@ class ProjectDetailsController extends Controller
                 $projectDetails->overview_image = $new_name;
             }
 
+            // Update project_image
+            if ($request->hasFile('project_image')) {
+                // Delete old overview image if exists
+                File::delete(public_path('/bhairaav/project_details/project_image/' . $projectDetails->project_image));
+
+                $image = $request->file('project_image');
+                $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('/bhairaav/project_details/project_image'), $new_name);
+                $projectDetails->project_image = $new_name;
+            }
+
             // Update project details
             $projectDetails->fill($request->only([
                 'project_type_id',
@@ -388,6 +408,7 @@ class ProjectDetailsController extends Controller
                 "project_hallmarks_id" => json_encode($hallmarkId, true),
                 "project_location_advantages_id" => json_encode($projectLocationAdvantageId, true),
                 "location_advantages_title" => $request->location_advantages_title,
+                "gps_link" => $request->gps_link,
                 "project_amenities_id" => json_encode($projectAmenitiesId, true),
                 "amenities_title" => $request->amenities_title,
                 "project_gallery_id" => json_encode($projectGalleryId, true),
@@ -418,16 +439,16 @@ class ProjectDetailsController extends Controller
             ProjectDetails::findOrFail($id)->update($data);
 
             // Delete associated hallmarks
-            ProjectHallmarks::where('project_details_id', $id)->update($data);
+            ProjectHallmarks::where('project_details_id', $id)->delete();
 
             // Delete associated location advantages
-            ProjectLocationAdvantages::where('project_details_id', $id)->update($data);
+            ProjectLocationAdvantages::where('project_details_id', $id)->delete();
 
             // Delete associated amenities
-            ProjectAmenities::where('project_details_id', $id)->update($data);
+            ProjectAmenities::where('project_details_id', $id)->delete();
 
             // Delete associated gallery images
-            ProjectGallery::where('project_details_id', $id)->update($data);
+            ProjectGallery::where('project_details_id', $id)->delete();
 
             return redirect()->route('project-details.index')->with('message','Your record has been successfully deleted.');
         } catch(\Exception $ex){

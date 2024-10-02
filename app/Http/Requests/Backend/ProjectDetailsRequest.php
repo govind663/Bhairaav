@@ -39,6 +39,8 @@ class ProjectDetailsRequest extends FormRequest
 
                 // ==== Location Advantages
                 'location_advantages_title' => 'required|string|max:255',
+                'gps_link' => 'required|string',
+                'project_image' => 'mimes:jpeg,png,jpg|max:2048',
                 'location_advantage_id.*' => 'required|string',
                 'feature_value.*' => 'required|string',
 
@@ -70,6 +72,8 @@ class ProjectDetailsRequest extends FormRequest
 
                 // ==== Location Advantages
                 'location_advantages_title' => 'required|string|max:255',
+                'gps_link' => 'required|string',
+                'project_image' => 'required|mimes:jpeg,png,jpg|max:2048',
                 'location_advantage_id.*' => 'required|string',
                 'feature_value.*' => 'required|string',
 
@@ -132,6 +136,13 @@ class ProjectDetailsRequest extends FormRequest
             'location_advantages_title.required' => 'Title is required',
             'location_advantages_title.string' => 'Title should be a string',
             'location_advantages_title.max' => 'Title should not exceed 255 characters',
+
+            'gps_link.required' => 'Project GPS Link is required',
+            'gps_link.string' => 'Project GPS Link should be a string',
+
+            'project_image.required' => 'Project Image is required',
+            'project_image.max' => 'Project Image size should be less than 2mb',
+            'project_image.mimes' => 'Project Image should be a file of type: jpeg, png, jpg, pdf',
 
             'location_advantage_id.required' => 'At least one Location Advantage is required',
             'location_advantage_id.*.required' => 'Each Location Advantage should be filled',
