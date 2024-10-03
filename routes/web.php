@@ -268,7 +268,7 @@ Route::group(['prefix' => '', 'middleware'=>['auth', PreventBackHistoryMiddlewar
 
 
 // ======================= Frontend
-Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class]],function(){
+Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class, FormSessionMiddleware::class]],function(){
 
     // ==== Home
     Route::get('/home', [FrontendHomeController::class, 'index'])->name('frontend.home');
@@ -351,7 +351,7 @@ Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class]
     Route::post('/store-contact-us', [ContactUsController::class, 'storeContactUs'])->name('store-contact-us');
 
     // ==== Store Properties Request
-    Route::post('/properties-request-store', [PropertiesRequestController::class, 'storePropertiesRequest'])->name('frontend.properties-request.store')->middleware(FormSessionMiddleware::class);
+    Route::post('/properties-request-store', [PropertiesRequestController::class, 'storePropertiesRequest'])->name('frontend.properties-request.store');
 
     // ==== Disclaimer
     Route::get('/disclaimer', [DisclaimerController::class, 'disclaimer'])->name('frontend.disclaimer');
