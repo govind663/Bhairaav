@@ -28,74 +28,82 @@ class CompletedProjectController extends Controller
         $projectDetail = ProjectDetails::where('project_name_id', $id)->whereNull('deleted_at')->first();
         // dd($projectDetail);
 
-        $bannerImages = $projectDetail->banner_image;
-        // dd($bannerImages);
+        // === check projectDetail is null or not
+        if ($projectDetail == null) {
+            return redirect()->back()
+                ->with('info', 'Project Details not found.');
+        } else {
 
-        // === Project Details ID
-        $projectDetailsId = $projectDetail->id;
-        // dd($projectDetailsId);
+            $bannerImages = $projectDetail->banner_image;
+            // dd($bannerImages);
 
-        // Fetch Project
-        $projectNames = Projects::where('id', $id)->first(['project_name']);
+            // === Project Details ID
+            $projectDetailsId = $projectDetail->id;
+            // dd($projectDetailsId);
 
-        // Fetch maha_rera_registration_number, phase_id
-        $projectRera = Projects::where('id', $id)->first(['maha_rera_registration_number', 'phase_id']);
+            // Fetch Project
+            $projectNames = Projects::where('id', $id)->first(['project_name']);
 
-        // Fetch related hallmarks
-        $projectHallmarks = ProjectHallmarks::where('project_details_id', $projectDetailsId)->get();
+            // Fetch maha_rera_registration_number, phase_id
+            $projectRera = Projects::where('id', $id)->first(['maha_rera_registration_number', 'phase_id']);
 
-        // Convert location advantage IDs to array if needed
-        $locationAdvantageIds = json_decode($projectDetail->project_location_advantages_id);
+            // Fetch related hallmarks
+            $projectHallmarks = ProjectHallmarks::where('project_details_id', $projectDetailsId)->get();
 
-        // Fetch related location advantages
-        $locationAdvantages = ProjectLocationAdvantages::whereIn('id', $locationAdvantageIds)
-            ->select('id', 'feature_value', 'location_advantage_id')
-            ->orderBy('id', 'desc')
-            ->whereNull('deleted_at')
-            ->get();
+            // Convert location advantage IDs to array if needed
+            $locationAdvantageIds = json_decode($projectDetail->project_location_advantages_id);
 
-        // Fetch related amenities
-        $projectAmenities = ProjectAmenities::where('project_details_id', $projectDetailsId)->get();
+            // Fetch related location advantages
+            $locationAdvantages = ProjectLocationAdvantages::whereIn('id', $locationAdvantageIds)
+                ->select('id', 'feature_value', 'location_advantage_id')
+                ->orderBy('id', 'desc')
+                ->whereNull('deleted_at')
+                ->get();
 
-        // Fetch related gallery images
-        $projectGallery = ProjectGallery::where('project_details_id', $projectDetailsId)->get();
+            // Fetch related amenities
+            $projectAmenities = ProjectAmenities::where('project_details_id', $projectDetailsId)->get();
 
-        // Fetch additional data, such as location advantages feature names
-        $featureName = LocationAdvantage::orderBy('id', 'desc')->whereNull('deleted_at')->get(['id']);
+            // Fetch related gallery images
+            $projectGallery = ProjectGallery::where('project_details_id', $projectDetailsId)->get();
 
-        // Fetch phase names based on phase IDs
-        $phaseIds = json_decode($projectRera->phase_id);
-        $phases = Phase::whereIn('id', $phaseIds)->pluck('name', 'id')->toArray();
+            // Fetch additional data, such as location advantages feature names
+            $featureName = LocationAdvantage::orderBy('id', 'desc')->whereNull('deleted_at')->get(['id']);
 
-        // Assuming maha_rera_registration_number is an array of RERA numbers, decode it
-        $reraNumbers = json_decode($projectRera->maha_rera_registration_number);
-        // dd($reraNumbers);
+            // Fetch phase names based on phase IDs
+            $phaseIds = json_decode($projectRera->phase_id);
+            $phases = Phase::whereIn('id', $phaseIds)->pluck('name', 'id')->toArray();
 
-        // === Append in this mannerMahaRERA Registration No.: Phase I - P51700012365 | Phase II - P51700010579
-        $phaseReraInfo = [];
-        foreach ($phaseIds as $phaseId) {
-            if (isset($reraNumbers[$phaseId])) {
-                $phaseReraInfo[$phaseId] = $reraNumbers[$phaseId];
+            // Assuming maha_rera_registration_number is an array of RERA numbers, decode it
+            $reraNumbers = json_decode($projectRera->maha_rera_registration_number);
+            // dd($reraNumbers);
+
+            // === Append in this mannerMahaRERA Registration No.: Phase I - P51700012365 | Phase II - P51700010579
+            $phaseReraInfo = [];
+            foreach ($phaseIds as $phaseId) {
+                if (isset($reraNumbers[$phaseId])) {
+                    $phaseReraInfo[$phaseId] = $reraNumbers[$phaseId];
+                }
             }
-        }
-        // dd($phaseReraInfo);
+            // dd($phaseReraInfo);
 
-        return view('frontend.project.project_detail', [
-            'projectDetail' => $projectDetail,
-            'featureName' => $featureName,
-            'projectHallmarks' => $projectHallmarks,
-            'locationAdvantageIds' => $locationAdvantageIds,
-            'locationAdvantages' => $locationAdvantages,
-            'projectAmenities' => $projectAmenities,
-            'projectGallery' => $projectGallery,
-            'bannerImages' => $bannerImages,
-            'projectNames' => $projectNames,
-            'projectRera' => $projectRera,
-            'phases' => $phases,
-            'phaseReraInfo' => $phaseReraInfo,
-            'reraNumbers' => $reraNumbers,
-            'projectDetailsId' => $projectDetailsId,
-            'id' => $id
-        ]);
+            return view('frontend.project.project_detail', [
+                'projectDetail' => $projectDetail,
+                'featureName' => $featureName,
+                'projectHallmarks' => $projectHallmarks,
+                'locationAdvantageIds' => $locationAdvantageIds,
+                'locationAdvantages' => $locationAdvantages,
+                'projectAmenities' => $projectAmenities,
+                'projectGallery' => $projectGallery,
+                'bannerImages' => $bannerImages,
+                'projectNames' => $projectNames,
+                'projectRera' => $projectRera,
+                'phases' => $phases,
+                'phaseReraInfo' => $phaseReraInfo,
+                'reraNumbers' => $reraNumbers,
+                'projectDetailsId' => $projectDetailsId,
+                'id' => $id
+            ]);
+        }
+
     }
 }

@@ -24,8 +24,8 @@ class ContactUsController extends Controller
         try {
 
             // ==== Store form data in session
-            Session::put('form_data', $data);
-            Session::put('form_time', Carbon::now());
+            // Session::put('form_data', $data);
+            // Session::put('form_time', Carbon::now());
 
             // Create and save the contact
             $contactUs = new ContactUs();

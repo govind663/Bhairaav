@@ -18,6 +18,10 @@ Bhairaav | Residental Projects
         flex-wrap: nowrap;
         justify-content: space-between;
     }
+
+    .d-none {
+        display: none;
+    }
 </style>
 
 <style>
@@ -537,7 +541,7 @@ Bhairaav | Residental Projects
 
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>Full Name : <span class="text-danger">*</span></b></label> --}}
-                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}" placeholder="Full Name *">
+                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name', session('form_data.name')) }}" placeholder="Full Name *" {{ session('form_data.name') ? 'disabled' : '' }}>
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -547,7 +551,7 @@ Bhairaav | Residental Projects
 
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>Email Id : <span class="text-danger">*</span></b></label> --}}
-                        <input type="email" class="cs_form_field_2 cs_radius_20 @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="Email Id *">
+                        <input type="email" class="cs_form_field_2 cs_radius_20 @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email', session('form_data.email')) }}" placeholder="Email Id *" {{ session('form_data.email') ? 'disabled' : '' }}>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -557,7 +561,7 @@ Bhairaav | Residental Projects
 
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>Phone No. : <span class="text-danger">*</span></b></label> --}}
-                        <input type="text" maxlength="10" class="cs_form_field_2 cs_radius_20 @error('phone_no') is-invalid @enderror" name="phone_no" id="phone_no" value="{{ old('phone_no') }}" placeholder="Phone No. *">
+                        <input type="text" maxlength="10" class="cs_form_field_2 cs_radius_20 @error('phone_no') is-invalid @enderror" name="phone_no" id="phone_no" value="{{ old('phone_no', session('form_data.phone_no')) }}" placeholder="Phone No. *" {{ session('form_data.phone_no') ? 'disabled' : '' }}>
                         @error('phone_no')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -567,7 +571,7 @@ Bhairaav | Residental Projects
 
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>Subject : <span class="text-danger">*</span></b></label> --}}
-                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('subject') is-invalid @enderror" name="subject" id="subject" value="{{ old('subject') }}" placeholder="Subject *">
+                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('subject') is-invalid @enderror" name="subject" id="subject" value="{{ old('subject', session('form_data.subject')) }}" placeholder="Subject *" {{ session('form_data.subject') ? 'disabled' : '' }}>
                         @error('subject')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -577,11 +581,11 @@ Bhairaav | Residental Projects
 
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>select Flat Type : <span class="text-danger">*</span></b></label> --}}
-                        <select class="cs_form_field_2 cs_radius_20 @error('flat_type') is-invalid @enderror" name="flat_type" id="flat_type">
+                        <select class="cs_form_field_2 cs_radius_20 @error('flat_type') is-invalid @enderror" name="flat_type" id="flat_type" {{ session('form_data.flat_type') ? 'disabled' : '' }}>
                             <option value="">Select Flat Type</option>
-                            <option value="1" {{ old('flat_type') == '1' ? 'selected' : '' }}>1 BHK</option>
-                            <option value="2" {{ old('flat_type') == '2' ? 'selected' : '' }}>2 BHK</option>
-                            <option value="3" {{ old('flat_type') == '3' ? 'selected' : '' }}>Other</option>
+                            <option value="1" {{ old('flat_type', session('form_data.flat_type')) == '1' ? 'selected' : '' }}>1 BHK</option>
+                            <option value="2" {{ old('flat_type', session('form_data.flat_type')) == '2' ? 'selected' : '' }}>2 BHK</option>
+                            <option value="3" {{ old('flat_type', session('form_data.flat_type')) == '3' ? 'selected' : '' }}>Other</option>
                         </select>
                         @error('flat_type')
                             <span class="invalid-feedback" role="alert">
@@ -590,7 +594,7 @@ Bhairaav | Residental Projects
                         @enderror
                     </div>
 
-                    <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" type="submit">
+                    <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" type="submit" {{ session('form_data.name') ? 'disabled' : '' }}>
                         <b>Submit</b>
                         <span>
                             <i>
@@ -638,4 +642,62 @@ Bhairaav | Residental Projects
         });
     });
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('#exampleModal form');
+        const modal = document.querySelector('#exampleModal');
+        const submitButton = form.querySelector('button[type="submit"]');
+        const inputs = form.querySelectorAll('input, select');
+
+        function disableForm() {
+            inputs.forEach(input => {
+                input.disabled = true;
+            });
+            submitButton.disabled = true; // Disable submit button
+        }
+
+        function enableForm() {
+            inputs.forEach(input => {
+                input.disabled = false;
+            });
+            submitButton.disabled = false; // Enable submit button
+        }
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+            disableForm(); // Disable the form
+
+            // Use fetch for form submission
+            fetch('your-endpoint-url', {
+                method: 'POST',
+                body: new FormData(form),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle success response
+                $('#exampleModal').modal('hide');
+
+                // Optionally clear inputs
+                inputs.forEach(input => {
+                    if (input.tagName === 'INPUT') {
+                        input.value = ''; // Clear input fields
+                        input.checked = false; // Clear checkboxes
+                    }
+                });
+
+                // Re-enable the form after 5 minutes (300000 ms)
+                setTimeout(enableForm, 300000);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Optionally handle error response
+                enableForm(); // Re-enable form in case of error
+            });
+        });
+    });
+</script>
+
+
+
 @endpush
