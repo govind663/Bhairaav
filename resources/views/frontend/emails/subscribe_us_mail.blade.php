@@ -72,7 +72,7 @@
 
 <body>
     <div class="container">
-        <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
+        <img src="https://bhairaav.com/frontend/assets/img/Bhairaav-Logo.png" alt="Bhairava Lifestyles Logo" class="logo">
         <h2>New Subscriber Details : -</h2>
 
         <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>

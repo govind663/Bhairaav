@@ -72,7 +72,7 @@
 
 <body>
     <div class="container">
-        <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
+        <img src="https://bhairaav.com/frontend/assets/img/Bhairaav-Logo.png" alt="Bhairava Lifestyles Logo" class="logo">
         <h1>New Channel Partner Registration : -</h1>
         <p>Dear Sales Team,</p>
         <p>A new channel partner has been successfully registered with the following details:</p>

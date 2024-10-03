@@ -76,7 +76,7 @@
 
 <body>
     <div class="container">
-        <img src="https://www.sqmtrs.com/developers/21112.jpg" alt="Bhairava Lifestyles Logo" class="logo">
+        <img src="https://bhairaav.com/frontend/assets/img/Bhairaav-Logo.png" alt="Bhairava Lifestyles Logo" class="logo">
 
         <h2>Channel Refer Mail Details:</h2>
         <p class="details"><strong>First Name:</strong> {{ $mailData['f_name'] }}</p>
