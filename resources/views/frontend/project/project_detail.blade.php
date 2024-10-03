@@ -551,7 +551,7 @@ Bhairaav | Residental Projects
 
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>Full Name : <span class="text-danger">*</span></b></label> --}}
-                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name', session('form_data.name')) }}" placeholder="Full Name *" {{ session('form_data.name') ? 'disabled' : '' }}>
+                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name', session('form_data.name')) }}" placeholder="Full Name *">
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -561,7 +561,7 @@ Bhairaav | Residental Projects
 
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>Email Id : <span class="text-danger">*</span></b></label> --}}
-                        <input type="email" class="cs_form_field_2 cs_radius_20 @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email', session('form_data.email')) }}" placeholder="Email Id *" {{ session('form_data.email') ? 'disabled' : '' }}>
+                        <input type="email" class="cs_form_field_2 cs_radius_20 @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email', session('form_data.email')) }}" placeholder="Email Id *">
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -571,7 +571,7 @@ Bhairaav | Residental Projects
 
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>Phone No. : <span class="text-danger">*</span></b></label> --}}
-                        <input type="text" maxlength="10" class="cs_form_field_2 cs_radius_20 @error('phone_no') is-invalid @enderror" name="phone_no" id="phone_no" value="{{ old('phone_no', session('form_data.phone_no')) }}" placeholder="Phone No. *" {{ session('form_data.phone_no') ? 'disabled' : '' }}>
+                        <input type="text" maxlength="10" class="cs_form_field_2 cs_radius_20 @error('phone_no') is-invalid @enderror" name="phone_no" id="phone_no" value="{{ old('phone_no', session('form_data.phone_no')) }}" placeholder="Phone No. *">
                         @error('phone_no')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -581,7 +581,7 @@ Bhairaav | Residental Projects
 
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>Subject : <span class="text-danger">*</span></b></label> --}}
-                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('subject') is-invalid @enderror" name="subject" id="subject" value="{{ old('subject', session('form_data.subject')) }}" placeholder="Subject *" {{ session('form_data.subject') ? 'disabled' : '' }}>
+                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('subject') is-invalid @enderror" name="subject" id="subject" value="{{ old('subject', session('form_data.subject')) }}" placeholder="Subject *">
                         @error('subject')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -591,7 +591,7 @@ Bhairaav | Residental Projects
 
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>select Flat Type : <span class="text-danger">*</span></b></label> --}}
-                        <select class="cs_form_field_2 cs_radius_20 @error('flat_type') is-invalid @enderror" name="flat_type" id="flat_type" {{ session('form_data.flat_type') ? 'disabled' : '' }}>
+                        <select class="cs_form_field_2 cs_radius_20 @error('flat_type') is-invalid @enderror" name="flat_type" id="flat_type">
                             <option value="">Select Flat Type</option>
                             <option value="1" {{ old('flat_type', session('form_data.flat_type')) == '1' ? 'selected' : '' }}>1 BHK</option>
                             <option value="2" {{ old('flat_type', session('form_data.flat_type')) == '2' ? 'selected' : '' }}>2 BHK</option>
@@ -614,7 +614,7 @@ Bhairaav | Residental Projects
                         @enderror
                     </div>
 
-                    <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" type="submit" {{ session('form_data.name') ? 'disabled' : '' }}>
+                    <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" type="submit">
                         <b>Submit</b>
                         <span>
                             <i>
