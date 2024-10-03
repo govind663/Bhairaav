@@ -19,8 +19,10 @@ Bhairaav | Residental Projects
         justify-content: space-between;
     }
 
-    .d-none {
-        display: none;
+    /* Add this style to disable pointer events */
+    .disabled {
+        pointer-events: none;
+        opacity: 0.6; /* Optional: to visually indicate that it's disabled */
     }
 </style>
 
@@ -366,7 +368,7 @@ Bhairaav | Residental Projects
                     @if(!empty($projectAmenities))
                         @foreach($projectGallery as $index => $gallery)
                             <div class="cs_slide">
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="cs_gallery_item cs_style_3 d-block cs_bg_filed position-relative" data-src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="cs_gallery_item cs_style_3 d-block cs_bg_filed position-relative" data-src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}" data-form-filled="{{ session('form_data.email') ? '1' : '0' }}">
                                     <div class="cs_gallery_item_hover cs_primary_font cs_fs_38">
                                         <span class="cs_hover_icon cs_accent_color">
                                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
@@ -398,6 +400,37 @@ Bhairaav | Residental Projects
                                     </div>
                                     <img src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}" alt="" class="d-none">
                                 </a>
+                                <div class="cs_gallery_item_hover cs_primary_font cs_fs_38">
+                                    {{-- <span class="cs_hover_icon cs_accent_color">
+                                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(.clip0_441_197)">
+                                                <path
+                                                    d="M5.21698 26.9937C6.24727 26.9937 7.26819 26.9843 8.29847 26.9937C8.99157 27.003 9.46925 27.3402 9.66594 27.9396C10.0219 29.0261 9.37559 29.9721 8.24227 29.9721C6.19107 29.9815 4.14924 29.9721 2.09803 29.9721C1.86388 29.9721 1.62972 30.0002 1.39557 29.9815C0.524508 29.9065 0 29.3165 0 28.4454C0.00936622 26.235 0.00936622 24.0246 0.0187324 21.8141C0.0187324 21.0367 0.337184 20.5403 0.964721 20.3343C2.04184 19.969 2.98782 20.6246 2.99719 21.7579C3.00656 22.6571 2.99719 23.5563 2.99719 24.4648C2.99719 24.5772 2.99719 24.6896 2.99719 24.802C3.05339 24.8394 3.10022 24.8769 3.15642 24.9237C3.21261 24.8113 3.25008 24.6708 3.33437 24.5865C4.86107 23.0505 6.38776 21.5238 7.92382 19.9877C8.33594 19.5756 8.82298 19.3976 9.39432 19.5756C9.96566 19.7536 10.3309 20.1469 10.4621 20.7277C10.5838 21.299 10.359 21.7486 9.95629 22.1419C8.44833 23.6405 6.94037 25.1579 5.43241 26.6565C5.33875 26.7501 5.21698 26.797 5.10459 26.8719C5.15142 26.9094 5.18889 26.9562 5.21698 26.9937Z"
+                                                    fill="currentColor" />
+                                                <path
+                                                    d="M5.32939 2.99719C6.10679 3.82142 6.88419 4.66438 7.68968 5.47924C8.42025 6.21917 9.17891 6.94037 9.91884 7.67093C10.7243 8.4577 10.6962 9.40368 9.85328 10.1342C9.4318 10.4995 8.52327 10.434 8.03623 9.97502C7.51172 9.48798 7.01531 8.9822 6.50017 8.4858C5.45115 7.44614 4.40214 6.41586 3.34375 5.38558C3.25946 5.30128 3.1658 5.21698 3.00657 5.05776C3.00657 5.52607 3.00657 5.91008 3.00657 6.2941C3.00657 6.94973 3.01594 7.60537 3.00657 8.26101C2.98784 9.18826 2.4165 9.75023 1.50798 9.75023C0.599453 9.74087 0.0281133 9.17889 0.0281133 8.24227C0.0187471 6.1817 0.0281133 4.12114 0.0281133 2.06057C0.0281133 1.82641 1.46348e-05 1.59226 0.0281133 1.3581C0.112409 0.505776 0.702481 0 1.55481 0C3.76523 0.00936622 5.97566 0.00936622 8.19546 0.0187324C8.97285 0.0187324 9.4599 0.34655 9.67532 0.964721C10.0312 2.04184 9.38497 2.97846 8.25165 2.99719C7.2682 3.00656 6.28475 3.00656 5.30129 3.00656C5.28256 3.01592 5.2732 3.02529 5.32939 2.99719Z"
+                                                    fill="currentColor" />
+                                                <path
+                                                    d="M24.6706 3.00666C23.9681 3.00666 23.1814 3.00666 22.404 3.00666C22.1979 3.00666 21.9825 3.00666 21.7765 3.00666C20.8211 2.98793 20.2591 2.42595 20.2591 1.4987C20.2685 0.590175 20.8305 0.0282022 21.7671 0.0188359C23.8183 0.00946973 25.8601 0.0188359 27.9113 0.0188359C28.1455 0.0188359 28.3796 -0.00926271 28.6138 0.0188359C29.4755 0.103132 30 0.665105 30 1.5268C30 3.77469 29.9906 6.02258 29.9813 8.27048C29.9813 8.99167 29.6347 9.46935 29.0353 9.67541C27.9582 10.0313 27.0215 9.37569 27.0028 8.24238C26.9934 7.31512 27.0028 6.39723 27.0028 5.46998C27.0028 5.36695 27.0028 5.27328 27.0028 5.10469C26.881 5.20772 26.8061 5.25455 26.7499 5.31075C25.2232 6.80934 23.6684 8.28921 22.1698 9.8159C21.7577 10.2374 21.3362 10.4341 20.7743 10.3404C20.1748 10.2374 19.7814 9.8721 19.5848 9.31949C19.3787 8.74815 19.5379 8.23301 19.9594 7.81153C20.8398 6.94047 21.739 6.07878 22.61 5.19836C23.3125 4.47716 23.9869 3.72786 24.6706 3.00666Z"
+                                                    fill="currentColor" />
+                                                <path
+                                                    d="M24.942 26.8438C24.5861 26.5253 24.2114 26.2256 23.8743 25.8884C22.6098 24.6146 21.3641 23.3408 20.109 22.0577C19.622 21.5613 19.5096 20.9524 19.7812 20.3811C20.0435 19.8285 20.6336 19.4632 21.2236 19.5007C21.6545 19.5288 21.9917 19.7442 22.2914 20.0439C23.7431 21.5332 25.2043 23.0224 26.6654 24.5116C26.7497 24.5959 26.8153 24.7083 26.8902 24.8113C26.9277 24.7926 26.9558 24.7645 26.9932 24.7458C26.9932 24.2119 26.9932 23.678 26.9932 23.1441C26.9932 22.629 26.9838 22.1139 27.0026 21.5987C27.04 20.7745 27.6301 20.25 28.4918 20.25C29.3441 20.25 29.9529 20.7839 29.9623 21.6081C29.981 23.5282 29.9717 25.4482 29.9717 27.3683C29.9717 27.7055 29.981 28.0427 29.9904 28.3892C30.0185 29.3352 29.391 30.0002 28.445 30.0002C26.2346 30.0002 24.0241 29.9908 21.8137 29.9815C21.0176 29.9815 20.5305 29.6537 20.3245 29.0074C19.9873 27.9396 20.6336 27.0218 21.7481 27.003C22.7784 26.9937 23.7993 27.003 24.8296 27.003C24.8671 26.9468 24.9045 26.9 24.942 26.8438Z"
+                                                    fill="currentColor" />
+                                            </g>
+                                            <defs>
+                                                <clipPath class="clip0_441_197">
+                                                    <rect width="30" height="30" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </span> --}}
+                                    <span class="cs_hover_text cs_primary_font cs_primary_color cs_fs_21 cs_bold">
+                                        {{ $gallery->gallery_image_name }}
+                                    </span>
+                                </div>
+                                <img src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}" alt="" class="d-none">
+
                             </div>
                         @endforeach
                     @endif
@@ -423,6 +456,13 @@ Bhairaav | Residental Projects
         </div>
     </div>
     <div class="cs_height_70 cs_height_lg_70"></div>
+
+    <!-- Image Display Section -->
+    <div id="imageDisplay" style="display:none;">
+        <h3 id="imageName"></h3> <!-- Added heading for image name -->
+        <img id="displayedImage" src="" alt="Displayed Image" />
+        <button onclick="closeImageDisplay()">Close</button>
+    </div>
 </section>
 <!-- End Property Gallary Section -->
 
@@ -658,6 +698,47 @@ Bhairaav | Residental Projects
             autoplaySpeed: 2000,
         });
     });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const galleryItems = document.querySelectorAll('.cs_gallery_item');
+
+        galleryItems.forEach(item => {
+            const isFormFilled = item.getAttribute('data-form-filled') === '1';
+
+            if (isFormFilled) {
+                item.classList.add('disabled'); // Add the disabled class if form is filled
+            }
+
+            item.addEventListener('click', function (event) {
+                if (isFormFilled) {
+                    event.preventDefault(); // Prevent default link behavior
+                    const imageSrc = this.getAttribute('data-src');
+                    const imageName = this.getAttribute('data-name'); // Get the image name
+                    showImage(imageSrc, imageName); // Show the image and its name
+                } else {
+                    // Handle modal opening logic if needed
+                    alert('Please fill out the form before accessing the gallery.');
+                }
+            });
+        });
+    });
+
+    function showImage(src, name) {
+        const imageDisplay = document.getElementById('imageDisplay');
+        const displayedImage = document.getElementById('displayedImage');
+        const imageName = document.getElementById('imageName'); // Get the image name element
+
+        displayedImage.src = src; // Set the image source
+        imageName.textContent = name; // Set the image name text
+        imageDisplay.style.display = 'block'; // Show the image display div
+    }
+
+    function closeImageDisplay() {
+        const imageDisplay = document.getElementById('imageDisplay');
+        imageDisplay.style.display = 'none'; // Hide the image display div
+    }
 </script>
 
 @endpush
