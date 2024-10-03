@@ -370,7 +370,7 @@ Bhairaav | Residental Projects
                             <div class="cs_slide">
                                 {{-- check session form filled in if condition --}}
                                 @if(session('form_data.email'))
-                                <a href="{{ asset('/bhairaav/project_details/project_gallery/' . $gallery->gallery_image) }}" class="cs_gallery_item cs_style_3 d-block cs_bg_filed position-relative">
+                                <a href="#" class="cs_gallery_item cs_style_3 d-block cs_bg_filed position-relative">
                                     <div class="cs_gallery_item_hover cs_primary_font cs_fs_38">
                                         <span class="cs_hover_icon cs_accent_color">
                                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
