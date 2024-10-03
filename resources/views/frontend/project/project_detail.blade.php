@@ -604,7 +604,7 @@ Bhairaav | Residental Projects
                         @enderror
                     </div>
 
-                    {{-- <div class="col-sm-12 mb-3">
+                    <div class="col-sm-12 mb-3">
                         {!! NoCaptcha::renderJs() !!}
                         {!! NoCaptcha::display() !!}
                         @error('g-recaptcha-response')
@@ -612,7 +612,7 @@ Bhairaav | Residental Projects
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                    </div> --}}
+                    </div>
 
                     <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" type="submit">
                         <b>Submit</b>
