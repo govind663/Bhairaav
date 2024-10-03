@@ -39,7 +39,7 @@ class PropertiesRequestMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'frontend.emails.request_propertis_mail',
         );
     }
 
