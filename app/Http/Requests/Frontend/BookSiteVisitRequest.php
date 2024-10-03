@@ -29,6 +29,7 @@ class BookSiteVisitRequest extends FormRequest
                 'phone' => 'required|numeric',
                 'visiting_date' => 'required',
                 'visiting_time' => 'required',
+                'g-recaptcha-response' => 'required|captcha',
             ];
         }else{
             $rule = [
@@ -38,6 +39,7 @@ class BookSiteVisitRequest extends FormRequest
                 'phone' => 'required|numeric',
                 'visiting_date' => 'required',
                 'visiting_time' => 'required',
+                'g-recaptcha-response' => 'required|captcha',
             ];
         }
         return $rule;
@@ -64,6 +66,9 @@ class BookSiteVisitRequest extends FormRequest
             'visiting_date.required' => __('Date is required'),
 
             'visiting_time.required' => __('Time is required'),
+
+            'g-recaptcha-response.required' => __('Please verify you are a human.'),
+            'g-recaptcha-response.captcha' => __('Captcha verification failed, please try again.'),
         ];
     }
 }

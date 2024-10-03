@@ -45,6 +45,7 @@ class ChannelPartnerRequest extends FormRequest
                 'pancard_doc' => 'mimes:jpeg,png,jpg,pdf|max:2048',
                 'aadhar_doc' => 'mimes:jpeg,png,jpg,pdf|max:2048',
                 'terms' => 'required|accepted',
+                'g-recaptcha-response' => 'required|captcha',
             ];
         }else{
             $rule = [
@@ -70,6 +71,7 @@ class ChannelPartnerRequest extends FormRequest
                 'pancard_doc' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
                 'aadhar_doc' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
                 'terms' => 'required|accepted',
+                'g-recaptcha-response' => 'required|captcha',
             ];
         }
         return $rule;
@@ -157,6 +159,9 @@ class ChannelPartnerRequest extends FormRequest
 
             'terms.required' => __('Terms & Conditions is required'),
             'terms.accepted' => __('Terms & Conditions must be accepted.'),
+
+            'g-recaptcha-response.required' => __('Please verify you are a human.'),
+            'g-recaptcha-response.captcha' => __('Captcha verification failed, please try again.'),
         ];
     }
 }

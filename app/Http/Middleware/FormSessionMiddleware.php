@@ -18,13 +18,7 @@ class FormSessionMiddleware
                 // Clear the session after 5 minutes
                 Session::forget('form_data');
                 Session::forget('form_time');
-            } else {
-                // Continue with the request
-                return $next($request);
             }
-        } else {
-            // Continue with the request
-            return $next($request);
         }
 
         return $next($request);

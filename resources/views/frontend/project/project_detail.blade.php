@@ -496,6 +496,16 @@ Bhairaav | Residental Projects
                         @enderror
                     </div>
 
+                    <div class="col-sm-12 mb-3">
+                        {!! NoCaptcha::renderJs() !!}
+                        {!! NoCaptcha::display() !!}
+                        @error('g-recaptcha-response')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
                     <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" type="submit">
                         <b>Submit</b>
                         <span>
@@ -588,6 +598,16 @@ Bhairaav | Residental Projects
                             <option value="3" {{ old('flat_type', session('form_data.flat_type')) == '3' ? 'selected' : '' }}>Other</option>
                         </select>
                         @error('flat_type')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        {!! NoCaptcha::renderJs() !!}
+                        {!! NoCaptcha::display() !!}
+                        @error('g-recaptcha-response')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -697,7 +717,5 @@ Bhairaav | Residental Projects
         });
     });
 </script>
-
-
 
 @endpush

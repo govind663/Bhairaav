@@ -28,6 +28,7 @@ class ContactUsRequest extends FormRequest
                 'phone_no' => 'required|numeric',
                 'subject' => 'required|string|max:255',
                 'message' => 'nullable|max:600',
+                'g-recaptcha-response' => 'required|captcha',
             ];
         }else{
             $rule = [
@@ -36,6 +37,7 @@ class ContactUsRequest extends FormRequest
                 'phone_no' => 'required|numeric',
                 'subject' => 'required|string|max:255',
                 'message' => 'nullable|max:600',
+                'g-recaptcha-response' => 'required|captcha',
             ];
         }
         return $rule;
@@ -62,6 +64,9 @@ class ContactUsRequest extends FormRequest
 
             'message.max' => __('The length of message should not exceed 600 characters'),
             'message.string' => __('The message must be a string.'),
+
+            'g-recaptcha-response.required' => __('Please verify you are a human.'),
+            'g-recaptcha-response.captcha' => __('Captcha verification failed, please try again.'),
         ];
     }
 }

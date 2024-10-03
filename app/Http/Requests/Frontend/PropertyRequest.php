@@ -28,6 +28,7 @@ class PropertyRequest extends FormRequest
                 'phone_no' => 'required|numeric',
                 'subject' => 'required|string|max:255',
                 'flat_type' => 'nullable',
+                'g-recaptcha-response' => 'required|captcha',
             ];
         }else{
             $rule = [
@@ -36,6 +37,7 @@ class PropertyRequest extends FormRequest
                 'phone_no' => 'required|numeric',
                 'subject' => 'required|string|max:255',
                 'flat_type' => 'nullable',
+                'g-recaptcha-response' => 'required|captcha',
             ];
         }
         return $rule;
@@ -62,6 +64,9 @@ class PropertyRequest extends FormRequest
 
             'flat_type.required' => __('Flat Type is required'),
             'flat_type.numeric' => __('The Flat Type must be a number.'),
+
+            'g-recaptcha-response.required' => __('Please verify you are a human.'),
+            'g-recaptcha-response.captcha' => __('Captcha verification failed, please try again.'),
         ];
     }
 }

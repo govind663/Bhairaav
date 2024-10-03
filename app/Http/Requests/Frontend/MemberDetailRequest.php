@@ -33,6 +33,7 @@ class MemberDetailRequest extends FormRequest
                 'refer_l_name.*' => 'required|string|max:255',
                 'refer_email.*' => 'required|email|unique:member_details,email',
                 'refer_relation.*' => 'required|string|max:255',
+                'g-recaptcha-response' => 'required|captcha',
             ];
         }else{
             $rule = [
@@ -46,6 +47,7 @@ class MemberDetailRequest extends FormRequest
                 'refer_l_name.*' => 'required|string|max:255',
                 'refer_email.*' => 'required|email|unique:member_details,email',
                 'refer_relation.*' => 'required|string|max:255',
+                'g-recaptcha-response' => 'required|captcha',
             ];
         }
         return $rule;
@@ -92,6 +94,9 @@ class MemberDetailRequest extends FormRequest
             'refer_relation.*.required' => 'Relation is required.',
             'refer_relation.*.string' => 'Relation must be a string.',
             'refer_relation.*.max' => 'Relation may not be greater than 255 characters.',
+
+            'g-recaptcha-response.required' => __('Please verify you are a human.'),
+            'g-recaptcha-response.captcha' => __('Captcha verification failed, please try again.'),
         ];
     }
 }
