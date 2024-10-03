@@ -18,10 +18,6 @@ class PropertiesRequestController extends Controller
         $data = $request->validated();
         try {
 
-            // ==== Store form data in session
-            Session::put('form_data', $data);
-            Session::put('form_time', Carbon::now());
-
             $propertyRequest = new PropertyRequest();
 
             $propertyRequest->name = $request->name;
@@ -54,6 +50,10 @@ class PropertiesRequestController extends Controller
             // });
 
             Mail::to('sales@bhairaav.com')->send(new PropertiesRequestMail($mailData));
+
+            // ==== Store form data in session
+            Session::put('form_data', $data);
+            Session::put('form_time', Carbon::now());
 
             return redirect()->back()->with('message','Thank you for your interest. We will get back to you within 24 hours.');
 
