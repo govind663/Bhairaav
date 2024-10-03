@@ -400,7 +400,7 @@ Bhairaav | Residental Projects
                                             {{ $gallery->gallery_image_name }}
                                         </span>
                                     </div>
-                                    <img src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}" alt="">
+                                    <img src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}" alt="" style="height: 275px !important; width:480px !important;">
                                 </a>
                                 @else
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="cs_gallery_item cs_style_3 d-block cs_bg_filed position-relative" data-src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}" data-form-filled="{{ session('form_data.email') ? '1' : '0' }}">
