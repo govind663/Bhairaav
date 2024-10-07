@@ -216,14 +216,14 @@
                                                             @if (in_array(1, $phase_id))
                                                                 @php
                                                                     // Reverse the registration numbers to match phase ordering
-                                                                    $maha_rera_registration_number = array_reverse($maha_rera_registration_number);
+                                                                    $maha_rera_registration_number = $maha_rera_registration_number;
 
                                                                     // Prepare an array to hold formatted phase strings
                                                                     $phaseDetails = [];
 
                                                                     // Loop through the phase IDs and their corresponding Maha RERA registration numbers
                                                                     foreach ($phase_id as $index => $id) {
-                                                                        if (isset($phaseNames[$id]) && isset($maha_rera_registration_number[$index])) {
+                                                                        if (isset($phaseNames[$id]) ) {
                                                                             $phaseDetails[] = $phaseNames[$id] . ' ' . $maha_rera_registration_number[$index];
                                                                         }
                                                                     }
