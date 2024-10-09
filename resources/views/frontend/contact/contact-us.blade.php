@@ -156,7 +156,7 @@
                                 <a href="mailto:sales@bhairaav.com">sales@bhairaav.com</a>
                             </p>
                             <p class="mb-0">
-                                {{-- <a href="tel:90711 23428">+91 7353955395</a> --}}
+                                <a href="tel:9071123428">+91 90711 23428</a>
                             </p>
                         </div>
                     </div>
@@ -187,6 +187,9 @@
                             <p class="mb-0">
                                 <a href="mailto:info@bhairaav.com">info@bhairaav.com</a>
                             </p>
+                            <p class="mb-0">
+                                <a href="tel:9071123428">+91 90711 23428</a>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -215,7 +218,7 @@
             </div>
             <div class="cs_height_20 cs_height_lg_20"></div>
             <div class="row">
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-12 col-md-12">
                     <div class="location-boxes">
                         <div class="img1">
                             <img src="{{ asset('frontend/assets/img/icons/placeholder.png') }}" alt="">
