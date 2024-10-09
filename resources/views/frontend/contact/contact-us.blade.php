@@ -172,7 +172,7 @@
                                 <a href="mailto:customercare@bhairaav.com">customercare@bhairaav.com</a>
                             </p>
                             <p class="mb-0">
-                                {{-- <a href="tel:90710 16166">+91 7353955395</a> --}}
+                                <a href="tel:9071123428">+91 90711 23428</a>
                             </p>
                         </div>
                     </div>

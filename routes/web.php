@@ -64,6 +64,7 @@ use App\Http\Controllers\frontend\CareerController;
 use App\Http\Controllers\frontend\SitemapController;
 use App\Http\Controllers\frontend\BookSiteVisitController;
 use App\Http\Controllers\frontend\SubscribeUsController;
+use App\Http\Controllers\frontend\OngoingProjectController;
 
 // ===== Import Model
 use App\Models\LatestUpdate;
@@ -289,8 +290,12 @@ Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class]
         Route::get('associates', [AssociatesController::class, 'associates'])->name('frontend.about.associates');
     });
 
-    // ==== Projects Sub Section
+    // ==== Projects
     Route::group(['prefix'=> 'projects'],function(){
+
+        // ==== Ongoing Projects
+        Route::get('/ongoing-project', [OngoingProjectController::class, 'ongoingProject'])->name('frontend.project.ongoing-project');
+        Route::get('/ongoing-project-details/{id?}', [OngoingProjectController::class, 'ongoingProjectDetails'])->name('frontend.project.ongoing-project-details');
 
         Route::group(['prefix'=> 'ongoing-project'],function(){
 
@@ -335,9 +340,10 @@ Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class]
     // ==== Media
     Route::get('/our-media', [MediaController::class, 'media'])->name('frontend.media');
 
+    // ==== Blog
     Route::group(['prefix'=> 'blog'],function(){
 
-        // ==== Blog
+        // ==== Blog List
         Route::get('/blog_list', [BlogController::class, 'blogList'])->name('frontend.blog');
 
         // ==== Blog Details

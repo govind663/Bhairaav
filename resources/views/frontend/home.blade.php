@@ -299,7 +299,7 @@
 
                     <div class="cs_height_70 cs_height_lg_50"></div>
                     <div class="projects-btn">
-                        <a class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" href="">
+                        <a class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" href="{{ route('frontend.project.ongoing-project') }}">
                             <b>Explore More</b>
                             <span>
                                 <i>
