@@ -25,7 +25,7 @@ class ChannelPartnerRequest extends FormRequest
             $rule = [
                 'companyNameOrIndividualName' => 'required|string|max:555',
                 'nameOfTheOwner' => 'required|string|max:255',
-                'entity' => 'required|numeric|min:1|in:1,2,3,4,5',
+                'entity' => 'required|numeric',
                 'officeAddress' => 'required|string|max:255',
                 'telephoneNumber' => 'nullable',
                 'mobileNumber' => 'nullable',
@@ -36,10 +36,10 @@ class ChannelPartnerRequest extends FormRequest
                 'panCardNo' => 'required|string|max:255',
                 'gstNo' => 'nullable|max:255',
                 'reraNo' => 'required|string|max:255',
-                'brokerAffiliation' => 'required|numeric|in:1,2',
+                'brokerAffiliation' => 'required',
                 'chanel_id' => 'required|numeric',
                 'propertiesType' => 'required',
-                'authorizedSignatories' => 'required|numeric||in:1,2,3',
+                'authorizedSignatories' => 'required|numeric',
                 'name' => 'required|string|max:255',
                 'designation' => 'required|string|max:255',
                 'pancard_doc' => 'mimes:jpeg,png,jpg,pdf|max:2048',
@@ -51,7 +51,7 @@ class ChannelPartnerRequest extends FormRequest
             $rule = [
                 'companyNameOrIndividualName' => 'required|string|max:555',
                 'nameOfTheOwner' => 'required|string|max:255',
-                'entity' => 'required|numeric|min:1|in:1,2,3,4,5',
+                'entity' => 'required|numeric',
                 'officeAddress' => 'required|string|max:255',
                 'telephoneNumber' => 'nullable',
                 'mobileNumber' => 'nullable',
@@ -62,10 +62,10 @@ class ChannelPartnerRequest extends FormRequest
                 'panCardNo' => 'required|string|max:255',
                 'gstNo' => 'nullable|max:255',
                 'reraNo' => 'required|string|max:255',
-                'brokerAffiliation' => 'required|numeric|in:1,2',
+                'brokerAffiliation' => 'required',
                 'chanel_id' => 'required|numeric',
                 'propertiesType' => 'required',
-                'authorizedSignatories' => 'required|numeric||in:1,2,3',
+                'authorizedSignatories' => 'required|numeric',
                 'name' => 'required|string|max:255',
                 'designation' => 'required|string|max:255',
                 'pancard_doc' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
@@ -74,6 +74,7 @@ class ChannelPartnerRequest extends FormRequest
                 'g-recaptcha-response' => 'required|captcha',
             ];
         }
+
         return $rule;
     }
 

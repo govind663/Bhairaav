@@ -12,14 +12,28 @@ use Illuminate\Queue\SerializesModels;
 class sendChannelPartnerEmail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $mailData;
+    public $companyNameOrIndividualName;
+    public $nameOfTheOwner;
+    public $entity;
+    public $officeAddress;
+    public $telephoneNumber;
+    public $mobileNumber;
+    public $website;
+    public $emailId;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($mailData)
+    public function __construct($data)
     {
-        $this->mailData = $mailData;
+        $this->companyNameOrIndividualName = $data['companyNameOrIndividualName'];
+        $this->nameOfTheOwner = $data['nameOfTheOwner'];
+        $this->entity = $data['entity'];
+        $this->officeAddress = $data['officeAddress'];
+        $this->telephoneNumber = $data['telephoneNumber'];
+        $this->mobileNumber = $data['mobileNumber'];
+        $this->website = $data['website'];
+        $this->emailId = $data['emailId'];
     }
 
     /**
@@ -28,7 +42,8 @@ class sendChannelPartnerEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Send Channel Partner Email',
+            subject: 'New Channel Partner Registration',
+            from: env('MAIL_FROM_ADDRESS')
         );
     }
 
