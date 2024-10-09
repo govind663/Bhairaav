@@ -80,10 +80,10 @@
                     <div class="cs_footer_item">
                         <h2 class="cs_widget_title cs_bold cs_fs_21 cs_white_color"><span>Projects</span></h2>
                         <ul class="cs_menu_widget cs_mp0">
-                            <li><a href='#'>Ongoing Projects</a></li>
+                            <li><a href='{{ route('frontend.project.ongoing-project') }}'>Ongoing Projects</a></li>
                             <li><a href='{{ route('frontend.project.ongoing-project.residential-project') }}'>Residential Projects</a></li>
                             <li><a href='{{ route('frontend.project.ongoing-project.commercial-project') }}'>Commercial Projects</a></li>
-                            <li><a href='{{ route('frontend.project.completed-project') }}'>Completed Projects</a></li>
+                            <li><a href='{{ route('frontend.project.completed-project', ['projectId' => '2']) }}'>Completed Projects</a></li>
                             <li><a href='{{ route('frontend.project.upcoming-project') }}'>Upcoming Projects</a></li>
                         </ul>
                     </div>

@@ -12,7 +12,7 @@
 <div class="adminActions">
     <input type="checkbox" name="adminToggle" class="adminToggle" />
     <a class="adminButton" href="#!">
-        <i class="fa fa-cog"></i>
+        <i class="fa-solid fa-share-nodes"></i>
     </a>
     <div class="adminButtons">
         <a aria-label="Chat on WhatsApp" href=" https://wa.me/9322225030" target="_blank">

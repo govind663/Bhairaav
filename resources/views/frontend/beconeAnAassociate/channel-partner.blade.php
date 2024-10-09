@@ -20,41 +20,51 @@
 
         /* Change the background color of the modal body */
         .modal-body {
-            background-color: #f1f1f1; /* Light gray background */
+            background-color: #f1f1f1;
+            /* Light gray background */
         }
 
         /* Style the list items in the modal */
         .modal-body ul li {
-            margin-bottom: 10px; /* Spacing between list items */
+            margin-bottom: 10px;
+            /* Spacing between list items */
         }
 
         /* Customize the close button */
         .close {
-            color: #007bff; /* Change the color of the close button */
+            color: #007bff;
+            /* Change the color of the close button */
         }
 
         /* styles.css */
         .modal-header {
             justify-content: space-between;
-            background-color: #f8f9fa; /* Light background */
-            border-bottom: 2px solid #007bff; /* Blue border */
+            background-color: #f8f9fa;
+            /* Light background */
+            border-bottom: 2px solid #007bff;
+            /* Blue border */
         }
 
         .modal-title {
-            color: #007bff; /* Blue color for the title */
+            color: #007bff;
+            /* Blue color for the title */
         }
 
         .modal-body {
-            font-size: 14px; /* Set font size for the body */
-            line-height: 1.5; /* Increase line height for better readability */
+            font-size: 14px;
+            /* Set font size for the body */
+            line-height: 1.5;
+            /* Increase line height for better readability */
         }
 
         .modal-body ul {
-            padding-left: 1.5em; /* Indentation for lists */
+            padding-left: 1.5em;
+            /* Indentation for lists */
         }
 
         .text-danger {
-            color: #dc3545; /* Bootstrap danger color */
+            color: #dc3545;
+            /* Bootstrap danger color */
         }
     </style>
 @endpush
@@ -541,7 +551,8 @@
                                 <label>
                                     <b>
                                         I agree to all
-                                        <a href="" data-toggle="modal" class="text-primary text-bold" data-target=".bd-tc-modal-lg">Terms & Conditions</a>
+                                        <a href="" data-toggle="modal" class="text-primary text-bold"
+                                            data-target=".bd-tc-modal-lg">Terms & Conditions</a>
                                         for appointment as Bhairaav Group's Channel Partner.
                                         <span class="text-danger">*</span>
                                     </b>
@@ -596,7 +607,8 @@
     <!-- End Payment Section -->
 
     <!-- MODAL Terms & Condition -->
-    <div class="modal fade bd-tc-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal fade bd-tc-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header" style="justify-content: space-between;">

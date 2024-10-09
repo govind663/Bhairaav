@@ -218,7 +218,7 @@
             </div>
             <div class="cs_height_20 cs_height_lg_20"></div>
             <div class="row">
-                <div class="col-lg-12 col-md-12">
+                <div class="col-lg-6 col-md-6">
                     <div class="location-boxes">
                         <div class="img1">
                             <img src="{{ asset('frontend/assets/img/icons/placeholder.png') }}" alt="">
