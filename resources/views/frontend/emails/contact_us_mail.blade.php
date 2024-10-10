@@ -15,11 +15,6 @@
     <meta name="csrf-token" content="content">
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Site favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/src/images/favicon.png') }}" />
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/src/images/favicon.png') }}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/src/images/favicon.png') }}" />
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -75,7 +70,7 @@
     <div class="container">
         <!-- Contact Us Section -->
         <div class="contact">
-            <img src="https://bhairaav.com/frontend/assets/img/Bhairaav-Logo.png" alt="Bhairava Lifestyles Logo" class="logo">
+            <img src="{{ asset('frontend/assets/img/about/Bhairaav-black.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
             <h2>Contact Us Mail Details : -</h2>
             <p class="details"><strong>Name:</strong> {{ $mailData['name'] }}</p>
             <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>

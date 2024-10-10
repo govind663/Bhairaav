@@ -14,11 +14,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Site favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/src/images/favicon.png') }}" />
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/src/images/favicon.png') }}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/src/images/favicon.png') }}" />
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -72,7 +67,7 @@
 
 <body>
     <div class="container">
-        <img src="https://bhairaav.com/frontend/assets/img/Bhairaav-Logo.png" alt="Bhairava Lifestyles Logo" class="logo">
+        <img src="{{ asset('frontend/assets/img/about/Bhairaav-black.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
         <h1>New Channel Partner Registration : -</h1>
         <p>Dear Sales Team,</p>
         <p>A new channel partner has been successfully registered with the following details:</p>
