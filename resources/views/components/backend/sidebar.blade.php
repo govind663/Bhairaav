@@ -229,17 +229,24 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="{{ route('admin.properties_request') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'admin.properties_request') ? 'active' : '' }}">
+                        <span class="micon bi bi-geo-alt"></span>
+                        <span class="mtext">Properties Request</span>
+                    </a>
+                </li>
+
                 <li class="dropdown {{ ($currentRoute === 'admin.channel_partner') || ($currentRoute === 'chanel_name.index') || ($currentRoute === 'chanel_name.create') || ($currentRoute === 'chanel_name.edit') ? 'show' : '' }}">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon bi bi-hdd-stack"></span>
                         <span class="mtext">Chanel</span>
                     </a>
                     <ul class="submenu">
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('chanel_name.index') }}" class="{{ in_array($currentRoute,['chanel_name.index','chanel_name.create', 'chanel_name.edit']) ? 'active' : '' }}">
                                 <span class="mtext">Chanel</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="{{ route('admin.channel_partner') }}" class="{{ in_array($currentRoute,['admin.channel_partner']) ? 'active' : '' }}">
                                 <span class="mtext">Channel Partner</span>
@@ -315,16 +322,9 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('disclaimers.index') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'disclaimers.index') || ($currentRoute === 'disclaimers.create') || ($currentRoute === 'disclaimers.edit') ? 'active' : '' }}">
-                        <span class="micon bi bi-file-earmark-text"></span>
-                        <span class="mtext">Disclaimer</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{ route('privacy_policies.index') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'privacy_policies.index') || ($currentRoute === 'privacy_policies.create') || ($currentRoute === 'privacy_policies.edit') ? 'active' : '' }}">
-                        <span class="micon bi bi-file"></span>
-                        <span class="mtext">Privacy Policies</span>
+                    <a href="{{ route('careers.index') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'careers.index') || ($currentRoute === 'careers.create') || ($currentRoute === 'careers.edit') ? 'active' : '' }}">
+                        <span class="micon bi bi-briefcase"></span>
+                        <span class="mtext">Career</span>
                     </a>
                 </li>
 
@@ -336,9 +336,23 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('admin.properties_request') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'admin.properties_request') ? 'active' : '' }}">
-                        <span class="micon bi bi-geo-alt"></span>
-                        <span class="mtext">Properties Request</span>
+                    <a href="{{ route('admin.contact_us') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'admin.contact_us') ? 'active' : '' }}">
+                        <span class="micon bi bi-envelope"></span>
+                        <span class="mtext">Contact Us</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('disclaimers.index') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'disclaimers.index') || ($currentRoute === 'disclaimers.create') || ($currentRoute === 'disclaimers.edit') ? 'active' : '' }}">
+                        <span class="micon bi bi-file-earmark-text"></span>
+                        <span class="mtext">Disclaimer</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('privacy_policies.index') }}" class="dropdown-toggle no-arrow {{ ($currentRoute === 'privacy_policies.index') || ($currentRoute === 'privacy_policies.create') || ($currentRoute === 'privacy_policies.edit') ? 'active' : '' }}">
+                        <span class="micon bi bi-file"></span>
+                        <span class="mtext">Privacy Policies</span>
                     </a>
                 </li>
             </ul>

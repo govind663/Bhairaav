@@ -41,6 +41,7 @@ use App\Http\Controllers\backend\ChanelController;
 use App\Http\Controllers\backend\PhaseController;
 use App\Http\Controllers\backend\AdminDisclaimerController;
 use App\Http\Controllers\backend\AdminPrivacyPolicyController;
+use App\Http\Controllers\backend\AdminCareerController;
 
 // ===== Frontend
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
@@ -265,6 +266,9 @@ Route::group(['prefix' => '', 'middleware'=>['auth', PreventBackHistoryMiddlewar
 
     // ==== Manage Privacy Policy
     Route::resource('privacy_policies', AdminPrivacyPolicyController::class);
+
+    // ==== Manage Career
+    Route::resource('careers', AdminCareerController::class);
 });
 
 
