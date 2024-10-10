@@ -58,8 +58,7 @@ class ContactUsController extends Controller
             //     $message->to('sales@bhairaav.com', 'sales@bhairaav.com');
             // });
 
-            Mail::from($request->input('email'), $request->input('name'))
-            ->to('sales@bhairaav.com')->send(new ContactUsMail($mailData));
+            Mail::to('sales@bhairaav.com')->send(new ContactUsMail($mailData));
 
             return redirect()->route('frontend.contact-us')->with('message','Thank you for your interest. We will get back to you within 24 hours.');
 
