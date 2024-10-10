@@ -28,7 +28,7 @@ class CareerController extends Controller
         ]);
     }
 
-    public function careerApply(CareerApplyRequest $request){
+    public function storeCareerApply(CareerApplyRequest $request){
         $data = $request->validated();
         try {
 
