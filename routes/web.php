@@ -380,4 +380,7 @@ Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class]
 
     // ===== Subscribe Us
     Route::post('/subscribe-us', [SubscribeUsController::class, 'subscribe'])->name('frontend.subscribe-us');
+
+    // ===== Career Apply
+    Route::post('/store-career-apply', [CareerController::class, 'storeCareerApply'])->name('frontend.store-career-apply');
 });
