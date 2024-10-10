@@ -537,6 +537,36 @@
                         </div>
 
                         <div class="col-sm-12 mb-3">
+                            <input type="text" class="cs_form_field_2 cs_radius_20 @error('mobile_no') is-invalid @enderror" name="mobile_no" id="mobile_no" value="{{ old('mobile_no') }}" placeholder="Mobile Number *">
+                            @error('mobile_no')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <input type="text" class="cs_form_field_2 cs_radius_20 @error('department') is-invalid @enderror" name="department" id="department" value="{{ old('department') }}" placeholder="Department *">
+                                @error('department')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-sm-6 mb-3">
+                                <input type="text" class="cs_form_field_2 cs_radius_20 @error('currentdesignation') is-invalid @enderror" name="currentdesignation" id="currentdesignation" value="{{ old('currentdesignation') }}" placeholder="Designation *">
+                                @error('currentdesignation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 mb-3">
+                            <label class="cs_height_16 cs_height_lg_16"><b>Upload Resume : <span class="text-danger">*</span></b></label>
                             <input type="file" onchange="candidateResumePreviewFile()" accept=".png, .jpg, .jpeg, .pdf" class="cs_form_field_2 cs_radius_20 @error('candidate_resume_doc') is-invalid @enderror" name="candidate_resume_doc" id="candidate_resume_doc" value="{{ old('candidate_resume_doc') }}" >
                             <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
                             <br>
