@@ -537,13 +537,20 @@
                         </div>
 
                         <div class="col-sm-12 mb-3">
-                            {{-- <label class="cs_height_16 cs_height_lg_16"><b>Phone No. : <span class="text-danger">*</span></b></label> --}}
-                            <input type="text" maxlength="10" class="cs_form_field_2 cs_radius_20 @error('phone') is-invalid @enderror" name="phone" id="phone" value="{{ old('phone') }}" placeholder="Phone No. *">
-                            @error('phone')
+                            <input type="file" onchange="candidateResumePreviewFile()" accept=".png, .jpg, .jpeg, .pdf" class="cs_form_field_2 cs_radius_20 @error('candidate_resume_doc') is-invalid @enderror" name="candidate_resume_doc" id="candidate_resume_doc" value="{{ old('candidate_resume_doc') }}" >
+                            <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
+                            <br>
+                            <small class="text-secondary"><b>Note : Only files in .jpg, .jpeg, .png, .pdf format can be uploaded .</b></small>
+                            <br>
+                            @error('candidate_resume_doc')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                            <br>
+                            <div id="preview-candidate-resume-container">
+                                <div id="file-candidate-resume-preview"></div>
+                            </div>
                         </div>
 
 
@@ -588,4 +595,44 @@
 @push('scripts')
 <!-- Bootstrap JS -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+{{-- preview both image and PDF --}}
+<script>
+    function candidateResumePreviewFile() {
+        const fileInput = document.getElementById('candidate_resume_doc');
+        const previewContainer = document.getElementById('preview-candidate-resume-container');
+        const filePreview = document.getElementById('file-candidate-resume-preview');
+        const file = fileInput.files[0];
+
+        if (file) {
+            const fileType = file.type;
+            const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+            const validPdfTypes = ['application/pdf'];
+
+            if (validImageTypes.includes(fileType)) {
+                // Image preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    filePreview.innerHTML = `<img src="${e.target.result}" alt="File Preview" width="50%" height="50">`;
+                };
+                reader.readAsDataURL(file);
+            } else if (validPdfTypes.includes(fileType)) {
+                // PDF preview using an embed element
+                filePreview.innerHTML =
+                    `<embed src="${URL.createObjectURL(file)}" type="application/pdf" width="100%" height="150px" />`;
+            } else {
+                // Unsupported file type
+                filePreview.innerHTML = '<p>Unsupported file type</p>';
+            }
+
+            previewContainer.style.display = 'block';
+        } else {
+            // No file selected
+            previewContainer.style.display = 'none';
+        }
+
+    }
+
+</script>
+
 @endpush
