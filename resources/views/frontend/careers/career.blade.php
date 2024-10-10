@@ -204,7 +204,7 @@
                                 </h2>
                                 <p>
                                     <a href="#" class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" data-toggle="modal" data-target="#job-position-{{ $loop->iteration }}-form">
-                                        Apply
+                                        Apply Now
                                         <span>
                                             <i>
                                                 <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
