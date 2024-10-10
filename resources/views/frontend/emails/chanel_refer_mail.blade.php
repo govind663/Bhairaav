@@ -32,6 +32,7 @@
 
         h2 {
             color: #0073e6;
+            text-align: left;
         }
 
         .details {
@@ -53,18 +54,15 @@
         }
 
         .logo {
-            max-width: 150px;
-            margin-bottom: 10px; /* Space between logo and heading */
-            display: block; /* Ensure it is centered */
-            margin-left: auto;
-            margin-right: auto;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 5px;
         }
 
         .logo-title {
             font-size: 18px;
             color: #0073e6; /* Match the color of h2 */
             margin-bottom: 20px; /* Space below the title */
-            text-align: center; /* Center title */
         }
     </style>
 </head>

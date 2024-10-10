@@ -34,6 +34,7 @@
 
         h2 {
             color: #0073e6;
+            text-align: left;
         }
 
         .details {
@@ -53,8 +54,9 @@
         }
 
         .logo {
-            max-width: 150px;
-            margin-bottom: 10px; /* Space between logo and heading */
+            width: 100px;
+            height: 100px;
+            margin-bottom: 5px;
         }
 
         .logo-title {
