@@ -68,36 +68,36 @@
 
 <body>
     <div class="container">
-
         <img src="{{ asset('frontend/assets/img/about/Bhairaav-black.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
-        <h2>Book Site Visit Mail Details :- </h2>
+    </div>
 
-        <!-- Book Site Visit Mail Section -->
-        <p class="details"><strong>Project Name : </strong> {{ $mailData['project_name'] }}</p>
-        <p class="details"><strong>Name : </strong> {{ $mailData['name'] }}</p>
-        <p class="details"><strong>Email : </strong> {{ $mailData['email'] }}</p>
-        <p class="details"><strong>Phone No : </strong> {{ $mailData['phone'] }}</p>
-        <p class="details"><strong>Visiting Date : </strong> {{ $mailData['visiting_date'] }}</p>
-        <p class="details"><strong>Visiting Time : </strong> {{ $mailData['visiting_time'] }}</p>
+    <h2>Book Site Visit Mail Details :- </h2>
 
-        <p>
-            Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
+    <!-- Book Site Visit Mail Section -->
+    <p class="details"><strong>Project Name : </strong> {{ $mailData['project_name'] }}</p>
+    <p class="details"><strong>Name : </strong> {{ $mailData['name'] }}</p>
+    <p class="details"><strong>Email : </strong> {{ $mailData['email'] }}</p>
+    <p class="details"><strong>Phone No : </strong> {{ $mailData['phone'] }}</p>
+    <p class="details"><strong>Visiting Date : </strong> {{ $mailData['visiting_date'] }}</p>
+    <p class="details"><strong>Visiting Time : </strong> {{ $mailData['visiting_time'] }}</p>
+
+    <p>
+        Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
+    </p>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p style="font-size: 12px;color: #666;">
+            Copyright © {{ date('Y') }}
+            <a href="https://bhairaav.com" target="_blank">Bhairaav</a>.
+            All Rights Reserved.
         </p>
 
-        <!-- Footer Section -->
-        <div class="footer">
-            <p style="font-size: 12px;color: #666;">
-                Copyright © {{ date('Y') }}
-                <a href="https://bhairaav.com" target="_blank">Bhairaav</a>.
-                All Rights Reserved.
-            </p>
-
-            <p class="mb-0" style="font-size: 12px;color: #666;">
-                Bhairaav Lifestyles
-                <br>
-                Email: sales@bhairaav.com
-            </p>
-        </div>
+        <p class="mb-0" style="font-size: 12px;color: #666;">
+            Bhairaav Lifestyles
+            <br>
+            Email: sales@bhairaav.com
+        </p>
     </div>
 </body>
 

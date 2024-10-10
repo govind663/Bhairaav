@@ -72,35 +72,35 @@
 <body>
     <div class="container">
         <img src="{{ asset('frontend/assets/img/about/Bhairaav-black.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
+    </div>
 
-        <h2>Channel Refer Mail Details:</h2>
-        <p class="details"><strong>First Name:</strong> {{ $mailData['f_name'] }}</p>
-        <p class="details"><strong>Last Name:</strong> {{ $mailData['l_name'] }}</p>
-        <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
-        <p class="details"><strong>Phone No:</strong> {{ $mailData['mobile_no'] }}</p>
-        <p class="details"><strong>Project:</strong> {{ $mailData['project'] }}</p>
-        <p class="details"><strong>Unit/Flat:</strong> {{ $mailData['unit_or_flat'] }}</p>
-        <p class="details"><strong>Referral First Name:</strong> {{ json_decode($mailData['refer_f_name']) }}</p>
-        <p class="details"><strong>Referral Last Name:</strong> {{ json_decode($mailData['refer_l_name']) }}</p>
-        <p class="details"><strong>Referral Email:</strong> {{ json_decode($mailData['refer_email']) }}</p>
-        <p class="details"><strong>Referral Relation:</strong> {{ json_decode($mailData['refer_relation']) }}</p>
+    <h2>Channel Refer Mail Details :- </h2>
+    <p class="details"><strong>First Name:</strong> {{ $mailData['f_name'] }}</p>
+    <p class="details"><strong>Last Name:</strong> {{ $mailData['l_name'] }}</p>
+    <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
+    <p class="details"><strong>Phone No:</strong> {{ $mailData['mobile_no'] }}</p>
+    <p class="details"><strong>Project:</strong> {{ $mailData['project'] }}</p>
+    <p class="details"><strong>Unit/Flat:</strong> {{ $mailData['unit_or_flat'] }}</p>
+    <p class="details"><strong>Referral First Name:</strong> {{ json_decode($mailData['refer_f_name']) }}</p>
+    <p class="details"><strong>Referral Last Name:</strong> {{ json_decode($mailData['refer_l_name']) }}</p>
+    <p class="details"><strong>Referral Email:</strong> {{ json_decode($mailData['refer_email']) }}</p>
+    <p class="details"><strong>Referral Relation:</strong> {{ json_decode($mailData['refer_relation']) }}</p>
 
+    <p>
+        Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
+    </p>
+
+    <div class="footer">
         <p>
-            Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
+            Copyright © {{ date('Y') }}
+            <a href="https://bhairaav.com" target="_blank">Bhairaav</a>.
+            All Rights Reserved.
         </p>
-
-        <div class="footer">
-            <p>
-                Copyright © {{ date('Y') }}
-                <a href="https://bhairaav.com" target="_blank">Bhairaav</a>.
-                All Rights Reserved.
-            </p>
-            <p class="mb-0">
-                Bhairaav Lifestyles
-                <br>
-                Email: <a href="mailto:sales@bhairaav.com">sales@bhairaav.com</a>
-            </p>
-        </div>
+        <p class="mb-0">
+            Bhairaav Lifestyles
+            <br>
+            Email: <a href="mailto:sales@bhairaav.com">sales@bhairaav.com</a>
+        </p>
     </div>
 </body>
 

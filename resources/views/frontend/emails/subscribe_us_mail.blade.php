@@ -68,19 +68,20 @@
 <body>
     <div class="container">
         <img src="{{ asset('frontend/assets/img/about/Bhairaav-black.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
-        <h2>New Subscriber Details : -</h2>
+    </div>
 
-        <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
-        <p>Thank you for subscribing to Bhairaav! We will keep you updated with our latest offerings and news.</p>
+    <h2>New Subscriber Details :-</h2>
 
-        <p class="footer">Bhairava Lifestyles</p>
+    <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
+    <p>Thank you for subscribing to Bhairaav! We will keep you updated with our latest offerings and news.</p>
 
-        <div class="footer">
-            <p>
-                Bhairaav Lifestyles<br>
-                Email: sales@bhairaav.com
-            </p>
-        </div>
+    <p class="footer">Bhairava Lifestyles</p>
+
+    <div class="footer">
+        <p>
+            Bhairaav Lifestyles<br>
+            Email: sales@bhairaav.com
+        </p>
     </div>
 </body>
 
