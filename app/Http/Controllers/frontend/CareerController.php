@@ -68,11 +68,13 @@ class CareerController extends Controller
                 'mobile_no' => $request->mobile_no,
                 'department' => $request->department,
                 'currentdesignation' => $request->currentdesignation,
-                'candidate_resume' => $request->input('candidate_resume_doc'),
             ];
 
-            // Pass the path of the resume to the Mailable
-            Mail::to('sales@bhairaav.com')->send(new sendCareerApplyMail($mailData, public_path('/bhairaav/Career/candidate_resume_doc/' . $new_name)));
+            // Pass the actual path of the resume document
+            $resumePath = public_path('/bhairaav/Career/candidate_resume_doc/' . $careerApplyForm->candidate_resume_doc);
+
+            // Send Mail
+            Mail::to('sales@bhairaav.com')->send(new sendCareerApplyMail($mailData, $resumePath));
 
             return redirect()->route('frontend.contact-us')->with('message','Thank you for your interest. We will get back to you within 24 hours.');
 

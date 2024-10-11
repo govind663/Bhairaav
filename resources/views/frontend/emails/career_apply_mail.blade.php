@@ -15,6 +15,9 @@
     <meta name="csrf-token" content="content">
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- Fontawesome Icon CDN Link --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -82,9 +85,12 @@
         <p class="details"><strong>Phone No : </strong> {{ $mailData['mobile_no'] }}</p>
         <p class="details"><strong>Department : </strong> {{ $mailData['department'] }}</p>
         <p class="details"><strong>Designation : </strong> {{ $mailData['currentdesignation'] }}</p>
-        <p class="details" style="font-size: 14px;"><strong>Candidate Resume : </strong>
-            <a href="{{ asset('/bhairaav/Career/candidate_resume_doc/'. $mailData['candidate_resume_doc']) }}" target="_blank" class="btn btn-warning btn-sm" style="text-decoration: none; padding: 5px 10px; background-color: #f0ad4e; color: white;">View</a>
-        </p>
+        {{-- <p class="details" style="font-size: 14px;"><strong>Candidate Resume : </strong>
+            <a href="{{ $mailData['resume'] }}" target="_blank">
+                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                Download
+            </a>
+        </p> --}}
 
         <p>
             Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
