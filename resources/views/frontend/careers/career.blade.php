@@ -385,7 +385,7 @@
     <!-- End Vacancy Section -->
 
     <!-- Start Page Heading Section -->
-    <section class="cs_page_heading cs_primary_bg cs_bg_filed cs_center" data-src="{{ asset('frontend/assets/img/about/2149667853.jpg') }}"></section>
+    <section class="cs_page_heading cs_primary_bg cs_bg_filed cs_center" data-src="{{ asset('frontend/assets/img/pp/10.jpg') }}"></section>
     <!-- End Page Heading Section -->
 @endsection
 
