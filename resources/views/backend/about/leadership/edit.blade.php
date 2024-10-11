@@ -94,21 +94,14 @@ Bhairaav | Edit Leader
                                             </div>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-danger removeRow">Remove</button>
+                                            @if($loop->first)
+                                                <button type="button" class="btn btn-primary" id="addRow">Add More</button>
+                                            @else
+                                                <button type="button" class="btn btn-danger removeRow">Remove</button>
+                                            @endif
                                         </td>
                                     </tr>
-                                @endforeach
-                            @else
-                            <tr>
-                                <td>
-                                    <div class="col-sm-12 col-md-12">
-                                        <textarea type="text" name="other_description[]" style="height: 75px;" class="form-control" id="other_description" value="{{ old('other_description') }}" placeholder="Enter Other Description.">{{ old('other_description') }}</textarea>
-                                    </div>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-primary" id="addRow">Add More</button>
-                                </td>
-                            </tr>
+                                @endforeach                            
                             @endif
                         </tbody>
                     </table>

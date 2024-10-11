@@ -70,7 +70,11 @@ Bhairaav | Edit Privacy Policy
                                         </div>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-danger removeDatacollectionRow">Remove</button>
+                                        @if($loop->first)
+                                            <button type="button" class="btn btn-primary" id="addDataCollectionRow">Add More</button>
+                                        @else
+                                            <button type="button" class="btn btn-danger removeDatacollectionRow">Remove</button>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -97,7 +101,11 @@ Bhairaav | Edit Privacy Policy
                                         </div>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-danger removeUseOfInformationRow">Remove</button>
+                                        @if($loop->first)
+                                            <button type="button" class="btn btn-primary" id="addUseOfInformationRow">Add More</button>
+                                        @else
+                                            <button type="button" class="btn btn-danger removeUseOfInformationRow">Remove</button>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -124,7 +132,11 @@ Bhairaav | Edit Privacy Policy
                                     </div>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger removeClosureOfInformationRow">Remove</button>
+                                    @if($loop->first)
+                                        <button type="button" class="btn btn-primary" id="addClosureOfInformationRow">Add More</button>
+                                    @else
+                                        <button type="button" class="btn btn-danger removeClosureOfInformationRow">Remove</button>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach
@@ -151,7 +163,11 @@ Bhairaav | Edit Privacy Policy
                                     </div>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger removeDataStorageRow">Remove</button>
+                                    @if($loop->first)
+                                        <button type="button" class="btn btn-primary" id="addDataStorageRow">Add More</button>
+                                    @else
+                                        <button type="button" class="btn btn-danger removeDataStorageRow">Remove</button>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach
@@ -190,7 +206,11 @@ Bhairaav | Edit Privacy Policy
                                     </div>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger removeRightsRow">Remove</button>
+                                    @if($loop->first)
+                                        <button type="button" class="btn btn-primary" id="addRightsRow">Add More</button>
+                                    @else
+                                        <button type="button" class="btn btn-danger removeRightsRow">Remove</button>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

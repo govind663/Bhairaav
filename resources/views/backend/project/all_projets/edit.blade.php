@@ -110,43 +110,12 @@ Bhairaav | Edit Project
                     <tbody>
                         @if(old('phase_id'))
                             {{-- Display old form data after validation error --}}
-                            @foreach(old('phase_id') as $index => $oldPhaseId)
-                                <tr>
-                                    <td>
-                                        <div class="col-sm-12 col-md-12">
-                                            <select name="phase_id[]" class="form-control custom-select2 @error('phase_id.' . $index) is-invalid @enderror">
-                                                <option value="">Select Phase</option>
-                                                <optgroup label="Phase">
-                                                    @foreach ($phases as $value)
-                                                        <option value="{{ $value->id }}" {{ ($oldPhaseId == $value->id) ? 'selected' : '' }}>{{ $value->name }}</option>
-                                                    @endforeach
-                                                </optgroup>
-                                            </select>
-                                            @error('phase_id.' . $index)
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="col-sm-12 col-md-12">
-                                            <input type="text" name="maha_rera_registration_number[]" class="form-control @error('maha_rera_registration_number.' . $index) is-invalid @enderror" value="{{ old('maha_rera_registration_number.' . $index) }}" placeholder="Enter Maha RERA Registration Number">
-                                            @error('maha_rera_registration_number.' . $index)
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </td>
-                                    <td><button type="button" class="btn btn-danger removeFeatureRow">Remove</button></td>
-                                </tr>
-                            @endforeach
+                            
                         @elseif(isset($phase_id) && isset($maha_rera_registration_number))
                             {{-- Display saved data from the database --}}
                             @foreach($phase_id as $index => $phase)
                                 <tr>
-                                    <td>
+                                    <td style="width: 40%">
                                         <div class="col-sm-12 col-md-12">
                                             <select name="phase_id[]" class="form-control custom-select2 @error('phase_id.' . $index) is-invalid @enderror">
                                                 <option value="">Select Phase</option>
@@ -163,7 +132,7 @@ Bhairaav | Edit Project
                                             @enderror
                                         </div>
                                     </td>
-                                    <td>
+                                    <td style="width: 40%">
                                         <div class="col-sm-12 col-md-12">
                                             <input type="text" name="maha_rera_registration_number[]" class="form-control @error('maha_rera_registration_number.' . $index) is-invalid @enderror" value="{{ $maha_rera_registration_number[$index] }}" placeholder="Enter Maha RERA Registration Number">
                                             @error('maha_rera_registration_number.' . $index)
@@ -173,41 +142,15 @@ Bhairaav | Edit Project
                                             @enderror
                                         </div>
                                     </td>
-                                    <td><button type="button" class="btn btn-danger removeFeatureRow">Remove</button></td>
+                                    <td style="width: 20%">
+                                        @if($loop->first)
+                                            <button type="button" class="btn btn-primary" id="addFeatureRow">Add More</button>
+                                        @else
+                                            <button type="button" class="btn btn-danger removeFeatureRow">Remove</button>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
-                        @else
-                            {{-- Default empty row --}}
-                            <tr>
-                                <td>
-                                    <div class="col-sm-12 col-md-12">
-                                        <select name="phase_id[]" class="form-control custom-select2 @error('phase_id.0') is-invalid @enderror">
-                                            <option value="">Select Phase</option>
-                                            <optgroup label="Phase">
-                                                @foreach ($phases as $value)
-                                                    <option value="{{ $value->id }}">{{ $value->name }}</option>
-                                                @endforeach
-                                            </optgroup>
-                                        </select>
-                                        @error('phase_id.0')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="col-sm-12 col-md-12">
-                                        <input type="text" name="maha_rera_registration_number[]" class="form-control @error('maha_rera_registration_number.0') is-invalid @enderror" value="{{ old('maha_rera_registration_number.0') }}" placeholder="Enter Maha RERA Registration Number">
-                                        @error('maha_rera_registration_number.0')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </td>
-                                <td><button type="button" class="btn btn-primary" id="addFeatureRow">Add More</button></td>
-                            </tr>
                         @endif
                     </tbody>
                 </table>

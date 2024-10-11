@@ -71,21 +71,14 @@ Bhairaav | Edit Partner
                                             </div>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-danger removeRow">Remove</button>
+                                            @if($loop->first)
+                                                <button type="button" class="btn btn-primary" id="addRow">Add More</button>
+                                            @else                                            
+                                                <button type="button" class="btn btn-danger removeRow">Remove</button>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
-                            @else
-                            <tr>
-                                <td>
-                                    <div class="col-sm-12 col-md-12">
-                                        <input type="text" name="partner_name[]" class="form-control" id="partner_name" value="{{ old('partner_name') }}" placeholder="Enter Partner Name.">
-                                    </div>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-primary" id="addRow">Add More</button>
-                                </td>
-                            </tr>
                             @endif
                         </tbody>
                     </table>
