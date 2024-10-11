@@ -28,8 +28,8 @@ class CareerController extends Controller
         ]);
     }
 
-    public function storeCareerApply(CareerApplyRequest $request){
-        $data = $request->validated();
+    public function storeCareerApply(CareerApplyRequest $request, string $job_id){
+        $data = $request->validated($job_id);
         try {
 
             $careerApplyForm = new CareerApplyForm();

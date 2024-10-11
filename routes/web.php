@@ -382,5 +382,5 @@ Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class]
     Route::post('/subscribe-us', [SubscribeUsController::class, 'subscribe'])->name('frontend.subscribe-us');
 
     // ===== Career Apply
-    Route::post('/store-career-apply', [CareerController::class, 'storeCareerApply'])->name('frontend.store-career-apply');
+    Route::post('/store-career-apply/{job_id?}', [CareerController::class, 'storeCareerApply'])->name('frontend.store-career-apply');
 });

@@ -21,7 +21,7 @@ class CareerApplyRequest extends FormRequest
      */
     public function rules(): array
     {
-        if ($this->id){
+        if ($this->id) {
             $rule = [
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|string|max:255',
@@ -31,7 +31,7 @@ class CareerApplyRequest extends FormRequest
                 'candidate_resume_doc' => 'mimes:jpeg,png,jpg,pdf|max:2048',
                 'g-recaptcha-response' => 'required|captcha',
             ];
-        }else{
+        } else {
             $rule = [
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|string|max:255',
@@ -42,6 +42,12 @@ class CareerApplyRequest extends FormRequest
                 'g-recaptcha-response' => 'required|captcha',
             ];
         }
+
+        // Validate job_id if it exists in the request
+        if ($this->has('job_id') && $this->job_id == $this->route('job_id')) {
+            $rule['job_id'] = 'required|numeric';
+        }
+
         return $rule;
     }
 

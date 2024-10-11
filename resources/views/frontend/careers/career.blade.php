@@ -245,13 +245,14 @@
                                     </div>
                                     <div class="modal-body space-y-20 p-40">
 
-                                        <form method="POST" action="{{ route('frontend.store-career-apply') }}" class="cs_form cs_style_2" enctype="multipart/form-data" autocomplete="off">
+                                        <form method="POST" action="{{ route('frontend.store-career-apply', ['job_id' => $loop->iteration]) }}" class="cs_form cs_style_2" enctype="multipart/form-data" autocomplete="off">
                                             @csrf
 
+                                            <input type="text" id="job_id" name="job_id" hidden  value="{{ $loop->iteration }}">
                                             <input type="hidden" name="job_title" id="job_title" value="{{ $title }}">
 
                                             <div class="col-sm-12 mb-3">
-                                                <input type="text" class="cs_form_field_2 cs_radius_20 @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}" placeholder="Full Name *">
+                                                <input type="text" class="cs_form_field_2 cs_radius_20 @error('name') is-invalid @enderror" name="name" id="name" value="" placeholder="Full Name *">
                                                 @error('name')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -269,7 +270,7 @@
                                             </div>
 
                                             <div class="col-sm-12 mb-3">
-                                                <input type="text" class="cs_form_field_2 cs_radius_20 @error('mobile_no') is-invalid @enderror" name="mobile_no" id="mobile_no" value="{{ old('mobile_no') }}" placeholder="Mobile Number *">
+                                                <input type="text" maxlength="10" class="cs_form_field_2 cs_radius_20 @error('mobile_no') is-invalid @enderror" name="mobile_no" id="mobile_no" value="{{ old('mobile_no') }}" placeholder="Mobile Number *">
                                                 @error('mobile_no')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -430,6 +431,91 @@
 
     }
 
+</script>
+
+@if ($errors->any())
+    <script>
+        $(document).ready(function() {
+            // Check for the old job_id value from the previous request
+            var oldJobId = {{ old('job_id') ?? 0 }};
+
+            if (oldJobId) {
+                // Show the corresponding job position form
+                $('#job-position-' + oldJobId + '-form').modal('show');
+            } else {
+                // Show the first job position form
+                $('#job-position-1-form').modal('show');
+            }
+        });
+    </script>
+@endif
+
+<!-- Validate Name -->
+<script>
+    $(document).on('keypress', '#name', function (event) {
+        var regex = new RegExp("^[a-zA-Z ]+$");
+        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if (!regex.test(key)) {
+            event.preventDefault();
+            return false;
+        }
+    });
+</script>
+
+<!-- Validate Email -->
+<script>
+    $(document).ready(function() {
+        // On form submission
+        $('.cs_form').on('submit', function(event) {
+            var emailField = $('#email');
+            var emailValue = emailField.val();
+            var regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+
+            // Check if email matches the regex
+            if (!regex.test(emailValue)) {
+                event.preventDefault(); // Prevent form submission
+                alert("Please enter a valid email address."); // Show error message
+                emailField.focus(); // Focus back on the email field
+                return false;
+            }
+        });
+    });
+</script>
+
+<!-- Validate Mobile Number -->
+<script>
+    $(document).on('keypress', '#mobile_no', function (event) {
+        var regex = new RegExp("^[0-9]+$");
+        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if (!regex.test(key)) {
+            event.preventDefault();
+            return false;
+        }
+    });
+</script>
+
+<!-- Validate Department -->
+<script>
+    $(document).on('keypress', '#department', function (event) {
+        var regex = new RegExp("^[a-zA-Z ]+$");
+        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if (!regex.test(key)) {
+            event.preventDefault();
+            return false;
+        }
+    });
+</script>
+
+<!-- Validate Designation -->
+<script>
+    $(document).on('keypress', '#currentdesignation', function (event) {
+        var regex = new RegExp("^[a-zA-Z ]+$");
+        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if (!regex.test(key)) {
+            event.preventDefault();
+            return false;
+        }
+    });
 </script>
 
 @endpush
