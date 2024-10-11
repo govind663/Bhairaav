@@ -8,18 +8,21 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Attachment;
 
 class sendCareerApplyMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $mailData;
+    public $resumePath;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($mailData)
+    public function __construct($mailData, $resumePath)
     {
         $this->mailData = $mailData;
+        $this->resumePath = $resumePath;
     }
 
     /**
@@ -49,6 +52,11 @@ class sendCareerApplyMail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        // Attach the candidate's resume document
+        return [
+            Attachment::fromPath($this->resumePath)
+                ->as('Resume.pdf')
+                ->withMime('application/pdf'),
+        ];
     }
 }

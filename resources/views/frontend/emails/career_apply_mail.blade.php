@@ -82,8 +82,8 @@
         <p class="details"><strong>Phone No : </strong> {{ $mailData['mobile_no'] }}</p>
         <p class="details"><strong>Department : </strong> {{ $mailData['department'] }}</p>
         <p class="details"><strong>Designation : </strong> {{ $mailData['currentdesignation'] }}</p>
-        <p class="details"><strong>Candidate Resume : </strong>
-            <a href="{{ asset('/bhairaav/Career/candidate_resume_doc/'. $mailData['candidate_resume_doc']) }}" target="{{ $mailData['candidate_resume_doc'] }}" class="btn btn-warning btn-sm">View</a>
+        <p class="details" style="font-size: 14px;"><strong>Candidate Resume : </strong>
+            <a href="{{ asset('/bhairaav/Career/candidate_resume_doc/'. $mailData['candidate_resume_doc']) }}" target="_blank" class="btn btn-warning btn-sm" style="text-decoration: none; padding: 5px 10px; background-color: #f0ad4e; color: white;">View</a>
         </p>
 
         <p>
