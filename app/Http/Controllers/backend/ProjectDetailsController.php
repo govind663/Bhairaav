@@ -261,23 +261,19 @@ class ProjectDetailsController extends Controller
         try {
             // Update banner images
             $bannerImagePaths = json_decode($projectDetails->banner_image, true) ?? [];
-            if ($request->hasFile('banner_image')) {
-                // Remove existing images if required (logic depends on your needs)
-                foreach ($bannerImagePaths as $existingImage) {
-                    // Delete old images from storage
-                    File::delete(public_path('/bhairaav/project_details/banner_image/' . $existingImage));
-                }
 
-                $bannerImagePaths = []; // Clear the old images
+            // Check if new images are uploaded
+            if ($request->hasFile('banner_image')) {
+                // Add new images to the existing paths
                 foreach ($request->file('banner_image') as $image) {
                     $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
                     $image->move(public_path('/bhairaav/project_details/banner_image'), $new_name);
-                    $bannerImagePaths[] = $new_name;
+                    $bannerImagePaths[] = $new_name; // Add the new image to the array
                 }
-                $projectDetails->banner_image = json_encode($bannerImagePaths);
-            } else {
-                $projectDetails->banner_image = json_encode($bannerImagePaths);
             }
+
+            // Update the banner_image with both old and new image paths
+            $projectDetails->banner_image = json_encode($bannerImagePaths);
 
             // Update overview image
             if ($request->hasFile('overview_image')) {
