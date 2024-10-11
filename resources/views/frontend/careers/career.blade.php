@@ -457,6 +457,7 @@
         var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
         if (!regex.test(key)) {
             event.preventDefault();
+            alert("Name can only accepted by letters and spaces.");
             return false;
         }
     });
@@ -489,6 +490,7 @@
         var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
         if (!regex.test(key)) {
             event.preventDefault();
+            alert("Mobile Number can only accepted by numbers.");
             return false;
         }
     });
@@ -501,6 +503,7 @@
         var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
         if (!regex.test(key)) {
             event.preventDefault();
+            alert("Department can only accepted by letters and spaces.");
             return false;
         }
     });
@@ -513,6 +516,7 @@
         var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
         if (!regex.test(key)) {
             event.preventDefault();
+            alert("Designation can only accepted by letters and spaces.");
             return false;
         }
     });
