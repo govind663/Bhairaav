@@ -112,12 +112,12 @@ Bhairaav | Blog
             <div class="cs_height_80 cs_height_lg_50"></div>
             {{ $blogs->links('pagination::bootstrap-5') }}
         </div> --}}
-        <div class="text-center" id="load-more-container">
+        {{-- <div class="text-center" id="load-more-container">
             <div class="cs_height_80 cs_height_lg_50"></div>
             <button type="button" class="cs_btn cs_style_2 cs_primary_btn cs_medium cs_radius_20 cs_fs_15" id="load-more-btn">
                 Learn More
             </button>
-        </div>
+        </div> --}}
     </div>
     <div class="cs_height_70 cs_height_lg_70"></div>
 </section>
