@@ -28,7 +28,9 @@
                             {{ $blog->blog_title }}
                         </h2>
                         {{-- <img src="{{ asset('/bhairaav/blog/blog_image/' . $blog->blog_image ) }}" alt="{{ $blog->blog_title }}"> --}}
-                        {!! $blog->description !!}
+                        <p class="text-justify">
+                            {!! $blog->description !!}
+                        </p>
                     </div>
 
                 </div>
