@@ -20,9 +20,9 @@
         }
 
         .container {
-            max-width: 600px;
+            /* max-width: 600px; */
             margin: 0 auto;
-            background-color: #ffffff;
+            background-color: transparent;
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 20px;
@@ -69,24 +69,17 @@
         <img src="{{ asset('frontend/assets/img/about/Bhairaav-black.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
     </div>
 
-    <h2>Channel Refer Mail Details :- </h2>
+    <h2>Member Details :- </h2>
     <p class="details"><strong>First Name:</strong> {{ $mailData['f_name'] }}</p>
     <p class="details"><strong>Last Name:</strong> {{ $mailData['l_name'] }}</p>
     <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
     <p class="details"><strong>Phone No:</strong> {{ $mailData['mobile_no'] }}</p>
-    @php
-        // ==== Fetch Project Name
-        $project = \App\Models\Projects::where('id', $mailData['project'])->first();
-    @endphp
-    <p class="details"><strong>Project:</strong>
-        @if ($project)
-            {{ $project->name }}
-        @endif
-    </p>
+    <p class="details"><strong>Project:</strong> {{ $mailData['project'] }}</p>
     <p class="details"><strong>Unit/Flat:</strong> {{ $mailData['unit_or_flat'] }}</p>
 
     <!-- Table for Referral Details -->
     <table style="width: 100%; border-collapse: collapse; border: 1px solid #000; margin-top: 20px;">
+        <caption style="background-color: #f2f2f2; padding: 8px; font-weight: bold;">Referral Details</caption>
         <thead>
             <tr style="background-color: #f2f2f2;">
                 <th style="border: 1px solid #000; padding: 8px;">Referral First Name</th>

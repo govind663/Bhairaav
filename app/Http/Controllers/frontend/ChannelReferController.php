@@ -68,13 +68,17 @@ class ChannelReferController extends Controller
 
             MemberDetail::where('id', $memberDetail->id)->update($update);
 
+            // ==== Fetch Project Name
+            $project = Projects::where('id', $request->project)->first();
+            $projectName = $project->project_name;
+
             // ==== send Email
             $mailData = [
                 'f_name' => $request->f_name,
                 'l_name' => $request->l_name,
                 'mobile_no' => $request->mobile_no,
                 'email' => $request->email,
-                'project' => $request->project,
+                'project' => $projectName,
                 'unit_or_flat' => $request->unit_or_flat,
                 'refer_f_name' => $request->refer_f_name,
                 'refer_l_name' => $request->refer_l_name,
