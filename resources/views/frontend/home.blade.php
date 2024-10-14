@@ -211,7 +211,7 @@
                                                         </span>
                                                     </div>
                                                     <ul class="cs_card_list cs_mp_0">
-                                                        <li>
+                                                        <li style="color: whitesmoke !important;">
                                                             Maha RERA :
                                                             @if (in_array(1, $phase_id))
                                                                 @php
@@ -224,12 +224,12 @@
                                                                     // Loop through the phase IDs and their corresponding Maha RERA registration numbers
                                                                     foreach ($phase_id as $index => $id) {
                                                                         if (isset($phaseNames[$id]) ) {
-                                                                            $phaseDetails[] = $phaseNames[$id] . ' ' . $maha_rera_registration_number[$index];
+                                                                            $phaseDetails[] = $phaseNames[$id] . ' - ' . $maha_rera_registration_number[$index] ;
                                                                         }
                                                                     }
 
                                                                     // Join the details into a single string
-                                                                    echo implode(' ', $phaseDetails);
+                                                                    echo implode('<br>', $phaseDetails);
                                                                 @endphp
                                                             @else
                                                                 N/A

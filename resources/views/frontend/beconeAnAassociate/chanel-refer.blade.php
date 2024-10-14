@@ -176,7 +176,7 @@
                             </div>
 
                             <div class="col-sm-4">
-                                <input type="email" class="cs_form_field_2 cs_radius_20 @error('email') is-invalid @enderror" maxlength="10" name="email" id="email" value="{{ old('email') }}" placeholder="Email Id *">
+                                <input type="email" class="cs_form_field_2 cs_radius_20 @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="Email Id *">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

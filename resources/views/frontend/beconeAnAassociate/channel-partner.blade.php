@@ -332,7 +332,7 @@
                         <div class="col-sm-4">
                             <h4 class="cs_fs_16 cs_bold mb-0"><b>GST No. : </b></h4>
                             <input type="text"
-                                class="cs_form_field_2 cs_radius_20 @error('gstNo') is-invalid @enderror" name="gstNo"
+                                class="cs_form_field_2 cs_radius_20 @error('gstNo') is-invalid @enderror" name="gstNo" maxlength="15"
                                 id="gstNo" value="{{ old('gstNo') }}" placeholder="Enter GST No.">
                             @error('gstNo')
                                 <span class="invalid-feedback" role="alert">
