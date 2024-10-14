@@ -164,7 +164,7 @@ Bhairaav | Residental Projects
                 </div>
             </div>
 
-            @if(!empty($locationAdvantages))
+            @if(!empty($locationAdvantages) && $locationAdvantages->contains('location_advantage_id', 1))
                 <div class="col-lg-6">
                     <div class="loc-adv-sec">
                         <div class="loc-adv-img-sec">
@@ -186,7 +186,9 @@ Bhairaav | Residental Projects
                         </ul>
                     </div>
                 </div>
+            @endif
 
+            @if(!empty($locationAdvantages) && $locationAdvantages->contains('location_advantage_id', 2))
                 <div class="col-lg-6">
                     <div class="loc-adv-sec">
                         <div class="loc-adv-img-sec">
@@ -210,7 +212,9 @@ Bhairaav | Residental Projects
                         </ul>
                     </div>
                 </div>
+            @endif
 
+            @if(!empty($locationAdvantages) && $locationAdvantages->contains('location_advantage_id', 3))
                 <div class="col-lg-12">
                     <div class="loc-adv-sec">
                         <div class="loc-adv-img-sec">
