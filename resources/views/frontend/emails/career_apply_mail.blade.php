@@ -75,7 +75,7 @@
     <div class="container">
         <!-- Contact Us Section -->
         <div class="contact">
-            <img src="{{ asset('frontend/assets/img/about/Bhairaav-black.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
+            <img src="{{ asset('frontend/assets/img/about/bhairaav_dark_logo.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
         </div>
 
         <h2>Career Apply Mail Details :- </h2>

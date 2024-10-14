@@ -70,40 +70,40 @@
 
 <body>
     <div class="container">
-        <img src="{{ asset('frontend/assets/img/about/Bhairaav-black.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
-    </div>
+        <img src="{{ asset('frontend/assets/img/about/bhairaav_dark_logo.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
 
-    <h2>Properties Request Mail Details :-</h2>
+        <h2>Properties Request Mail Details :-</h2>
 
-    <p class="details"><strong>Name:</strong> {{ $mailData['name'] }}</p>
-    <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
-    <p class="details"><strong>Phone No :</strong> {{ $mailData['phone_no'] }}</p>
-    <p class="details"><strong>Subject:</strong> {{ $mailData['subject'] }}</p>
-    @if ($mailData['flat_type'] == 1)
-        <p class="details">
-            <strong>Flat Type:</strong>
-            1 BHK
-        </p>
-    @elseif ($mailData['flat_type'] == 2)
-        <p class="details">
-            <strong>Flat Type:</strong>
-            2 BHK
-        </p>
-    @elseif ($mailData['flat_type'] == 3)
-        <p class="details">
-            <strong>Flat Type:</strong>
-            Other
-        </p>
-    @endif
+        <p class="details"><strong>Name:</strong> {{ $mailData['name'] }}</p>
+        <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
+        <p class="details"><strong>Phone No :</strong> {{ $mailData['phone_no'] }}</p>
+        <p class="details"><strong>Subject:</strong> {{ $mailData['subject'] }}</p>
+        @if ($mailData['flat_type'] == 1)
+            <p class="details">
+                <strong>Flat Type:</strong>
+                1 BHK
+            </p>
+        @elseif ($mailData['flat_type'] == 2)
+            <p class="details">
+                <strong>Flat Type:</strong>
+                2 BHK
+            </p>
+        @elseif ($mailData['flat_type'] == 3)
+            <p class="details">
+                <strong>Flat Type:</strong>
+                Other
+            </p>
+        @endif
 
-    <p>Thank you for reaching out to us. We will respond to your inquiry as soon as possible.</p>
-    <p class="footer">Bhairava Lifestyles</p>
+        <p>Thank you for reaching out to us. We will respond to your inquiry as soon as possible.</p>
+        <p class="footer">Bhairava Lifestyles</p>
 
-    <div class="footer">
-        <p>
-            Bhairaav Lifestyles<br>
-            Email: sales@bhairaav.com
-        </p>
+        <div class="footer">
+            <p>
+                Bhairaav Lifestyles<br>
+                Email: sales@bhairaav.com
+            </p>
+        </div>
     </div>
 </body>
 

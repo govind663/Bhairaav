@@ -72,32 +72,32 @@
     <div class="container">
         <!-- Contact Us Section -->
         <div class="contact">
-            <img src="{{ asset('frontend/assets/img/about/Bhairaav-black.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
-        </div>
+            <img src="{{ asset('frontend/assets/img/about/bhairaav_dark_logo.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
 
-        <h2>Contact Us Mail Details :- </h2>
-        <p class="details"><strong>Name:</strong> {{ $mailData['name'] }}</p>
-        <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
-        <p class="details"><strong>Phone No :</strong> {{ $mailData['phone_no'] }}</p>
-        <p class="details"><strong>Subject:</strong> {{ $mailData['subject'] }}</p>
-        <p class="details"><strong>Message:</strong> {{ $mailData['message'] }}</p>
+            <h2>Contact Us Mail Details :- </h2>
+            <p class="details"><strong>Name:</strong> {{ $mailData['name'] }}</p>
+            <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
+            <p class="details"><strong>Phone No :</strong> {{ $mailData['phone_no'] }}</p>
+            <p class="details"><strong>Subject:</strong> {{ $mailData['subject'] }}</p>
+            <p class="details"><strong>Message:</strong> {{ $mailData['message'] }}</p>
 
-        <p>
-            Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
-        </p>
-        <!-- Footer Section -->
-        <div class="footer">
-            <p style="font-size: 12px;color: #666;">
-                Copyright © {{ date('Y') }}
-                <a href="https://bhairaav.com" target="_blank">Bhairaav</a>.
-                All Rights Reserved.
+            <p>
+                Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
             </p>
+            <!-- Footer Section -->
+            <div class="footer">
+                <p style="font-size: 12px;color: #666;">
+                    Copyright © {{ date('Y') }}
+                    <a href="https://bhairaav.com" target="_blank">Bhairaav</a>.
+                    All Rights Reserved.
+                </p>
 
-            <p class="mb-0" style="font-size: 12px;color: #666;">
-                Bhairaav Lifestyles
-                <br>
-                Email: sales@bhairaav.com
-            </p>
+                <p class="mb-0" style="font-size: 12px;color: #666;">
+                    Bhairaav Lifestyles
+                    <br>
+                    Email: sales@bhairaav.com
+                </p>
+            </div>
         </div>
     </div>
 </body>
