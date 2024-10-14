@@ -38,9 +38,10 @@
                     <div class="cs_sidebar cs_right_sidebar bd_side_left">
                         <div class="cs_sidebar_item widget_search bd_search_item">
                             <h2 class="cs_fs_21 cs_bold cs_mb_8">Search</h2>
-                            <form class="cs_sidebar_search" action="#">
-                                <input type="text" placeholder="Looking for Something...">
-                                <button class="cs_sidebar_search_btn">
+                            <form method="POST" action="{{ route('frontend.search-blog-details', ['id' => $blog->id]) }}" class="cs_sidebar_search" enctype="multipart/form-data">
+                                @csrf
+                                <input required type="text" class="@error('search') is-invalid @enderror" name="search" id="serch" value="{{ old('serch', request('serch')) }}"  placeholder="Looking for Something...">
+                                <button class="cs_sidebar_search_btn" type="submit">
                                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_658_659)">
                                             <path

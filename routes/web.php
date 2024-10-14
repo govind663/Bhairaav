@@ -352,6 +352,9 @@ Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class]
 
         // ==== Blog Details
         Route::get('/blog-details/{id}', [BlogController::class, 'blogDetails'])->name('frontend.blog.blog-details');
+
+        // ===== Serch Blog Details Page
+        Route::post('/search-blog-details/{id?}', [BlogController::class, 'searchBlogDetails'])->name('frontend.search-blog-details');
     });
 
     // ==== Contact Us
@@ -383,4 +386,5 @@ Route::group(['prefix'=> '', 'middleware'=>[PreventBackHistoryMiddleware::class]
 
     // ===== Career Apply
     Route::post('/store-career-apply/{job_id?}', [CareerController::class, 'storeCareerApply'])->name('frontend.store-career-apply');
+
 });
