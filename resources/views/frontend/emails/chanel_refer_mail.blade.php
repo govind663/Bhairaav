@@ -51,8 +51,8 @@
         }
 
         .logo {
-            width: 100px;
-            height: 100px;
+            width: 180px;
+            height: 120px;
             margin-bottom: 5px;
         }
 

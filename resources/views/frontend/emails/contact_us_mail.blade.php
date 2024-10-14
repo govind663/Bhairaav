@@ -40,7 +40,7 @@
 
         .details {
             margin-bottom: 15px;
-            text-align: right;
+            text-align: left;
         }
 
         .details strong {
@@ -55,8 +55,8 @@
         }
 
         .logo {
-            width: 100px;
-            height: 100px;
+            width: 180px;
+            height: 120px;
             margin-bottom: 5px;
         }
 
