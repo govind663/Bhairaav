@@ -72,7 +72,7 @@
     <div class="container">
         <!-- Contact Us Section -->
         <div class="contact">
-            <img src="{{ asset('frontend/assets/img/about/bhairaav_dark_logo.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
+            <img src="{{ asset('frontend/assets/img/bhairaav_dark_logo.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
 
             <h2>Contact Us Mail Details :- </h2>
             <p class="details"><strong>Name:</strong> {{ $mailData['name'] }}</p>

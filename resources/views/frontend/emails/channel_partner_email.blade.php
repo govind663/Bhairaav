@@ -69,7 +69,7 @@
 
 <body>
     <div class="container">
-        <img src="{{ asset('frontend/assets/img/about/bhairaav_dark_logo.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
+        <img src="{{ asset('frontend/assets/img/bhairaav_dark_logo.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
 
         <h1>New Channel Partner Registration :-</h1>
         <p>Dear Sales Team,</p>
