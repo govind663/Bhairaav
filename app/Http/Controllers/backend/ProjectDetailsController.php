@@ -12,6 +12,7 @@ use App\Models\ProjectHallmarks;
 use App\Models\ProjectLocationAdvantages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
 use App\Models\Projects;
@@ -259,20 +260,31 @@ class ProjectDetailsController extends Controller
         // DB::beginTransaction();
 
         try {
-            // Update banner images
-            $bannerImagePaths = json_decode($projectDetails->banner_image, true) ?? [];
+            // Delete existing images
+            if (!empty($bannerImagePaths)) {
+                foreach ($bannerImagePaths as $existingImage) {
+                    $existingImagePath = public_path('/bhairaav/project_details/banner_image/' . $existingImage);
+                    if (File::exists($existingImagePath)) {
+                        File::delete($existingImagePath); // Delete the image file
+                    }
+                }
+            }
+
+            // Clear the array of existing images
+            $bannerImagePaths = [];
 
             // Check if new images are uploaded
             if ($request->hasFile('banner_image')) {
-                // Add new images to the existing paths
+                // Add new images to the paths array
                 foreach ($request->file('banner_image') as $image) {
-                    $new_name = time() . rand(10, 999) . '.' . $image->getClientOriginalExtension();
+                    // Validate the image before processing (add your validation rules)
+                    $new_name = Str::uuid() . '.' . $image->getClientOriginalExtension();
                     $image->move(public_path('/bhairaav/project_details/banner_image'), $new_name);
                     $bannerImagePaths[] = $new_name; // Add the new image to the array
                 }
             }
 
-            // Update the banner_image with both old and new image paths
+            // Update the banner_image with the new image paths
             $projectDetails->banner_image = json_encode($bannerImagePaths);
 
             // Update overview image
