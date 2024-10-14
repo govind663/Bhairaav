@@ -71,28 +71,26 @@
     <div class="container">
         <img src="https://bhairaav.com/frontend/assets/img/Bhairaav-Logo.png" alt="Bhairava Lifestyles Logo" class="logo">
 
-        <h1>New Channel Partner Registration :-</h1>
-        <p>Dear Sales Team,</p>
-        <p>A new channel partner has been successfully registered with the following details:</p>
+        <h1>New Channel Partner Registration:</h1>
+        <p style="text-align: left !important">Dear Sales Team,</p>
+        <p style="text-align: left !important">A new channel partner has been successfully registered with the following details:</p>
 
-        <ul>
-            <li><strong>Company Name / Individual Name:</strong> {{ $companyNameOrIndividualName }}</li>
-            <li><strong>Name of the Owner:</strong> {{ $nameOfTheOwner }}</li>
-            <li><strong>Entity:</strong> {{ $entity }}</li>
-            <li><strong>Office Address:</strong> {{ $officeAddress }}</li>
-            <li><strong>Telephone Number:</strong> +91-{{ $telephoneNumber }}</li>
-            <li><strong>Mobile Number:</strong> +91-{{ $mobileNumber }}</li>
-            <li><strong>Website:</strong> {{ $website }}</li>
-            <li><strong>Email ID:</strong> {{ $emailId }}</li>
-        </ul>
+        <div class="details">
+            <p><strong>Company Name / Individual Name:</strong> {{ $companyNameOrIndividualName }}</p>
+            <p><strong>Name of the Owner:</strong> {{ $nameOfTheOwner }}</p>
+            <p><strong>Entity:</strong> {{ $entity }}</p>
+            <p><strong>Office Address:</strong> {{ $officeAddress }}</p>
+            <p><strong>Telephone Number:</strong> +91-{{ $telephoneNumber }}</p>
+            <p><strong>Mobile Number:</strong> +91-{{ $mobileNumber }}</p>
+            <p><strong>Website:</strong> {{ $website }}</p>
+            <p><strong>Email ID:</strong> {{ $emailId }}</p>
+        </div>
 
         <p>Thank you,</p>
         <p>The Bhairaav Team</p>
 
         <div class="footer">
-            <div class="footer">
-                <p>This email was sent automatically. Please do not reply.</p>
-            </div>
+            <p>This email was sent automatically. Please do not reply.</p>
         </div>
     </div>
 </body>
