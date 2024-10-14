@@ -1400,7 +1400,7 @@ trait HasAttributes
             return Hash::make($value);
         }
 
-        /** @phpstan-ignore-next-line */
+        /** @phpstan-ignore staticMethod.notFound */
         if (! Hash::verifyConfiguration($value)) {
             throw new RuntimeException("Could not verify the hashed value's configuration.");
         }
@@ -1620,7 +1620,7 @@ trait HasAttributes
     /**
      * Get the attributes that should be cast.
      *
-     * @return array
+     * @return array<string, string>
      */
     protected function casts()
     {
