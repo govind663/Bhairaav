@@ -79,10 +79,14 @@
     <p class="details"><strong>Phone No:</strong> {{ $mailData['mobile_no'] }}</p>
     <p class="details"><strong>Project:</strong> {{ $mailData['project'] }}</p>
     <p class="details"><strong>Unit/Flat:</strong> {{ $mailData['unit_or_flat'] }}</p>
-    <p class="details"><strong>Referral First Name:</strong> {{ json_decode($mailData['refer_f_name']) }}</p>
-    <p class="details"><strong>Referral Last Name:</strong> {{ json_decode($mailData['refer_l_name']) }}</p>
-    <p class="details"><strong>Referral Email:</strong> {{ json_decode($mailData['refer_email']) }}</p>
-    <p class="details"><strong>Referral Relation:</strong> {{ json_decode($mailData['refer_relation']) }}</p>
+
+    <!-- Assuming these are arrays, loop through them -->
+    @foreach ($mailData['refer_f_name'] as $index => $referFName)
+        <p class="details"><strong>Referral First Name:</strong> {{ $referFName }}</p>
+        <p class="details"><strong>Referral Last Name:</strong> {{ $mailData['refer_l_name'][$index] }}</p>
+        <p class="details"><strong>Referral Email:</strong> {{ $mailData['refer_email'][$index] }}</p>
+        <p class="details"><strong>Referral Relation:</strong> {{ $mailData['refer_relation'][$index] }}</p>
+    @endforeach
 
     <p>
         Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
