@@ -76,7 +76,7 @@
     <p class="details"><strong>Phone No:</strong> {{ $mailData['mobile_no'] }}</p>
     @php
         // ==== Fetch Project Name
-        $project = \App\Models\Project::where('id', $mailData['project'])->first();
+        $project = \App\Models\Projects::where('id', $mailData['project'])->first();
     @endphp
     <p class="details"><strong>Project:</strong>
         @if ($project)
