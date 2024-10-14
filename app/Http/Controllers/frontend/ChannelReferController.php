@@ -8,6 +8,7 @@ use App\Mail\sendChannelReferMail;
 use App\Models\HowWorkLoyaltyProgram;
 use App\Models\LoyaltyProgram;
 use App\Models\MemberDetail;
+use App\Models\Projects;
 use Illuminate\Http\Request;
 use App\Models\ReferLoyaltyProgram;
 use App\Models\ReInvestmentLoyaltyProgram;
@@ -23,11 +24,18 @@ class ChannelReferController extends Controller
         $re_investment_loyalty_programs = ReInvestmentLoyaltyProgram::orderBy("id","desc")->whereNull('deleted_at')->first();
         $refer = ReferLoyaltyProgram::orderBy("id","asc")->whereNull('deleted_at')->get();
 
+        // === Fetch Project
+        $projects = Projects::orderBy("id","desc")->whereNull('deleted_at')->get([
+            'id',
+            'project_name'
+        ]);
+
         return view("frontend.beconeAnAassociate.chanel-refer",[
             'loyalityProgram' => $loyalityProgram,
             'howWorkLoyaltyPrograms' => $howWorkLoyaltyPrograms,
             're_investment_loyalty_programs' => $re_investment_loyalty_programs,
             'refer' => $refer,
+            'projects' => $projects
         ]);
     }
 

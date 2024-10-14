@@ -17,7 +17,6 @@
             background-color: #f9f9f9;
             color: #333;
             padding: 20px;
-            margin: 0;
         }
 
         .container {
@@ -27,7 +26,7 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         h2 {
@@ -42,15 +41,13 @@
 
         .details strong {
             display: inline-block;
-            width: 180px; /* Adjust width as needed */
-            color: #555; /* Slightly darker for contrast */
+            width: 150px; /* Adjust width as needed */
         }
 
         .footer {
             margin-top: 20px;
             font-size: 12px;
             color: #666;
-            text-align: center; /* Center footer content */
         }
 
         .logo {
@@ -77,16 +74,38 @@
     <p class="details"><strong>Last Name:</strong> {{ $mailData['l_name'] }}</p>
     <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
     <p class="details"><strong>Phone No:</strong> {{ $mailData['mobile_no'] }}</p>
-    <p class="details"><strong>Project:</strong> {{ $mailData['project'] }}</p>
+    @php
+        // ==== Fetch Project Name
+        $project = \App\Models\Project::where('id', $mailData['project'])->first();
+    @endphp
+    <p class="details"><strong>Project:</strong>
+        @if ($project)
+            {{ $project->name }}
+        @endif
+    </p>
     <p class="details"><strong>Unit/Flat:</strong> {{ $mailData['unit_or_flat'] }}</p>
 
-    <!-- Assuming these are arrays, loop through them -->
-    @foreach ($mailData['refer_f_name'] as $index => $referFName)
-        <p class="details"><strong>Referral First Name:</strong> {{ $referFName }}</p>
-        <p class="details"><strong>Referral Last Name:</strong> {{ $mailData['refer_l_name'][$index] }}</p>
-        <p class="details"><strong>Referral Email:</strong> {{ $mailData['refer_email'][$index] }}</p>
-        <p class="details"><strong>Referral Relation:</strong> {{ $mailData['refer_relation'][$index] }}</p>
-    @endforeach
+    <!-- Table for Referral Details -->
+    <table style="width: 100%; border-collapse: collapse; border: 1px solid #000; margin-top: 20px;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th style="border: 1px solid #000; padding: 8px;">Referral First Name</th>
+                <th style="border: 1px solid #000; padding: 8px;">Referral Last Name</th>
+                <th style="border: 1px solid #000; padding: 8px;">Referral Email</th>
+                <th style="border: 1px solid #000; padding: 8px;">Referral Relation</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($mailData['refer_f_name'] as $index => $referFName)
+            <tr>
+                <td style="border: 1px solid #000; padding: 8px;">{{ $referFName }}</td>
+                <td style="border: 1px solid #000; padding: 8px;">{{ $mailData['refer_l_name'][$index] }}</td>
+                <td style="border: 1px solid #000; padding: 8px;">{{ $mailData['refer_email'][$index] }}</td>
+                <td style="border: 1px solid #000; padding: 8px;">{{ $mailData['refer_relation'][$index] }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 
     <p>
         Thank you for reaching out to us. We will respond to your inquiry as soon as possible.

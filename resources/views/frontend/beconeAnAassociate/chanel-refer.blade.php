@@ -186,35 +186,10 @@
 
                             <div class="col-sm-4">
                                 <select name="project" id="project" class="cs_form_field_2 cs_radius_20 @error('project') is-invalid @enderror">
-                                    <optgroup>
-                                        <option value="">Select Project</option>
-                                        <option class="cs_bold">Residential Projects</option>
-                                        <option value="1" {{ old('project') == 1 ? 'selected' : '' }}>Goldcrest Residency</option>
-                                        <option value="2" {{ old('project') == 2 ? 'selected' : '' }}>Jewel of Queen</option>
-                                    </optgroup>
-                                    <optgroup>
-                                        <option class="cs_bold">Commercial Projects</option>
-                                        <option value="3" {{ old('project') == 3 ? 'selected' : '' }}>Bhairaav Milestone</option>
-                                        <option value="4" {{ old('project') == 4 ? 'selected' : '' }}>TCP The Corporate Park</option>
-                                    </optgroup>
-                                    <optgroup>
-                                        <option class="cs_bold">Completed Projects</option>
-                                        <option value="5" {{ old('project') == 5 ? 'selected' : '' }}>Bhairaav Darshan</option>
-                                        <option value="6" {{ old('project') == 6 ? 'selected' : '' }}>Parshwa Padma</option>
-                                        <option value="7" {{ old('project') == 7 ? 'selected' : '' }}>Madhuban</option>
-                                        <option value="8" {{ old('project') == 8 ? 'selected' : '' }}>Bhairaav Signature</option>
-                                        <option value="9" {{ old('project') == 9 ? 'selected' : '' }}>BHairaav Blessings</option>
-                                        <option value="10" {{ old('project') == 10 ? 'selected' : '' }}>Jupitor</option>
-                                        <option value="11" {{ old('project') == 11 ? 'selected' : '' }}>Four Season</option>
-                                        <option value="12" {{ old('project') == 12 ? 'selected' : '' }}>C Teja Signature</option>
-                                    </optgroup>
-                                    <optgroup>
-                                        <option class="cs_bold">Upcoming Projects</option>
-                                        <option value="13" {{ old('project') == 13 ? 'selected' : '' }}>Bhairaav Blossom </option>
-                                        <option value="14" {{ old('project') == 14 ? 'selected' : '' }}>SRA Project </option>
-                                        <option value="15" {{ old('project') == 15 ? 'selected' : '' }}>Bhairaav Moksh </option>
-                                        <option value="16" {{ old('project') == 16 ? 'selected' : '' }}>Redevelopment Project </option>
-                                    </optgroup>
+                                    <option value="">Select Project</option>
+                                    @foreach ($projects as $value)
+                                        <option value="{{ $value->id }}" {{ old('project') == $value->id ? 'selected' : '' }}><b>{{ $value->project_name }}</b></option>
+                                    @endforeach
                                 </select>
                                 @error('project')
                                     <span class="invalid-feedback" role="alert">
