@@ -20,9 +20,9 @@
         }
 
         .container {
-            /* max-width: 600px; */
+            max-width: 600px;
             margin: 0 auto;
-            background-color: transparent;
+            background-color: #ffffff;
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 20px;
@@ -67,54 +67,55 @@
 <body>
     <div class="container">
         <img src="{{ asset('frontend/assets/img/about/Bhairaav-black.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
-    </div>
 
-    <h2>Member Details :- </h2>
-    <p class="details"><strong>First Name:</strong> {{ $mailData['f_name'] }}</p>
-    <p class="details"><strong>Last Name:</strong> {{ $mailData['l_name'] }}</p>
-    <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
-    <p class="details"><strong>Phone No:</strong> {{ $mailData['mobile_no'] }}</p>
-    <p class="details"><strong>Project:</strong> {{ $mailData['project'] }}</p>
-    <p class="details"><strong>Unit/Flat:</strong> {{ $mailData['unit_or_flat'] }}</p>
+        <h2>Member Details :- </h2>
 
-    <!-- Table for Referral Details -->
-    <table style="width: 100%; border-collapse: collapse; border: 1px solid #000; margin-top: 20px;">
-        <caption style="background-color: #f2f2f2; padding: 8px; font-weight: bold;">Referral Details</caption>
-        <thead>
-            <tr style="background-color: #f2f2f2;">
-                <th style="border: 1px solid #000; padding: 8px;">Referral First Name</th>
-                <th style="border: 1px solid #000; padding: 8px;">Referral Last Name</th>
-                <th style="border: 1px solid #000; padding: 8px;">Referral Email</th>
-                <th style="border: 1px solid #000; padding: 8px;">Referral Relation</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($mailData['refer_f_name'] as $index => $referFName)
-            <tr>
-                <td style="border: 1px solid #000; padding: 8px;">{{ $referFName }}</td>
-                <td style="border: 1px solid #000; padding: 8px;">{{ $mailData['refer_l_name'][$index] }}</td>
-                <td style="border: 1px solid #000; padding: 8px;">{{ $mailData['refer_email'][$index] }}</td>
-                <td style="border: 1px solid #000; padding: 8px;">{{ $mailData['refer_relation'][$index] }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+        <p class="details"><strong>First Name:</strong> {{ $mailData['f_name'] }}</p>
+        <p class="details"><strong>Last Name:</strong> {{ $mailData['l_name'] }}</p>
+        <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
+        <p class="details"><strong>Phone No:</strong> {{ $mailData['mobile_no'] }}</p>
+        <p class="details"><strong>Project:</strong> {{ $mailData['project'] }}</p>
+        <p class="details"><strong>Unit/Flat:</strong> {{ $mailData['unit_or_flat'] }}</p>
 
-    <p>
-        Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
-    </p>
+        <!-- Table for Referral Details -->
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #000; margin-top: 20px;">
+            <caption style="background-color: #f2f2f2; padding: 8px; font-weight: bold;">Referral Details</caption>
+            <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th style="border: 1px solid #000; padding: 8px;">Referral First Name</th>
+                    <th style="border: 1px solid #000; padding: 8px;">Referral Last Name</th>
+                    <th style="border: 1px solid #000; padding: 8px;">Referral Email</th>
+                    <th style="border: 1px solid #000; padding: 8px;">Referral Relation</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($mailData['refer_f_name'] as $index => $referFName)
+                <tr>
+                    <td style="border: 1px solid #000; padding: 8px;">{{ $referFName }}</td>
+                    <td style="border: 1px solid #000; padding: 8px;">{{ $mailData['refer_l_name'][$index] }}</td>
+                    <td style="border: 1px solid #000; padding: 8px;">{{ $mailData['refer_email'][$index] }}</td>
+                    <td style="border: 1px solid #000; padding: 8px;">{{ $mailData['refer_relation'][$index] }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
 
-    <div class="footer">
         <p>
-            Copyright © {{ date('Y') }}
-            <a href="https://bhairaav.com" target="_blank">Bhairaav</a>.
-            All Rights Reserved.
+            Thank you for reaching out to us. We will respond to your inquiry as soon as possible.
         </p>
-        <p class="mb-0">
-            Bhairaav Lifestyles
-            <br>
-            Email: <a href="mailto:sales@bhairaav.com">sales@bhairaav.com</a>
-        </p>
+
+        <div class="footer">
+            <p>
+                Copyright © {{ date('Y') }}
+                <a href="https://bhairaav.com" target="_blank">Bhairaav</a>.
+                All Rights Reserved.
+            </p>
+            <p class="mb-0">
+                Bhairaav Lifestyles
+                <br>
+                Email: <a href="mailto:sales@bhairaav.com">sales@bhairaav.com</a>
+            </p>
+        </div>
     </div>
 </body>
 
