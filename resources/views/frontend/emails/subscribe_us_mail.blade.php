@@ -69,7 +69,7 @@
 
 <body>
     <div class="container">
-        <img src="{{ asset('frontend/assets/img/bhairaav_dark_logo.png') }}" alt="Bhairava Lifestyles Logo" class="logo">
+        <img src="https://bhairaav.com/frontend/assets/img/Bhairaav-Logo.png" alt="Bhairava Lifestyles Logo" class="logo">
 
         <h2>New Subscriber Details :-</h2>
 
