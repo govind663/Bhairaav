@@ -68,23 +68,7 @@
                         <h2 class="cs_widget_title cs_bold cs_fs_21 cs_white_color"><span>Links</span></h2>
                         <ul class="cs_menu_widget cs_mp0">
                             <li><a href='{{ route('/') }}'>Home</a></li>
-                            <li class="menu-item-has-children">
-                                <a href='javascript:;'>About Bhairaav</a>
-                                <ul>
-                                    <li>
-                                        <a href='{{ route('frontend.about.who-we-are') }}'>Who We Are</a>
-                                    </li>
-                                    <li>
-                                        <a href='{{ route('frontend.about.leadership') }}'>Leadership</a>
-                                    </li>
-                                    <li>
-                                        <a href='{{ route('frontend.about.our-team') }}'>Our Team</a>
-                                    </li>
-                                    <li>
-                                        <a href='{{ route('frontend.about.associates') }}'>Associates</a>
-                                    </li>
-                                </ul>
-                            </li>
+                            <li><a href="{{ route('frontend.about.who-we-are') }}">About Bhairaav</a></li>
 
                             <li class="menu-item-has-children">
                                 <a href="javascript:;">Become an associate</a>
@@ -97,6 +81,11 @@
                                     </li>
                                 </ul>
                             </li>
+
+                            <li><a href='{{ route('frontend.career') }}'>Career</a></li>
+                            <li><a href='{{ route('frontend.media') }}'>Recognition</a></li>
+                            <li><a href='{{ route('frontend.blog') }}'>Blog</a></li>
+                            <li><a href='{{ route('frontend.contact-us') }}'>Contact us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -121,10 +110,6 @@
                             <li>
                                 <a href='{{ route('frontend.project.upcoming-project') }}'>Upcoming Projects</a>
                             </li>
-                            <li><a href='{{ route('frontend.career') }}'>Career</a></li>
-                            <li><a href='{{ route('frontend.media') }}'>Recognition</a></li>
-                            <li><a href='{{ route('frontend.blog') }}'>Blog</a></li>
-                            <li><a href='{{ route('frontend.contact-us') }}'>Contact us</a></li>
                         </ul>
                     </div>
                 </div>
