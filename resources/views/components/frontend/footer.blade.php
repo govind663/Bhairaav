@@ -69,19 +69,7 @@
                         <ul class="cs_menu_widget cs_mp0">
                             <li><a href='{{ route('/') }}'>Home</a></li>
                             <li><a href="{{ route('frontend.about.who-we-are') }}">About Bhairaav</a></li>
-
-                            <li class="menu-item-has-children">
-                                <a href="javascript:;">Become an associate</a>
-                                <ul>
-                                    <li>
-                                        <a href='{{ route('frontend.becone-an-associate.channel-partner') }}'>Channel Partner</a>
-                                    </li>
-                                    <li>
-                                        <a href='{{ route('frontend.becone-an-associate.chanel-refer') }}'>Refer a friend</a>
-                                    </li>
-                                </ul>
-                            </li>
-
+                            <li><a href="{{ route('frontend.becone-an-associate.channel-partner') }}">Become an associate</a></li>
                             <li><a href='{{ route('frontend.career') }}'>Career</a></li>
                             <li><a href='{{ route('frontend.media') }}'>Recognition</a></li>
                             <li><a href='{{ route('frontend.blog') }}'>Blog</a></li>
