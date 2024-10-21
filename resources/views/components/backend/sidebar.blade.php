@@ -135,9 +135,9 @@
                         <li>
                             <a href="{{ route('testimonials.index') }}" class="{{ ($currentRoute === 'testimonials.index') || ($currentRoute === 'testimonials.create') || ($currentRoute === 'testimonials.edit') ? 'active' : '' }}">Testimonials</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('latest_update.index') }}" class="{{ ($currentRoute === 'latest_update.index') || ($currentRoute === 'latest_update.create') || ($currentRoute === 'latest_update.edit') ? 'active' : '' }}">Latest Updates</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
 
