@@ -68,11 +68,38 @@
                         <h2 class="cs_widget_title cs_bold cs_fs_21 cs_white_color"><span>Links</span></h2>
                         <ul class="cs_menu_widget cs_mp0">
                             <li><a href='{{ route('/') }}'>Home</a></li>
-                            <li><a href='{{ route('frontend.about.who-we-are') }}'>About Bhairaav</a></li>
+                            <li class="menu-item-has-children">
+                                <a href='javascript:;'>About Bhairaav</a>
+                                <ul>
+                                    <li>
+                                        <a href='{{ route('frontend.about.who-we-are') }}'>Who We Are</a>
+                                    </li>
+                                    <li>
+                                        <a href='{{ route('frontend.about.leadership') }}'>Leadership</a>
+                                    </li>
+                                    <li>
+                                        <a href='{{ route('frontend.about.our-team') }}'>Our Team</a>
+                                    </li>
+                                    <li>
+                                        <a href='{{ route('frontend.about.associates') }}'>Associates</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="menu-item-has-children">
+                                <a href="javascript:;">Become an associate</a>
+                                <ul>
+                                    <li>
+                                        <a href='{{ route('frontend.becone-an-associate.channel-partner') }}'>Channel Partner</a>
+                                    </li>
+                                    <li>
+                                        <a href='{{ route('frontend.becone-an-associate.chanel-refer') }}'>Refer a friend</a>
+                                    </li>
+                                </ul>
+                            </li>
+
                             <li><a href='{{ route('frontend.career') }}'>Career</a></li>
                             <li><a href='{{ route('frontend.media') }}'>Recognition</a></li>
-                            <li><a href='{{ route('frontend.blog') }}'>Blog</a></li>
-                            <li><a href='{{ route('frontend.contact-us') }}'>Contact us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -80,11 +107,30 @@
                     <div class="cs_footer_item">
                         <h2 class="cs_widget_title cs_bold cs_fs_21 cs_white_color"><span>Projects</span></h2>
                         <ul class="cs_menu_widget cs_mp0">
-                            <li><a href='{{ route('frontend.project.ongoing-project') }}'>Ongoing Projects</a></li>
-                            <li><a href='{{ route('frontend.project.ongoing-project.residential-project') }}'>Residential Projects</a></li>
-                            <li><a href='{{ route('frontend.project.ongoing-project.commercial-project') }}'>Commercial Projects</a></li>
-                            <li><a href='{{ route('frontend.project.completed-project', ['projectId' => '2']) }}'>Completed Projects</a></li>
-                            <li><a href='{{ route('frontend.project.upcoming-project') }}'>Upcoming Projects</a></li>
+                            <li class="menu-item-has-children">
+                                <a href='javascript:;'>Projects</a>
+                                <ul>
+                                    <li class="menu-item-has-children">
+                                        <a href='javascript:;'>Ongoing Projects</a>
+                                        <ul>
+                                            <li>
+                                                <a href='{{ route('frontend.project.ongoing-project.residential-project') }}'>Residential Projects</a>
+                                            </li>
+                                            <li>
+                                                <a href='{{ route('frontend.project.ongoing-project.commercial-project') }}'>Commercial Projects</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href='{{ route('frontend.project.completed-project', ['projectId' => '2']) }}'>Completed Projects</a>
+                                    </li>
+                                    <li>
+                                        <a href='{{ route('frontend.project.upcoming-project') }}'>Upcoming Projects</a>
+                                    </li>
+                                    <li><a href='{{ route('frontend.blog') }}'>Blog</a></li>
+                                    <li><a href='{{ route('frontend.contact-us') }}'>Contact us</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
