@@ -89,7 +89,7 @@
                                 <p class="cs_mb_16 cs_mb_lg_35">
                                     {!! $legacy->description !!}
                                 </p>
-                                <a class='cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15' href=''>
+                                <a class='cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15' href='{{ route('frontend.about.who-we-are') }}'>
                                     <b>Learn More</b>
                                     <span>
                                         <i>
