@@ -68,7 +68,8 @@
                         <h2 class="cs_widget_title cs_bold cs_fs_21 cs_white_color"><span>Links</span></h2>
                         <ul class="cs_menu_widget cs_mp0">
                             <li><a href='{{ route('/') }}'>Home</a></li>
-                            <li><a href='{{ route('frontend.about.who-we-are') }}'>About Bhairaav</a></li>
+                            <li><a href="{{ route('frontend.about.who-we-are') }}">About Bhairaav</a></li>
+                            <li><a href="{{ route('frontend.becone-an-associate.channel-partner') }}">Become an associate</a></li>
                             <li><a href='{{ route('frontend.career') }}'>Career</a></li>
                             <li><a href='{{ route('frontend.media') }}'>Recognition</a></li>
                             <li><a href='{{ route('frontend.blog') }}'>Blog</a></li>
@@ -81,10 +82,18 @@
                         <h2 class="cs_widget_title cs_bold cs_fs_21 cs_white_color"><span>Projects</span></h2>
                         <ul class="cs_menu_widget cs_mp0">
                             <li><a href='{{ route('frontend.project.ongoing-project') }}'>Ongoing Projects</a></li>
-                            <li><a href='{{ route('frontend.project.ongoing-project.residential-project') }}'>Residential Projects</a></li>
-                            <li><a href='{{ route('frontend.project.ongoing-project.commercial-project') }}'>Commercial Projects</a></li>
-                            <li><a href='{{ route('frontend.project.completed-project', ['projectId' => '2']) }}'>Completed Projects</a></li>
-                            <li><a href='{{ route('frontend.project.upcoming-project') }}'>Upcoming Projects</a></li>
+                            <li>
+                                <a href='{{ route('frontend.project.ongoing-project.residential-project') }}'>Residential Projects</a>
+                            </li>
+                            <li>
+                                <a href='{{ route('frontend.project.ongoing-project.commercial-project') }}'>Commercial Projects</a>
+                            </li>
+                            <li>
+                                <a href='{{ route('frontend.project.completed-project', ['projectId' => '2']) }}'>Completed Projects</a>
+                            </li>
+                            <li>
+                                <a href='{{ route('frontend.project.upcoming-project') }}'>Upcoming Projects</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

@@ -64,7 +64,7 @@ Bhairaav | Manaage Contact Us
                                     {{ $value->email }}
                                 </td>
                                 <td class="text-wrap text-justify">
-                                    {{ $value->phone }}
+                                    {{ $value->phone_no }}
                                 </td>
                                 <td class="text-wrap text-justify">
                                     {{ $value->subject }}

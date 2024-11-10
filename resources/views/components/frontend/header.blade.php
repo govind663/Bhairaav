@@ -62,6 +62,10 @@
                             </li>
 
                             <li>
+                                <a href='{{ route('frontend.career') }}'>Career</a>
+                            </li>
+
+                            <li>
                                 <a href='{{ route('frontend.media') }}'>Recognition</a>
                             </li>
 
