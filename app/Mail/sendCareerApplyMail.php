@@ -9,6 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Attachment;
+use Illuminate\Support\Facades\File;
 
 class sendCareerApplyMail extends Mailable
 {
@@ -52,11 +53,28 @@ class sendCareerApplyMail extends Mailable
      */
     public function attachments(): array
     {
-        // Attach the candidate's resume document
-        return [
-            Attachment::fromPath($this->resumePath)
-                ->as('Resume.pdf')
-                ->withMime('application/pdf'),
-        ];
+        if (File::exists($this->resumePath)) {
+            // Get the original file extension
+            $extension = File::extension($this->resumePath);
+
+            // Determine the MIME type based on the file extension
+            $mimeType = match ($extension) {
+                'pdf' => 'application/pdf',
+                'doc', 'docx' => 'application/msword',
+                'jpg', 'jpeg' => 'image/jpeg',
+                'png' => 'image/png',
+                'txt' => 'text/plain',
+                default => 'application/octet-stream',
+            };
+
+            return [
+                Attachment::fromPath($this->resumePath)
+                    ->as('Resume.' . $extension)
+                    ->withMime($mimeType),
+            ];
+        }
+
+        // Return an empty array if no file exists
+        return [];
     }
 }
