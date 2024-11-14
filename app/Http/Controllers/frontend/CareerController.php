@@ -48,9 +48,9 @@ class CareerController extends Controller
 
             $careerApplyForm->name = $request->name;
             $careerApplyForm->email = $request->email;
-            $careerApplyForm->mobile_no = $request->mobile_no;
-            $careerApplyForm->department = $request->department;
-            $careerApplyForm->currentdesignation = $request->currentdesignation;
+            $careerApplyForm->mobile_no = null;
+            $careerApplyForm->department = null;
+            $careerApplyForm->currentdesignation = null;
             $careerApplyForm->save();
 
             $update = [
@@ -65,9 +65,9 @@ class CareerController extends Controller
                 'job_title' => $request->job_title,
                 'name' => $request->name,
                 'email' => $request->email,
-                'mobile_no' => $request->mobile_no,
-                'department' => $request->department,
-                'currentdesignation' => $request->currentdesignation,
+                // 'mobile_no' => $request->mobile_no,
+                // 'department' => $request->department,
+                // 'currentdesignation' => $request->currentdesignation,
             ];
 
             // Pass the actual path of the resume document

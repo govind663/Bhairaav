@@ -82,9 +82,9 @@
         <p class="details"><strong>Job Title : </strong>{{ $mailData['job_title'] }}</p>
         <p class="details"><strong>Name : </strong> {{ $mailData['name'] }}</p>
         <p class="details"><strong>Email : </strong> {{ $mailData['email'] }}</p>
-        <p class="details"><strong>Phone No : </strong> {{ $mailData['mobile_no'] }}</p>
+        {{-- <p class="details"><strong>Phone No : </strong> {{ $mailData['mobile_no'] }}</p>
         <p class="details"><strong>Department : </strong> {{ $mailData['department'] }}</p>
-        <p class="details"><strong>Designation : </strong> {{ $mailData['currentdesignation'] }}</p>
+        <p class="details"><strong>Designation : </strong> {{ $mailData['currentdesignation'] }}</p> --}}
         {{-- <p class="details" style="font-size: 14px;"><strong>Candidate Resume : </strong>
             <a href="{{ $mailData['resume'] }}" target="_blank">
                 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>

@@ -270,35 +270,6 @@
                                             </div>
 
                                             <div class="col-sm-12 mb-3">
-                                                <input type="text" maxlength="10" class="cs_form_field_2 cs_radius_20 @error('mobile_no') is-invalid @enderror" name="mobile_no" id="mobile_no" value="{{ old('mobile_no') }}" placeholder="Mobile Number *">
-                                                @error('mobile_no')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-sm-6 mb-3">
-                                                    <input type="text" class="cs_form_field_2 cs_radius_20 @error('department') is-invalid @enderror" name="department" id="department" value="{{ old('department') }}" placeholder="Department *">
-                                                    @error('department')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-
-                                                <div class="col-sm-6 mb-3">
-                                                    <input type="text" class="cs_form_field_2 cs_radius_20 @error('currentdesignation') is-invalid @enderror" name="currentdesignation" id="currentdesignation" value="{{ old('currentdesignation') }}" placeholder="Designation *">
-                                                    @error('currentdesignation')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-12 mb-3">
                                                 <label class="cs_height_16 cs_height_lg_16"><b>Upload Resume : <span class="text-danger">*</span></b></label>
                                                 <input type="file" onchange="candidateResumePreviewFile()" accept=".png, .jpg, .jpeg, .pdf" class="cs_form_field_2 cs_radius_20 @error('candidate_resume_doc') is-invalid @enderror" name="candidate_resume_doc" id="candidate_resume_doc" value="{{ old('candidate_resume_doc') }}" >
                                                 <small class="text-secondary"><b>Note : The file size  should be less than 2MB .</b></small>
@@ -458,65 +429,6 @@
         if (!regex.test(key)) {
             event.preventDefault();
             alert("Name can only accepted by letters and spaces.");
-            return false;
-        }
-    });
-</script>
-
-<!-- Validate Email -->
-<script>
-    $(document).ready(function() {
-        // On form submission
-        $('.cs_form').on('submit', function(event) {
-            var emailField = $('#email');
-            var emailValue = emailField.val();
-            var regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-
-            // Check if email matches the regex
-            if (!regex.test(emailValue)) {
-                event.preventDefault(); // Prevent form submission
-                alert("Please enter a valid email address."); // Show error message
-                emailField.focus(); // Focus back on the email field
-                return false;
-            }
-        });
-    });
-</script>
-
-<!-- Validate Mobile Number -->
-<script>
-    $(document).on('keypress', '#mobile_no', function (event) {
-        var regex = new RegExp("^[0-9]+$");
-        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-        if (!regex.test(key)) {
-            event.preventDefault();
-            alert("Mobile Number can only accepted by numbers.");
-            return false;
-        }
-    });
-</script>
-
-<!-- Validate Department -->
-<script>
-    $(document).on('keypress', '#department', function (event) {
-        var regex = new RegExp("^[a-zA-Z ]+$");
-        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-        if (!regex.test(key)) {
-            event.preventDefault();
-            alert("Department can only accepted by letters and spaces.");
-            return false;
-        }
-    });
-</script>
-
-<!-- Validate Designation -->
-<script>
-    $(document).on('keypress', '#currentdesignation', function (event) {
-        var regex = new RegExp("^[a-zA-Z ]+$");
-        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-        if (!regex.test(key)) {
-            event.preventDefault();
-            alert("Designation can only accepted by letters and spaces.");
             return false;
         }
     });
