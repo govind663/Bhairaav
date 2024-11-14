@@ -25,9 +25,9 @@ class CareerApplyRequest extends FormRequest
             $rule = [
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|string|max:255',
-                'mobile_no' => 'required|numeric',
-                'department' => 'required|string|max:255',
-                'currentdesignation' => 'required|string|max:255',
+                // 'mobile_no' => 'required|numeric',
+                // 'department' => 'required|string|max:255',
+                // 'currentdesignation' => 'required|string|max:255',
                 'candidate_resume_doc' => 'mimes:jpeg,png,jpg,pdf|max:2048',
                 'g-recaptcha-response' => 'required|captcha',
             ];
@@ -35,9 +35,9 @@ class CareerApplyRequest extends FormRequest
             $rule = [
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|string|max:255',
-                'mobile_no' => 'required|numeric',
-                'department' => 'required|string|max:255',
-                'currentdesignation' => 'required|string|max:255',
+                // 'mobile_no' => 'required|numeric',
+                // 'department' => 'required|string|max:255',
+                // 'currentdesignation' => 'required|string|max:255',
                 'candidate_resume_doc' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
                 'g-recaptcha-response' => 'required|captcha',
             ];
