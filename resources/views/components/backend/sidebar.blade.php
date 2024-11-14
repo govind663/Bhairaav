@@ -328,7 +328,7 @@
                     </a>
                 </li>
 
-                <li class="dropdown {{ ($currentRoute === 'admin.contact_us') || ($currentRoute === 'contact_details.index') || ($currentRoute === 'contact_details.create') || ($currentRoute === 'contact_details.edit') ? 'show' : '' }}">
+                <li class="dropdown {{ ($currentRoute === 'admin.contact_us') || ($currentRoute === 'contact_details.index') || ($currentRoute === 'contact_details.create') || ($currentRoute === 'contact_details.edit') || ($currentRoute === 'contact_information.index') || ($currentRoute === 'contact_information.create') || ($currentRoute === 'contact_information.edit') ? 'show' : '' }}">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon bi bi-envelope"></span>
                         <span class="mtext">Contact Us</span>
@@ -345,7 +345,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" >
+                            <a href="{{ route('contact_information.index') }}" class="{{ ($currentRoute === 'contact_information.index') || ($currentRoute === 'contact_information.create') || ($currentRoute === 'contact_information.edit') ? 'active' : '' }}">
                                 <span class="mtext">Contact Information</span>
                             </a>
                         </li>

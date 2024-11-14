@@ -43,6 +43,7 @@ use App\Http\Controllers\backend\AdminDisclaimerController;
 use App\Http\Controllers\backend\AdminPrivacyPolicyController;
 use App\Http\Controllers\backend\AdminCareerController;
 use App\Http\Controllers\backend\AdminContactDetailsController;
+use App\Http\Controllers\backend\AdminContactInformationController;
 
 // ===== Frontend
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
@@ -273,6 +274,9 @@ Route::group(['prefix' => '', 'middleware'=>['auth', PreventBackHistoryMiddlewar
 
     // ==== Manage Contact Details
     Route::resource('contact_details', AdminContactDetailsController::class);
+
+    // ====== Manage Contact Information
+    Route::resource('contact_information', AdminContactInformationController::class);
 });
 
 
