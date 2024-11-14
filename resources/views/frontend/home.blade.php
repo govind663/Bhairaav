@@ -451,7 +451,7 @@
                                 <h2 class="cs_fs_50 cs_bold mb-10 cs_white_color">Testimonials from Our Valued Clients
                                 </h2>
                                 <a class="cs_btn cs_style_2 cs_white_btn cs_medium cs_radius_20 cs_fs_15"
-                                    href="/about">
+                                    href="{{ route('/') }}">
                                     We Care
                                     <span>
                                         <i>
