@@ -145,54 +145,26 @@
         <div class="cs_height_80 cs_height_lg_72"></div>
         <div class="container">
             <div class="cs_contact_info_boxes">
+                @foreach($contact_details as $value)
                 <div class="cs_contact_info_box">
                     <div class="cs_iconbox cs_style_4">
                         <div class="cs_iconbox_icon cs_center rounded-circle">
                             <img src="{{ asset('frontend/assets/img/icons/contact_icon_2.svg') }}" alt="Icon">
                         </div>
                         <div class="cs_iconbox_right">
-                            <h3 class="cs_fs_16 cs_bold cs_mb_5">For New Sales reach us on</h3>
+                            <h3 class="cs_fs_16 cs_bold cs_mb_5">{{ $value->title }}</h3>
                             <p class="mb-0">
-                                <a href="mailto:sales@bhairaav.com">sales@bhairaav.com</a>
+                                <a href="mailto:sales@bhairaav.com">{{ $value->email }}</a>
                             </p>
                             <p class="mb-0">
-                                <a href="tel:9071123428">+91 90711 23428</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="cs_contact_info_box">
-                    <div class="cs_iconbox cs_style_4">
-                        <div class="cs_iconbox_icon cs_center rounded-circle">
-                            <img src="{{ asset('frontend/assets/img/icons/contact_icon_2.svg') }}" alt="Icon">
-                        </div>
-                        <div class="cs_iconbox_right">
-                            <h3 class="cs_fs_16 cs_bold cs_mb_5">Existing Customers reach us on</h3>
-                            <p class="mb-0">
-                                <a href="mailto:customercare@bhairaav.com">customercare@bhairaav.com</a>
-                            </p>
-                            <p class="mb-0">
-                                <a href="tel:9071123428">+91 90711 23428</a>
+                                @if (!empty($value->phone))
+                                    <a href="tel:{{ $value->phone }}">+91 {{ $value->phone }}</a>
+                                @endif
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="cs_contact_info_box">
-                    <div class="cs_iconbox cs_style_4">
-                        <div class="cs_iconbox_icon cs_center rounded-circle">
-                            <img src="{{ asset('frontend/assets/img/icons/contact_icon_2.svg') }}" alt="Icon">
-                        </div>
-                        <div class="cs_iconbox_right">
-                            <h3 class="cs_fs_16 cs_bold cs_mb_5">Mail Us</h3>
-                            <p class="mb-0">
-                                <a href="mailto:info@bhairaav.com">info@bhairaav.com</a>
-                            </p>
-                            <p class="mb-0">
-                                <a href="tel:9071123428">+91 90711 23428</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <div class="cs_height_70 cs_height_lg_80"></div>

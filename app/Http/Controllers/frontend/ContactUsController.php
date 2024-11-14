@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\ContactUsRequest;
 use App\Mail\ContactUsMail;
+use App\Models\ContactDetails;
 use App\Models\ContactUs;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -15,7 +16,10 @@ class ContactUsController extends Controller
 {
     public function contactUs(Request $request)
     {
-        return view("frontend.contact.contact-us");
+        // === Fetct Contact Details
+        $contact_details = ContactDetails::orderBy("id","asc")->whereNull('deleted_at')->get();
+
+        return view("frontend.contact.contact-us", ['contact_details'=> $contact_details]);
     }
 
     // ==== Store Contact Us

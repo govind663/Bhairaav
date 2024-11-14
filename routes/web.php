@@ -42,6 +42,7 @@ use App\Http\Controllers\backend\PhaseController;
 use App\Http\Controllers\backend\AdminDisclaimerController;
 use App\Http\Controllers\backend\AdminPrivacyPolicyController;
 use App\Http\Controllers\backend\AdminCareerController;
+use App\Http\Controllers\backend\AdminContactDetailsController;
 
 // ===== Frontend
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
@@ -269,6 +270,9 @@ Route::group(['prefix' => '', 'middleware'=>['auth', PreventBackHistoryMiddlewar
 
     // ==== Manage Career
     Route::resource('careers', AdminCareerController::class);
+
+    // ==== Manage Contact Details
+    Route::resource('contact_details', AdminContactDetailsController::class);
 });
 
 
