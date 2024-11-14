@@ -17,7 +17,7 @@ class CompletedProjectController extends Controller
 {
     public function completedProject(Request $request, $projectId)
     {
-        $projects = Projects::where('project_type', $projectId)->orderBy("id","asc")->whereNull('deleted_at')->get();
+        $projects = Projects::where('project_type', $projectId)->orderBy("year_of_completion","asc")->whereNull('deleted_at')->get();
 
         return view("frontend.project.completed-project" , ['projects' => $projects]);
     }
