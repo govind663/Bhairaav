@@ -365,86 +365,203 @@ Bhairaav | Residental Projects
     </div>
     <div class="cs_slider cs_style_1 cs_slider_gap_60 cs_hover_show_arrows">
         <div class="container">
+            @foreach($projectGallery as $index => $gallery)
             <div class="cs_slider_container" data-autoplay="0" data-loop="1" data-speed="600" data-center="0"
                 data-variable-width="0" data-slides-per-view="responsive" data-xs-slides="1" data-sm-slides="2"
                 data-md-slides="2" data-lg-slides="3" data-add-slides="3">
                 <div class="cs_slider_wrapper cs_lightgallery project-details">
-                    @if(!empty($projectAmenities))
-                        @foreach($projectGallery as $index => $gallery)
-                            <div class="cs_slide">
-                                {{-- check session form filled in if condition --}}
-                                @if(session('form_data.email'))
-                                <a href="#" class="cs_gallery_item cs_style_3 d-block cs_bg_filed position-relative">
-                                    <div class="cs_gallery_item_hover cs_primary_font cs_fs_38">
-                                        <span class="cs_hover_icon cs_accent_color">
-                                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <g clip-path="url(.clip0_441_197)">
-                                                    <path
-                                                        d="M5.21698 26.9937C6.24727 26.9937 7.26819 26.9843 8.29847 26.9937C8.99157 27.003 9.46925 27.3402 9.66594 27.9396C10.0219 29.0261 9.37559 29.9721 8.24227 29.9721C6.19107 29.9815 4.14924 29.9721 2.09803 29.9721C1.86388 29.9721 1.62972 30.0002 1.39557 29.9815C0.524508 29.9065 0 29.3165 0 28.4454C0.00936622 26.235 0.00936622 24.0246 0.0187324 21.8141C0.0187324 21.0367 0.337184 20.5403 0.964721 20.3343C2.04184 19.969 2.98782 20.6246 2.99719 21.7579C3.00656 22.6571 2.99719 23.5563 2.99719 24.4648C2.99719 24.5772 2.99719 24.6896 2.99719 24.802C3.05339 24.8394 3.10022 24.8769 3.15642 24.9237C3.21261 24.8113 3.25008 24.6708 3.33437 24.5865C4.86107 23.0505 6.38776 21.5238 7.92382 19.9877C8.33594 19.5756 8.82298 19.3976 9.39432 19.5756C9.96566 19.7536 10.3309 20.1469 10.4621 20.7277C10.5838 21.299 10.359 21.7486 9.95629 22.1419C8.44833 23.6405 6.94037 25.1579 5.43241 26.6565C5.33875 26.7501 5.21698 26.797 5.10459 26.8719C5.15142 26.9094 5.18889 26.9562 5.21698 26.9937Z"
-                                                        fill="currentColor" />
-                                                    <path
-                                                        d="M5.32939 2.99719C6.10679 3.82142 6.88419 4.66438 7.68968 5.47924C8.42025 6.21917 9.17891 6.94037 9.91884 7.67093C10.7243 8.4577 10.6962 9.40368 9.85328 10.1342C9.4318 10.4995 8.52327 10.434 8.03623 9.97502C7.51172 9.48798 7.01531 8.9822 6.50017 8.4858C5.45115 7.44614 4.40214 6.41586 3.34375 5.38558C3.25946 5.30128 3.1658 5.21698 3.00657 5.05776C3.00657 5.52607 3.00657 5.91008 3.00657 6.2941C3.00657 6.94973 3.01594 7.60537 3.00657 8.26101C2.98784 9.18826 2.4165 9.75023 1.50798 9.75023C0.599453 9.74087 0.0281133 9.17889 0.0281133 8.24227C0.0187471 6.1817 0.0281133 4.12114 0.0281133 2.06057C0.0281133 1.82641 1.46348e-05 1.59226 0.0281133 1.3581C0.112409 0.505776 0.702481 0 1.55481 0C3.76523 0.00936622 5.97566 0.00936622 8.19546 0.0187324C8.97285 0.0187324 9.4599 0.34655 9.67532 0.964721C10.0312 2.04184 9.38497 2.97846 8.25165 2.99719C7.2682 3.00656 6.28475 3.00656 5.30129 3.00656C5.28256 3.01592 5.2732 3.02529 5.32939 2.99719Z"
-                                                        fill="currentColor" />
-                                                    <path
-                                                        d="M24.6706 3.00666C23.9681 3.00666 23.1814 3.00666 22.404 3.00666C22.1979 3.00666 21.9825 3.00666 21.7765 3.00666C20.8211 2.98793 20.2591 2.42595 20.2591 1.4987C20.2685 0.590175 20.8305 0.0282022 21.7671 0.0188359C23.8183 0.00946973 25.8601 0.0188359 27.9113 0.0188359C28.1455 0.0188359 28.3796 -0.00926271 28.6138 0.0188359C29.4755 0.103132 30 0.665105 30 1.5268C30 3.77469 29.9906 6.02258 29.9813 8.27048C29.9813 8.99167 29.6347 9.46935 29.0353 9.67541C27.9582 10.0313 27.0215 9.37569 27.0028 8.24238C26.9934 7.31512 27.0028 6.39723 27.0028 5.46998C27.0028 5.36695 27.0028 5.27328 27.0028 5.10469C26.881 5.20772 26.8061 5.25455 26.7499 5.31075C25.2232 6.80934 23.6684 8.28921 22.1698 9.8159C21.7577 10.2374 21.3362 10.4341 20.7743 10.3404C20.1748 10.2374 19.7814 9.8721 19.5848 9.31949C19.3787 8.74815 19.5379 8.23301 19.9594 7.81153C20.8398 6.94047 21.739 6.07878 22.61 5.19836C23.3125 4.47716 23.9869 3.72786 24.6706 3.00666Z"
-                                                        fill="currentColor" />
-                                                    <path
-                                                        d="M24.942 26.8438C24.5861 26.5253 24.2114 26.2256 23.8743 25.8884C22.6098 24.6146 21.3641 23.3408 20.109 22.0577C19.622 21.5613 19.5096 20.9524 19.7812 20.3811C20.0435 19.8285 20.6336 19.4632 21.2236 19.5007C21.6545 19.5288 21.9917 19.7442 22.2914 20.0439C23.7431 21.5332 25.2043 23.0224 26.6654 24.5116C26.7497 24.5959 26.8153 24.7083 26.8902 24.8113C26.9277 24.7926 26.9558 24.7645 26.9932 24.7458C26.9932 24.2119 26.9932 23.678 26.9932 23.1441C26.9932 22.629 26.9838 22.1139 27.0026 21.5987C27.04 20.7745 27.6301 20.25 28.4918 20.25C29.3441 20.25 29.9529 20.7839 29.9623 21.6081C29.981 23.5282 29.9717 25.4482 29.9717 27.3683C29.9717 27.7055 29.981 28.0427 29.9904 28.3892C30.0185 29.3352 29.391 30.0002 28.445 30.0002C26.2346 30.0002 24.0241 29.9908 21.8137 29.9815C21.0176 29.9815 20.5305 29.6537 20.3245 29.0074C19.9873 27.9396 20.6336 27.0218 21.7481 27.003C22.7784 26.9937 23.7993 27.003 24.8296 27.003C24.8671 26.9468 24.9045 26.9 24.942 26.8438Z"
-                                                        fill="currentColor" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath class="clip0_441_197">
-                                                        <rect width="30" height="30" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>
-                                        </span>
-                                        <span class="cs_hover_text cs_primary_font cs_primary_color cs_fs_21 cs_bold">
-                                            {{ $gallery->gallery_image_name }}
-                                        </span>
-                                    </div>
-                                    <img src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}" alt="" style="height: 275px !important; width:480px !important;">
-                                </a>
-                                @else
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="cs_gallery_item cs_style_3 d-block cs_bg_filed position-relative" data-src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}" data-form-filled="{{ session('form_data.email') ? '1' : '0' }}">
-                                    <div class="cs_gallery_item_hover cs_primary_font cs_fs_38">
-                                        <span class="cs_hover_icon cs_accent_color">
-                                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <g clip-path="url(.clip0_441_197)">
-                                                    <path
-                                                        d="M5.21698 26.9937C6.24727 26.9937 7.26819 26.9843 8.29847 26.9937C8.99157 27.003 9.46925 27.3402 9.66594 27.9396C10.0219 29.0261 9.37559 29.9721 8.24227 29.9721C6.19107 29.9815 4.14924 29.9721 2.09803 29.9721C1.86388 29.9721 1.62972 30.0002 1.39557 29.9815C0.524508 29.9065 0 29.3165 0 28.4454C0.00936622 26.235 0.00936622 24.0246 0.0187324 21.8141C0.0187324 21.0367 0.337184 20.5403 0.964721 20.3343C2.04184 19.969 2.98782 20.6246 2.99719 21.7579C3.00656 22.6571 2.99719 23.5563 2.99719 24.4648C2.99719 24.5772 2.99719 24.6896 2.99719 24.802C3.05339 24.8394 3.10022 24.8769 3.15642 24.9237C3.21261 24.8113 3.25008 24.6708 3.33437 24.5865C4.86107 23.0505 6.38776 21.5238 7.92382 19.9877C8.33594 19.5756 8.82298 19.3976 9.39432 19.5756C9.96566 19.7536 10.3309 20.1469 10.4621 20.7277C10.5838 21.299 10.359 21.7486 9.95629 22.1419C8.44833 23.6405 6.94037 25.1579 5.43241 26.6565C5.33875 26.7501 5.21698 26.797 5.10459 26.8719C5.15142 26.9094 5.18889 26.9562 5.21698 26.9937Z"
-                                                        fill="currentColor" />
-                                                    <path
-                                                        d="M5.32939 2.99719C6.10679 3.82142 6.88419 4.66438 7.68968 5.47924C8.42025 6.21917 9.17891 6.94037 9.91884 7.67093C10.7243 8.4577 10.6962 9.40368 9.85328 10.1342C9.4318 10.4995 8.52327 10.434 8.03623 9.97502C7.51172 9.48798 7.01531 8.9822 6.50017 8.4858C5.45115 7.44614 4.40214 6.41586 3.34375 5.38558C3.25946 5.30128 3.1658 5.21698 3.00657 5.05776C3.00657 5.52607 3.00657 5.91008 3.00657 6.2941C3.00657 6.94973 3.01594 7.60537 3.00657 8.26101C2.98784 9.18826 2.4165 9.75023 1.50798 9.75023C0.599453 9.74087 0.0281133 9.17889 0.0281133 8.24227C0.0187471 6.1817 0.0281133 4.12114 0.0281133 2.06057C0.0281133 1.82641 1.46348e-05 1.59226 0.0281133 1.3581C0.112409 0.505776 0.702481 0 1.55481 0C3.76523 0.00936622 5.97566 0.00936622 8.19546 0.0187324C8.97285 0.0187324 9.4599 0.34655 9.67532 0.964721C10.0312 2.04184 9.38497 2.97846 8.25165 2.99719C7.2682 3.00656 6.28475 3.00656 5.30129 3.00656C5.28256 3.01592 5.2732 3.02529 5.32939 2.99719Z"
-                                                        fill="currentColor" />
-                                                    <path
-                                                        d="M24.6706 3.00666C23.9681 3.00666 23.1814 3.00666 22.404 3.00666C22.1979 3.00666 21.9825 3.00666 21.7765 3.00666C20.8211 2.98793 20.2591 2.42595 20.2591 1.4987C20.2685 0.590175 20.8305 0.0282022 21.7671 0.0188359C23.8183 0.00946973 25.8601 0.0188359 27.9113 0.0188359C28.1455 0.0188359 28.3796 -0.00926271 28.6138 0.0188359C29.4755 0.103132 30 0.665105 30 1.5268C30 3.77469 29.9906 6.02258 29.9813 8.27048C29.9813 8.99167 29.6347 9.46935 29.0353 9.67541C27.9582 10.0313 27.0215 9.37569 27.0028 8.24238C26.9934 7.31512 27.0028 6.39723 27.0028 5.46998C27.0028 5.36695 27.0028 5.27328 27.0028 5.10469C26.881 5.20772 26.8061 5.25455 26.7499 5.31075C25.2232 6.80934 23.6684 8.28921 22.1698 9.8159C21.7577 10.2374 21.3362 10.4341 20.7743 10.3404C20.1748 10.2374 19.7814 9.8721 19.5848 9.31949C19.3787 8.74815 19.5379 8.23301 19.9594 7.81153C20.8398 6.94047 21.739 6.07878 22.61 5.19836C23.3125 4.47716 23.9869 3.72786 24.6706 3.00666Z"
-                                                        fill="currentColor" />
-                                                    <path
-                                                        d="M24.942 26.8438C24.5861 26.5253 24.2114 26.2256 23.8743 25.8884C22.6098 24.6146 21.3641 23.3408 20.109 22.0577C19.622 21.5613 19.5096 20.9524 19.7812 20.3811C20.0435 19.8285 20.6336 19.4632 21.2236 19.5007C21.6545 19.5288 21.9917 19.7442 22.2914 20.0439C23.7431 21.5332 25.2043 23.0224 26.6654 24.5116C26.7497 24.5959 26.8153 24.7083 26.8902 24.8113C26.9277 24.7926 26.9558 24.7645 26.9932 24.7458C26.9932 24.2119 26.9932 23.678 26.9932 23.1441C26.9932 22.629 26.9838 22.1139 27.0026 21.5987C27.04 20.7745 27.6301 20.25 28.4918 20.25C29.3441 20.25 29.9529 20.7839 29.9623 21.6081C29.981 23.5282 29.9717 25.4482 29.9717 27.3683C29.9717 27.7055 29.981 28.0427 29.9904 28.3892C30.0185 29.3352 29.391 30.0002 28.445 30.0002C26.2346 30.0002 24.0241 29.9908 21.8137 29.9815C21.0176 29.9815 20.5305 29.6537 20.3245 29.0074C19.9873 27.9396 20.6336 27.0218 21.7481 27.003C22.7784 26.9937 23.7993 27.003 24.8296 27.003C24.8671 26.9468 24.9045 26.9 24.942 26.8438Z"
-                                                        fill="currentColor" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath class="clip0_441_197">
-                                                        <rect width="30" height="30" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>
-                                        </span>
-                                        <span class="cs_hover_text cs_primary_font cs_primary_color cs_fs_21 cs_bold">
-                                            {{ $gallery->gallery_image_name }}
-                                        </span>
-                                    </div>
-                                    <img src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}" alt="">
-                                </a>
-                                @endif
+                    <div class="cs_slide">
+                        {{-- check session form filled in if condition --}}
+                        @if(session('form_data.email'))
+                        <a href="#" class="cs_gallery_item cs_style_3 d-block cs_bg_filed position-relative">
+                            <div class="cs_gallery_item_hover cs_primary_font cs_fs_38">
+                                <span class="cs_hover_icon cs_accent_color">
+                                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(.clip0_441_197)">
+                                            <path
+                                                d="M5.21698 26.9937C6.24727 26.9937 7.26819 26.9843 8.29847 26.9937C8.99157 27.003 9.46925 27.3402 9.66594 27.9396C10.0219 29.0261 9.37559 29.9721 8.24227 29.9721C6.19107 29.9815 4.14924 29.9721 2.09803 29.9721C1.86388 29.9721 1.62972 30.0002 1.39557 29.9815C0.524508 29.9065 0 29.3165 0 28.4454C0.00936622 26.235 0.00936622 24.0246 0.0187324 21.8141C0.0187324 21.0367 0.337184 20.5403 0.964721 20.3343C2.04184 19.969 2.98782 20.6246 2.99719 21.7579C3.00656 22.6571 2.99719 23.5563 2.99719 24.4648C2.99719 24.5772 2.99719 24.6896 2.99719 24.802C3.05339 24.8394 3.10022 24.8769 3.15642 24.9237C3.21261 24.8113 3.25008 24.6708 3.33437 24.5865C4.86107 23.0505 6.38776 21.5238 7.92382 19.9877C8.33594 19.5756 8.82298 19.3976 9.39432 19.5756C9.96566 19.7536 10.3309 20.1469 10.4621 20.7277C10.5838 21.299 10.359 21.7486 9.95629 22.1419C8.44833 23.6405 6.94037 25.1579 5.43241 26.6565C5.33875 26.7501 5.21698 26.797 5.10459 26.8719C5.15142 26.9094 5.18889 26.9562 5.21698 26.9937Z"
+                                                fill="currentColor"
+                                            />
+                                            <path
+                                                d="M5.32939 2.99719C6.10679 3.82142 6.88419 4.66438 7.68968 5.47924C8.42025 6.21917 9.17891 6.94037 9.91884 7.67093C10.7243 8.4577 10.6962 9.40368 9.85328 10.1342C9.4318 10.4995 8.52327 10.434 8.03623 9.97502C7.51172 9.48798 7.01531 8.9822 6.50017 8.4858C5.45115 7.44614 4.40214 6.41586 3.34375 5.38558C3.25946 5.30128 3.1658 5.21698 3.00657 5.05776C3.00657 5.52607 3.00657 5.91008 3.00657 6.2941C3.00657 6.94973 3.01594 7.60537 3.00657 8.26101C2.98784 9.18826 2.4165 9.75023 1.50798 9.75023C0.599453 9.74087 0.0281133 9.17889 0.0281133 8.24227C0.0187471 6.1817 0.0281133 4.12114 0.0281133 2.06057C0.0281133 1.82641 1.46348e-05 1.59226 0.0281133 1.3581C0.112409 0.505776 0.702481 0 1.55481 0C3.76523 0.00936622 5.97566 0.00936622 8.19546 0.0187324C8.97285 0.0187324 9.4599 0.34655 9.67532 0.964721C10.0312 2.04184 9.38497 2.97846 8.25165 2.99719C7.2682 3.00656 6.28475 3.00656 5.30129 3.00656C5.28256 3.01592 5.2732 3.02529 5.32939 2.99719Z"
+                                                fill="currentColor"
+                                            />
+                                            <path
+                                                d="M24.6706 3.00666C23.9681 3.00666 23.1814 3.00666 22.404 3.00666C22.1979 3.00666 21.9825 3.00666 21.7765 3.00666C20.8211 2.98793 20.2591 2.42595 20.2591 1.4987C20.2685 0.590175 20.8305 0.0282022 21.7671 0.0188359C23.8183 0.00946973 25.8601 0.0188359 27.9113 0.0188359C28.1455 0.0188359 28.3796 -0.00926271 28.6138 0.0188359C29.4755 0.103132 30 0.665105 30 1.5268C30 3.77469 29.9906 6.02258 29.9813 8.27048C29.9813 8.99167 29.6347 9.46935 29.0353 9.67541C27.9582 10.0313 27.0215 9.37569 27.0028 8.24238C26.9934 7.31512 27.0028 6.39723 27.0028 5.46998C27.0028 5.36695 27.0028 5.27328 27.0028 5.10469C26.881 5.20772 26.8061 5.25455 26.7499 5.31075C25.2232 6.80934 23.6684 8.28921 22.1698 9.8159C21.7577 10.2374 21.3362 10.4341 20.7743 10.3404C20.1748 10.2374 19.7814 9.8721 19.5848 9.31949C19.3787 8.74815 19.5379 8.23301 19.9594 7.81153C20.8398 6.94047 21.739 6.07878 22.61 5.19836C23.3125 4.47716 23.9869 3.72786 24.6706 3.00666Z"
+                                                fill="currentColor"
+                                            />
+                                            <path
+                                                d="M24.942 26.8438C24.5861 26.5253 24.2114 26.2256 23.8743 25.8884C22.6098 24.6146 21.3641 23.3408 20.109 22.0577C19.622 21.5613 19.5096 20.9524 19.7812 20.3811C20.0435 19.8285 20.6336 19.4632 21.2236 19.5007C21.6545 19.5288 21.9917 19.7442 22.2914 20.0439C23.7431 21.5332 25.2043 23.0224 26.6654 24.5116C26.7497 24.5959 26.8153 24.7083 26.8902 24.8113C26.9277 24.7926 26.9558 24.7645 26.9932 24.7458C26.9932 24.2119 26.9932 23.678 26.9932 23.1441C26.9932 22.629 26.9838 22.1139 27.0026 21.5987C27.04 20.7745 27.6301 20.25 28.4918 20.25C29.3441 20.25 29.9529 20.7839 29.9623 21.6081C29.981 23.5282 29.9717 25.4482 29.9717 27.3683C29.9717 27.7055 29.981 28.0427 29.9904 28.3892C30.0185 29.3352 29.391 30.0002 28.445 30.0002C26.2346 30.0002 24.0241 29.9908 21.8137 29.9815C21.0176 29.9815 20.5305 29.6537 20.3245 29.0074C19.9873 27.9396 20.6336 27.0218 21.7481 27.003C22.7784 26.9937 23.7993 27.003 24.8296 27.003C24.8671 26.9468 24.9045 26.9 24.942 26.8438Z"
+                                                fill="currentColor"
+                                            />
+                                        </g>
+                                        <defs>
+                                            <clipPath class="clip0_441_197">
+                                                <rect width="30" height="30" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </span>
+                                <span class="cs_hover_text cs_primary_font cs_primary_color cs_fs_21 cs_bold">
+                                    {{ $gallery->gallery_image_name }}
+                                </span>
                             </div>
-                        @endforeach
-                    @endif
+                            <img src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}" alt="" style="height: 275px !important; width:480px !important;">
+                        </a>
+                        @else
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $gallery->id }}" class="cs_gallery_item cs_style_3 d-block cs_bg_filed position-relative" data-src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}" data-form-filled="{{ session('form_data.email') ? '1' : '0' }}">
+                            <div class="cs_gallery_item_hover cs_primary_font cs_fs_38">
+                                <span class="cs_hover_icon cs_accent_color">
+                                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(.clip0_441_197)">
+                                            <path
+                                                d="M5.21698 26.9937C6.24727 26.9937 7.26819 26.9843 8.29847 26.9937C8.99157 27.003 9.46925 27.3402 9.66594 27.9396C10.0219 29.0261 9.37559 29.9721 8.24227 29.9721C6.19107 29.9815 4.14924 29.9721 2.09803 29.9721C1.86388 29.9721 1.62972 30.0002 1.39557 29.9815C0.524508 29.9065 0 29.3165 0 28.4454C0.00936622 26.235 0.00936622 24.0246 0.0187324 21.8141C0.0187324 21.0367 0.337184 20.5403 0.964721 20.3343C2.04184 19.969 2.98782 20.6246 2.99719 21.7579C3.00656 22.6571 2.99719 23.5563 2.99719 24.4648C2.99719 24.5772 2.99719 24.6896 2.99719 24.802C3.05339 24.8394 3.10022 24.8769 3.15642 24.9237C3.21261 24.8113 3.25008 24.6708 3.33437 24.5865C4.86107 23.0505 6.38776 21.5238 7.92382 19.9877C8.33594 19.5756 8.82298 19.3976 9.39432 19.5756C9.96566 19.7536 10.3309 20.1469 10.4621 20.7277C10.5838 21.299 10.359 21.7486 9.95629 22.1419C8.44833 23.6405 6.94037 25.1579 5.43241 26.6565C5.33875 26.7501 5.21698 26.797 5.10459 26.8719C5.15142 26.9094 5.18889 26.9562 5.21698 26.9937Z"
+                                                fill="currentColor"
+                                            />
+                                            <path
+                                                d="M5.32939 2.99719C6.10679 3.82142 6.88419 4.66438 7.68968 5.47924C8.42025 6.21917 9.17891 6.94037 9.91884 7.67093C10.7243 8.4577 10.6962 9.40368 9.85328 10.1342C9.4318 10.4995 8.52327 10.434 8.03623 9.97502C7.51172 9.48798 7.01531 8.9822 6.50017 8.4858C5.45115 7.44614 4.40214 6.41586 3.34375 5.38558C3.25946 5.30128 3.1658 5.21698 3.00657 5.05776C3.00657 5.52607 3.00657 5.91008 3.00657 6.2941C3.00657 6.94973 3.01594 7.60537 3.00657 8.26101C2.98784 9.18826 2.4165 9.75023 1.50798 9.75023C0.599453 9.74087 0.0281133 9.17889 0.0281133 8.24227C0.0187471 6.1817 0.0281133 4.12114 0.0281133 2.06057C0.0281133 1.82641 1.46348e-05 1.59226 0.0281133 1.3581C0.112409 0.505776 0.702481 0 1.55481 0C3.76523 0.00936622 5.97566 0.00936622 8.19546 0.0187324C8.97285 0.0187324 9.4599 0.34655 9.67532 0.964721C10.0312 2.04184 9.38497 2.97846 8.25165 2.99719C7.2682 3.00656 6.28475 3.00656 5.30129 3.00656C5.28256 3.01592 5.2732 3.02529 5.32939 2.99719Z"
+                                                fill="currentColor"
+                                            />
+                                            <path
+                                                d="M24.6706 3.00666C23.9681 3.00666 23.1814 3.00666 22.404 3.00666C22.1979 3.00666 21.9825 3.00666 21.7765 3.00666C20.8211 2.98793 20.2591 2.42595 20.2591 1.4987C20.2685 0.590175 20.8305 0.0282022 21.7671 0.0188359C23.8183 0.00946973 25.8601 0.0188359 27.9113 0.0188359C28.1455 0.0188359 28.3796 -0.00926271 28.6138 0.0188359C29.4755 0.103132 30 0.665105 30 1.5268C30 3.77469 29.9906 6.02258 29.9813 8.27048C29.9813 8.99167 29.6347 9.46935 29.0353 9.67541C27.9582 10.0313 27.0215 9.37569 27.0028 8.24238C26.9934 7.31512 27.0028 6.39723 27.0028 5.46998C27.0028 5.36695 27.0028 5.27328 27.0028 5.10469C26.881 5.20772 26.8061 5.25455 26.7499 5.31075C25.2232 6.80934 23.6684 8.28921 22.1698 9.8159C21.7577 10.2374 21.3362 10.4341 20.7743 10.3404C20.1748 10.2374 19.7814 9.8721 19.5848 9.31949C19.3787 8.74815 19.5379 8.23301 19.9594 7.81153C20.8398 6.94047 21.739 6.07878 22.61 5.19836C23.3125 4.47716 23.9869 3.72786 24.6706 3.00666Z"
+                                                fill="currentColor"
+                                            />
+                                            <path
+                                                d="M24.942 26.8438C24.5861 26.5253 24.2114 26.2256 23.8743 25.8884C22.6098 24.6146 21.3641 23.3408 20.109 22.0577C19.622 21.5613 19.5096 20.9524 19.7812 20.3811C20.0435 19.8285 20.6336 19.4632 21.2236 19.5007C21.6545 19.5288 21.9917 19.7442 22.2914 20.0439C23.7431 21.5332 25.2043 23.0224 26.6654 24.5116C26.7497 24.5959 26.8153 24.7083 26.8902 24.8113C26.9277 24.7926 26.9558 24.7645 26.9932 24.7458C26.9932 24.2119 26.9932 23.678 26.9932 23.1441C26.9932 22.629 26.9838 22.1139 27.0026 21.5987C27.04 20.7745 27.6301 20.25 28.4918 20.25C29.3441 20.25 29.9529 20.7839 29.9623 21.6081C29.981 23.5282 29.9717 25.4482 29.9717 27.3683C29.9717 27.7055 29.981 28.0427 29.9904 28.3892C30.0185 29.3352 29.391 30.0002 28.445 30.0002C26.2346 30.0002 24.0241 29.9908 21.8137 29.9815C21.0176 29.9815 20.5305 29.6537 20.3245 29.0074C19.9873 27.9396 20.6336 27.0218 21.7481 27.003C22.7784 26.9937 23.7993 27.003 24.8296 27.003C24.8671 26.9468 24.9045 26.9 24.942 26.8438Z"
+                                                fill="currentColor"
+                                            />
+                                        </g>
+                                        <defs>
+                                            <clipPath class="clip0_441_197">
+                                                <rect width="30" height="30" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </span>
+                                <span class="cs_hover_text cs_primary_font cs_primary_color cs_fs_21 cs_bold">
+                                    {{ $gallery->gallery_image_name }}
+                                </span>
+                            </div>
+                            <img src="{{ asset('/bhairaav/project_details/gallery_image/' . $gallery->gallery_image) }}" alt="">
+                        </a>
+                        @endif
+                    </div>
                 </div>
             </div>
+
+            {{-- Properties Request Form Model --}}
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- start report input popup -->
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title" id="staticBackdropLabel">
+                                Enter your details to unlock
+                            </h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body space-y-20 p-40">
+                            <!-- <h3>Register your interest</h3> -->
+                            <form method="POST" action="{{ route('frontend.properties-request.store') }}" class="cs_form cs_style_2" enctype="multipart/form-data" autocomplete="off">
+                                @csrf
+
+                                {{-- add projectNames --}}
+                                <input type="hidden" name="project_name" value="{{ $projectNames->project_name ?? '' }}">
+
+                                <div class="col-sm-12 mb-3">
+                                    {{-- <label class="cs_height_16 cs_height_lg_16"><b>Full Name : <span class="text-danger">*</span></b></label> --}}
+                                    <input type="text" class="cs_form_field_2 cs_radius_20 @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name', session('form_data.name')) }}" placeholder="Full Name *">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-sm-12 mb-3">
+                                    {{-- <label class="cs_height_16 cs_height_lg_16"><b>Email Id : <span class="text-danger">*</span></b></label> --}}
+                                    <input type="email" class="cs_form_field_2 cs_radius_20 @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email', session('form_data.email')) }}" placeholder="Email Id *">
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-sm-12 mb-3">
+                                    {{-- <label class="cs_height_16 cs_height_lg_16"><b>Phone No. : <span class="text-danger">*</span></b></label> --}}
+                                    <input type="text" maxlength="10" class="cs_form_field_2 cs_radius_20 @error('phone_no') is-invalid @enderror" name="phone_no" id="phone_no" value="{{ old('phone_no', session('form_data.phone_no')) }}" placeholder="Phone No. *">
+                                    @error('phone_no')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-sm-12 mb-3">
+                                    {{-- <label class="cs_height_16 cs_height_lg_16"><b>Subject : <span class="text-danger">*</span></b></label> --}}
+                                    <input type="text" class="cs_form_field_2 cs_radius_20 @error('subject') is-invalid @enderror" name="subject" id="subject" value="{{ old('subject', session('form_data.subject')) }}" placeholder="Subject *">
+                                    @error('subject')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-sm-12 mb-3">
+                                    {{-- <label class="cs_height_16 cs_height_lg_16"><b>select Flat Type : <span class="text-danger">*</span></b></label> --}}
+                                    <select class="cs_form_field_2 cs_radius_20 @error('flat_type') is-invalid @enderror" name="flat_type" id="flat_type">
+                                        <option value="">Select Flat Type</option>
+                                        <option value="1" {{ old('flat_type', session('form_data.flat_type')) == '1' ? 'selected' : '' }}>1 BHK</option>
+                                        <option value="2" {{ old('flat_type', session('form_data.flat_type')) == '2' ? 'selected' : '' }}>2 BHK</option>
+                                        <option value="3" {{ old('flat_type', session('form_data.flat_type')) == '3' ? 'selected' : '' }}>Other</option>
+                                    </select>
+                                    @error('flat_type')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-sm-12 mb-3">
+                                    {!! NoCaptcha::renderJs() !!}
+                                    {!! NoCaptcha::display() !!}
+                                    @error('g-recaptcha-response')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" type="submit">
+                                    <b>Submit</b>
+                                    <span>
+                                        <i>
+                                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                                    fill="currentColor"></path>
+                                            </svg>
+                                        </i>
+                                        <i>
+                                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                                    fill="currentColor"></path>
+                                            </svg>
+                                        </i>
+                                    </span>
+                                </button>
+                            </form>
+                        </div><!-- end modal body -->
+                    </div><!-- end modal content -->
+                </div><!-- end modal dialog -->
+            </div>
+            @endforeach
             <div class="cs_pagination cs_style_1 cs_mobile_show"></div>
         </div>
         <div class="cs_slider_arrows cs_style_2 cs_mobile_hide">
@@ -582,116 +699,7 @@ Bhairaav | Residental Projects
     </div><!-- end modal dialog -->
 </div>
 
-{{-- Properties Request Form Model --}}
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <!-- start report input popup -->
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title" id="staticBackdropLabel">
-                    Enter your details to unlock
-                </h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body space-y-20 p-40">
-                <!-- <h3>Register your interest</h3> -->
-                <form method="POST" action="{{ route('frontend.properties-request.store') }}" class="cs_form cs_style_2" enctype="multipart/form-data" autocomplete="off">
-                    @csrf
 
-                    {{-- add projectNames --}}
-                    <input type="hidden" name="project_name" value="{{ $projectNames->project_name ?? '' }}">
-
-                    <div class="col-sm-12 mb-3">
-                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>Full Name : <span class="text-danger">*</span></b></label> --}}
-                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name', session('form_data.name')) }}" placeholder="Full Name *">
-                        @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="col-sm-12 mb-3">
-                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>Email Id : <span class="text-danger">*</span></b></label> --}}
-                        <input type="email" class="cs_form_field_2 cs_radius_20 @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email', session('form_data.email')) }}" placeholder="Email Id *">
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="col-sm-12 mb-3">
-                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>Phone No. : <span class="text-danger">*</span></b></label> --}}
-                        <input type="text" maxlength="10" class="cs_form_field_2 cs_radius_20 @error('phone_no') is-invalid @enderror" name="phone_no" id="phone_no" value="{{ old('phone_no', session('form_data.phone_no')) }}" placeholder="Phone No. *">
-                        @error('phone_no')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="col-sm-12 mb-3">
-                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>Subject : <span class="text-danger">*</span></b></label> --}}
-                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('subject') is-invalid @enderror" name="subject" id="subject" value="{{ old('subject', session('form_data.subject')) }}" placeholder="Subject *">
-                        @error('subject')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="col-sm-12 mb-3">
-                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>select Flat Type : <span class="text-danger">*</span></b></label> --}}
-                        <select class="cs_form_field_2 cs_radius_20 @error('flat_type') is-invalid @enderror" name="flat_type" id="flat_type">
-                            <option value="">Select Flat Type</option>
-                            <option value="1" {{ old('flat_type', session('form_data.flat_type')) == '1' ? 'selected' : '' }}>1 BHK</option>
-                            <option value="2" {{ old('flat_type', session('form_data.flat_type')) == '2' ? 'selected' : '' }}>2 BHK</option>
-                            <option value="3" {{ old('flat_type', session('form_data.flat_type')) == '3' ? 'selected' : '' }}>Other</option>
-                        </select>
-                        @error('flat_type')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="col-sm-12 mb-3">
-                        {!! NoCaptcha::renderJs() !!}
-                        {!! NoCaptcha::display() !!}
-                        @error('g-recaptcha-response')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" type="submit">
-                        <b>Submit</b>
-                        <span>
-                            <i>
-                                <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                        fill="currentColor"></path>
-                                </svg>
-                            </i>
-                            <i>
-                                <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                        fill="currentColor"></path>
-                                </svg>
-                            </i>
-                        </span>
-                    </button>
-                </form>
-            </div><!-- end modal body -->
-        </div><!-- end modal content -->
-    </div><!-- end modal dialog -->
-</div>
 @endsection
 
 @push('scripts')

@@ -44,12 +44,6 @@ class PropertiesRequestController extends Controller
                 'flat_type' => $request->input('flat_type'),
             ];
 
-            // Mail::send('frontend.emails.request_propertis_mail', $mailData, function($message) use ($request) {
-            //     $message->from($request->input('email'), $request->input('email'));
-            //     $message->to('infobhairaav@gmail.com');
-            //     $message->subject('Property Request');
-            // });
-
             Mail::to('sales@bhairaav.com')->send(new PropertiesRequestMail($mailData));
 
             // ==== Store form data in session

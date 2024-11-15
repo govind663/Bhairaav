@@ -78,7 +78,7 @@ class CareerController extends Controller
             ->cc($request->email)
             ->send(new sendCareerApplyMail($mailData, $resumePath));
 
-            return redirect()->route('frontend.contact-us')->with('message','Thank you for your interest. We will get back to you within 24 hours.');
+            return redirect()->route('frontend.career')->with('message','Thank you for your interest. We will get back to you within 24 hours.');
 
         } catch(\Exception $ex){
 
