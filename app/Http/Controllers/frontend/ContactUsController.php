@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\ContactUsRequest;
 use App\Mail\ContactUsMail;
 use App\Models\ContactDetails;
+use App\Models\ContactInformation;
 use App\Models\ContactUs;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -19,7 +20,10 @@ class ContactUsController extends Controller
         // === Fetct Contact Details
         $contact_details = ContactDetails::orderBy("id","asc")->whereNull('deleted_at')->get();
 
-        return view("frontend.contact.contact-us", ['contact_details'=> $contact_details]);
+        // === Fetch Contact Information
+        $contact_information = ContactInformation::orderBy("id","desc")->whereNull('deleted_at')->first();
+
+        return view("frontend.contact.contact-us", ['contact_details'=> $contact_details, 'contact_information'=> $contact_information]);
     }
 
     // ==== Store Contact Us

@@ -65,7 +65,7 @@ Bhairaav | Manaage Contact Information
                         @foreach ($contact_information as $key => $value)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td class="text-wrap text-justify">{{ $value->location }}</td>
+                            <td class="text-wrap text-justify">{!! $value->location !!}</td>
                             <td class="text-wrap text-justify">{{ $value->location_map_link }}</td>
                             <td class="text-wrap text-justify">{{ $value->phone }}</td>
                             <td class="no-export">

@@ -42,11 +42,11 @@ Bhairaav | Edit Contact Information
             <input type="text" id="id" name="id" hidden  value="{{ $contact_information->id }}">
 
             <div class="pd-20 card-box mb-30">
-                <div class="form-group row mt-3">
-                    <label class="col-sm-2"><b>Location : <span class="text-danger">*</span></b></label>
+                <div class="form-group row mt-3">                    
+                    <label class="col-sm-2"><b>Mobile Number : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="text" name="location" id="location" class="form-control @error('location') is-invalid @enderror" value="{{ $contact_information->location }}" placeholder="Enter Location.">
-                        @error('location')
+                        <input type="text" name="phone" id="phone" maxlength="10" class="form-control @error('phone') is-invalid @enderror" value="{{ $contact_information->phone }}" placeholder="Enter Mobile Number.">
+                        @error('phone')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -65,10 +65,10 @@ Bhairaav | Edit Contact Information
                 </div>
 
                 <div class="form-group row mt-3">
-                    <label class="col-sm-2"><b>Mobile Number : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-4 col-md-4">
-                        <input type="text" name="phone" id="phone" maxlength="10" class="form-control @error('phone') is-invalid @enderror" value="{{ $contact_information->phone }}" placeholder="Enter Mobile Number.">
-                        @error('phone')
+                    <label class="col-sm-2"><b>Location : <span class="text-danger">*</span></b></label>
+                    <div class="col-sm-10 col-md-10">
+                        <textarea type="text" name="location" id="location" class="textarea_editor form-control border-radius-0 @error('location') is-invalid @enderror" value="{{ $contact_information->location }}" placeholder="Enter Location.">{{ $contact_information->location }}</textarea>
+                        @error('location')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

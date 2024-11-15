@@ -196,17 +196,14 @@
                             <img src="{{ asset('frontend/assets/img/icons/placeholder.png') }}" alt="">
                         </div>
                         <div class="space32"></div>
-                        <h3>Mumbai Corporate Office </h3>
-                        <p>
-                            1003, 10th Floor, Raheja Center,
-                            Free Press Journal Marg,
-                            Nariman Point - 400021
-                        </p>
-                        <a href="tel:022-2204 7666">
-                            Tel.: 022-2204 7666
+                        {!! $contact_information->location !!}
+                        
+                        <a href="tel:{{ $contact_information->phone }}">
+                            Tel. : - {{ $contact_information->phone }} 
                         </a>
+                        <br>
                         <a target="_blank"
-                            href="https://www.google.com/maps/place/Raheja+Centre,+Free+Press+Journal+Marg,+Nariman+Point,+Mumbai,+Maharashtra+400021/@18.9235599,72.8211563,17z/data=!3m1!4b1!4m5!3m4!1s0x3be7d1ebeae6c7f7:0xb652e869c16999c8!8m2!3d18.9235599!4d72.823345?shorturl=1"
+                            href="{{ $contact_information->location_map_link }}"
                             class="map" target="_blank">
                             View on Map
                         </a>

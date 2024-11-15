@@ -40,11 +40,11 @@
                                         {{-- <p>Configuration: {{ $value->configuration }}</p> --}}
                                         <p> {{ $value->mobile_no }}</p>
                                         <p>Year Of Completion: {{ $value->year_of_completion }}</p>
-                                        <div class="poject-icon">
+                                        {{-- <div class="poject-icon">
                                             <a href="{{ route('frontend.project.completed-project.view-project-details', ['id' => $value->id]) }}">
                                                 <i class="fa fa-link"></i>
                                             </a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -66,11 +66,11 @@
                                         {{-- <p>Configuration: {{ $value->configuration }}</p> --}}
                                         <p> {{ $value->mobile_no }}</p>
                                         <p>Year Of Completion: {{ $value->year_of_completion }}</p>
-                                        <div class="poject-icon">
+                                        {{-- <div class="poject-icon">
                                             <a href="#">
                                                 <i class="fa fa-link"></i>
                                             </a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

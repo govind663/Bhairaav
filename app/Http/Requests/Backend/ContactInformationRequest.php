@@ -23,15 +23,15 @@ class ContactInformationRequest extends FormRequest
     {
         if ($this->id){
             $rule = [
-                'location' => 'required|string|max:255',
+                'location' => 'required|string',
                 'location_map_link' => 'required|string',
-                'phone' => 'nullable|numeric',
+                'phone' => 'required|numeric',
             ];
         }else{
             $rule = [
-                'location' => 'required|string|max:255',
+                'location' => 'required|string',
                 'location_map_link' => 'required|string',
-                'phone' => 'nullable|numeric',
+                'phone' => 'required|numeric',
             ];
         }
         return $rule;
@@ -39,17 +39,17 @@ class ContactInformationRequest extends FormRequest
 
     public function messages()
     {
-        [
-            'location.required' => 'Location is required.',
-            'location.max' => 'The length of Location should not exceed 255 characters.',
-            'location.string' => 'The name Location be a string.',
+        return [
+            'location.required' => __('Location is required'),
+            'location.string' => __('Location must be a string'),
 
-            'location_map_link.required' => 'Location Map Link is required.',
-            'location_map_link.string' => 'The name Location Map Link be a string.',
+            'location_map_link.required' => __('Location Map Link is required'),
+            'location_map_link.string' => __('Location Map Link must be a string'),
+            'location_map_link.max' => __('The length of Location Map Link should not exceed 255 characters'),
 
-            'phone.required' => 'Mobile Number is required.',
-            'phone.numeric' => 'The Mobile Number must be a numeric value.',
-
+            'phone.required' => __('Mobile Number is required'),
+            'phone.numeric' => __('Mobile Number must be a number'),
+            'phone.max' => __('The length of Mobile Number should not exceed 255 characters'),
         ];
     }
 }

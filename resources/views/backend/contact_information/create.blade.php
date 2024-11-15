@@ -39,11 +39,11 @@ Bhairaav | Add Contact Information
             @csrf
 
             <div class="pd-20 card-box mb-30">
-                <div class="form-group row mt-3">
-                    <label class="col-sm-2"><b>Location : <span class="text-danger">*</span></b></label>
+                <div class="form-group row mt-3">                    
+                    <label class="col-sm-2"><b>Mobile Number : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="text" name="location" id="location" class="form-control @error('location') is-invalid @enderror" value="{{old('location')}}" placeholder="Enter Location.">
-                        @error('location')
+                        <input type="text" name="phone" id="phone" maxlength="10" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}" placeholder="Enter Mobile Number.">
+                        @error('phone')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -52,7 +52,7 @@ Bhairaav | Add Contact Information
 
                     <label class="col-sm-2"><b>Location Map Link : <span class="text-danger">*</span></b></label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="text" name="location_map_link" id="location_map_link" class="form-control @error('location_map_link') is-invalid @enderror" value="{{old('location_map_link')}}" placeholder="Enter Location Map Link.">
+                        <input type="text" name="location_map_link" id="location_map_link" class="form-control @error('location_map_link') is-invalid @enderror" value="{{ old('location_map_link') }}" placeholder="Enter Location Map Link.">
                         @error('location_map_link')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -62,10 +62,10 @@ Bhairaav | Add Contact Information
                 </div>
 
                 <div class="form-group row mt-3">
-                    <label class="col-sm-2"><b>Mobile Number : <span class="text-danger">*</span></b></label>
-                    <div class="col-sm-4 col-md-4">
-                        <input type="text" name="phone" id="phone" maxlength="10" class="form-control @error('phone') is-invalid @enderror" value="{{old('phone')}}" placeholder="Enter Mobile Number.">
-                        @error('phone')
+                    <label class="col-sm-2"><b>Location : <span class="text-danger">*</span></b></label>
+                    <div class="col-sm-10 col-md-10">
+                        <textarea type="text" name="location" id="location" class="textarea_editor form-control border-radius-0 @error('location') is-invalid @enderror" value="{{ old('location') }}" placeholder="Enter Location.">{{ old('location') }}</textarea>
+                        @error('location')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
