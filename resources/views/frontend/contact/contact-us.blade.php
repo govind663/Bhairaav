@@ -197,11 +197,10 @@
                         </div>
                         <div class="space32"></div>
                         {!! $contact_information->location !!}
-                        
+                        <br>
                         <a href="tel:{{ $contact_information->phone }}">
                             Tel. : - {{ $contact_information->phone }} 
                         </a>
-                        <br>
                         <a target="_blank"
                             href="{{ $contact_information->location_map_link }}"
                             class="map" target="_blank">
