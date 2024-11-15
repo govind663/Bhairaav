@@ -365,11 +365,13 @@ Bhairaav | Residental Projects
     </div>
     <div class="cs_slider cs_style_1 cs_slider_gap_60 cs_hover_show_arrows">
         <div class="container">
-            @foreach($projectGallery as $index => $gallery)
+
             <div class="cs_slider_container" data-autoplay="0" data-loop="1" data-speed="600" data-center="0"
                 data-variable-width="0" data-slides-per-view="responsive" data-xs-slides="1" data-sm-slides="2"
                 data-md-slides="2" data-lg-slides="3" data-add-slides="3">
+
                 <div class="cs_slider_wrapper cs_lightgallery project-details">
+                    @foreach($projectGallery as $index => $gallery)
                     <div class="cs_slide">
                         {{-- check session form filled in if condition --}}
                         @if(session('form_data.email'))
@@ -448,120 +450,11 @@ Bhairaav | Residental Projects
                         </a>
                         @endif
                     </div>
+                    @endforeach
                 </div>
+
             </div>
 
-            {{-- Properties Request Form Model --}}
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <!-- start report input popup -->
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title" id="staticBackdropLabel">
-                                Enter your details to unlock
-                            </h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body space-y-20 p-40">
-                            <!-- <h3>Register your interest</h3> -->
-                            <form method="POST" action="{{ route('frontend.properties-request.store') }}" class="cs_form cs_style_2" enctype="multipart/form-data" autocomplete="off">
-                                @csrf
-
-                                {{-- add projectNames --}}
-                                <input type="hidden" name="project_name" value="{{ $projectNames->project_name ?? '' }}">
-
-                                <div class="col-sm-12 mb-3">
-                                    {{-- <label class="cs_height_16 cs_height_lg_16"><b>Full Name : <span class="text-danger">*</span></b></label> --}}
-                                    <input type="text" class="cs_form_field_2 cs_radius_20 @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name', session('form_data.name')) }}" placeholder="Full Name *">
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
-                                <div class="col-sm-12 mb-3">
-                                    {{-- <label class="cs_height_16 cs_height_lg_16"><b>Email Id : <span class="text-danger">*</span></b></label> --}}
-                                    <input type="email" class="cs_form_field_2 cs_radius_20 @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email', session('form_data.email')) }}" placeholder="Email Id *">
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
-                                <div class="col-sm-12 mb-3">
-                                    {{-- <label class="cs_height_16 cs_height_lg_16"><b>Phone No. : <span class="text-danger">*</span></b></label> --}}
-                                    <input type="text" maxlength="10" class="cs_form_field_2 cs_radius_20 @error('phone_no') is-invalid @enderror" name="phone_no" id="phone_no" value="{{ old('phone_no', session('form_data.phone_no')) }}" placeholder="Phone No. *">
-                                    @error('phone_no')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
-                                <div class="col-sm-12 mb-3">
-                                    {{-- <label class="cs_height_16 cs_height_lg_16"><b>Subject : <span class="text-danger">*</span></b></label> --}}
-                                    <input type="text" class="cs_form_field_2 cs_radius_20 @error('subject') is-invalid @enderror" name="subject" id="subject" value="{{ old('subject', session('form_data.subject')) }}" placeholder="Subject *">
-                                    @error('subject')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
-                                <div class="col-sm-12 mb-3">
-                                    {{-- <label class="cs_height_16 cs_height_lg_16"><b>select Flat Type : <span class="text-danger">*</span></b></label> --}}
-                                    <select class="cs_form_field_2 cs_radius_20 @error('flat_type') is-invalid @enderror" name="flat_type" id="flat_type">
-                                        <option value="">Select Flat Type</option>
-                                        <option value="1" {{ old('flat_type', session('form_data.flat_type')) == '1' ? 'selected' : '' }}>1 BHK</option>
-                                        <option value="2" {{ old('flat_type', session('form_data.flat_type')) == '2' ? 'selected' : '' }}>2 BHK</option>
-                                        <option value="3" {{ old('flat_type', session('form_data.flat_type')) == '3' ? 'selected' : '' }}>Other</option>
-                                    </select>
-                                    @error('flat_type')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
-                                <div class="col-sm-12 mb-3">
-                                    {!! NoCaptcha::renderJs() !!}
-                                    {!! NoCaptcha::display() !!}
-                                    @error('g-recaptcha-response')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
-                                <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" type="submit">
-                                    <b>Submit</b>
-                                    <span>
-                                        <i>
-                                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                                    fill="currentColor"></path>
-                                            </svg>
-                                        </i>
-                                        <i>
-                                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
-                                                    fill="currentColor"></path>
-                                            </svg>
-                                        </i>
-                                    </span>
-                                </button>
-                            </form>
-                        </div><!-- end modal body -->
-                    </div><!-- end modal content -->
-                </div><!-- end modal dialog -->
-            </div>
-            @endforeach
             <div class="cs_pagination cs_style_1 cs_mobile_show"></div>
         </div>
         <div class="cs_slider_arrows cs_style_2 cs_mobile_hide">
@@ -699,6 +592,116 @@ Bhairaav | Residental Projects
     </div><!-- end modal dialog -->
 </div>
 
+{{-- Properties Request Form Model --}}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- start report input popup -->
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="staticBackdropLabel">
+                    Enter your details to unlock
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body space-y-20 p-40">
+                <!-- <h3>Register your interest</h3> -->
+                <form method="POST" action="{{ route('frontend.properties-request.store') }}" class="cs_form cs_style_2" enctype="multipart/form-data" autocomplete="off">
+                    @csrf
+
+                    {{-- add projectNames --}}
+                    <input type="hidden" name="project_name" value="{{ $projectNames->project_name ?? '' }}">
+
+                    <div class="col-sm-12 mb-3">
+                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>Full Name : <span class="text-danger">*</span></b></label> --}}
+                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name', session('form_data.name')) }}" placeholder="Full Name *">
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>Email Id : <span class="text-danger">*</span></b></label> --}}
+                        <input type="email" class="cs_form_field_2 cs_radius_20 @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email', session('form_data.email')) }}" placeholder="Email Id *">
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>Phone No. : <span class="text-danger">*</span></b></label> --}}
+                        <input type="text" maxlength="10" class="cs_form_field_2 cs_radius_20 @error('phone_no') is-invalid @enderror" name="phone_no" id="phone_no" value="{{ old('phone_no', session('form_data.phone_no')) }}" placeholder="Phone No. *">
+                        @error('phone_no')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>Subject : <span class="text-danger">*</span></b></label> --}}
+                        <input type="text" class="cs_form_field_2 cs_radius_20 @error('subject') is-invalid @enderror" name="subject" id="subject" value="{{ old('subject', session('form_data.subject')) }}" placeholder="Subject *">
+                        @error('subject')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        {{-- <label class="cs_height_16 cs_height_lg_16"><b>select Flat Type : <span class="text-danger">*</span></b></label> --}}
+                        <select class="cs_form_field_2 cs_radius_20 @error('flat_type') is-invalid @enderror" name="flat_type" id="flat_type">
+                            <option value="">Select Flat Type</option>
+                            <option value="1" {{ old('flat_type', session('form_data.flat_type')) == '1' ? 'selected' : '' }}>1 BHK</option>
+                            <option value="2" {{ old('flat_type', session('form_data.flat_type')) == '2' ? 'selected' : '' }}>2 BHK</option>
+                            <option value="3" {{ old('flat_type', session('form_data.flat_type')) == '3' ? 'selected' : '' }}>Other</option>
+                        </select>
+                        @error('flat_type')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        {!! NoCaptcha::renderJs() !!}
+                        {!! NoCaptcha::display() !!}
+                        @error('g-recaptcha-response')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15" type="submit">
+                        <b>Submit</b>
+                        <span>
+                            <i>
+                                <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </i>
+                            <i>
+                                <svg width="9" height="9" viewBox="0 0 9 9" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.00431 0.872828C9.00431 0.458614 8.66852 0.122828 8.25431 0.122828L1.50431 0.122827C1.0901 0.122827 0.754309 0.458614 0.754309 0.872828C0.754309 1.28704 1.0901 1.62283 1.50431 1.62283H7.50431V7.62283C7.50431 8.03704 7.84009 8.37283 8.25431 8.37283C8.66852 8.37283 9.00431 8.03704 9.00431 7.62283L9.00431 0.872828ZM1.53033 8.65747L8.78464 1.40316L7.72398 0.342497L0.46967 7.59681L1.53033 8.65747Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </i>
+                        </span>
+                    </button>
+                </form>
+            </div><!-- end modal body -->
+        </div><!-- end modal content -->
+    </div><!-- end modal dialog -->
+</div>
 
 @endsection
 
