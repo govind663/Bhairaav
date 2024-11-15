@@ -599,7 +599,7 @@ Bhairaav | Residental Projects
                     @csrf
 
                     {{-- add projectNames --}}
-                    <input type="text" name="project_name" value="{{ $projectNames->project_name ?? '' }}">
+                    <input type="hidden" name="project_name" value="{{ $projectNames->project_name ?? '' }}">
 
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>Full Name : <span class="text-danger">*</span></b></label> --}}
