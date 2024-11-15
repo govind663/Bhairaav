@@ -598,6 +598,9 @@ Bhairaav | Residental Projects
                 <form method="POST" action="{{ route('frontend.properties-request.store') }}" class="cs_form cs_style_2" enctype="multipart/form-data" autocomplete="off">
                     @csrf
 
+                    {{-- add projectNames --}}
+                    <input type="text" name="project_name" value="{{ $projectNames->project_name ?? '' }}">
+
                     <div class="col-sm-12 mb-3">
                         {{-- <label class="cs_height_16 cs_height_lg_16"><b>Full Name : <span class="text-danger">*</span></b></label> --}}
                         <input type="text" class="cs_form_field_2 cs_radius_20 @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name', session('form_data.name')) }}" placeholder="Full Name *">
@@ -749,5 +752,4 @@ Bhairaav | Residental Projects
         imageDisplay.style.display = 'none'; // Hide the image display div
     }
 </script>
-
 @endpush

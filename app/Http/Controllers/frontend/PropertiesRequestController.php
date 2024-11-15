@@ -36,6 +36,7 @@ class PropertiesRequestController extends Controller
 
             // Send Mail
             $mailData = [
+                'property_name' => $request->input('project_name'),
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'phone_no' => $request->input('phone_no'),

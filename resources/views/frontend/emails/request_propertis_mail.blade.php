@@ -78,6 +78,7 @@
         <p class="details"><strong>Email:</strong> {{ $mailData['email'] }}</p>
         <p class="details"><strong>Phone No :</strong> {{ $mailData['phone_no'] }}</p>
         <p class="details"><strong>Subject:</strong> {{ $mailData['subject'] }}</p>
+        <p class="details"><strong>Property Name :</strong> {{ $mailData['project_name'] }}</p>
         @if ($mailData['flat_type'] == 1)
             <p class="details">
                 <strong>Flat Type:</strong>
